@@ -1,5 +1,9 @@
 import PySimpleGUI as sg
 import os
+from pathlib import Path
+def get_last_folder_name(folder):
+    path = Path(folder)
+    return path.name
 
 def rename_files(folder, prefix):
     for filename in os.listdir(folder):
@@ -7,8 +11,8 @@ def rename_files(folder, prefix):
             os.rename(os.path.join(folder, filename), os.path.join(folder, prefix + "-" +filename))
 
 layout = [
+    [sg.Text('Đường dẫn thư mục', size=(15, 1)), sg.InputText(key='folder',enable_events=True), sg.FolderBrowse()],
     [sg.Text('Tên điều chỉnh', size=(15, 1)), sg.InputText(key='foldername')],
-    [sg.Text('Đường dẫn thư mục', size=(15, 1)), sg.InputText(key='folder'), sg.FolderBrowse()],
     [sg.Button('Bắt đầu', key='start')]
 ]
 
