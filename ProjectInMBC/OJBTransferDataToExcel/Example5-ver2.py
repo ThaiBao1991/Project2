@@ -257,8 +257,9 @@ Layout = [
         
         # [[sg.Frame('Dữ liệu copy 2',[data_copy_options_layout],key='frame2',visible=False)]],
 
-        [sg.Button('Update Form',key="Start", size=(10, 2), button_color=('green', 'grey'), font=('Helvetica', 10,'bold'), pad=(10, 10),enable_events=True),
-            sg.Button('Open Form',key="Open", size=(10,2),button_color=('yellow','grey'),enable_events=True,font=('Helvetica',10,'bold'),pad=(10, 10))],
+        [sg.Button('Update Form',key="Start", size=(10, 2), button_color=('blue', 'grey'), font=('Helvetica', 10,'bold'), pad=(10, 10),enable_events=True),
+            sg.Button('Open Form',key="Open", size=(10,2),button_color=('yellow','grey'),enable_events=True,font=('Helvetica',10,'bold'),pad=(10, 10)),
+            sg.Button('Transfer Data',key="CopyData", size=(10,2),button_color=('lightgreen','grey'),enable_events=True,font=('Helvetica',10,'bold'),pad=(10, 10))],
 
         [sg.Column([[sg.Text("VDM-Inspection Section 2024/04", font=('Helvetica',8))]], justification='left',expand_x=True),
         sg.Column([[sg.Button('Close', size=(10, 2), button_color=('red', 'grey'), font=('Helvetica', 8,'bold'), pad=(0, 0), enable_events=True)]], justification='right')] 
@@ -297,6 +298,17 @@ def create_admin_window():
                 
     return sg.Window('Admin', layout)
 
+# Tạo của sổ TransferData
+def create_transferdata_window():
+    layout = [
+        [sg.Text("Đường dẫn đến file access cần đưa dữ liệu vào :",font=('Helvetica', 11,'bold')),sg.InputText(disabled=True,size=(50, 1), key='LinkData'),sg.FilesBrowse(key='BtnOpenLinkData')],
+        [sg.VPush()],
+        [sg.Push(),sg.Button('OK', size=(10, 2), button_color=('lightgreen', 'grey'), font=('Helvetica', 8, 'bold'), pad=(0, 10), enable_events=True), sg.Button('Cancel', size=(10, 2), button_color=('red', 'grey'), font=('Helvetica', 8, 'bold'), pad=(10, 0), enable_events=True)],
+        [sg.VPush()],
+        #  [ sg.Button('OK', size=(10, 2), button_color=('lightgreen', 'grey'), font=('Helvetica', 8, 'bold'), pad=(0, 0), enable_events=True), sg.Push(), sg.Button('Cancel', size=(10, 2), button_color=('red', 'grey'), font=('Helvetica', 8, 'bold'), pad=(0, 0), enable_events=True)]
+               ]
+    
+    return sg.Window('Đường dẫn đến file lưu trữ', layout, return_keyboard_events=True, margins=(10, 10))
 
 # window=sg.Window('Chương trình lấy dữ liệu từ máy OGP vào biểu ghi chép',Layout,size=(650,450),resizable=False,finalize=True)
 window=sg.Window('Chương trình lấy dữ liệu từ máy OGP vào biểu ghi chép',Layout,resizable=False,finalize=True,return_keyboard_events=True)
@@ -308,7 +320,7 @@ while True:
     if event == sg.WIN_CLOSED:
         break
     elif event == 'alt_s':  # Sự kiện nhấn tổ hợp phím ALT + S
-        print("Chạy ALT + S")
+        # print("Chạy ALT + S") #Tham khảo print Alt + S
         login_window = create_login_window()
         while True:
             event, values = login_window.read()
@@ -367,7 +379,7 @@ while True:
                             # Cập nhật danh sách 'categories' trong 'sg.Combo' sau khi lưu dữ liệu
                             admin_window['FormCategory'].update(values=categories)
                         elif event == 'ClearBtn_Data_export_link':
-                                admin_window['form_save'].update('')
+                            admin_window['form_save'].update('')
                         elif event == 'ClearBtn_OGP_file_link':
                             admin_window['form_OJB'].update('')
                         elif event == 'FormCategory':
@@ -1042,6 +1054,88 @@ while True:
                 sg.popup("Vui lòng thực hiện bước 'Start' và 'Save As' trước khi mở file.", keep_on_top=True)
         except UnboundLocalError:
                  sg.popup("Vui lòng thực hiện bước 'Start' và 'Save As' trước khi mở file.", keep_on_top=True)
+    elif event =="CopyData":
+        transferdata_window = create_transferdata_window()
+        while True:
+            event, values = transferdata_window.read()
+            if event in (sg.WINDOW_CLOSED, 'Thoát', 'CloseLoginBtn'):
+                login_window.close()
+                break
+            elif event == 'LoginBtn':
+                if values['username'] == 'bao1991' and values['password'] == 'ktbao1991':
+                    sg.popup('Đăng nhập thành công!')
+                    login_window.close()
+                    admin_window = create_admin_window()
+                    while True:  # Thêm một vòng lặp sự kiện riêng biệt cho layout admin
+                        event, values = admin_window.read()
+                        if event in (sg.WINDOW_CLOSED, 'Thoát', 'CloseAdminBtn'):
+                            admin_window.close()
+                            break
+                        elif event == 'Update':
+                            data = read_data()
+                            categories = list(data.keys())  # Trích xuất các Category từ dữ liệu
+                            new_folder_save = values['folder_save_choose']
+                            new_form_OJB = values['form_OJB']
+                            new_form_save = values['form_save']
+                            number_of_data = values['number_of_data']
+                            code = ""
+                            # code = """
+                            #             # print("start button click")
+                            #             # copy_from_excel_to_excel_horizontal("ver1.xlsx","B7","convert ver1.xlsx","B4",10)
+                            #             # copy_from_excel_to_excel_vertical("ver1.xlsx","B7","convert ver1.xlsx","B5",10)
+                            #             # copy_horizontal_to_vertical("ver1.xlsx","B7","convert ver1.xlsx","C5",10)
+                            #             # copy_vertical_to_horizontal("ver1.xlsx","B7","convert ver1.xlsx","C5",10)
+                            #             # copy_excel_transpose("ver1.xlsx","B7:F8","convert ver1.xlsx","B4")
+                            #             # copy_excel_transpose("ver1.xlsx","B7:F7","convert ver1.xlsx","B4")
+                            #             copy_excel_transpose("ver1.xlsx","B7:C11","convert ver1.xlsx","B4")
+                            #             copy_excel_transpose("ver1.xlsx","B7:B11","convert ver1.xlsx","B4")
+                            #             copy_excel_transpose("ver1.xlsx","C7","convert ver1.xlsx","B4")
+                            #         """
+                            if new_folder_save:  # Người dùng đã chọn một thư mục mới
+                                data[values['FormCategory']] = {'folder_save': new_folder_save, 'form_OJB': new_form_OJB, 'form_save': new_form_save,'number_of_data':number_of_data, 'code': code}
+                            else:  # Người dùng không chọn thư mục mới, giữ nguyên đường dẫn thư mục hiện tại
+                                if values['FormCategory'] not in data:
+                                    data[values['FormCategory']] = {}
+                                if isinstance(data.get(values['FormCategory']), dict):  # Kiểm tra xem data[values['FormCategory']] có phải là một từ điển hay không
+                                    data[values['FormCategory']]['folder_save'] = values['location_save']
+                                    if new_form_OJB is not None:  # Người dùng đã chọn một file OJB mới
+                                        data[values['FormCategory']]['form_OJB'] = new_form_OJB
+                                    if new_form_save is not None:  # Người dùng đã chọn một file save mới
+                                        data[values['FormCategory']]['form_save'] = new_form_save
+                                    data[values['FormCategory']]['code'] = code  # Thêm đoạn mã vào dữ liệu
+                                    if number_of_data is not None :
+                                        data[values['FormCategory']]['number_of_data']= number_of_data
+                                else:
+                                    sg.Popup('Vui lòng chọn một thư mục mới', keep_on_top=True)
+                            save_data(data)
+                            sg.popup(f"Hoàn thành update đường dẫn của  {values['FormCategory']}" ,title='Hoàn Thành')
+                            categories = list(data.keys())  # Trích xuất các Category từ dữ liệu
+                            # Cập nhật danh sách 'categories' trong 'sg.Combo' sau khi lưu dữ liệu
+                            admin_window['FormCategory'].update(values=categories)
+                        elif event == 'ClearBtn_Data_export_link':
+                            admin_window['form_save'].update('')
+                        elif event == 'ClearBtn_OGP_file_link':
+                            admin_window['form_OJB'].update('')
+                        elif event == 'FormCategory':
+                            data = read_data()
+                            form_category = values['FormCategory']
+                            if form_category in data:
+                                if isinstance(data[form_category], dict):  # Kiểm tra xem data[form_category] có phải là một từ điển hay không
+                                    admin_window['location_save'].update(data[form_category].get('folder_save', ''))
+                                    admin_window['form_OJB'].update(data[form_category].get('form_OJB', ''))
+                                    admin_window['form_save'].update(data[form_category].get('form_save', ''))
+                                    admin_window['number_of_data'].update(data[form_category].get('number_of_data',''))
+                                else:
+                                    admin_window['location_save'].update(data[form_category])
+                                    admin_window['form_OJB'].update('')
+                                    admin_window['form_save'].update('')
+                                    admin_window['number_of_data'].update('10')
+                            else:
+                                admin_window['location_save'].update('')
+                                admin_window['form_OJB'].update('')
+                                admin_window['form_save'].update('')
+                                admin_window['number_of_data'].update('10')
+                    break
     elif event == 'Close':
         break
         
