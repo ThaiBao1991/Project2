@@ -1058,84 +1058,17 @@ while True:
         transferdata_window = create_transferdata_window()
         while True:
             event, values = transferdata_window.read()
-            if event in (sg.WINDOW_CLOSED, 'Thoát', 'CloseLoginBtn'):
-                login_window.close()
+            if event in (sg.WINDOW_CLOSED, 'Cancel'):
+                transferdata_window.close()
                 break
-            elif event == 'LoginBtn':
-                if values['username'] == 'bao1991' and values['password'] == 'ktbao1991':
-                    sg.popup('Đăng nhập thành công!')
-                    login_window.close()
-                    admin_window = create_admin_window()
-                    while True:  # Thêm một vòng lặp sự kiện riêng biệt cho layout admin
-                        event, values = admin_window.read()
-                        if event in (sg.WINDOW_CLOSED, 'Thoát', 'CloseAdminBtn'):
-                            admin_window.close()
-                            break
-                        elif event == 'Update':
-                            data = read_data()
-                            categories = list(data.keys())  # Trích xuất các Category từ dữ liệu
-                            new_folder_save = values['folder_save_choose']
-                            new_form_OJB = values['form_OJB']
-                            new_form_save = values['form_save']
-                            number_of_data = values['number_of_data']
-                            code = ""
-                            # code = """
-                            #             # print("start button click")
-                            #             # copy_from_excel_to_excel_horizontal("ver1.xlsx","B7","convert ver1.xlsx","B4",10)
-                            #             # copy_from_excel_to_excel_vertical("ver1.xlsx","B7","convert ver1.xlsx","B5",10)
-                            #             # copy_horizontal_to_vertical("ver1.xlsx","B7","convert ver1.xlsx","C5",10)
-                            #             # copy_vertical_to_horizontal("ver1.xlsx","B7","convert ver1.xlsx","C5",10)
-                            #             # copy_excel_transpose("ver1.xlsx","B7:F8","convert ver1.xlsx","B4")
-                            #             # copy_excel_transpose("ver1.xlsx","B7:F7","convert ver1.xlsx","B4")
-                            #             copy_excel_transpose("ver1.xlsx","B7:C11","convert ver1.xlsx","B4")
-                            #             copy_excel_transpose("ver1.xlsx","B7:B11","convert ver1.xlsx","B4")
-                            #             copy_excel_transpose("ver1.xlsx","C7","convert ver1.xlsx","B4")
-                            #         """
-                            if new_folder_save:  # Người dùng đã chọn một thư mục mới
-                                data[values['FormCategory']] = {'folder_save': new_folder_save, 'form_OJB': new_form_OJB, 'form_save': new_form_save,'number_of_data':number_of_data, 'code': code}
-                            else:  # Người dùng không chọn thư mục mới, giữ nguyên đường dẫn thư mục hiện tại
-                                if values['FormCategory'] not in data:
-                                    data[values['FormCategory']] = {}
-                                if isinstance(data.get(values['FormCategory']), dict):  # Kiểm tra xem data[values['FormCategory']] có phải là một từ điển hay không
-                                    data[values['FormCategory']]['folder_save'] = values['location_save']
-                                    if new_form_OJB is not None:  # Người dùng đã chọn một file OJB mới
-                                        data[values['FormCategory']]['form_OJB'] = new_form_OJB
-                                    if new_form_save is not None:  # Người dùng đã chọn một file save mới
-                                        data[values['FormCategory']]['form_save'] = new_form_save
-                                    data[values['FormCategory']]['code'] = code  # Thêm đoạn mã vào dữ liệu
-                                    if number_of_data is not None :
-                                        data[values['FormCategory']]['number_of_data']= number_of_data
-                                else:
-                                    sg.Popup('Vui lòng chọn một thư mục mới', keep_on_top=True)
-                            save_data(data)
-                            sg.popup(f"Hoàn thành update đường dẫn của  {values['FormCategory']}" ,title='Hoàn Thành')
-                            categories = list(data.keys())  # Trích xuất các Category từ dữ liệu
-                            # Cập nhật danh sách 'categories' trong 'sg.Combo' sau khi lưu dữ liệu
-                            admin_window['FormCategory'].update(values=categories)
-                        elif event == 'ClearBtn_Data_export_link':
-                            admin_window['form_save'].update('')
-                        elif event == 'ClearBtn_OGP_file_link':
-                            admin_window['form_OJB'].update('')
-                        elif event == 'FormCategory':
-                            data = read_data()
-                            form_category = values['FormCategory']
-                            if form_category in data:
-                                if isinstance(data[form_category], dict):  # Kiểm tra xem data[form_category] có phải là một từ điển hay không
-                                    admin_window['location_save'].update(data[form_category].get('folder_save', ''))
-                                    admin_window['form_OJB'].update(data[form_category].get('form_OJB', ''))
-                                    admin_window['form_save'].update(data[form_category].get('form_save', ''))
-                                    admin_window['number_of_data'].update(data[form_category].get('number_of_data',''))
-                                else:
-                                    admin_window['location_save'].update(data[form_category])
-                                    admin_window['form_OJB'].update('')
-                                    admin_window['form_save'].update('')
-                                    admin_window['number_of_data'].update('10')
-                            else:
-                                admin_window['location_save'].update('')
-                                admin_window['form_OJB'].update('')
-                                admin_window['form_save'].update('')
-                                admin_window['number_of_data'].update('10')
-                    break
+            elif event == 'OK':
+                linkfileaccess = values['LinkData']
+                if not linkfileaccess:
+                    sg.popup("Vui lòng chọn đường link file access cần chuyển dữ liệu")
+                else:
+                    file_extension = os.path.splitext(linkfileaccess)[1]
+                    if(file_extension !=".xlsb"):
+                        sg.popup("File chọn phải là một file excel")
     elif event == 'Close':
         break
         
