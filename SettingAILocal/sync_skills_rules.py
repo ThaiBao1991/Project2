@@ -26,20 +26,49 @@ if sys.platform == "win32":
 
 USER_HOME = os.path.expanduser("~")
 
+<<<<<<< HEAD
 # Định nghĩa các đường dẫn chuẩn xác
 PROJECT1_BASE = os.path.normpath(r"C:\Users\games\Desktop\Project\Python\Python MyWork\Project1")
 PROJECT1_GRAVITY = os.path.join(PROJECT1_BASE, "GravityCode")
 PROJECT1_HUB = os.path.join(PROJECT1_GRAVITY, "SKILL_RULE")
+=======
+# Định nghĩa các đường dẫn chuẩn xác (Tự động thích ứng trên mọi môi trường)
+CURRENT_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if os.path.basename(CURRENT_SCRIPT_DIR) == "SKILL_RULE":
+    PROJECT1_HUB = CURRENT_SCRIPT_DIR
+    PROJECT1_GRAVITY = os.path.dirname(PROJECT1_HUB)
+    PROJECT1_BASE = os.path.dirname(PROJECT1_GRAVITY)
+else:
+    PROJECT1_BASE = os.path.normpath(r"C:\Users\12953 Bao\Desktop\desktop\work\Project\Python\BasicLearnPython\W3schools\Python Tutorial")
+    PROJECT1_GRAVITY = os.path.join(PROJECT1_BASE, "GravityCode")
+    PROJECT1_HUB = os.path.join(PROJECT1_GRAVITY, "SKILL_RULE")
+
+>>>>>>> 37df3766a7d127cbdd57fb6592c5e4ba6668250f
 PROJECT1_HUB_SKILLS = os.path.join(PROJECT1_HUB, "skills")
 PROJECT1_HUB_RULES = os.path.join(PROJECT1_HUB, "rules")
 PROJECT1_GRAVITY_AGENTS = os.path.join(PROJECT1_GRAVITY, ".agents")
 PROJECT1_ROOT_AGENTS = os.path.join(PROJECT1_BASE, ".agents")
 
+<<<<<<< HEAD
 PROJECT2_BASE = os.path.normpath(r"C:\Users\games\Desktop\Project\Python\Python MyWork\Project2")
 PROJECT2_HUB = os.path.join(PROJECT2_BASE, "SettingAILocal")
 PROJECT2_HUB_SKILLS = os.path.join(PROJECT2_HUB, "skills")
 PROJECT2_HUB_RULES = os.path.join(PROJECT2_HUB, "rules")
 PROJECT2_AGENTS = os.path.join(PROJECT2_HUB, ".agents")
+=======
+# Nhận diện đường dẫn Project 2 linh hoạt
+w3schools_cand = os.path.dirname(PROJECT1_BASE)
+p2_candidate = os.path.join(w3schools_cand, "Project 2")
+if os.path.exists(p2_candidate):
+    PROJECT2_BASE = p2_candidate
+else:
+    PROJECT2_BASE = os.path.normpath(r"C:\Users\12953 Bao\Desktop\desktop\work\Project\Python\BasicLearnPython\W3schools\Project 2")
+
+PROJECT2_HUB = os.path.join(PROJECT2_BASE, "SettingAILocal")
+PROJECT2_HUB_SKILLS = os.path.join(PROJECT2_HUB, "skills")
+PROJECT2_HUB_RULES = os.path.join(PROJECT2_HUB, "rules")
+PROJECT2_AGENTS = os.path.join(PROJECT2_BASE, ".agents")
+>>>>>>> 37df3766a7d127cbdd57fb6592c5e4ba6668250f
 
 GEMINI_CONFIG_DIR = os.path.join(USER_HOME, ".gemini", "config")
 GEMINI_SKILLS = os.path.join(GEMINI_CONFIG_DIR, "skills")
@@ -111,10 +140,15 @@ def sync_directory_bidirectional(dir_a, dir_b, label_a="Project 1", label_b="Pro
             elif os.path.isfile(path_a) and os.path.isfile(path_b):
                 mtime_a = os.path.getmtime(path_a)
                 mtime_b = os.path.getmtime(path_b)
+<<<<<<< HEAD
                 size_a = os.path.getsize(path_a)
                 size_b = os.path.getsize(path_b)
 
                 # Chênh lệch > 1 giây hoặc khác dung lượng khi mtime lệch
+=======
+
+                # Chênh lệch > 1 giây khi mtime lệch
+>>>>>>> 37df3766a7d127cbdd57fb6592c5e4ba6668250f
                 if mtime_a > mtime_b + 1:
                     shutil.copy2(path_a, path_b)
                     print(f"   [^ {label_a} cập nhật {label_b}] {item}")
@@ -229,14 +263,30 @@ def perform_sync_all():
 
     # 3. Đẩy đồng nhất ra Toàn Cục (.gemini/config)
     print("\n[Bước 3] Đẩy ra Toàn Cục (~/.gemini/config):")
+<<<<<<< HEAD
     push_to_destination(PROJECT2_HUB_SKILLS, PROJECT2_HUB_RULES, "Global (~/.gemini/config)", GEMINI_SKILLS, GEMINI_RULES)
+=======
+    push_to_destination(PROJECT1_HUB_SKILLS, PROJECT1_HUB_RULES, "Global (~/.gemini/config)", GEMINI_SKILLS, GEMINI_RULES)
+>>>>>>> 37df3766a7d127cbdd57fb6592c5e4ba6668250f
 
     # 4. Đẩy ra các Workspace Runtime (.agents)
     print("\n[Bước 4] Đẩy ra Workspace Runtimes (.agents):")
     # Project 2 Workspace
     p2_agents_skills = os.path.join(PROJECT2_AGENTS, "skills")
     p2_agents_rules = os.path.join(PROJECT2_AGENTS, "rules")
+<<<<<<< HEAD
     push_to_destination(PROJECT2_HUB_SKILLS, PROJECT2_HUB_RULES, "Project 2 Workspace (.agents)", p2_agents_skills, p2_agents_rules)
+=======
+    push_to_destination(PROJECT1_HUB_SKILLS, PROJECT1_HUB_RULES, "Project 2 Workspace (.agents)", p2_agents_skills, p2_agents_rules)
+
+    # Sao chép các file cấu hình workspace agent sang Project 2
+    os.makedirs(PROJECT2_AGENTS, exist_ok=True)
+    for fname in ["AGENTS.md", "GEMINI.md", "mcp_config.json", "plugins.json", "skills.json"]:
+        src_f = os.path.join(PROJECT1_GRAVITY_AGENTS, fname)
+        if os.path.exists(src_f):
+            shutil.copy2(src_f, os.path.join(PROJECT2_AGENTS, fname))
+    print("   ✅ Đã đồng bộ file cấu hình Workspace (.agents root files) tới Project 2")
+>>>>>>> 37df3766a7d127cbdd57fb6592c5e4ba6668250f
 
     # Project 1 Workspaces
     p1_grav_skills = os.path.join(PROJECT1_GRAVITY_AGENTS, "skills")
@@ -307,4 +357,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 37df3766a7d127cbdd57fb6592c5e4ba6668250f
