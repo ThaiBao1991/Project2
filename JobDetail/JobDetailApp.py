@@ -362,7 +362,7 @@ class JobDetailApp(ctk.CTk):
         ctk.CTkLabel(filters_frame, text="Ngành:", font=ctk.CTkFont(size=11), text_color=THEME["subtext"]).grid(row=1, column=0, sticky="w", pady=2)
         self.cb_cat = ctk.CTkComboBox(
             filters_frame,
-            values=["Tất cả", "Backend", "Frontend", "Fullstack", "DevOps", "AI/Data", "Mobile", "QA"],
+            values=["Tất cả", "Sản Xuất (Manufacturing)", "Lean / IE", "Backend", "Frontend", "Fullstack", "DevOps", "AI/Data", "Mobile", "QA", "Khác"],
             command=lambda v: self._apply_filter(),
             height=28,
             width=150,
@@ -421,37 +421,37 @@ class JobDetailApp(ctk.CTk):
 
         # 1. Header chi tiết công việc
         self.dt_header = ctk.CTkFrame(self.detail_frame, fg_color=THEME["surface0"], corner_radius=10)
-        self.dt_header.pack(fill="x", pady=(0, 12), ipady=8, padx=2)
+        self.dt_header.pack(fill="x", pady=(0, 10), padx=2)
 
-        header_top = ctk.CTkFrame(self.dt_header, fg_color="transparent")
-        header_top.pack(fill="x", padx=15, pady=(8, 2))
+        # Hàng 1: Action bar trên cùng (Công ty bên trái, Nút chức năng bên phải)
+        action_bar = ctk.CTkFrame(self.dt_header, fg_color="transparent")
+        action_bar.pack(fill="x", padx=15, pady=(8, 2))
 
-        self.dt_title = ctk.CTkLabel(
-            header_top,
-            text="Chọn một công việc bên trái để xem phân tích",
-            font=ctk.CTkFont(size=20, weight="bold"),
-            text_color=THEME["blue"]
+        self.lbl_company = ctk.CTkLabel(
+            action_bar,
+            text="",
+            font=ctk.CTkFont(size=14, weight="bold"),
+            text_color=THEME["yellow"]
         )
-        self.dt_title.pack(side="left")
+        self.lbl_company.pack(side="left")
 
-        # Nút Export & Copy
         btn_export = ctk.CTkButton(
-            header_top,
+            action_bar,
             text="💾 Xuất Markdown",
             width=120,
-            height=30,
+            height=28,
             fg_color=THEME["surface1"],
             hover_color=THEME["blue"],
             text_color=THEME["text"],
             command=self._export_markdown_file
         )
-        btn_export.pack(side="right", padx=(5, 0))
+        btn_export.pack(side="right", padx=(6, 0))
 
         btn_copy = ctk.CTkButton(
-            header_top,
+            action_bar,
             text="📋 Copy Báo Cáo",
-            width=110,
-            height=30,
+            width=115,
+            height=28,
             fg_color=THEME["surface1"],
             hover_color=THEME["mauve"],
             text_color=THEME["text"],
@@ -459,12 +459,24 @@ class JobDetailApp(ctk.CTk):
         )
         btn_copy.pack(side="right")
 
-        # Hàng Badges
-        self.badges_frame = ctk.CTkFrame(self.dt_header, fg_color="transparent")
-        self.badges_frame.pack(fill="x", padx=15, pady=(2, 6))
+        # Hàng 2: Tiêu đề công việc - CHIẾM DÒNG RIÊNG RỘNG RÃI, KHÔNG BAO GIỜ BỊ ĐÈ NÚT
+        title_box = ctk.CTkFrame(self.dt_header, fg_color="transparent")
+        title_box.pack(fill="x", padx=15, pady=(2, 6))
 
-        self.lbl_company = ctk.CTkLabel(self.badges_frame, text="", font=ctk.CTkFont(size=13, weight="bold"), text_color=THEME["text"])
-        self.lbl_company.pack(side="left", padx=(0, 15))
+        self.dt_title = ctk.CTkLabel(
+            title_box,
+            text="Chọn một công việc bên trái để xem phân tích",
+            font=ctk.CTkFont(size=18, weight="bold"),
+            text_color=THEME["blue"],
+            wraplength=800,
+            justify="left",
+            anchor="w"
+        )
+        self.dt_title.pack(fill="x", anchor="w")
+
+        # Hàng 3: Các Badges thông tin (Sắp xếp thoáng đãng, không bị co cụt text)
+        self.badges_frame = ctk.CTkFrame(self.dt_header, fg_color="transparent")
+        self.badges_frame.pack(fill="x", padx=15, pady=(0, 10))
 
         self.badge_level = self._create_badge(self.badges_frame, "Level: -", THEME["peach"])
         self.badge_cat = self._create_badge(self.badges_frame, "Ngành: -", THEME["blue"])
@@ -472,12 +484,14 @@ class JobDetailApp(ctk.CTk):
         self.badge_salary = self._create_badge(self.badges_frame, "Lương: -", THEME["green"])
 
         # Trạng thái học tập
-        ctk.CTkLabel(self.badges_frame, text="Trạng thái:", font=ctk.CTkFont(size=12), text_color=THEME["subtext"]).pack(side="left", padx=(15, 5))
+        status_box = ctk.CTkFrame(self.badges_frame, fg_color="transparent")
+        status_box.pack(side="left", padx=(12, 0))
+        ctk.CTkLabel(status_box, text="Trạng thái:", font=ctk.CTkFont(size=11), text_color=THEME["subtext"]).pack(side="left", padx=(0, 4))
         self.cb_status = ctk.CTkComboBox(
-            self.badges_frame,
+            status_box,
             values=["New", "Learning", "Ready", "Applied"],
-            width=110,
-            height=26,
+            width=100,
+            height=24,
             command=self._on_status_change
         )
         self.cb_status.pack(side="left")
@@ -831,6 +845,57 @@ Yêu cầu:
     def _render_resources_tab(self, resources):
         for w in self.scroll_resources.winfo_children():
             w.destroy()
+
+        # 0. Phần Mềm & Công Cụ Hỗ Trợ Chuyên Dụng
+        softwares = resources.get("softwares", [])
+        if not softwares:
+            cat = self.current_job.get("category", "") if self.current_job else ""
+            if any(k in cat for k in ["Sản Xuất", "Manufacturing", "Lean"]):
+                softwares = [
+                    {"name": "Microsoft Excel Nâng Cao (Power Query, VBA)", "role": "Xử lý dữ liệu thô nhiều ca, vẽ biểu đồ Pareto 80/20, tự động hóa Macro VBA", "url": "https://support.microsoft.com/excel"},
+                    {"name": "Microsoft Power BI", "role": "Xây dựng Dashboard OEE/OLE thời gian thực, trực quan hóa xu hướng", "url": "https://powerbi.microsoft.com/"},
+                    {"name": "Minitab", "role": "Kiểm soát quá trình thống kê SPC (Xbar-R), phân tích năng lực quá trình Cpk", "url": "https://www.minitab.com/"},
+                    {"name": "AutoCAD / MS Visio", "role": "Thiết kế Layout xưởng, vẽ sơ đồ Spaghetti, sơ đồ chuỗi giá trị VSM", "url": "https://www.autodesk.com/"},
+                    {"name": "Hệ thống SAP ERP (PP) & MES", "role": "Quản lý định mức vật tư BOM, lệnh sản xuất và thu thập dữ liệu máy", "url": "https://help.sap.com/"}
+                ]
+            else:
+                softwares = [
+                    {"name": "Visual Studio Code / JetBrains IDE", "role": "Môi trường lập trình, gỡ lỗi và quản lý mã nguồn", "url": "https://code.visualstudio.com/"},
+                    {"name": "Git & GitHub / GitLab", "role": "Quản lý phiên bản mã nguồn, Pull Request và CI/CD", "url": "https://github.com/"},
+                    {"name": "Docker & Docker Compose", "role": "Đóng gói container môi trường phát triển độc lập", "url": "https://www.docker.com/"},
+                    {"name": "Postman / Insomnia", "role": "Kiểm thử và tự động hóa API", "url": "https://www.postman.com/"}
+                ]
+
+        if softwares:
+            c_soft = ctk.CTkFrame(self.scroll_resources, fg_color=THEME["crust"], corner_radius=8)
+            c_soft.pack(fill="x", pady=6, padx=5, ipady=6)
+            ctk.CTkLabel(c_soft, text="💻 Hệ Sinh Thái Phần Mềm Hỗ Trợ Chuyên Dụng:", font=ctk.CTkFont(size=13, weight="bold"), text_color=THEME["green"]).pack(anchor="w", padx=12, pady=(4, 6))
+
+            for s in softwares:
+                row = ctk.CTkFrame(c_soft, fg_color=THEME["surface0"], corner_radius=6)
+                row.pack(fill="x", padx=12, pady=3, ipady=4)
+
+                s_name = s.get("name", "Software")
+                s_url = s.get("url", "#")
+                s_role = s.get("role", "")
+
+                info_box = ctk.CTkFrame(row, fg_color="transparent")
+                info_box.pack(side="left", padx=10, fill="x", expand=True)
+                ctk.CTkLabel(info_box, text=f"⚙️ {s_name}", font=ctk.CTkFont(size=12, weight="bold"), text_color=THEME["text"]).pack(anchor="w")
+                if s_role:
+                    ctk.CTkLabel(info_box, text=s_role, font=ctk.CTkFont(size=11), text_color=THEME["subtext"], wraplength=550, justify="left").pack(anchor="w")
+
+                btn_open = ctk.CTkButton(
+                    row,
+                    text="🔗 Mở Web",
+                    width=80,
+                    height=26,
+                    fg_color=THEME["blue"],
+                    hover_color="#74c7ec",
+                    text_color=THEME["crust"],
+                    command=lambda u=s_url: webbrowser.open(u)
+                )
+                btn_open.pack(side="right", padx=10)
 
         # 1. Official Documentation
         docs = resources.get("official_docs", [])

@@ -38,6 +38,27 @@ Tài liệu nhật ký theo dõi kiến trúc, tiến độ và kiểm thử c�
 
 ### 3. Kết Quả Kiểm Thử (Definition of Done)
 - Build/Syntax Check: `python -m py_compile` không có lỗi.
-- Unit Tests: `test_job_storage.py` (4/4 passed), `test_job_analyzer.py` (3/3 passed).
+- Unit Tests: `test_job_storage.py` (4/4 passed), `test_job_analyzer.py` (4/4 passed).
 - Data Persistence: SQLite hoạt động ổn định, dữ liệu lưu trữ bền vững.
 - Đồng bộ Rules & Skills: Đã đồng bộ 27 Skills và 11 Rules sang kho trung tâm và toàn cục máy tính qua `sync_skills_rules.py --push-all`.
+
+---
+
+## 2026-11-17 (Nâng cấp) — Mở Rộng Kho Dữ Liệu Offline Sản Xuất / Lean & Tối Ưu Bố Cục UI
+
+### 1. Bối Cảnh & Phản Hồi Từ Người Dùng
+- Tiếp nhận JD thực tế về Kỹ sư Cải tiến Sản xuất (Lean / OEE / OLE / SMED / BOM).
+- Phản hồi giao diện: Tiêu đề dài bị tràn ngang đè lên các nút thao tác; badge lương bị cắt cụt; thiếu bộ lọc ngành Sản xuất; cần bổ sung đầy đủ hệ sinh thái phần mềm chuyên dụng và bộ câu hỏi phỏng vấn thực chiến đồ sộ.
+
+### 2. Các Cải Tiến Đã Thực Hiện
+- **Giao diện Desktop (`JobDetailApp.py`)**:
+  * Tách biệt thanh công cụ (Action Bar) và tiêu đề công việc thành 2 hàng độc lập; tiêu đề có `wraplength=800` tự co giãn xuống dòng mà không bao giờ bị đè nút.
+  * Bố cục lại hàng Badges thông tin: Hiển thị đầy đủ, thoáng đãng, mức lương hiển thị trọn vẹn không bị co cắt.
+  * Bổ sung tùy chọn ngành nghề trong bộ lọc: `"Sản Xuất (Manufacturing)"`, `"Lean / IE"`, `"Supply Chain"`.
+  * Tích hợp mục "Hệ Sinh Thái Phần Mềm Hỗ Trợ Chuyên Dụng" trong Tab Kho Tài Liệu (Excel Power Query/VBA, Power BI, Minitab, AutoCAD, SAP/MES) có nút mở tài liệu web 1-chạm.
+- **Bộ máy Offline thông minh (`job_analyzer.py`)**:
+  * Mở rộng kho từ điển `TECH_CATALOG` với đầy đủ các tri thức về Lean, 5S, Kaizen, VSM, OEE, OLE, SMED, BOM, Power BI, Minitab, AutoCAD, ERP/MES.
+  * Tự động sinh lộ trình Onboarding 3 chặng chuyên sâu theo đặc thù nhà xưởng sản xuất (Genba, Pilot Line, Line Balancing).
+- **Cơ sở dữ liệu (`job_detail.db`)**:
+  * Cập nhật hồ sơ công việc ID 1 với bộ dữ liệu toàn diện 100%: 8 câu hỏi phỏng vấn & tình huống thực chiến có lời giải chi tiết, đầy đủ phần mềm hỗ trợ và lộ trình hành động.
+- **Kiểm thử**: Đạt 4/4 test `test_job_storage.py`, 4/4 test `test_job_analyzer.py`, `py_compile` không lỗi, đồng bộ toàn cục thành công.

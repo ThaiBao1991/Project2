@@ -94,6 +94,22 @@ class TestJobAnalyzer(unittest.TestCase):
         self.assertEqual(result["category"], "Frontend")
         self.assertIn("Remote", result["analysis"]["overview"]["work_mode"])
 
+    def test_offline_analysis_manufacturing_lean(self):
+        raw_jd = """
+        Theo dõi thống kê và phân tích năng lực, năng suất sản xuất, thời gian chuyển đổi, hao phí công nghệ và hao phí lao động
+        Đánh giá hiệu quả sử dụng thiết bị, nhân lực, vật tư và chi phí trong sản xuất
+        Phân tích cả chỉ số OEE và OLE xác định các điểm cần cải thiện và đề xuất giải pháp
+        Tham gia triển khai các chương trình lean manufacturing - sản xuất tinh gọn và cải tiến liên tục tại nhà máy
+        Thực hiện các báo cáo định hướng về sản xuất, BOM, vật tư ... phục vụ công tác quản lý
+        """
+        result = self.analyzer.analyze(raw_jd, force_offline=True)
+        self.assertEqual(result["category"], "Sản Xuất (Manufacturing)")
+        analysis = result["analysis"]
+        self.assertIn("roadmap", analysis)
+        self.assertEqual(len(analysis["roadmap"]), 3)
+        self.assertIn("Genba", analysis["roadmap"][0]["phase"])
+        self.assertTrue(len(analysis["interview_prep"]) > 0)
+
     def test_empty_jd_raises_error(self):
         with self.assertRaises(ValueError):
             self.analyzer.analyze("")

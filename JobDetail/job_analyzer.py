@@ -149,6 +149,108 @@ TECH_CATALOG = {
         "questions": [
             {"question": "Khi nào nên dùng `git rebase` và khi nào nên dùng `git merge`? Quy tắc vàng của Rebase là gì?", "type": "Concept", "key_points": "Merge giữ nguyên lịch sử nhánh, an toàn cho branch dùng chung; Rebase tạo lịch sử tuyến tính sạch sẽ, TUYỆT ĐỐI không rebase các public/shared branch."}
         ]
+    },
+    "lean": {
+        "display": "Lean Manufacturing (TPS & 7 Lãng Phí)",
+        "category": "Sản Xuất (Manufacturing)",
+        "docs": {"name": "Lean Enterprise Institute (LEI)", "url": "https://www.lean.org/", "desc": "Tổ chức quốc tế phi lợi nhuận về triết lý sản xuất tinh gọn và chuyển đổi Lean"},
+        "books": ["Toyota Production System: Beyond Large-Scale Production (Taiichi Ohno)", "Learning to See: Value Stream Mapping (Mike Rother & John Shook)"],
+        "keywords": ["7 wastes muda lean manufacturing examples", "value stream mapping vsm future state", "5s visual management implementation"],
+        "questions": [
+            {"question": "Kể tên và phân tích 7 loại lãng phí (Muda) trong sản xuất tinh gọn. Loại lãng phí nào được coi là nguy hiểm nhất và tại sao?", "type": "Concept", "key_points": "TIMWOOD: Transportation, Inventory, Motion, Waiting, Overproduction, Overprocessing, Defects. Overproduction nguy hiểm nhất vì nó sinh ra và che giấu tất cả các loại lãng phí còn lại."},
+            {"question": "Trình bày cách vẽ và phân tích Bản đồ chuỗi giá trị (Value Stream Mapping - VSM) từ Current State sang Future State?", "type": "Deep Dive", "key_points": "Theo dõi dòng vật tư và dòng thông tin từ nhà cung ứng đến khách hàng; tính toán Lead Time và Process Time; xác định các điểm dồn ứ (WIP) để thiết kế hệ thống kéo (Pull System/Kanban)."}
+        ]
+    },
+    "oee": {
+        "display": "Chỉ Số OEE & 6 Tổn Thất Lớn",
+        "category": "Sản Xuất (Manufacturing)",
+        "docs": {"name": "OEE Industry Standard Guide (Arno Koch)", "url": "https://www.oee.com/", "desc": "Tiêu chuẩn quốc tế và hướng dẫn chi tiết đo lường Overall Equipment Effectiveness"},
+        "books": ["OEE for Operators: Overall Equipment Effectiveness (Productivity Press)"],
+        "keywords": ["how to calculate OEE step by step excel template", "six big losses tpm breakdown small stops", "world class oee benchmark 85 percent"],
+        "questions": [
+            {"question": "Trình bày công thức tính OEE và phân tích 6 tổn thất lớn (Six Big Losses) tương ứng với 3 thành phần của OEE?", "type": "Concept", "key_points": "OEE = Availability (Breakdown, Setup) x Performance (Minor Stops, Reduced Speed) x Quality (Startup Rejects, Production Defects)."},
+            {"question": "Nếu OEE của máy đạt 88% nhưng nhà máy vẫn chậm giao hàng và chi phí tăng, nguyên nhân do đâu?", "type": "Scenario", "key_points": "Bị bẫy Overproduction (sản xuất mã hàng không cần thiết để lấy OEE cao), OLE thấp do tốn quá nhiều nhân công để nuôi máy, hoặc nhịp sản xuất không khớp với Takt Time của khách hàng."}
+        ]
+    },
+    "ole": {
+        "display": "Chỉ Số OLE (Hiệu Quả Lao Động)",
+        "category": "Sản Xuất (Manufacturing)",
+        "docs": {"name": "Overall Labor Effectiveness (OLE) Guide", "url": "https://en.wikipedia.org/wiki/Overall_labor_effectiveness", "desc": "Phương pháp luận đo lường hiệu quả lao động toàn diện trong nhà máy"},
+        "books": ["Managing Factory Maintenance (Joel Levitt)"],
+        "keywords": ["overall labor effectiveness OLE calculation formula", "labor utilization vs labor efficiency", "takt time line balancing"],
+        "questions": [
+            {"question": "Phân biệt giữa OEE và OLE. Làm sao để nâng cao OLE mà không bắt công nhân tăng ca quá sức?", "type": "Deep Dive", "key_points": "OEE đo hiệu suất máy móc; OLE đo hiệu quả sử dụng sức lao động. Nâng OLE bằng cách cân bằng chuyền (Line Balancing), triệt tiêu thao tác thừa (Motion), chuẩn hóa thao tác (SOP), chứ không ép tăng tốc độ làm việc."}
+        ]
+    },
+    "smed": {
+        "display": "SMED (Chuyển Đổi Nhanh Dưới 10 Phút)",
+        "category": "Sản Xuất (Manufacturing)",
+        "docs": {"name": "SMED Quick Changeover Methodology", "url": "https://en.wikipedia.org/wiki/Single-minute_exchange_of_die", "desc": "Hệ thống Single-Minute Exchange of Die rút ngắn thời gian đổi khuôn/mã hàng"},
+        "books": ["A Revolution in Manufacturing: The SMED System (Shigeo Shingo)"],
+        "keywords": ["smed quick changeover implementation steps", "internal vs external setup time lean", "quick clamp 1 turn bolt smed"],
+        "questions": [
+            {"question": "Nêu 4 bước cụ thể của phương pháp SMED để giảm thời gian đổi khuôn từ 60 phút xuống 15 phút?", "type": "Scenario", "key_points": "(1) Quan sát quay video hiện trạng; (2) Tách thao tác Trong (Internal) và Ngoài (External); (3) Chuyển thao tác Trong thành Ngoài (chuẩn bị trước khi máy dừng); (4) Tinh gọn thao tác Trong (dùng chốt 1 chạm, tiêu chuẩn hóa ốc vít, kịch bản 2 người song song)."}
+        ]
+    },
+    "bom": {
+        "display": "Quản Lý Định Mức BOM & Hao Phí",
+        "category": "Sản Xuất (Manufacturing)",
+        "docs": {"name": "Bill of Materials (BOM) Management Standards", "url": "https://en.wikipedia.org/wiki/Bill_of_materials", "desc": "Cấu trúc cây định mức nguyên vật liệu, phế phẩm và kiểm soát giá thành"},
+        "books": ["Manufacturing Planning and Control for Supply Chain Management (Jacobs)"],
+        "keywords": ["bill of materials BOM variance analysis production cost", "scrap rate vs technological loss BOM", "poka yoke scrap reduction"],
+        "questions": [
+            {"question": "Làm thế nào để phát hiện và kiểm soát chênh lệch giữa hao phí nguyên vật liệu thực tế so với định mức BOM?", "type": "Deep Dive", "key_points": "Kiểm soát theo Lô (Batch), phân tách hao phí công nghệ (Scrap do phôi dập) vs hao phí lỗi thao tác (Defects), vẽ Pareto xác định 20% linh kiện chiếm 80% hao hụt và áp dụng Poka-Yoke."}
+        ]
+    },
+    "powerbi": {
+        "display": "Microsoft Power BI (Dashboard Sản Xuất)",
+        "category": "Tools",
+        "docs": {"name": "Power BI Documentation", "url": "https://learn.microsoft.com/en-us/power-bi/", "desc": "Tài liệu chính thức về xây dựng báo cáo phân tích và Dashboard dữ liệu trực quan"},
+        "books": ["The Definitive Guide to DAX (Alberto Ferrari & Marco Russo)"],
+        "keywords": ["power bi manufacturing dashboard oee dax", "power bi scheduled refresh on-premises gateway", "power bi pareto chart dax measure"],
+        "questions": [
+            {"question": "Làm thế nào để thiết kế một Dashboard OEE/OLE trên Power BI tự động cập nhật từ các file log sản xuất hàng ngày?", "type": "Scenario", "key_points": "Dùng Power Query Folder Connector kết nối thư mục log, làm sạch và unpivot dữ liệu; tạo Star Schema model; viết DAX Measure tính Availability, Performance, Quality; thiết lập On-premises Gateway tự động refresh."}
+        ]
+    },
+    "minitab": {
+        "display": "Minitab (Thống Kê Chất Lượng & Six Sigma)",
+        "category": "Tools",
+        "docs": {"name": "Minitab Support & Documentation", "url": "https://support.minitab.com/", "desc": "Tài liệu phân tích kiểm soát quá trình thống kê SPC và năng lực quá trình Cpk"},
+        "books": ["Six Sigma Quality Improvement with Minitab (G. Rex Bryce)"],
+        "keywords": ["minitab process capability cpk ppk interpretation", "minitab spc xbar r chart out of control rules", "minitab anova hypothesis testing"],
+        "questions": [
+            {"question": "Chỉ số Cpk khác gì so với Ppk, và khi nào một quá trình sản xuất được coi là có năng lực đạt chuẩn?", "type": "Concept", "key_points": "Cpk đo lường năng lực ngắn hạn (trong nhóm - Within group), Ppk đo lường năng lực dài hạn (toàn bộ - Overall). Quá trình đạt chuẩn khi Cpk >= 1.33 (tương đương 4 Sigma, < 63 ppm lỗi)."}
+        ]
+    },
+    "excel": {
+        "display": "Microsoft Excel Nâng Cao (Power Query / VBA)",
+        "category": "Tools",
+        "docs": {"name": "Excel Help & Training", "url": "https://support.microsoft.com/excel", "desc": "Cẩm nang tra cứu hàm, Power Query và tự động hóa Macro VBA"},
+        "books": ["Excel 2019 Power Programming with VBA (Michael Alexander)"],
+        "keywords": ["excel power query combine files from folder", "excel pareto chart 80 20 rule production", "excel vba automate daily production report"],
+        "questions": [
+            {"question": "Ưu điểm của việc dùng Power Query so với viết công thức VLOOKUP/INDEX-MATCH truyền thống khi xử lý báo cáo sản xuất hàng triệu dòng?", "type": "Concept", "key_points": "Power Query nạp dữ liệu vào Data Model nén bộ nhớ (VertiPaq), không làm đơ file Excel, tự động hóa toàn bộ các bước làm sạch bằng 1 nút Refresh, xử lý được hàng triệu dòng vượt giới hạn 1,048,576 dòng của sheet."}
+        ]
+    },
+    "autocad": {
+        "display": "AutoCAD (Layout Nhà Xưởng & Sơ Đồ Di Chuyển)",
+        "category": "Tools",
+        "docs": {"name": "Autodesk AutoCAD Documentation", "url": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/AutoCAD-Help.html", "desc": "Phần mềm thiết kế bản vẽ kỹ thuật 2D/3D và bố trí mặt bằng nhà máy"},
+        "books": ["AutoCAD 2024 for Beginners (CADFolks)"],
+        "keywords": ["plant layout optimization autocad lean manufacturing", "spaghetti diagram autocad plant layout", "u-shaped cell layout design"],
+        "questions": [
+            {"question": "Khi thiết kế lại mặt bằng nhà xưởng (Plant Layout) bằng AutoCAD, những nguyên tắc Lean nào cần ưu tiên?", "type": "Concept", "key_points": "Bố trí chuyền chữ U (U-shaped), luồng một sản phẩm (One-piece flow), giảm tối đa khoảng cách vận chuyển (Muda of Transport), phân định rõ luồng người và luồng xe nâng để đảm bảo an toàn 5S."}
+        ]
+    },
+    "erp_mes": {
+        "display": "Hệ Thống ERP (SAP PP) & MES Sản Xuất",
+        "category": "Tools",
+        "docs": {"name": "SAP Production Planning (PP) Overview", "url": "https://help.sap.com/", "desc": "Phân hệ quản lý kế hoạch sản xuất, lệnh sản xuất và định mức vật tư BOM"},
+        "books": ["Production Planning and Control with SAP (Jawad Akhtar)"],
+        "keywords": ["sap pp work order routing bom confirmation", "mes manufacturing execution system plc integration", "sap standard cost vs actual cost variance"],
+        "questions": [
+            {"question": "Sự kết hợp giữa hệ thống MES và hệ thống ERP trong việc quản lý năng suất nhà máy diễn ra như thế nào?", "type": "Deep Dive", "key_points": "ERP nắm kế hoạch cấp cao (Lệnh sản xuất, BOM, tồn kho); MES điều hành trực tiếp dưới xưởng (thu thập tín hiệu máy từ PLC, ghi nhận thời gian chạy/dừng, số lượng lỗi thời gian thực); MES gửi dữ liệu thực tế ngược về ERP để hạch toán chi phí."}
+        ]
     }
 }
 
@@ -300,7 +402,54 @@ class JobAnalyzer:
         }
 
     def _generate_roadmap(self, level, detected_techs):
-        """Sinh lộ trình học tập 3 chặng tùy biến theo cấp bậc."""
+        """Sinh lộ trình học tập 3 chặng tùy biến theo cấp bậc và lĩnh vực."""
+        is_manufacturing = any(t in ["lean", "oee", "ole", "smed", "bom"] for t in detected_techs)
+        if is_manufacturing:
+            return [
+                {
+                    "phase": "Tuần 1 - 2: Khảo Sát Hiện Trường (Genba), Hiểu Quy Trình & Chuẩn Hóa Dữ Liệu",
+                    "goals": [
+                        "Đi bộ hiện trường (Genba Walk), nắm trọn dòng chảy sản xuất từ NVL đến thành phẩm.",
+                        "Đọc hiểu cấu trúc bảng định mức BOM của các mã sản phẩm chủ lực và cấu trúc chi phí.",
+                        "Khảo sát hiện trạng ghi chép ca, biểu mẫu đo lường dừng máy (Downtime) và phế phẩm."
+                    ],
+                    "action_items": [
+                        "Vẽ lại sơ đồ di chuyển thực tế (Spaghetti Diagram) của công nhân và vật tư trên chuyền.",
+                        "Thu thập dữ liệu ca sản xuất 1 tháng gần nhất để đánh giá độ chính xác của số liệu hiện có.",
+                        "Làm quen và tạo quan hệ tin cậy với Quản đốc xưởng, Tổ trưởng và Kỹ sư bảo trì."
+                    ]
+                },
+                {
+                    "phase": "Tháng 1: Chuẩn Hóa Đo Lường OEE/OLE & Nhận Diện Điểm Nghẽn (Bottlenecks)",
+                    "goals": [
+                        "Xây dựng và chuẩn hóa công thức đo lường OEE/OLE hàng ngày theo chuẩn quốc tế.",
+                        "Phân loại chính xác 6 tổn thất lớn (Six Big Losses) và xác định top 3 điểm nghẽn.",
+                        "Phân tích chi tiết thời gian chuyển đổi dòng hàng (Changeover time)."
+                    ],
+                    "action_items": [
+                        "Thiết lập bảng theo dõi OEE/OLE thử nghiệm trên 1 chuyền hoặc cụm máy mẫu (Pilot Line).",
+                        "Quay video quy trình chuyển đổi khuôn/mẫu mã và áp dụng bước 1-2 của kỹ thuật SMED.",
+                        "Tổ chức buổi họp Kaizen đầu tiên với tổ sản xuất để xử lý 1 loại lỗi dừng vặt phổ biến.",
+                        "Thiết lập báo cáo phân tích chênh lệch hao phí vật tư so với định mức BOM."
+                    ]
+                },
+                {
+                    "phase": "Tháng 2 - 3: Triển Khai Cải Tiến Sâu, Cân Bằng Chuyền & Đo Lường ROI Trước - Sau",
+                    "goals": [
+                        "Rút ngắn thời gian chuyển đổi dòng hàng ít nhất 20-30% bằng phương pháp SMED.",
+                        "Cân bằng chuyền sản xuất (Line Balancing / Takt Time) nhằm triệt tiêu thời gian chờ đợi.",
+                        "Xây dựng Dashboard báo cáo tự động cho Ban Giám Đốc và chứng minh hiệu quả Before-After."
+                    ],
+                    "action_items": [
+                        "Áp dụng cữ gá nhanh, chuẩn hóa dụng cụ chuyển đổi để đưa thời gian dừng máy về mức tối thiểu.",
+                        "Cân đối Takt Time và Cycle Time trên chuyền sản xuất mẫu bằng biểu đồ Yamazumi.",
+                        "Thiết kế Dashboard theo dõi OEE, OLE và hao phí BOM tự động bằng Power BI / Excel.",
+                        "Tổng hợp báo cáo đánh giá hiệu quả kinh tế (ROI) của các giải pháp cải tiến đã triển khai.",
+                        "Chuẩn hóa quy trình thành tài liệu SOP và tổ chức đào tạo duy trì cho công nhân."
+                    ]
+                }
+            ]
+
         tech_names = ", ".join([TECH_CATALOG[t]["display"] for t in detected_techs[:3]])
 
         if level in ["Intern", "Fresher"]:
@@ -471,6 +620,8 @@ class JobAnalyzer:
         title_lower = title.lower()
 
         # 1. Kiểm tra trực tiếp trong tiêu đề
+        if any(k in title_lower for k in ["sản xuất", "manufacturing", "lean", "cải tiến", "ie", "industrial", "oee", "ole", "nhà máy", "bảo trì"]):
+            return "Sản Xuất (Manufacturing)"
         if any(k in title_lower for k in ["backend", "back-end", "python", "java", "golang", "c#", ".net", "php", "django", "fastapi", "spring", "nodejs"]):
             return "Backend"
         if any(k in title_lower for k in ["frontend", "front-end", "react", "vue", "angular", "ui/ux", "web"]):
@@ -489,6 +640,7 @@ class JobAnalyzer:
         # 2. Tính trọng số trong toàn bộ văn bản JD
         lt = text.lower()
         scores = {
+            "Sản Xuất (Manufacturing)": sum(lt.count(k) for k in ["sản xuất", "manufacturing", "lean", "oee", "ole", "nhà máy", "hao phí", "bom", "smed", "kaizen", "năng suất"]),
             "Backend": sum(lt.count(k) for k in ["backend", "back-end", "api", "database", "sql", "postgresql", "mysql", "orm", "fastapi", "django", "spring"]),
             "Frontend": sum(lt.count(k) for k in ["frontend", "front-end", "react", "vue", "angular", "css", "html", "javascript", "typescript", "ui/ux"]),
             "DevOps": sum(lt.count(k) for k in ["devops", "sre", "ci/cd", "kubernetes", "k8s", "terraform", "infrastructure", "sysadmin"]),
