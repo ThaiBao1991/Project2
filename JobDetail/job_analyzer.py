@@ -15,6 +15,16 @@ import json
 import urllib.request
 import urllib.error
 
+try:
+    import offline_knowledge
+except Exception:
+    offline_knowledge = None
+
+try:
+    import interview_bank
+except Exception:
+    interview_bank = None
+
 # Đảm bảo UTF-8
 if sys.platform == "win32":
     try:
@@ -31,6 +41,7 @@ TECH_CATALOG = {
     "python": {
         "display": "Python",
         "category": "Backend",
+        "doc_key": "python_core",
         "docs": {"name": "Python Official Docs", "url": "https://docs.python.org/3/", "desc": "Tài liệu ngôn ngữ chính thống, thư viện chuẩn và cú pháp"},
         "books": ["Fluent Python (Luciano Ramalho)", "Python Tricks: A Buffet of Awesome Features (Dan Bader)"],
         "keywords": ["python asyncio best practices", "python gil multithreading vs multiprocessing", "python type hinting mypy"],
@@ -42,6 +53,7 @@ TECH_CATALOG = {
     "fastapi": {
         "display": "FastAPI",
         "category": "Backend",
+        "doc_key": "python_core",
         "docs": {"name": "FastAPI Documentation", "url": "https://fastapi.tiangolo.com/", "desc": "Framework web Python hiện đại, bất đồng bộ và tự động sinh Swagger/OpenAPI"},
         "books": ["Building Data Science Applications with FastAPI (François Voron)"],
         "keywords": ["fastapi dependency injection pattern", "fastapi async background tasks", "pydantic v2 validation"],
@@ -52,6 +64,7 @@ TECH_CATALOG = {
     "django": {
         "display": "Django",
         "category": "Backend",
+        "doc_key": "python_core",
         "docs": {"name": "Django Project Docs", "url": "https://docs.djangoproject.com/", "desc": "Framework web đầy đủ pin (batteries-included) cho Python"},
         "books": ["Two Scoops of Django (Daniel Feldroy)"],
         "keywords": ["django orm n+1 problem select_related prefetch_related", "django custom user model migration"],
@@ -62,6 +75,7 @@ TECH_CATALOG = {
     "react": {
         "display": "React",
         "category": "Frontend",
+        "doc_key": "react_fe",
         "docs": {"name": "React Official Docs", "url": "https://react.dev/", "desc": "Thư viện giao diện người dùng dựa trên thành phần (Components)"},
         "books": ["Learning React (Alex Banks & Eve Porcello)", "Refactoring UI (Adam Wathan & Steve Schoger)"],
         "keywords": ["react 18 concurrent mode useTransition", "react custom hooks clean architecture", "react memo useCallback useMemo trade-offs"],
@@ -73,6 +87,7 @@ TECH_CATALOG = {
     "javascript": {
         "display": "JavaScript (ES6+)",
         "category": "Frontend",
+        "doc_key": "react_fe",
         "docs": {"name": "MDN Web Docs (JavaScript)", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "desc": "Bách khoa toàn thư chính thức về JS, Web APIs và runtime"},
         "books": ["You Don't Know JS Yet (Kyle Simpson)", "Eloquent JavaScript (Marijn Haverbeke)"],
         "keywords": ["javascript event loop microtask vs macrotask", "javascript closures prototype chain", "javascript promise.all vs allsettled"],
@@ -83,6 +98,7 @@ TECH_CATALOG = {
     "typescript": {
         "display": "TypeScript",
         "category": "Frontend",
+        "doc_key": "react_fe",
         "docs": {"name": "TypeScript Handbook", "url": "https://www.typescriptlang.org/docs/", "desc": "Cẩm nang chính thức về hệ thống kiểu tĩnh của TypeScript"},
         "books": ["Programming TypeScript (Boris Cherny)", "Effective TypeScript (Dan Vanderkam)"],
         "keywords": ["typescript generics utility types Partial Record", "typescript discriminated unions type guards"],
@@ -93,6 +109,7 @@ TECH_CATALOG = {
     "docker": {
         "display": "Docker",
         "category": "DevOps",
+        "doc_key": "docker_devops",
         "docs": {"name": "Docker Documentation", "url": "https://docs.docker.com/", "desc": "Nền tảng container hóa ứng dụng độc lập môi trường"},
         "books": ["Docker Deep Dive (Nigel Poulton)"],
         "keywords": ["docker multi-stage builds optimization", "docker layer caching best practices", "docker-compose healthchecks"],
@@ -103,6 +120,7 @@ TECH_CATALOG = {
     "kubernetes": {
         "display": "Kubernetes (K8s)",
         "category": "DevOps",
+        "doc_key": "docker_devops",
         "docs": {"name": "Kubernetes Documentation", "url": "https://kubernetes.io/docs/", "desc": "Hệ thống điều phối container quy mô lớn"},
         "books": ["Kubernetes in Action (Marko Lukša)"],
         "keywords": ["k8s deployment rolling update vs blue-green", "k8s ingress controller cert-manager", "k8s horizontal pod autoscaler"],
@@ -113,6 +131,7 @@ TECH_CATALOG = {
     "postgresql": {
         "display": "PostgreSQL",
         "category": "Backend",
+        "doc_key": "sql_db",
         "docs": {"name": "PostgreSQL Documentation", "url": "https://www.postgresql.org/docs/", "desc": "Hệ quản trị CSDL quan hệ mã nguồn mở mạnh mẽ nhất thế giới"},
         "books": ["Designing Data-Intensive Applications (Martin Kleppmann)", "The Art of PostgreSQL (Dimitri Fontaine)"],
         "keywords": ["postgresql explain analyze query plan index scan", "postgresql transaction isolation levels mvcc", "postgresql jsonb indexing gin"],
@@ -123,6 +142,7 @@ TECH_CATALOG = {
     "sql": {
         "display": "SQL & Relational DB",
         "category": "Backend",
+        "doc_key": "sql_db",
         "docs": {"name": "SQL Documentation & Standards", "url": "https://mode.com/sql-tutorial/", "desc": "Cú pháp truy vấn quan hệ, index, transaction ACID"},
         "books": ["SQL Antipatterns (Bill Karwin)"],
         "keywords": ["sql indexing b-tree composite index column order", "sql window functions over partition by"],
@@ -133,6 +153,7 @@ TECH_CATALOG = {
     "redis": {
         "display": "Redis",
         "category": "Backend",
+        "doc_key": "redis_cache",
         "docs": {"name": "Redis Documentation", "url": "https://redis.io/docs/", "desc": "In-memory data structure store dùng làm cache, message broker"},
         "books": ["Redis in Action (Josiah L. Carlson)"],
         "keywords": ["redis caching strategies cache aside write through", "redis cache avalanche cache breakdown solution", "redis pub sub vs streams"],
@@ -143,6 +164,7 @@ TECH_CATALOG = {
     "git": {
         "display": "Git",
         "category": "Tools",
+        "doc_key": "git_vcs",
         "docs": {"name": "Pro Git Book", "url": "https://git-scm.com/book/en/v2", "desc": "Tài liệu chính thức toàn diện về hệ thống kiểm soát phiên bản Git"},
         "books": ["Pro Git (Scott Chacon and Ben Straub)"],
         "keywords": ["git rebase vs merge trade-offs", "git cherry-pick and bisect debugging", "git conflict resolution in detached head"],
@@ -153,6 +175,7 @@ TECH_CATALOG = {
     "lean": {
         "display": "Lean Manufacturing (TPS & 7 Lãng Phí)",
         "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "lean_muda",
         "docs": {"name": "Lean Enterprise Institute (LEI)", "url": "https://www.lean.org/", "desc": "Tổ chức quốc tế phi lợi nhuận về triết lý sản xuất tinh gọn và chuyển đổi Lean"},
         "books": ["Toyota Production System: Beyond Large-Scale Production (Taiichi Ohno)", "Learning to See: Value Stream Mapping (Mike Rother & John Shook)"],
         "keywords": ["7 wastes muda lean manufacturing examples", "value stream mapping vsm future state", "5s visual management implementation"],
@@ -164,6 +187,7 @@ TECH_CATALOG = {
     "oee": {
         "display": "Chỉ Số OEE & 6 Tổn Thất Lớn",
         "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "oee",
         "docs": {"name": "OEE Industry Standard Guide (Arno Koch)", "url": "https://www.oee.com/", "desc": "Tiêu chuẩn quốc tế và hướng dẫn chi tiết đo lường Overall Equipment Effectiveness"},
         "books": ["OEE for Operators: Overall Equipment Effectiveness (Productivity Press)"],
         "keywords": ["how to calculate OEE step by step excel template", "six big losses tpm breakdown small stops", "world class oee benchmark 85 percent"],
@@ -175,6 +199,7 @@ TECH_CATALOG = {
     "ole": {
         "display": "Chỉ Số OLE (Hiệu Quả Lao Động)",
         "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "ole",
         "docs": {"name": "Overall Labor Effectiveness (OLE) Guide", "url": "https://en.wikipedia.org/wiki/Overall_labor_effectiveness", "desc": "Phương pháp luận đo lường hiệu quả lao động toàn diện trong nhà máy"},
         "books": ["Managing Factory Maintenance (Joel Levitt)"],
         "keywords": ["overall labor effectiveness OLE calculation formula", "labor utilization vs labor efficiency", "takt time line balancing"],
@@ -185,6 +210,7 @@ TECH_CATALOG = {
     "smed": {
         "display": "SMED (Chuyển Đổi Nhanh Dưới 10 Phút)",
         "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "smed",
         "docs": {"name": "SMED Quick Changeover Methodology", "url": "https://en.wikipedia.org/wiki/Single-minute_exchange_of_die", "desc": "Hệ thống Single-Minute Exchange of Die rút ngắn thời gian đổi khuôn/mã hàng"},
         "books": ["A Revolution in Manufacturing: The SMED System (Shigeo Shingo)"],
         "keywords": ["smed quick changeover implementation steps", "internal vs external setup time lean", "quick clamp 1 turn bolt smed"],
@@ -195,6 +221,7 @@ TECH_CATALOG = {
     "bom": {
         "display": "Quản Lý Định Mức BOM & Hao Phí",
         "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "bom_cost",
         "docs": {"name": "Bill of Materials (BOM) Management Standards", "url": "https://en.wikipedia.org/wiki/Bill_of_materials", "desc": "Cấu trúc cây định mức nguyên vật liệu, phế phẩm và kiểm soát giá thành"},
         "books": ["Manufacturing Planning and Control for Supply Chain Management (Jacobs)"],
         "keywords": ["bill of materials BOM variance analysis production cost", "scrap rate vs technological loss BOM", "poka yoke scrap reduction"],
@@ -205,6 +232,7 @@ TECH_CATALOG = {
     "powerbi": {
         "display": "Microsoft Power BI (Dashboard Sản Xuất)",
         "category": "Tools",
+        "doc_key": "powerbi_mfg",
         "docs": {"name": "Power BI Documentation", "url": "https://learn.microsoft.com/en-us/power-bi/", "desc": "Tài liệu chính thức về xây dựng báo cáo phân tích và Dashboard dữ liệu trực quan"},
         "books": ["The Definitive Guide to DAX (Alberto Ferrari & Marco Russo)"],
         "keywords": ["power bi manufacturing dashboard oee dax", "power bi scheduled refresh on-premises gateway", "power bi pareto chart dax measure"],
@@ -215,6 +243,7 @@ TECH_CATALOG = {
     "minitab": {
         "display": "Minitab (Thống Kê Chất Lượng & Six Sigma)",
         "category": "Tools",
+        "doc_key": "minitab_spc",
         "docs": {"name": "Minitab Support & Documentation", "url": "https://support.minitab.com/", "desc": "Tài liệu phân tích kiểm soát quá trình thống kê SPC và năng lực quá trình Cpk"},
         "books": ["Six Sigma Quality Improvement with Minitab (G. Rex Bryce)"],
         "keywords": ["minitab process capability cpk ppk interpretation", "minitab spc xbar r chart out of control rules", "minitab anova hypothesis testing"],
@@ -225,6 +254,7 @@ TECH_CATALOG = {
     "excel": {
         "display": "Microsoft Excel Nâng Cao (Power Query / VBA)",
         "category": "Tools",
+        "doc_key": "excel_mfg",
         "docs": {"name": "Excel Help & Training", "url": "https://support.microsoft.com/excel", "desc": "Cẩm nang tra cứu hàm, Power Query và tự động hóa Macro VBA"},
         "books": ["Excel 2019 Power Programming with VBA (Michael Alexander)"],
         "keywords": ["excel power query combine files from folder", "excel pareto chart 80 20 rule production", "excel vba automate daily production report"],
@@ -235,6 +265,7 @@ TECH_CATALOG = {
     "autocad": {
         "display": "AutoCAD (Layout Nhà Xưởng & Sơ Đồ Di Chuyển)",
         "category": "Tools",
+        "doc_key": "autocad_layout",
         "docs": {"name": "Autodesk AutoCAD Documentation", "url": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/AutoCAD-Help.html", "desc": "Phần mềm thiết kế bản vẽ kỹ thuật 2D/3D và bố trí mặt bằng nhà máy"},
         "books": ["AutoCAD 2024 for Beginners (CADFolks)"],
         "keywords": ["plant layout optimization autocad lean manufacturing", "spaghetti diagram autocad plant layout", "u-shaped cell layout design"],
@@ -245,6 +276,7 @@ TECH_CATALOG = {
     "erp_mes": {
         "display": "Hệ Thống ERP (SAP PP) & MES Sản Xuất",
         "category": "Tools",
+        "doc_key": "erp_mes",
         "docs": {"name": "SAP Production Planning (PP) Overview", "url": "https://help.sap.com/", "desc": "Phân hệ quản lý kế hoạch sản xuất, lệnh sản xuất và định mức vật tư BOM"},
         "books": ["Production Planning and Control with SAP (Jawad Akhtar)"],
         "keywords": ["sap pp work order routing bom confirmation", "mes manufacturing execution system plc integration", "sap standard cost vs actual cost variance"],
@@ -342,7 +374,8 @@ class JobAnalyzer:
 
         for t in detected_techs:
             info = TECH_CATALOG[t]
-            d = info["docs"]
+            d = dict(info["docs"])
+            d["doc_key"] = info.get("doc_key", "")
             if d["name"] not in seen_docs:
                 docs_list.append(d)
                 seen_docs.add(d["name"])
@@ -361,7 +394,57 @@ class JobAnalyzer:
         if "Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)" not in seen_books:
             books_list.append("Clean Code (Robert C. Martin)")
 
+        # Phân bổ hệ sinh thái phần mềm hỗ trợ chuyên dụng
+        is_mfg = any(t in ["lean", "oee", "ole", "smed", "bom"] for t in detected_techs) or any(k in category for k in ["Sản Xuất", "Manufacturing", "Lean"])
+        if is_mfg:
+            softwares = [
+                {"name": "Microsoft Excel Nâng Cao (Power Query, VBA)", "role": "Xử lý dữ liệu thô nhiều ca, vẽ biểu đồ Pareto 80/20, tự động hóa Macro VBA", "url": "https://support.microsoft.com/excel", "doc_key": "excel_mfg"},
+                {"name": "Microsoft Power BI", "role": "Xây dựng Dashboard OEE/OLE thời gian thực, trực quan hóa xu hướng", "url": "https://powerbi.microsoft.com/", "doc_key": "powerbi_mfg"},
+                {"name": "Minitab", "role": "Kiểm soát quá trình thống kê SPC (Xbar-R), phân tích năng lực quá trình Cpk", "url": "https://www.minitab.com/", "doc_key": "minitab_spc"},
+                {"name": "AutoCAD / MS Visio", "role": "Thiết kế Layout xưởng, vẽ sơ đồ Spaghetti, sơ đồ chuỗi giá trị VSM", "url": "https://www.autodesk.com/", "doc_key": "autocad_layout"},
+                {"name": "Hệ thống SAP ERP (PP) & MES", "role": "Quản lý định mức vật tư BOM, lệnh sản xuất và thu thập dữ liệu máy", "url": "https://help.sap.com/", "doc_key": "erp_mes"}
+            ]
+        else:
+            softwares = [
+                {"name": "Visual Studio Code / JetBrains IDE", "role": "Môi trường lập trình, gỡ lỗi và quản lý mã nguồn", "url": "https://code.visualstudio.com/", "doc_key": "python_core" if "python" in detected_techs else "react_fe"},
+                {"name": "Git & GitHub / GitLab", "role": "Quản lý phiên bản mã nguồn, Pull Request và CI/CD", "url": "https://github.com/", "doc_key": "git_vcs"},
+                {"name": "Docker & Docker Compose", "role": "Đóng gói container môi trường phát triển độc lập", "url": "https://www.docker.com/", "doc_key": "docker_devops"},
+                {"name": "PostgreSQL / DBeaver", "role": "Quản trị cơ sở dữ liệu quan hệ và tối ưu truy vấn SQL", "url": "https://dbeaver.io/", "doc_key": "sql_db"},
+                {"name": "Redis Insight", "role": "Giám sát bộ nhớ cache và tối ưu hóa hiệu năng in-memory", "url": "https://redis.io/insight/", "doc_key": "redis_cache"}
+            ]
+
+        # Tuyển chọn cẩm nang offline có sẵn tương ứng
+        offline_guides = []
+        seen_guides = set()
+        for t in detected_techs:
+            dk = TECH_CATALOG[t].get("doc_key")
+            if dk and dk not in seen_guides and offline_knowledge and dk in offline_knowledge.OFFLINE_DOCS:
+                seen_guides.add(dk)
+                offline_guides.append({
+                    "id": dk,
+                    "title": offline_knowledge.OFFLINE_DOCS[dk]["title"],
+                    "category": offline_knowledge.OFFLINE_DOCS[dk]["category"],
+                    "summary": offline_knowledge.OFFLINE_DOCS[dk]["summary"]
+                })
+        for s in softwares:
+            dk = s.get("doc_key")
+            if dk and dk not in seen_guides and offline_knowledge and dk in offline_knowledge.OFFLINE_DOCS:
+                seen_guides.add(dk)
+                offline_guides.append({
+                    "id": dk,
+                    "title": offline_knowledge.OFFLINE_DOCS[dk]["title"],
+                    "category": offline_knowledge.OFFLINE_DOCS[dk]["category"],
+                    "summary": offline_knowledge.OFFLINE_DOCS[dk]["summary"]
+                })
+
         # 6. Đóng gói kết quả theo chuẩn 5 Tầng Kiến Thức
+        if is_mfg and interview_bank:
+            final_interview = interview_bank.get_all_questions()
+        else:
+            final_interview = questions_list if questions_list else [
+                {"question": "Bạn có thể chia sẻ một dự án kỹ thuật tiêu biểu mà bạn đã chủ trì hoặc tham gia?", "type": "Tình Huống Thực Chiến", "key_points": "• Nêu rõ bối cảnh (S), Nhiệm vụ (T), Hành động kỹ thuật (A), và Kết quả đo lường được (R).\n• Nhấn mạnh kỹ năng giải quyết vấn đề và làm việc nhóm."}
+            ]
+
         analysis = {
             "title": title,
             "company": company,
@@ -380,11 +463,13 @@ class JobAnalyzer:
             },
             "roadmap": roadmap,
             "resources": {
+                "offline_guides": offline_guides,
+                "softwares": softwares,
                 "official_docs": docs_list,
                 "books": books_list[:5],
                 "search_keywords": keywords_list[:8]
             },
-            "interview_prep": questions_list[:6],
+            "interview_prep": final_interview,
             "tags": [level, category] + [TECH_CATALOG[t]["display"] for t in detected_techs[:4]]
         }
 

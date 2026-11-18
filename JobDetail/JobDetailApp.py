@@ -29,6 +29,11 @@ import customtkinter as ctk
 
 from job_storage import JobStorage
 from job_analyzer import JobAnalyzer
+import offline_knowledge
+try:
+    import interview_bank
+except Exception:
+    interview_bank = None
 
 # =====================================================================
 # HỆ MÀU CATPPUCCIN MOCHA ĐỒNG NHẤT
@@ -39,6 +44,7 @@ THEME = {
     "crust": "#11111b",        # Nền sâu nhất
     "surface0": "#313244",     # Khung card / Border
     "surface1": "#45475a",     # Card highlight
+    "surface2": "#585b70",     # Đường kẻ phân cách / Viền phụ
     "text": "#cdd6f4",         # Chữ chính
     "subtext": "#a6adc8",      # Chữ phụ
     "blue": "#89b4fa",         # Accent chính
@@ -221,6 +227,201 @@ class AddJobDialog(ctk.CTkToplevel):
         self.btn_analyze.configure(state="normal", text="🚀 Bắt Đầu Phân Tích & Lưu")
         self.lbl_status.configure(text=f"❌ Lỗi: {err_msg}", text_color=THEME["red"])
         messagebox.showerror("Lỗi phân tích", f"Không thể phân tích JD:\n{err_msg}", parent=self)
+
+
+class OfflineDocViewer(ctk.CTkToplevel):
+    """Cửa sổ Modal Đọc Cẩm Nang Kỹ Thuật 100% Offline."""
+    def __init__(self, parent, title, content, category="Tài Liệu"):
+        super().__init__(parent)
+        self.parent = parent
+        self.doc_title = title
+        self.content = content
+        self.category = category
+
+        self.title(f"📖 Cẩm Nang Offline: {title}")
+        self.geometry("920x720")
+        self.minsize(720, 520)
+        self.configure(fg_color=THEME["base"])
+
+        self.transient(parent)
+        self.grab_set()
+
+        self._build_ui()
+        self.center_window()
+
+    def center_window(self):
+        self.update_idletasks()
+        w = self.winfo_width()
+        h = self.winfo_height()
+        x = (self.winfo_screenwidth() // 2) - (w // 2)
+        y = (self.winfo_screenheight() // 2) - (h // 2)
+        self.geometry(f"{w}x{h}+{x}+{y}")
+
+    def _build_ui(self):
+        container = ctk.CTkFrame(self, fg_color=THEME["base"])
+        container.pack(fill="both", expand=True, padx=20, pady=15)
+
+        # Thanh Header
+        top_bar = ctk.CTkFrame(container, fg_color=THEME["surface0"], corner_radius=8)
+        top_bar.pack(fill="x", pady=(0, 10), padx=2, ipady=6)
+
+        left_info = ctk.CTkFrame(top_bar, fg_color="transparent")
+        left_info.pack(side="left", padx=15, fill="x", expand=True)
+
+        ctk.CTkLabel(
+            left_info,
+            text=f"📚 {self.category} • 100% OFFLINE HANDBOOK",
+            font=ctk.CTkFont(size=11, weight="bold"),
+            text_color=THEME["green"]
+        ).pack(anchor="w")
+
+        ctk.CTkLabel(
+            left_info,
+            text=self.doc_title,
+            font=ctk.CTkFont(size=15, weight="bold"),
+            text_color=THEME["blue"],
+            wraplength=620,
+            justify="left"
+        ).pack(anchor="w", pady=(2, 0))
+
+        # Nút Copy & Đóng
+        btn_box = ctk.CTkFrame(top_bar, fg_color="transparent")
+        btn_box.pack(side="right", padx=15)
+
+        btn_copy = ctk.CTkButton(
+            btn_box,
+            text="📋 Copy Nội Dung",
+            width=120,
+            height=30,
+            fg_color=THEME["surface1"],
+            hover_color=THEME["mauve"],
+            text_color=THEME["text"],
+            command=self._copy_content
+        )
+        btn_copy.pack(side="left", padx=(0, 8))
+
+        btn_close = ctk.CTkButton(
+            btn_box,
+            text="Đóng",
+            width=70,
+            height=30,
+            fg_color=THEME["surface1"],
+            hover_color=THEME["red"],
+            text_color=THEME["text"],
+            command=self.destroy
+        )
+        btn_close.pack(side="left")
+
+        # Khung văn bản nội dung hỗ trợ Rich Syntax & Monospace Math Box
+        self.txt_content = ctk.CTkTextbox(
+            container,
+            fg_color=THEME["crust"],
+            border_color=THEME["surface0"],
+            border_width=1,
+            text_color=THEME["text"],
+            font=ctk.CTkFont(family="Segoe UI", size=12),
+            wrap="word"
+        )
+        self.txt_content.pack(fill="both", expand=True, pady=(0, 10))
+        self._render_styled_content()
+
+    def _render_styled_content(self):
+        """Duyệt từng dòng văn bản và áp dụng định dạng màu sắc / font chuyên biệt cho công thức toán."""
+        cleaned_text = self._sanitize_math_markup(self.content)
+        tb = self.txt_content._textbox
+        
+        # Thiết lập các tag định dạng trên Tkinter Text Widget
+        tb.tag_config("h1", font=("Segoe UI", 16, "bold"), foreground=THEME["blue"], spacing1=14, spacing3=6)
+        tb.tag_config("h2", font=("Segoe UI", 14, "bold"), foreground=THEME["green"], spacing1=12, spacing3=4)
+        tb.tag_config("h3", font=("Segoe UI", 13, "bold"), foreground=THEME["yellow"], spacing1=8, spacing3=2)
+        tb.tag_config("divider", font=("Consolas", 10), foreground=THEME.get("surface2", THEME["surface1"]))
+        tb.tag_config("mathbox", font=("Consolas", 11), foreground="#a6e3a1", background="#181825")
+        tb.tag_config("codeblock", font=("Consolas", 11), foreground="#cdd6f4", background="#181825")
+        tb.tag_config("bullet", font=("Segoe UI", 12), foreground=THEME["text"], lmargin1=18, lmargin2=32)
+        tb.tag_config("bold", font=("Segoe UI", 12, "bold"), foreground="#ffffff")
+        tb.tag_config("normal", font=("Segoe UI", 12), foreground=THEME["text"])
+
+        lines = cleaned_text.split("\n")
+        in_code_block = False
+        code_tag = "codeblock"
+
+        for line in lines:
+            stripped = line.strip()
+
+            # Bắt đầu / Kết thúc Code block hoặc Math box
+            if stripped.startswith("```"):
+                in_code_block = not in_code_block
+                if in_code_block and any(k in stripped for k in ["text", "math"]):
+                    code_tag = "mathbox"
+                elif in_code_block:
+                    code_tag = "codeblock"
+                continue
+
+            if in_code_block:
+                # Trong code block hoặc math box -> Dùng font Consolas căn lề thẳng hàng
+                tb.insert("end", line + "\n", code_tag)
+                continue
+
+            # Kiểm tra xem dòng có phải là khung hộp vẽ ASCII (┌─, │, └─, ──)
+            if any(c in line for c in ["┌", "└", "│", "─", "├", "┤", "┬", "┴", "┼"]):
+                tb.insert("end", line + "\n", "mathbox")
+                continue
+
+            # Header 1: # ...
+            if stripped.startswith("# ") and not stripped.startswith("## "):
+                tb.insert("end", stripped[2:] + "\n", "h1")
+            # Header 2: ## ...
+            elif stripped.startswith("## "):
+                tb.insert("end", stripped[3:] + "\n", "h2")
+            # Header 3: ### ...
+            elif stripped.startswith("### "):
+                tb.insert("end", stripped[4:] + "\n", "h3")
+            # Đường kẻ ngang: ---
+            elif stripped in ["---", "===", "***"]:
+                tb.insert("end", "─" * 70 + "\n", "divider")
+            # Danh sách có gạch đầu dòng
+            elif stripped.startswith("- ") or stripped.startswith("* ") or stripped.startswith("• "):
+                bullet_text = "• " + stripped[2:].strip()
+                tb.insert("end", bullet_text + "\n", "bullet")
+            else:
+                tb.insert("end", line + "\n", "normal")
+
+        tb.configure(state="disabled")
+
+    def _sanitize_math_markup(self, text):
+        """Lọc và chuyển đổi triệt để bất kỳ mã LaTeX còn sót sang Unicode toán học đẹp."""
+        import re
+        if not text:
+            return ""
+        # Bỏ \text{...}, \mathbf{...} và các biến thể escape \t
+        text = re.sub(r'\\?t?ext\{([^}]+)\}', r'\1', text)
+        text = re.sub(r'\\mathbf\{([^}]+)\}', r'\1', text)
+        # Chuyển đổi phân số \frac{A}{B} thành (A) / (B)
+        text = re.sub(r'\\frac\{([^}]+)\}\{([^}]+)\}', r'(\1) / (\2)', text)
+        # Chuyển \min\left(...)
+        text = re.sub(r'\\min\\left\(([^)]+)\)', r'min[\1]', text)
+        # Ký hiệu toán học Unicode
+        text = text.replace(r'$\rightarrow$', '→').replace(r'\rightarrow', '→').replace('ightarrow', '→')
+        text = text.replace(r'\times', '×').replace('	imes', '×')
+        text = text.replace(r'\ge', '≥').replace(r'\le', '≤')
+        text = text.replace(r'\mu', 'μ').replace(r'\sigma', 'σ').replace(r'\Delta', 'Δ')
+        text = text.replace(r'\phi', 'Ø').replace(r'\pm', '±')
+        text = text.replace(r'\%', '%')
+        # Gỡ bỏ các dấu $ bao quanh công thức (trừ dòng shell ENV PATH)
+        lines = []
+        for line in text.splitlines():
+            if "ENV PATH=" in line:
+                lines.append(line)
+            else:
+                lines.append(line.replace("$", ""))
+        text = "\n".join(lines)
+        return text
+
+    def _copy_content(self):
+        cleaned = self._sanitize_math_markup(self.content)
+        self.clipboard_clear()
+        self.clipboard_append(cleaned)
+        messagebox.showinfo("Đã sao chép", "Đã sao chép toàn bộ cẩm nang vào Clipboard!", parent=self)
 
 
 class JobDetailApp(ctk.CTk):
@@ -482,6 +683,7 @@ class JobDetailApp(ctk.CTk):
         self.badge_cat = self._create_badge(self.badges_frame, "Ngành: -", THEME["blue"])
         self.badge_loc = self._create_badge(self.badges_frame, "Địa điểm: -", THEME["subtext"])
         self.badge_salary = self._create_badge(self.badges_frame, "Lương: -", THEME["green"])
+        self.badge_offline = self._create_badge(self.badges_frame, "🟢 100% Offline Mode", THEME["green"])
 
         # Trạng thái học tập
         status_box = ctk.CTkFrame(self.badges_frame, fg_color="transparent")
@@ -578,8 +780,50 @@ class JobDetailApp(ctk.CTk):
         self.scroll_resources.pack(fill="both", expand=True, padx=10, pady=10)
 
     def _build_tab_interview(self):
+        # Thanh điều khiển lọc & tìm kiếm câu hỏi
+        self.ctrl_interview = ctk.CTkFrame(self.tab_interview, fg_color=THEME["crust"], corner_radius=8)
+        self.ctrl_interview.pack(fill="x", padx=10, pady=(10, 4), ipady=4)
+
+        # Ô tìm kiếm tức thì
+        self.ent_interview_search = ctk.CTkEntry(
+            self.ctrl_interview,
+            placeholder_text="🔍 Tìm kiếm câu hỏi, tình huống, từ khóa...",
+            width=300,
+            height=32,
+            fg_color=THEME["surface0"],
+            border_color=THEME["surface1"],
+            text_color=THEME["text"]
+        )
+        self.ent_interview_search.pack(side="left", padx=(10, 8), pady=4)
+        self.ent_interview_search.bind("<KeyRelease>", lambda e: self._update_interview_display())
+
+        # Combobox chọn chủ đề
+        cats = interview_bank.get_categories() if interview_bank else ["Tất cả chủ đề"]
+        self.cbo_interview_cat = ctk.CTkComboBox(
+            self.ctrl_interview,
+            values=cats,
+            width=230,
+            height=32,
+            fg_color=THEME["surface0"],
+            button_color=THEME["surface1"],
+            text_color=THEME["text"],
+            command=lambda v: self._update_interview_display()
+        )
+        self.cbo_interview_cat.pack(side="left", padx=4, pady=4)
+
+        # Badge số lượng câu hỏi
+        self.lbl_interview_count = ctk.CTkLabel(
+            self.ctrl_interview,
+            text="Hiển thị: 0 / 0 câu hỏi",
+            font=ctk.CTkFont(size=12, weight="bold"),
+            text_color=THEME["blue"]
+        )
+        self.lbl_interview_count.pack(side="right", padx=12, pady=4)
+
+        # Khung cuộn danh sách câu hỏi
         self.scroll_interview = ctk.CTkScrollableFrame(self.tab_interview, fg_color="transparent")
-        self.scroll_interview.pack(fill="both", expand=True, padx=10, pady=10)
+        self.scroll_interview.pack(fill="both", expand=True, padx=10, pady=(4, 10))
+        self._current_interview_raw = []
 
     def _build_tab_notes(self):
         container = ctk.CTkFrame(self.tab_notes, fg_color="transparent")
@@ -842,34 +1086,141 @@ Yêu cầu:
                     cb = ctk.CTkCheckBox(card, text=a, font=ctk.CTkFont(size=12), text_color=THEME["text"], fg_color=THEME["blue"], hover_color="#74c7ec")
                     cb.pack(anchor="w", padx=20, pady=2)
 
+    def _open_offline_doc(self, doc_key):
+        """Mở cửa sổ đọc cẩm nang kỹ thuật 100% offline."""
+        doc = offline_knowledge.get_offline_doc(doc_key)
+        if doc:
+            OfflineDocViewer(self, doc["title"], doc["content"], doc.get("category", "Cẩm Nang Kỹ Thuật"))
+        else:
+            messagebox.showinfo("Cẩm Nang Offline", f"Cẩm nang '{doc_key}' đang được cập nhật thêm nội dung.", parent=self)
+
+    def _resolve_doc_key(self, name):
+        """Ánh xạ tên tài liệu/phần mềm sang ID cẩm nang offline."""
+        nl = name.lower()
+        if hasattr(offline_knowledge, "OFFLINE_DOCS") and nl in offline_knowledge.OFFLINE_DOCS:
+            return nl
+        if "oee" in nl:
+            return "oee"
+        if "ole" in nl:
+            return "ole"
+        if "smed" in nl:
+            return "smed"
+        if any(k in nl for k in ["lean", "muda", "5s", "kaizen", "poka"]):
+            return "lean_muda"
+        if any(k in nl for k in ["bom", "định mức", "hao phí"]):
+            return "bom_cost"
+        if any(k in nl for k in ["excel", "power query", "vba"]):
+            return "excel_mfg"
+        if any(k in nl for k in ["power bi", "powerbi"]):
+            return "powerbi_mfg"
+        if any(k in nl for k in ["minitab", "spc", "cpk", "six sigma"]):
+            return "minitab_spc"
+        if any(k in nl for k in ["autocad", "visio", "layout", "spaghetti"]):
+            return "autocad_layout"
+        if any(k in nl for k in ["sap", "mes", "erp"]):
+            return "erp_mes"
+        if any(k in nl for k in ["python", "fastapi", "django"]):
+            return "python_core"
+        if any(k in nl for k in ["react", "javascript", "typescript", "frontend"]):
+            return "react_fe"
+        if any(k in nl for k in ["docker", "kubernetes", "k8s", "container"]):
+            return "docker_devops"
+        if any(k in nl for k in ["postgres", "sql", "dbeaver", "database"]):
+            return "sql_db"
+        if any(k in nl for k in ["redis", "cache"]):
+            return "redis_cache"
+        if any(k in nl for k in ["git", "github", "gitlab"]):
+            return "git_vcs"
+        return "oee"
+
     def _render_resources_tab(self, resources):
         for w in self.scroll_resources.winfo_children():
             w.destroy()
 
-        # 0. Phần Mềm & Công Cụ Hỗ Trợ Chuyên Dụng
+        # === 1. BANNER TRUNG TÂM CẨM NANG & HƯỚNG DẪN 100% OFFLINE ===
+        c_hub = ctk.CTkFrame(self.scroll_resources, fg_color=THEME["crust"], corner_radius=8)
+        c_hub.pack(fill="x", pady=6, padx=5, ipady=8)
+
+        ctk.CTkLabel(
+            c_hub,
+            text="📖 KHO CẨM NANG KỸ THUẬT & PHẦN MỀM 100% OFFLINE (BẤM XEM TỨC THÌ KHÔNG CẦN MẠNG):",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=THEME["green"]
+        ).pack(anchor="w", padx=12, pady=(4, 6))
+
+        grid_frame = ctk.CTkFrame(c_hub, fg_color="transparent")
+        grid_frame.pack(fill="x", padx=12, pady=(0, 4))
+
+        cat = (self.current_job.get("category", "") if self.current_job else "").lower()
+        is_it = any(k in cat for k in ["backend", "frontend", "devops", "fullstack", "data", "software", "it"])
+
+        if is_it:
+            quick_guides = [
+                ("🐍 Python Core & GIL", "python_core"),
+                ("⚛️ React 18 & Virtual DOM", "react_fe"),
+                ("🐳 Docker & Multi-stage", "docker_devops"),
+                ("🗄️ SQL & B-Tree Index", "sql_db"),
+                ("⚡ Redis Caching", "redis_cache"),
+                ("🌿 Git Branching & Rebase", "git_vcs"),
+                ("📊 Excel Power Query", "excel_mfg"),
+                ("📈 Power BI Dashboard", "powerbi_mfg"),
+                ("⚙️ Cẩm Nang OEE", "oee"),
+                ("🏭 Hệ Thống ERP/MES", "erp_mes")
+            ]
+        else:
+            quick_guides = [
+                ("⚙️ Cẩm Nang OEE", "oee"),
+                ("👥 Cẩm Nang OLE", "ole"),
+                ("⚡ Kỹ Thuật SMED", "smed"),
+                ("🧹 7 Lãng Phí (Muda)", "lean_muda"),
+                ("📦 Định Mức BOM", "bom_cost"),
+                ("📊 Excel Power Query", "excel_mfg"),
+                ("📈 Power BI Dashboard", "powerbi_mfg"),
+                ("🎯 Minitab & SPC", "minitab_spc"),
+                ("📐 AutoCAD Layout", "autocad_layout"),
+                ("🏭 Hệ Thống ERP/MES", "erp_mes")
+            ]
+
+        for idx, (label, key) in enumerate(quick_guides):
+            r = idx // 5
+            c = idx % 5
+            btn = ctk.CTkButton(
+                grid_frame,
+                text=label,
+                font=ctk.CTkFont(size=11, weight="bold"),
+                height=28,
+                fg_color=THEME["surface0"],
+                hover_color=THEME["green"],
+                text_color=THEME["text"],
+                command=lambda k=key: self._open_offline_doc(k)
+            )
+            btn.grid(row=r, column=c, padx=3, pady=3, sticky="ew")
+            grid_frame.columnconfigure(c, weight=1)
+
+        # === 2. PHẦN MỀM & CÔNG CỤ HỖ TRỢ CHUYÊN DỤNG ===
         softwares = resources.get("softwares", [])
         if not softwares:
-            cat = self.current_job.get("category", "") if self.current_job else ""
-            if any(k in cat for k in ["Sản Xuất", "Manufacturing", "Lean"]):
+            if not is_it:
                 softwares = [
-                    {"name": "Microsoft Excel Nâng Cao (Power Query, VBA)", "role": "Xử lý dữ liệu thô nhiều ca, vẽ biểu đồ Pareto 80/20, tự động hóa Macro VBA", "url": "https://support.microsoft.com/excel"},
-                    {"name": "Microsoft Power BI", "role": "Xây dựng Dashboard OEE/OLE thời gian thực, trực quan hóa xu hướng", "url": "https://powerbi.microsoft.com/"},
-                    {"name": "Minitab", "role": "Kiểm soát quá trình thống kê SPC (Xbar-R), phân tích năng lực quá trình Cpk", "url": "https://www.minitab.com/"},
-                    {"name": "AutoCAD / MS Visio", "role": "Thiết kế Layout xưởng, vẽ sơ đồ Spaghetti, sơ đồ chuỗi giá trị VSM", "url": "https://www.autodesk.com/"},
-                    {"name": "Hệ thống SAP ERP (PP) & MES", "role": "Quản lý định mức vật tư BOM, lệnh sản xuất và thu thập dữ liệu máy", "url": "https://help.sap.com/"}
+                    {"name": "Microsoft Excel Nâng Cao (Power Query, VBA)", "role": "Xử lý dữ liệu thô nhiều ca, vẽ biểu đồ Pareto 80/20, tự động hóa Macro VBA", "url": "https://support.microsoft.com/excel", "doc_key": "excel_mfg"},
+                    {"name": "Microsoft Power BI", "role": "Xây dựng Dashboard OEE/OLE thời gian thực, trực quan hóa xu hướng", "url": "https://powerbi.microsoft.com/", "doc_key": "powerbi_mfg"},
+                    {"name": "Minitab", "role": "Kiểm soát quá trình thống kê SPC (Xbar-R), phân tích năng lực quá trình Cpk", "url": "https://www.minitab.com/", "doc_key": "minitab_spc"},
+                    {"name": "AutoCAD / MS Visio", "role": "Thiết kế Layout xưởng, vẽ sơ đồ Spaghetti, sơ đồ chuỗi giá trị VSM", "url": "https://www.autodesk.com/", "doc_key": "autocad_layout"},
+                    {"name": "Hệ thống SAP ERP (PP) & MES", "role": "Quản lý định mức vật tư BOM, lệnh sản xuất và thu thập dữ liệu máy", "url": "https://help.sap.com/", "doc_key": "erp_mes"}
                 ]
             else:
                 softwares = [
-                    {"name": "Visual Studio Code / JetBrains IDE", "role": "Môi trường lập trình, gỡ lỗi và quản lý mã nguồn", "url": "https://code.visualstudio.com/"},
-                    {"name": "Git & GitHub / GitLab", "role": "Quản lý phiên bản mã nguồn, Pull Request và CI/CD", "url": "https://github.com/"},
-                    {"name": "Docker & Docker Compose", "role": "Đóng gói container môi trường phát triển độc lập", "url": "https://www.docker.com/"},
-                    {"name": "Postman / Insomnia", "role": "Kiểm thử và tự động hóa API", "url": "https://www.postman.com/"}
+                    {"name": "Visual Studio Code / JetBrains IDE", "role": "Môi trường lập trình, gỡ lỗi và quản lý mã nguồn", "url": "https://code.visualstudio.com/", "doc_key": "python_core"},
+                    {"name": "Git & GitHub / GitLab", "role": "Quản lý phiên bản mã nguồn, Pull Request và CI/CD", "url": "https://github.com/", "doc_key": "git_vcs"},
+                    {"name": "Docker & Docker Compose", "role": "Đóng gói container môi trường phát triển độc lập", "url": "https://www.docker.com/", "doc_key": "docker_devops"},
+                    {"name": "PostgreSQL / DBeaver", "role": "Quản trị cơ sở dữ liệu quan hệ và tối ưu truy vấn SQL", "url": "https://dbeaver.io/", "doc_key": "sql_db"},
+                    {"name": "Redis Insight", "role": "Giám sát bộ nhớ cache và tối ưu hóa hiệu năng in-memory", "url": "https://redis.io/insight/", "doc_key": "redis_cache"}
                 ]
 
         if softwares:
             c_soft = ctk.CTkFrame(self.scroll_resources, fg_color=THEME["crust"], corner_radius=8)
             c_soft.pack(fill="x", pady=6, padx=5, ipady=6)
-            ctk.CTkLabel(c_soft, text="💻 Hệ Sinh Thái Phần Mềm Hỗ Trợ Chuyên Dụng:", font=ctk.CTkFont(size=13, weight="bold"), text_color=THEME["green"]).pack(anchor="w", padx=12, pady=(4, 6))
+            ctk.CTkLabel(c_soft, text="💻 Hệ Sinh Thái Phần Mềm Hỗ Trợ Chuyên Dụng:", font=ctk.CTkFont(size=13, weight="bold"), text_color=THEME["yellow"]).pack(anchor="w", padx=12, pady=(4, 6))
 
             for s in softwares:
                 row = ctk.CTkFrame(c_soft, fg_color=THEME["surface0"], corner_radius=6)
@@ -878,26 +1229,42 @@ Yêu cầu:
                 s_name = s.get("name", "Software")
                 s_url = s.get("url", "#")
                 s_role = s.get("role", "")
+                doc_key = s.get("doc_key") or self._resolve_doc_key(s_name)
 
                 info_box = ctk.CTkFrame(row, fg_color="transparent")
                 info_box.pack(side="left", padx=10, fill="x", expand=True)
                 ctk.CTkLabel(info_box, text=f"⚙️ {s_name}", font=ctk.CTkFont(size=12, weight="bold"), text_color=THEME["text"]).pack(anchor="w")
                 if s_role:
-                    ctk.CTkLabel(info_box, text=s_role, font=ctk.CTkFont(size=11), text_color=THEME["subtext"], wraplength=550, justify="left").pack(anchor="w")
+                    ctk.CTkLabel(info_box, text=s_role, font=ctk.CTkFont(size=11), text_color=THEME["subtext"], wraplength=480, justify="left").pack(anchor="w")
 
-                btn_open = ctk.CTkButton(
+                # Nút xem cẩm nang offline (Ưu tiên số 1)
+                btn_offline = ctk.CTkButton(
                     row,
-                    text="🔗 Mở Web",
-                    width=80,
+                    text="📖 Đọc Cẩm Nang",
+                    width=125,
                     height=26,
-                    fg_color=THEME["blue"],
+                    font=ctk.CTkFont(size=11, weight="bold"),
+                    fg_color=THEME["green"],
                     hover_color="#74c7ec",
                     text_color=THEME["crust"],
+                    command=lambda k=doc_key: self._open_offline_doc(k)
+                )
+                btn_offline.pack(side="right", padx=(4, 10))
+
+                # Nút mở web (Phụ)
+                btn_open = ctk.CTkButton(
+                    row,
+                    text="🌐 Web",
+                    width=50,
+                    height=26,
+                    fg_color=THEME["surface1"],
+                    hover_color=THEME["blue"],
+                    text_color=THEME["subtext"],
                     command=lambda u=s_url: webbrowser.open(u)
                 )
-                btn_open.pack(side="right", padx=10)
+                btn_open.pack(side="right", padx=(0, 2))
 
-        # 1. Official Documentation
+        # === 3. TÀI LIỆU CHÍNH THỐNG (OFFICIAL DOCUMENTATION) ===
         docs = resources.get("official_docs", [])
         c1 = ctk.CTkFrame(self.scroll_resources, fg_color=THEME["crust"], corner_radius=8)
         c1.pack(fill="x", pady=6, padx=5, ipady=6)
@@ -911,6 +1278,7 @@ Yêu cầu:
                 name = d.get("name", "Docs")
                 url = d.get("url", "#")
                 desc = d.get("desc", "")
+                doc_key = d.get("doc_key") or self._resolve_doc_key(name)
 
                 info_box = ctk.CTkFrame(row, fg_color="transparent")
                 info_box.pack(side="left", padx=10, fill="x", expand=True)
@@ -918,17 +1286,32 @@ Yêu cầu:
                 if desc:
                     ctk.CTkLabel(info_box, text=desc, font=ctk.CTkFont(size=11), text_color=THEME["subtext"]).pack(anchor="w")
 
-                btn_open = ctk.CTkButton(
+                # Nút đọc offline
+                btn_offline = ctk.CTkButton(
                     row,
-                    text="🔗 Mở Web",
-                    width=80,
+                    text="📖 Đọc Cẩm Nang",
+                    width=125,
                     height=26,
-                    fg_color=THEME["blue"],
+                    font=ctk.CTkFont(size=11, weight="bold"),
+                    fg_color=THEME["green"],
                     hover_color="#74c7ec",
                     text_color=THEME["crust"],
+                    command=lambda k=doc_key: self._open_offline_doc(k)
+                )
+                btn_offline.pack(side="right", padx=(4, 10))
+
+                # Nút mở web phụ
+                btn_open = ctk.CTkButton(
+                    row,
+                    text="🌐 Web",
+                    width=50,
+                    height=26,
+                    fg_color=THEME["surface1"],
+                    hover_color=THEME["blue"],
+                    text_color=THEME["subtext"],
                     command=lambda u=url: webbrowser.open(u)
                 )
-                btn_open.pack(side="right", padx=10)
+                btn_open.pack(side="right", padx=(0, 2))
         else:
             ctk.CTkLabel(c1, text="Chưa có tài liệu.", text_color=THEME["subtext"]).pack(padx=12, pady=4)
 
@@ -961,60 +1344,134 @@ Yêu cầu:
             lbl.pack(side="left", padx=4, pady=3)
 
     def _render_interview_tab(self, interview):
+        self._current_interview_raw = interview or []
+        # Cập nhật danh mục combobox nếu danh sách hiện có nhiều category
+        present_cats = ["Tất cả chủ đề"]
+        for q in self._current_interview_raw:
+            c = q.get("category")
+            if c and c not in present_cats:
+                present_cats.append(c)
+        if len(present_cats) > 1 and hasattr(self, "cbo_interview_cat"):
+            self.cbo_interview_cat.configure(values=present_cats)
+            self.cbo_interview_cat.set("Tất cả chủ đề")
+        if hasattr(self, "ent_interview_search"):
+            self.ent_interview_search.delete(0, "end")
+        self._update_interview_display()
+
+    def _update_interview_display(self):
         for w in self.scroll_interview.winfo_children():
             w.destroy()
 
-        if not interview:
+        if not self._current_interview_raw:
             ctk.CTkLabel(self.scroll_interview, text="Chưa có câu hỏi phỏng vấn.", text_color=THEME["subtext"]).pack(pady=20)
+            if hasattr(self, "lbl_interview_count"):
+                self.lbl_interview_count.configure(text="Hiển thị: 0 / 0 câu hỏi")
             return
 
-        for idx, item in enumerate(interview, 1):
-            card = ctk.CTkFrame(self.scroll_interview, fg_color=THEME["crust"], corner_radius=8)
+        kw = self.ent_interview_search.get().strip().lower() if hasattr(self, "ent_interview_search") else ""
+        selected_cat = self.cbo_interview_cat.get() if hasattr(self, "cbo_interview_cat") else "Tất cả chủ đề"
+
+        filtered = []
+        for item in self._current_interview_raw:
+            cat = item.get("category", "")
+            q_text = item.get("question", "")
+            kp = item.get("key_points", "")
+            q_type = item.get("type", "")
+
+            # Kiểm tra theo danh mục
+            if selected_cat != "Tất cả chủ đề" and cat != selected_cat:
+                continue
+
+            # Kiểm tra từ khóa
+            if kw:
+                haystack = f"{q_text} {kp} {cat} {q_type}".lower()
+                if kw not in haystack:
+                    continue
+
+            filtered.append(item)
+
+        total_cnt = len(self._current_interview_raw)
+        shown_cnt = len(filtered)
+        if hasattr(self, "lbl_interview_count"):
+            self.lbl_interview_count.configure(text=f"Hiển thị: {shown_cnt} / {total_cnt} câu hỏi")
+
+        if not filtered:
+            ctk.CTkLabel(
+                self.scroll_interview,
+                text="🔍 Không tìm thấy câu hỏi nào phù hợp với bộ lọc.",
+                font=ctk.CTkFont(size=13),
+                text_color=THEME["subtext"]
+            ).pack(pady=30)
+            return
+
+        type_color_map = {
+            "Tình Huống Thực Chiến": THEME["peach"],
+            "Khái Niệm Cốt Lõi": THEME["mauve"],
+            "Phân Tích Sâu": THEME["blue"],
+            "General": THEME["subtext"]
+        }
+
+        for idx, item in enumerate(filtered, 1):
+            card = ctk.CTkFrame(self.scroll_interview, fg_color=THEME["crust"], corner_radius=8, border_width=1, border_color=THEME["surface0"])
             card.pack(fill="x", pady=6, padx=5, ipady=6)
 
             q_text = item.get("question", "")
             q_type = item.get("type", "General")
+            q_cat = item.get("category", "")
             key_points = item.get("key_points", "")
 
-            # Header câu hỏi
+            # Hàng tiêu đề thẻ câu hỏi
             top_row = ctk.CTkFrame(card, fg_color="transparent")
-            top_row.pack(fill="x", padx=12, pady=(4, 2))
+            top_row.pack(fill="x", padx=12, pady=(6, 4))
 
+            # Số thứ tự và Type badge
+            type_color = type_color_map.get(q_type, THEME["mauve"])
             ctk.CTkLabel(
                 top_row,
-                text=f"Câu {idx} [{q_type}]",
+                text=f"#{idx} [{q_type}]",
                 font=ctk.CTkFont(size=12, weight="bold"),
-                text_color=THEME["mauve"]
+                text_color=type_color
             ).pack(side="left")
 
+            # Category badge nếu có
+            if q_cat:
+                cat_badge = ctk.CTkLabel(
+                    top_row,
+                    text=f"📌 {q_cat}",
+                    font=ctk.CTkFont(size=11, weight="bold"),
+                    text_color=THEME["green"]
+                )
+                cat_badge.pack(side="right")
+
+            # Nội dung câu hỏi
             ctk.CTkLabel(
                 card,
                 text=q_text,
                 font=ctk.CTkFont(size=13, weight="bold"),
                 text_color=THEME["text"],
-                wraplength=720,
+                wraplength=730,
                 justify="left"
             ).pack(anchor="w", padx=12, pady=(2, 6))
 
-            # Khung gợi ý trả lời (Collapsible frame)
+            # Khung gợi ý trả lời & điểm mấu chốt
             ans_frame = ctk.CTkFrame(card, fg_color=THEME["surface0"], corner_radius=6)
-            ans_frame.pack(fill="x", padx=12, pady=(0, 6), ipady=4)
+            ans_frame.pack(fill="x", padx=12, pady=(0, 6), ipady=6)
 
             ctk.CTkLabel(
                 ans_frame,
                 text="💡 Gợi ý trả lời & Điểm mấu chốt:",
                 font=ctk.CTkFont(size=11, weight="bold"),
                 text_color=THEME["green"]
-            ).pack(anchor="w", padx=10, pady=(2, 2))
+            ).pack(anchor="w", padx=10, pady=(4, 2))
 
             ctk.CTkLabel(
                 ans_frame,
                 text=key_points,
                 font=ctk.CTkFont(size=12),
                 text_color=THEME["text"],
-                wraplength=700,
+                wraplength=710,
                 justify="left"
-            ).pack(anchor="w", padx=10, pady=(0, 4))
+            ).pack(anchor="w", padx=10, pady=(0, 6))
 
     # =====================================================================
     # CÁC HÀNH ĐỘNG NGƯỜI DÙNG

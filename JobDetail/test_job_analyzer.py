@@ -110,6 +110,41 @@ class TestJobAnalyzer(unittest.TestCase):
         self.assertIn("Genba", analysis["roadmap"][0]["phase"])
         self.assertTrue(len(analysis["interview_prep"]) > 0)
 
+    def test_offline_knowledge_and_doc_keys(self):
+        import offline_knowledge
+        all_docs = offline_knowledge.get_all_offline_docs()
+        self.assertGreaterEqual(len(all_docs), 16)
+        
+        for doc in all_docs:
+            self.assertIn("id", doc)
+            self.assertIn("title", doc)
+            self.assertIn("content", doc)
+            self.assertGreater(len(doc["content"]), 100)
+
+        # Test Manufacturing JD has offline guides & softwares
+        mfg_jd = "Kỹ sư Cải tiến Sản xuất OEE OLE Lean SMED BOM"
+        mfg_res = self.analyzer.analyze(mfg_jd, force_offline=True)
+        res_mfg = mfg_res["analysis"]["resources"]
+        self.assertIn("offline_guides", res_mfg)
+        self.assertGreater(len(res_mfg["offline_guides"]), 0)
+        self.assertIn("softwares", res_mfg)
+        self.assertGreater(len(res_mfg["softwares"]), 0)
+        for s in res_mfg["softwares"]:
+            self.assertIn("doc_key", s)
+            self.assertIsNotNone(offline_knowledge.get_offline_doc(s["doc_key"]))
+
+        # Test IT JD has offline guides & softwares
+        it_jd = "Backend Developer Python PostgreSQL Docker Redis Git"
+        it_res = self.analyzer.analyze(it_jd, force_offline=True)
+        res_it = it_res["analysis"]["resources"]
+        self.assertIn("offline_guides", res_it)
+        self.assertGreater(len(res_it["offline_guides"]), 0)
+        self.assertIn("softwares", res_it)
+        self.assertGreater(len(res_it["softwares"]), 0)
+        for s in res_it["softwares"]:
+            self.assertIn("doc_key", s)
+            self.assertIsNotNone(offline_knowledge.get_offline_doc(s["doc_key"]))
+
     def test_empty_jd_raises_error(self):
         with self.assertRaises(ValueError):
             self.analyzer.analyze("")
