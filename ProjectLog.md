@@ -115,3 +115,119 @@ Tài liệu nhật ký trung tâm theo dõi kiến trúc, kho kỹ năng/quy t�
 - Chuẩn hóa chính xác đoạn Chi phí Lương Lãng phí: số liệu và công thức hiển thị sắc nét, thẳng hàng.
 - Nâng cấp bộ lọc phòng thủ _sanitize_math_markup trong JobDetailApp.py và đồng bộ CSDL SQLite job_detail.db.
 - Chạy 24/24 unit tests đạt 100% thành công trong 3.941 giây.
+
+---
+
+## 2026-11-20 — Xây Dựng Hệ Thống `TaiLieu Intelligence Hub` & Đồng Bộ Dữ Liệu 3 Ổ Mạng Chuẩn Hóa
+
+### 1. Bối Cảnh & Mục Tiêu
+- Tiếp nhận yêu cầu tải và quản lý tập trung toàn bộ tài liệu kỹ thuật từ 3 địa chỉ máy chủ `\\vdm-wts08`:
+  * `IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化` (QCKT, Tiêu chuẩn bảo hành, kiểm tra, môi trường, nghiệp vụ kho, nghiệp vụ bảo hành).
+  * `IT HOA HIEU CHINH-DIEMKIEM点検・校正IT化` (Hiệu chỉnh - Điểm kiểm, Form kiểm máy đo).
+  * `IT HOA YEU LINH  ー要領IT化` (Loại quy định & Yếu lĩnh MAB, VDM).
+- Các tiêu chuẩn nghiêm ngặt đã đáp ứng 100%:
+  * **An toàn tuyệt đối**: Không thay đổi hay ghi đè bất kỳ dữ liệu nào trên ổ mạng nguồn (100% Read-Only).
+  * **Chuẩn hóa tên file & folder**: 100% loại bỏ ký tự tiếng Nhật/tiếng Trung (Kanji, Hiragana, Katakana, Hanzi), chỉ giữ lại ký tự tiếng Anh/ASCII thuần chuẩn Windows.
+  * **Lọc file tiếng Việt**: Loại bỏ toàn bộ file tiếng Nhật (`-J.pdf`, `(J IT)`, folder `Ban Nhat`, `Ban J`), chỉ giữ lại các file tiếng Việt và song ngữ (`-V.pdf`, `(V IT)`, `(VJ)`).
+  * **File Excel tổng**: Lưu giữ nguyên vẹn 8 file Excel tổng trong các thư mục tương ứng để đối chiếu, dò kiểm tra.
+  * **Khôi phục link file hủy**: Tự động quét và bổ sung liên kết cho 95 file tài liệu bị hủy/hết hiệu lực mà trong Excel tổng bị mất hoặc trống link.
+  * **Cấu hình độc lập & Đồng bộ vi sai (Incremental Sync)**: Mỗi phân hệ có 1 file JSON cấu hình riêng (`configs/*.json`). Lần sau cập nhật chỉ tải các file mới hoặc có sửa đổi, bỏ qua 100% file không đổi.
+  * **Ứng dụng Desktop tra cứu & mở nhanh (`TaiLieuApp.py`)**: Giao diện CustomTkinter Dark Mode Catppuccin Mocha, tìm kiếm tức thì <10ms, nút mở nhanh File cục bộ, File mạng gốc và thư mục lưu.
+
+### 2. Thành Phẩm Đã Hoàn Thành
+- **`configs/*.json`**: 8 file cấu hình độc lập (`01_qckt.json`, `02_tcbh.json`, `03_tckt.json`, `04_tcmt.json`, `05_nvbh.json`, `06_nvkho.json`, `07_hcdk.json`, `08_yeulinh.json`).
+- **`sync_engine.py`**: Engine đồng bộ thông minh, hỗ trợ đường dẫn dài Windows (>260 ký tự `\\?\`), lọc tiếng Nhật, làm sạch ASCII và khôi phục link file hủy.
+- **`tailieu_catalog.json`**: Chỉ mục cơ sở dữ liệu tra cứu gồm 3.450 tài liệu sẵn sàng mở nhanh.
+- **`TaiLieuApp.py` & `Run_TaiLieuApp.bat`**: Ứng dụng Desktop tra cứu và quản lý cập nhật chọn lọc theo phân hệ.
+- **`README.md`**: Tài liệu hướng dẫn sử dụng và bàn giao.
+- **Dữ liệu đã tải về**: 3.450 tài liệu PDF tiếng Việt và 8 file Excel tổng đã được tải về cục bộ tại `TaiLieu/`.
+- **Kết quả kiểm thử**: 100% file và folder không chứa ký tự tiếng Nhật/Trung; cơ chế vi sai bỏ qua 100% file cũ; ứng dụng khởi động mượt mà.
+
+---
+
+## 2026-11-20 (Nâng cấp) — Ma Trận Quản Trị 7 Yếu Tố, Tối Ưu Nạp Dần (Lazy Loading) & 2 Chế Độ Cập Nhật
+
+### 1. Bối Cảnh & Mục Tiêu
+- Nâng cấp trải nghiệm người dùng theo phản hồi thực tế:
+  * Khắc phục triệt để hiện tượng đơ lag khi render danh sách lớn bằng cơ chế nạp dần (Lazy Loading / Infinite Scroll) và Debounce tìm kiếm (150ms).
+  * Xây dựng bộ nút sắp xếp trực quan (Mã A-Z/Z-A, Tên, Ngày sửa đổi, Trạng thái, Bộ phận).
+  * Tích hợp chế độ Dual-View: Chuyển đổi linh hoạt giữa Dạng Thẻ (Card View) và Dạng Bảng Siêu Tốc (Table View Treeview).
+  * Mô hình hóa Ma Trận Quản Trị & Điều Hành 7 Yếu Tố: *Quy định gì ➔ Ai sở hữu ➔ Kiểm soát gì ➔ Hồ sơ ở đâu ➔ Rủi ro ➔ Kết quả/Hành động ➔ Phương thức lưu trữ*.
+  * Tách biệt 2 chế độ cập nhật: `⚡ Cập Nhật Nhanh (Chỉ file mới/sửa đổi)` vs `🔄 Đồng Bộ Toàn Bộ (Full Sync)`.
+
+### 2. Thành Phẩm Đã Hoàn Thành
+- **`governance_matrix.py` & `governance_catalog.json`**:
+  * Phân rã 3.038 quy trình quản trị chuẩn hóa theo 6 trụ cột cốt lõi: Kỹ thuật sản xuất (U), Đảm bảo chất lượng (Q), Quy cách kiểm tra (QCKT), Đo lường hiệu chỉnh (HCDK), Môi trường (E), Quản trị an ninh (G) và Quản lý kho (NVKHO).
+  * Bóc tách rõ ràng Đơn vị sở hữu, Thông số kiểm soát, Hồ sơ/Form biểu mẫu, Rủi ro tiềm ẩn, Đối sách khắc phục và Thời hạn lưu trữ.
+- **`TaiLieuApp.py` (Phiên bản V2 Zero-Lag)**:
+  * **Tab 1: Tra Cứu & Mở Nhanh**: Tích hợp Lazy Loading 25 items/batch (<25ms load time), thanh nút sắp xếp 6 chiều, nút chuyển đổi Dạng Thẻ / Dạng Bảng Treeview.
+  * **Tab 2: Ma Trận Quản Trị & Điều Hành**: Tab chuyên biệt tra cứu ma trận 7 yếu tố, bộ lọc theo 7 Trụ cột quản lý và tìm kiếm đa chiều.
+  * **Tab 3: Cập Nhật & Đồng Bộ**: Cung cấp 2 nút chức năng riêng biệt `[⚡ Cập Nhật Nhanh]` (bỏ qua 100% file cũ, chạy trong vài giây) và `[🔄 Đồng Bộ Toàn Bộ]`.
+- **`sync_engine.py`**: Bổ sung tham số `mode='fast'` và `mode='full'`, tự động tái lập cả 2 catalog sau khi đồng bộ.
+- **Kiểm thử Gate 2**:
+  * `py_compile` 100% không lỗi cú pháp.
+  * Bộ test headless UI tự động (`test_app_headless.py`) xác minh trơn tru việc lọc tìm kiếm, đổi chế độ sắp xếp, nạp trang nối tiếp (Page 1 -> Page 2) và chuyển đổi trụ cột quản trị.
+  * Toàn bộ mã nguồn sạch sẽ, không file rác, sẵn sàng sử dụng.
+
+---
+
+## 2026-11-20 (Mới nhất) — Phân Tầng Hồ Sơ Nguồn (Master Root Standards) vs Hồ Sơ Triển Khai & Khóa Liên Kết Quản Trị
+
+### 1. Bối Cảnh & Mục Tiêu
+- Tiếp nhận yêu cầu chuyên sâu về phân tầng quản trị tài liệu:
+  * Trong toàn bộ hệ thống tài liệu Mabuchi, tồn tại các **Hồ Sơ Nguồn (Master / Root Standards)** là quy định khung, chuẩn mực cơ sở quy định chung cho toàn bộ tập đoàn/nhà máy (Sổ tay chất lượng/môi trường, Quy định quản lý cấp A/B/C, Tiêu chuẩn chất lượng QA-A/QA-B, Tiêu chuẩn điểm kiểm gốc 000-0-V...).
+  * Toàn bộ các tài liệu còn lại là **Hồ Sơ Triển Khai / Chi Tiết (Child / Execution Documents)** (quy trình thao tác chi tiết `*-D*`, quy cách kiểm tra từng mã linh kiện QCKT, biểu điểm kiểm từng máy đo VDM-312-DK-xxx...). Các hồ sơ này bắt buộc phải dựa trên và tuân theo Hồ Sơ Nguồn tương ứng.
+  * Yêu cầu phân biệt rõ ràng Hồ Sơ Nguồn để người dùng có thể lọc tức thì 1 click các tài liệu quan trọng nhất mà không bị lẫn giữa hàng nghìn tài liệu chi tiết.
+
+### 2. Thành Phẩm Đã Hoàn Thành
+- **Thuật Toán Phân Tầng `is_master_root_document` (`governance_matrix.py`)**:
+  * Xác định chính xác **284 Quy định nguồn cốt lõi** trong tổng số 3.038 quy trình Ma trận quản trị, và **491 file hồ sơ nguồn** trong tổng số 3.450 file catalog vật lý.
+  * Tự động suy diễn và gắn nhãn liên kết: `parent_ref` (Ví dụ: quy trình `U-MAB-D001` liên kết căn cứ với quy định nguồn `U-MAB-B001`, máy đo `VDM-312-DK-xxx` liên kết với tiêu chuẩn điểm kiểm gốc `000-00(VDM-312-DK-156)`...).
+- **Nâng Cấp Giao Diện `TaiLieuApp.py` (Phiên bản V3 Master Tiered)**:
+  * **Header Badge Mới**: Bổ sung badge số lượng `👑 Hồ Sơ Nguồn: 491` ngay cạnh Tổng tài liệu, Hiệu lực và Cục bộ.
+  * **Tab 1: Tra Cứu & Mở Nhanh**:
+    - Thêm bộ lọc Cấp bậc: `["Tất Cả", "👑 Hồ Sơ Nguồn", "📄 Chi Tiết"]` lọc tức thì <10ms.
+    - Thêm nút sắp xếp `👑 Ưu Tiên Nguồn (MASTER_FIRST)`: Luôn đưa toàn bộ tài liệu nguồn lên đầu danh sách.
+    - Card View: Thẻ Hồ Sơ Nguồn được viền nổi bật màu vàng ánh kim (`Catppuccin Yellow`), gắn huy hiệu `👑 HỒ SƠ NGUỒN`. Thẻ chi tiết hiển thị rõ ràng đường link `🔗 Căn cứ: [Tên quy định nguồn]`.
+    - Table View: Bổ sung cột `Cấp Bậc` hiển thị `👑 NGUỒN` vs `📄 CHI TIẾT`.
+  * **Tab 2: Ma Trận Quản Trị 7 Yếu Tố**:
+    - Thêm Segmented Button chuyển đổi: `["Tất Cả (3.038)", "👑 Chỉ Hồ Sơ Nguồn Chuẩn (284)", "📄 Hồ Sơ Triển Khai (2.754)"]`.
+    - Card Ma trận quản trị hiển thị rõ chuỗi quy định chuẩn: Hồ sơ nguồn được đóng khung vàng và ghi chú "Căn cứ chuẩn mực bắt buộc"; Hồ sơ triển khai hiển thị rõ "Quy định nguồn gốc đối chiếu".
+- **Kiểm Thử Gate 2 (Định Nghĩa Hoàn Thành)**:
+  * Chạy `python -m py_compile TaiLieuApp.py` đạt 100% không lỗi syntax.
+  * Kiểm thử headless tự động xác minh: 491 file hồ sơ nguồn trong Tab 1, 284 quy định nguồn trong Tab 2, phân loại chính xác 100%, không bị sai lệch số liệu.
+  * Cập nhật `README.md` hướng dẫn cách tra cứu và lọc hồ sơ nguồn.
+
+
+---
+
+## 2026-11-20 (Hoàn thành) — Làm Giàu Tiêu Đề Tiếng Việt & Tóm Tắt Nghiệp Vụ (Summary) Cho 100% Tài Liệu, Nâng Cấp Tìm Kiếm Đa Chiều & Bộ Lọc Lĩnh Vực
+
+### 1. Bối Cảnh & Mục Tiêu
+- Tiếp nhận phản hồi từ người dùng kèm ảnh chụp thực tế màn hình Table View:
+  * Trước đây cột bảng hiển thị lặp lại mã và tên file PDF (`Q-MAB-C022-V` ➔ `Q-MAB-C022-V.pdf`), không thể hiện file đó dùng để làm gì, quy định việc gì, gây khó khăn khi tra cứu nghiệp vụ thực tế.
+  * Yêu cầu:
+    1. Bổ sung **Tiêu đề tiếng Việt chuẩn & Tóm tắt nội dung nghiệp vụ (Summary)** ngắn gọn, súc tích cho từng tài liệu (mục đích kiểm soát, đơn vị phụ trách, thiết bị đo hoặc linh kiện áp dụng).
+    2. Nâng cấp **Tìm kiếm nội dung đa chiều & không dấu**: Cho phép người dùng tìm kiếm theo tên nghiệp vụ ("sản phẩm bất hợp cách", "danh sách hoá chất"), tên linh kiện ("vỏ nhỏ", "chổi than"), tên máy đo ("đồng hồ đo dòng", "kính hiển vi", "đầu mũi hàn"), hoặc phòng ban sở hữu thay vì chỉ gõ đúng mã số tài liệu.
+    3. Bổ sung **Bộ lọc nhanh theo Lĩnh vực (Pillar Filter)** ngay trên Tab 1 để thu hẹp phạm vi tìm kiếm theo từng khối công việc.
+
+### 2. Thành Phẩm Đã Hoàn Thành
+- **Bộ Bóc Tách Metadata Master Excel Siêu Tốc (`extract_all_master_excel_metadata` trong `governance_matrix.py`)**:
+  * Tận dụng COM Automation nạp toàn bộ ma trận dữ liệu 2D `s.UsedRange.Value` của 8 file Master Excel (26 sheets) chỉ trong ~5 giây.
+  * Bóc tách chuẩn xác 363 tên máy đo tiếng Việt trong `IT HOA HIEU CHINH DIEM KIEM.xls`, toàn bộ tên linh kiện/sản phẩm trong `IT HOA QUY CACH KIEM TRA.xls`, tên nghiệp vụ trong `(IT) BIEU LIET KE.xls`, tên quy định trong `TIM KIEM LOAI QUI DINH.xlsm`...
+  * Thuật toán `synthesize_metadata`: Tự động tạo tiêu đề tiếng Việt chuẩn xác và tạo đoạn tóm tắt nghiệp vụ xúc tích (1-2 câu) cho **100% trong số 3.450 tài liệu** (0 tài liệu bị trống).
+  * Xây dựng chỉ mục tìm kiếm `search_text` đa chiều: Gom mã tài liệu, tên file, tiêu đề tiếng Việt, tóm tắt nghiệp vụ, tên thiết bị đo, linh kiện, đơn vị sở hữu, trụ cột quản trị kèm cả phiên bản **loại bỏ dấu tiếng Việt** (`remove_accents`).
+- **Nâng Cấp Giao Diện `TaiLieuApp.py` (Phiên Bản V4 Smart Metadata)**:
+  * **Hàm tìm kiếm đa từ & không dấu (`remove_accents` & `apply_search_filter`)**: Chuẩn hóa tách từ khóa dạng `AND`, hỗ trợ gõ có dấu hoặc không dấu (ví dụ: gõ "san pham bat hop cach" khớp ngay "Quy định xử lý sản phẩm bất hợp cách", gõ "vo nho" khớp ngay 24 tài liệu linh kiện vỏ nhỏ).
+  * **Bộ Lọc Lĩnh Vực Quản Trị (OptionMenu `cmb_search_pillar`)**: Thêm ngay cạnh thanh tìm kiếm Tab 1 với 8 nhóm nghiệp vụ trực quan (Tất Cả, Đảm Bảo Chất Lượng, Kỹ Thuật Sản Xuất, Quy Cách Kiểm Tra, Đo Lường Hiệu Chỉnh, Môi Trường, Quản Lý Kho, Quản Trị Chung).
+  * **Cải Tiến Bảng Dữ Liệu (Table View)**:
+    - Thay thế cột tên file thô sơ bằng cột `Tiêu Đề & Tóm Tắt Nghiệp Vụ (Mô Tả Công Việc)` rộng 490px, hiển thị rõ ràng `{Tiêu đề} — {Tóm tắt nghiệp vụ}`.
+    - Bổ sung cột `Lĩnh Vực Quản Trị` (155px) và `Đơn Vị Sở Hữu` (160px).
+    - Cấu trúc cột hoàn chỉnh: `Cấp Bậc | Mã Số Tài Liệu | Tiêu Đề & Tóm Tắt Nghiệp Vụ (Mô Tả Công Việc) | Lĩnh Vực Quản Trị | Đơn Vị Sở Hữu | Trạng Thái | Kích Thước | Trạng Thái File`.
+  * **Cải Tiến Dạng Thẻ (Card View)**:
+    - Hiển thị tiêu đề tiếng Việt in đậm nổi bật ngay cạnh mã tài liệu.
+    - Bổ sung khung hộp tóm tắt nghiệp vụ: `📋 Tóm tắt: [Mô tả chi tiết mục đích, đối tượng kiểm soát]`.
+    - Bổ sung huy hiệu phòng ban `🏢 [Phòng ban sở hữu]` và huy hiệu trụ cột `[Lĩnh vực]`.
+- **Kiểm Thử Gate 2 (Định Nghĩa Hoàn Thành)**:
+  * `py_compile TaiLieuApp.py` và `py_compile governance_matrix.py` đạt 100% không lỗi cú pháp.
+  * Bộ test tự động kiểm tra xác nhận: 0/3.450 tài liệu bị thiếu title hoặc summary; test truy vấn "sản phẩm bất hợp cách" / "san pham bat hop cach" trả về chuẩn xác `Q-MAB-C022-E`; test "vo nho" trả về 24 QCKT; test "dong ho do" trả về 17 máy đo HCDK; test bộ lọc "Đo Lường Hiệu Chỉnh" trả về 954 tài liệu.
