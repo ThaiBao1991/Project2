@@ -143,6 +143,32 @@ class TestJobStorage(unittest.TestCase):
         self.assertIn("Goroutine là gì?", md)
         self.assertIn("Golang", md)
 
+    def test_persistent_progress_save_and_reload(self):
+        job_id = self.storage.add_job(
+            title="OE Engineer",
+            company="CADIVI",
+            level="Mid",
+            category="Sản Xuất (Manufacturing)",
+            raw_jd="OEE OLE SMED",
+            analysis={}
+        )
+        # Ban đầu rỗng
+        init_prog = self.storage.get_progress(job_id)
+        self.assertEqual(init_prog, {"roadmap": {}, "interview": {}, "curriculum": {}})
+
+        # Lưu tiến độ và mở lại kết nối mới (giả lập tắt/mở App)
+        sample_prog = {
+            "roadmap": {"1:0": True, "1:2": True},
+            "interview": {"q_oee_01": "mastered", "q_adv_01": "review"},
+            "curriculum": {"L1.1": True, "L4.2": True},
+        }
+        self.assertTrue(self.storage.save_progress(job_id, sample_prog))
+
+        reloaded_storage = JobStorage(self.temp_db.name)
+        reloaded_job = reloaded_storage.get_job(job_id)
+        self.assertEqual(reloaded_job["progress"], sample_prog)
+        self.assertEqual(reloaded_storage.get_progress(job_id), sample_prog)
+
 
 if __name__ == "__main__":
     unittest.main()

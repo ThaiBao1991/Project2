@@ -10,7 +10,13 @@ import os
 import sys
 import json
 import sqlite3
+from contextlib import contextmanager
 from datetime import datetime
+
+try:
+    import term_glossary
+except Exception:
+    term_glossary = None
 
 # Đảm bảo UTF-8
 if sys.platform == "win32":
@@ -29,10 +35,18 @@ class JobStorage:
         self.db_path = db_path or DEFAULT_DB_PATH
         self.init_db()
 
+    @contextmanager
     def get_connection(self):
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
-        return conn
+        try:
+            yield conn
+            conn.commit()
+        except Exception:
+            conn.rollback()
+            raise
+        finally:
+            conn.close()
 
     def init_db(self):
         """Khởi tạo bảng cơ sở dữ liệu nếu chưa tồn tại."""
@@ -52,10 +66,16 @@ class JobStorage:
                     user_notes TEXT DEFAULT '',
                     tags TEXT DEFAULT '[]',
                     status TEXT DEFAULT 'New',
+                    progress_json TEXT DEFAULT '{}',
                     created_at TEXT NOT NULL,
                     updated_at TEXT NOT NULL
                 )
             """)
+            # Tự động bổ sung cột progress_json cho CSDL cũ một cách an toàn (không mất dữ liệu)
+            cursor.execute("PRAGMA table_info(jobs)")
+            existing_cols = {row[1] for row in cursor.fetchall()}
+            if "progress_json" not in existing_cols:
+                cursor.execute("ALTER TABLE jobs ADD COLUMN progress_json TEXT DEFAULT '{}'")
             # Index cho việc tìm kiếm và lọc nhanh
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_jobs_level ON jobs(level)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_jobs_category ON jobs(category)")
@@ -154,6 +174,35 @@ class JobStorage:
             conn.commit()
             return cursor.rowcount > 0
 
+    def get_progress(self, job_id):
+        """Đọc tiến độ học tập bền vững (checkbox lộ trình & trạng thái ôn câu phỏng vấn)."""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT progress_json FROM jobs WHERE id = ?", (job_id,))
+            row = cursor.fetchone()
+            if not row:
+                return {"roadmap": {}, "interview": {}, "curriculum": {}}
+            try:
+                data = json.loads(row[0] or "{}")
+                if not isinstance(data, dict):
+                    data = {}
+            except Exception:
+                data = {}
+            data.setdefault("roadmap", {})
+            data.setdefault("interview", {})
+            data.setdefault("curriculum", {})
+            return data
+
+    def save_progress(self, job_id, progress_dict):
+        """Lưu tiến độ học tập bền vững vào SQLite."""
+        now = datetime.now().isoformat()
+        payload = json.dumps(progress_dict if isinstance(progress_dict, dict) else {}, ensure_ascii=False)
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("UPDATE jobs SET progress_json = ?, updated_at = ? WHERE id = ?", (payload, now, job_id))
+            conn.commit()
+            return cursor.rowcount > 0
+
     def delete_job(self, job_id):
         """Xóa một công việc theo ID."""
         with self.get_connection() as conn:
@@ -238,6 +287,16 @@ class JobStorage:
         except Exception:
             d["tags"] = []
 
+        try:
+            prog = json.loads(d.get("progress_json") or "{}")
+            if not isinstance(prog, dict):
+                prog = {}
+        except Exception:
+            prog = {}
+        prog.setdefault("roadmap", {})
+        prog.setdefault("interview", {})
+        prog.setdefault("curriculum", {})
+        d["progress"] = prog
         return d
 
     def export_job_markdown(self, job_id):
@@ -335,4 +394,7 @@ class JobStorage:
             md.append(job["user_notes"])
             md.append("")
 
-        return "\n".join(md)
+        result_md = "\n".join(md)
+        if term_glossary:
+            result_md = term_glossary.strip_term_formulas(result_md)
+        return result_md

@@ -1,21 +1,33 @@
 # -*- coding: utf-8 -*-
 """
-interview_bank.py — Ngân Hàng Câu Hỏi Phỏng Vấn & Tình Huống Thực Chiến Tinh Gọn
-Được thiết kế chuyên sâu cho Kỹ sư Cải tiến Sản xuất (Lean / Continuous Improvement Engineer),
+interview_bank.py — Ngân Hàng Câu Hỏi Phỏng Vấn & Tình Huống Thực Chiến Tinh Gọn & Dây Cáp Điện (OE)
+Được thiết kế chuyên sâu cho Chuyên viên Tối ưu Quy trình (OE — CADIVI),
+Kỹ sư Cải tiến Sản xuất (Lean / Continuous Improvement Engineer),
 Kỹ sư Quản lý Sản xuất (Industrial Engineer), và Quản lý Nhà máy.
 
-Bao gồm 56 câu hỏi không trùng lặp, chia làm 10 nhóm chủ đề cốt lõi:
+Bao gồm 128 câu hỏi không trùng lặp, chia làm 17 nhóm chủ đề cốt lõi:
 1. OEE & 6 Tổn Thất Lớn (Six Big Losses) (6 câu)
 2. OLE & Năng Suất Lao Động (Overall Labor Effectiveness) (5 câu)
 3. Cân Bằng Chuyền & Takt Time (Line Balancing) (6 câu)
 4. SMED & Rút Ngắn Thời Gian Chuyển Đổi (6 câu)
 5. 7 Lãng Phí (TIMWOOD) & 5S / Kaizen (6 câu)
-6. Poka-Yoke & Cơ Chế Chống Lỗi (5 câu)
+6. Poka-Yoke & Chống Lỗi (5 câu)
 7. Định Mức BOM & Hao Phí Vật Tư (5 câu)
 8. SPC, Năng Lực Quy Trình & Minitab (Cp/Cpk) (6 câu)
 9. Bố Trí Mặt Bằng (Plant Layout) & Luồng 1 Sản Phẩm (5 câu)
 10. ERP/MES, Dữ Liệu Sản Xuất & Xử Lý Sự Cố Genba (6 câu)
+11. Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI) (12 câu)
+12. OE, Six Sigma (DMAIC), TOC, TPM & PFMEA (10 câu)
+13. Hoạch Định Năng Lực, Điều Độ & Chi Phí (7 câu)
+14. Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE (10 câu)
+15. Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI (5 câu)
+16. Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành (12 câu)
+17. Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2 (16 câu)
 """
+
+import re
+
+_FORMULA_STRIP_RE = re.compile(r"\[\[(?:[^|\]]+\|)?([^\]]+)\]\]")
 
 QUESTIONS = [
     # =========================================================================
@@ -891,6 +903,1008 @@ QUESTIONS = [
             "  2. Bước 2: Khi quy trình đã mượt mà, ổn định và không còn lãng phí dư thừa, lúc này mới đưa CÔNG NGHỆ SỐ HÓA (IoT, MES, Robot, AI Vision) vào để khuếch đại hiệu quả và duy trì sự kiểm soát tự động.\n"
             "  - Kết luận: Lean là 'gốc rễ của phương pháp', Công nghệ là 'đòn bẩy tăng tốc'. Một người kỹ sư cải tiến giỏi luôn bắt đầu từ việc tối ưu hóa quy trình tinh gọn trước khi đề xuất chi tiền mua sắm công nghệ."
         )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 11: CÔNG NGHỆ & MÁY MÓC DÂY CÁP ĐIỆN (CADIVI)
+    # =========================================================================
+    {
+        "id": "q_cable_01",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Trình bày chuỗi quy trình công nghệ sản xuất dây và cáp điện hoàn chỉnh tại một nhà máy như CADIVI Miền Trung (từ đồng rod nguyên liệu đến thành phẩm xuất xưởng) và chỉ ra 3 công đoạn trọng yếu dễ phát sinh điểm nghẽn nhất?",
+        "key_points": (
+            "• Chuỗi 7 công đoạn công nghệ cốt lõi:\n"
+            "  1. Tiếp nhận nguyên liệu: Đồng rod Ø 8.0 mm (độ tinh khiết ≥ 99.99% Cu, IACS ≥ 100%) / Nhôm rod Ø 9.5 mm và hạt nhựa cách điện (PVC, XLPE, PE, LSZH).\n"
+            "  2. Kéo sợi (Wire Drawing): Máy kéo thô (RBD) → kéo trung → kéo tinh/kéo nhiều sợi (Multi-wire) để giảm đường kính sợi theo quy cách.\n"
+            "  3. Ủ mềm (Annealing): Ủ liên tục (In-line Resistance Annealer) hoặc lò ủ chuông khí bảo vệ để phục hồi độ giãn dài và độ dẫn điện.\n"
+            "  4. Bện ruột dẫn (Stranding / Bunching): Bện xoắn đôi (Buncher) cho dây mềm hoặc bện lồng cứng/bện ống (Rigid/Tubular Strander) cho cáp lực (7, 19, 37, 61 sợi, bện nén tròn/rẻ quạt tới 300 mm²).\n"
+            "  5. Đùn bọc cách điện (Insulation Extrusion) & Khâu mạch XLPE (CCV hoặc Silane + Bể nước nóng/Sauna).\n"
+            "  6. Ghép lõi (Laying-up / Drum Twister), giáp băng thép/sợi thép (DSTA/SWA cho cáp ngầm) & Đùn bọc vỏ bảo vệ (Sheathing).\n"
+            "  7. Thử nghiệm QA/QC (điện trở ruột dẫn 20°C, thử cao áp, phóng điện cục bộ PD, kéo đứt, lão hóa) & Đóng cuộn khoanh 100m / Rulo gỗ.\n"
+            "• 3 điểm nghẽn kinh điển ngành cáp:\n"
+            "  - (1) Dây chuyền Đùn bọc cách điện/vỏ (tốn thời gian đổi màu, xả nhựa purging, dễ lệch tâm & phế startup).\n"
+            "  - (2) Công đoạn Kéo tinh/Kéo thô (đứt sợi làm dừng máy đột ngột, thay khuôn PCD).\n"
+            "  - (3) Công đoạn Bện nhiều sợi & Đóng cuộn thành phẩm (nhiều thao tác gá rulo, mất cân bằng lao động OLE)."
+        )
+    },
+    {
+        "id": "q_cable_02",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Máy kéo thô (Rod Breakdown - RBD) và máy kéo tinh (Multi-wire Drawing) liên tục xảy ra hiện tượng 'Đứt sợi đồng' (Wire Break) trung bình 4 lần/ca, khiến OEE sụt giảm nghiêm trọng. Bạn phân tích nguyên nhân gốc bằng 4M và xử lý thế nào?",
+        "key_points": (
+            "• Phân tích nguyên nhân gốc theo 4M đặc thù kéo dây đồng:\n"
+            "  - Material (Vật liệu): Đồng rod đầu vào chứa tạp chất oxit đồng (inclusion), bọt khí, hoặc mối hàn nối đầu cuộn (Butt Weld) bị giòn/không mài phẳng bavia.\n"
+            "  - Machine (Máy & Khuôn kéo): Khuôn kéo PCD bị mòn, xước lòng khuôn hoặc phân bổ tỷ lệ giảm diện tích giữa các cấp khuôn (Drafting / Reduction Ratio) bị lệch làm căng cục bộ; puli dẫn hướng bị rãnh mòn gây kẹt sợi.\n"
+            "  - Method (Công nghệ bôi trơn/nhiệt): Dung dịch nhũ tương (Drawing Emulsion) sai nồng độ, pH lệch, bẩn nhiều mạt đồng mịn hoặc nhiệt độ bể dầu tăng cao (> 45°C) làm mất màng bôi trơn.\n"
+            "  - Man (Thao tác): Kỹ thuật viên hàn nối đồng rod quá nhiệt gây cháy mối hàn hoặc xỏ dây sai thứ tự khuôn.\n"
+            "• Giải pháp OE có thể đo lường:\n"
+            "  1. Soi kính hiển vi đầu sợi bị đứt (Fracture Morphology): Đầu đứt hình chén-nón (Cup-and-cone) → do lỗi tạp chất đồng rod; Đầu đứt nhọn kéo giãn → do quá lực căng/mòn khuôn; Đứt tại mối hàn → chuẩn hóa SOP máy hàn đối đầu.\n"
+            "  2. Lập lịch thay bộ khuôn theo định mức tấn đồng (PM theo sản lượng) kết hợp lọc ly tâm bể nhũ tương hàng ngày.\n"
+            "  3. Theo dõi chỉ số KPI chuẩn ngành: 'Số lần đứt sợi / 1 tấn đồng kéo' (Breaks per Ton), đặt mục tiêu giảm về < 0.2 lần/tấn."
+        )
+    },
+    {
+        "id": "q_cable_03",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Tại sao sợi đồng sau khi kéo nguội bắt buộc phải qua công đoạn Ủ (Annealing)? Nếu nhiệt độ/dòng điện ủ quá thấp hoặc quá cao thì gây hậu quả gì cho các công đoạn sau và tiêu chuẩn IEC 60228?",
+        "key_points": (
+            "• Bản chất luyện kim của công đoạn Ủ đồng:\n"
+            "  - Trong quá trình kéo nguội qua hàng chục khuôn liên tiếp, mạng tinh thể đồng bị biến dạng và hóa bền biến dạng (Work Hardening) → Sợi đồng trở nên cứng, giòn, độ giãn dài giảm mạnh và điện trở suất tăng lên.\n"
+            "  - Ủ làm tái kết tinh mạng tinh thể đồng, khôi phục độ mềm dẻo (độ giãn dài đạt 20–30%) và đưa độ dẫn điện đạt chuẩn ≥ 100% IACS.\n"
+            "• Hậu quả khi thông số ủ sai:\n"
+            "  - Ủ NON (Dòng/Nhiệt quá thấp): Sợi còn cứng, độ giãn dài thấp → khi sang máy bện dễ bật lò xo (spring-back), gãy sợi khi uốn cáp, điện trở ruột dẫn cao có nguy cơ không đạt IEC 60228.\n"
+            "  - Ủ GIÀ (Dòng/Nhiệt quá cao): Sợi quá mềm dễ bị kéo giãn làm nhỏ đường kính cục bộ (tăng điện trở), cháy bề mặt hoặc dính bết các vòng sợi trên rulo (Stickiness trong lò ủ chuông) khiến công đoạn bện bị đứt dây hàng loạt; nếu thiếu khí bảo vệ/hơi nước sẽ bị oxy hóa đen bề mặt đồng."
+        )
+    },
+    {
+        "id": "q_cable_04",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Phân Tích Sâu",
+        "question": "Trong ngành sản xuất dây cáp điện, 'Copper Give-away' (Hao phí đồng cho không) và 'Compound Over-thickness' (Bọc dư chiều dày nhựa) là gì? Vì sao tối ưu 2 khoản này thường mang lại lợi nhuận lớn hơn cả việc tăng tốc độ máy?",
+        "key_points": (
+            "• Cơ cấu giá thành ngành cáp điện:\n"
+            "  - Đồng/Nhôm chiếm tới 60–75% giá thành sản phẩm; Nhựa cách điện/vỏ PVC, XLPE chiếm 15–25%; Chi phí nhân công & điện năng chỉ chiếm khoảng 5–10%.\n"
+            "• Copper Give-away (Dư đồng):\n"
+            "  - Tiêu chuẩn IEC 60228 quy định chất lượng ruột dẫn theo ĐIỆN TRỞ TỐI ĐA (Ω/km ở 20°C), không bắt buộc đường kính to thừa. Nếu máy kéo mòn khuôn hoặc công nhân để đường kính sợi đồng to hơn danh định chỉ +0.01 mm (dư ~1% khối lượng đồng), với nhà máy tiêu thụ 500 tấn đồng/tháng (~250 triệu đ/tấn), 1% dư đồng làm 'bốc hơi' tới 1.25 TỶ ĐỒNG mỗi tháng!\n"
+            "• Compound Over-thickness (Bọc dư nhựa cách điện/vỏ):\n"
+            "  - Khi máy đùn có độ lệch tâm lớn (Eccentricity cao) hoặc dao động đường kính mạnh (Cpk < 1.0), công nhân buộc phải chỉnh bọc dày thêm +0.08 đến +0.15 mm để 'điểm mỏng nhất' không rớt chuẩn TCVN/IEC.\n"
+            "  - Giải pháp OE: Áp dụng SPC + Cảm biến Laser đo đường kính & độ lệch tâm trực tuyến (Closed-loop Control) để thu hẹp độ biến thiên (Cpk ≥ 1.33), đưa chiều dày nhựa trung bình tiệm cận sát biên giới thiết kế tối ưu — tiết kiệm hàng tỷ đồng nhựa mỗi năm mà chất lượng vẫn đạt chuẩn 100%."
+        )
+    },
+    {
+        "id": "q_cable_05",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Giải thích ý nghĩa của 'Hệ số xoắn bện' (Lay-up / Stranding Factor) khi tính định mức BOM ruột dẫn nhiều sợi và so sánh công nghệ bện tròn thường vs bện nén ép chặt (Compacted Round Stranding)?",
+        "key_points": (
+            "• Hệ số xoắn bện (Stranding / Take-up Factor — k):\n"
+            "  - Khi bện xoắn các sợi đồng đơn quanh lõi theo bước xoắn h (Lay Length) và đường kính vòng xoắn D, chiều dài thực tế của mỗi sợi đơn luôn DÀI HƠN chiều dài đoạn cáp thành phẩm:\n"
+            "    k = sqrt(1 + (π × D / h)²), thường dao động từ 1.015 đến 1.035 (tăng 1.5% – 3.5% chiều dài đồng).\n"
+            "  - Nếu lập định mức BOM mà quên nhân hệ số xoắn k, báo cáo cuối tháng sẽ luôn báo 'âm kho đồng' ảo dù xưởng không làm hỏng!\n"
+            "• So sánh Bện tròn thường vs Bện nén ép chặt (Compacted Stranding):\n"
+            "  - Bện nén dùng khuôn ép (Compacting Die) hoặc cặp con lăn ép ngay tại điểm hội tụ để làm phẳng các khe hở giữa các sợi đồng (hệ số điền đầy tăng từ ~75% lên >90%).\n"
+            "  - Lợi ích kinh tế cực lớn: Đường kính ngoài của ruột dẫn giảm 8–10% ở cùng tiết diện dẫn điện → Tiết kiệm trực tiếp 10–15% lượng nhựa cách điện XLPE/PVC và vật liệu độn/vỏ bọc ở các công đoạn sau, đồng thời chống thấm dọc tốt hơn."
+        )
+    },
+    {
+        "id": "q_cable_06",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Trên dây chuyền Đùn bọc cách điện PVC, thiết bị Spark Tester (Thử cao áp trực tuyến) liên tục báo lỗi đánh thủng cách điện (Pinhole / Spark Fault) với tần suất 15 lỗi/10 km dây. Bạn dẫn dắt tổ sản xuất điều tra và khắc phục thế nào?",
+        "key_points": (
+            "• Bản chất Spark Tester:\n"
+            "  - Dùng điện áp cao tần (thường 3 kV – 15 kV tùy độ dày cách điện) phóng qua chổi chuỗi hạt thép tiếp xúc bề mặt dây đang chạy. Nếu có lỗ mọt khí, dị vật kim loại hoặc chỗ nhựa mỏng quá mức, tia lửa điện đánh thủng vào ruột đồng và máy lập tức đếm lỗi/dừng dây.\n"
+            "• 5 nguyên nhân gốc phổ biến cần kiểm tra tại Genba:\n"
+            "  1. Hạt nhựa PVC bị ẩm (chưa sấy đạt độ ẩm chuẩn) → bay hơi nước trong nòng đùn tạo bọt khí (Void/Pinhole).\n"
+            "  2. Nhiệt độ vùng gia nhiệt (Barrel Zone 1–5 / Crosshead) quá cao gây cháy phân hủy PVC (Burning/Scorching tạo hạt đen dẫn điện) hoặc quá thấp làm nhựa chưa dẻo hóa đều.\n"
+            "  3. Tạp chất / bụi kim loại lẫn vào phễu cấp nhựa tái sinh hoặc lưới lọc (Screen Pack) bị rách không giữ được cặn.\n"
+            "  4. Ruột đồng có gai/bavia sợi đứt lòi ra đâm thủng lớp cách điện (hay gặp ở dây nhiều sợi mềm).\n"
+            "  5. Độ lệch tâm (Eccentricity) lớn khiến một bên vỏ quá mỏng.\n"
+            "• Hành động OE: Cắt đúng vị trí lỗi Spark đưa lên kính hiển vi/OGP soi mặt cắt ngang để phân loại lỗi (bọt khí vs hạt cháy vs gai đồng vs mỏng lệch tâm) → lập Pareto 80/20 xử lý đúng nguyên nhân số 1."
+        )
+    },
+    {
+        "id": "q_cable_07",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Thời gian chuyển đổi (Changeover) trên máy đùn bọc cáp khi đổi màu nhựa và đổi tiết diện hiện mất 55 phút và thải ra 25 kg nhựa xả (Purge Scrap) cùng 150m đồng bọc phế. Bạn áp dụng SMED và điều độ thế nào để rút xuống dưới 15 phút?",
+        "key_points": (
+            "• Kết hợp 2 mũi nhọn: Điều độ thông minh (Scheduling) + Kỹ thuật SMED:\n"
+            "  1. Lập lịch theo Chuỗi Màu (Color Sequencing) & Họ Tiết Diện: Sắp xếp lệnh chạy trong ngày đi từ màu Sáng → Tối (Trắng → Vàng → Xanh lá → Đỏ → Xanh dương → Đen) và theo thứ tự tiết diện liền kề → Giảm 60–70% lượng nhựa xả và thời gian vệ sinh trục vít.\n"
+            "  2. Tách External Setup: Chuẩn bị và sấy sẵn hạt nhựa màu mới trong phễu hút di động; lắp và sấy nóng trước bộ Đầu Chày-Cối (Crosshead / Tip & Die) ở tủ sấy bên ngoài đạt 160°C sẵn sàng trước khi máy dừng.\n"
+            "  3. Giảm Internal Setup: Dùng đầu chữ thập tháo lắp nhanh (Quick-change Self-centering Crosshead không cần chỉnh ốc tâm thủ công), dùng Hợp chất xả trục vít (Purging Compound) giúp làm sạch màu cũ nhanh gấp 3 lần nhựa thường.\n"
+            "  4. Giảm phế khởi động (Startup Scrap): Lưu sẵn bộ công thức thông số nhiệt độ/tốc độ vít/tốc độ kéo (Recipe) trên PLC theo từng mã cáp để máy đạt dung sai đường kính chỉ sau 15–20m đầu tiên."
+        )
+    },
+    {
+        "id": "q_cable_08",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Phân Tích Sâu",
+        "question": "Tại sao trong nhà máy cáp điện, việc quản lý phân loại 'Phế liệu đồng trần' (Bare Copper Scrap) tách biệt hoàn toàn với 'Phế liệu đồng dính nhựa' (Insulated Copper Scrap) lại là KPI sống còn về chi phí?",
+        "key_points": (
+            "• Chênh lệch giá trị thu hồi tài chính cực lớn:\n"
+            "  - Đồng trần sạch (từ công đoạn kéo, ủ, bện) có giá trị thu hồi tái chế đạt ~93–96% giá đồng nguyên liệu mới.\n"
+            "  - Đồng đã bọc nhựa PVC/XLPE (từ công đoạn đùn, bọc vỏ, cắt đầu-đuôi) phải tốn thêm chi phí nhân công/máy tuốt băm tách nhựa, hao hụt khối lượng và lẫn tạp chất nên giá trị thu hồi chỉ còn ~75–82% (mất trắng 15–20% giá trị đồng!).\n"
+            "• Chiến lược kiểm soát OE:\n"
+            "  1. Theo dõi riêng 2 chỉ số: Bare Copper Scrap % và Insulated Copper Scrap % theo từng máy, từng ca.\n"
+            "  2. Triển khai Poka-Yoke kiểm tra chất lượng ruột dẫn TRƯỚC khi đưa vào máy đùn (không bao giờ bọc nhựa lên cuộn đồng đã bị lỗi bện, lỗi điện trở hoặc thiếu chiều dài!).\n"
+            "  3. Áp dụng nguyên tắc 'Cân phế tại nguồn': Mỗi máy có thùng rác mã màu riêng (Đỏ = Đồng trần, Vàng = Đồng bọc nhựa, Xanh = Nhựa xả sạch có thể nghiền tái sử dụng lớp độn), cân và nhập ERP cuối mỗi ca để tính BOM Variance chính xác."
+        )
+    },
+    {
+        "id": "q_cable_09",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Bài toán 'Tối ưu cắt chiều dài rulo' (Cut-Length / Cutting Stock Problem): Công đoạn bện tạo ra rulo dài 2,150m nhưng đơn hàng khách chỉ lấy cuộn 500m, khiến mỗi rulo luôn dư 150m cáp lẻ khó bán (Remnant Scrap). Chuyên viên OE giải quyết bài toán này ra sao?",
+        "key_points": (
+            "• Bản chất tổn thất:\n"
+            "  - Mẩu cáp ngắn 80–200m dư sau cắt là 'Tồn kho chết' (Dead Stock) hoặc phải bán phế liệu với mức lỗ 20–30% giá trị đồng.\n"
+            "• 4 giải pháp tối ưu Cut-Length:\n"
+            "  1. Kế hoạch kéo/bện ngược từ đơn hàng (Backward Length Planning): Thay vì bện đầy rulo theo cảm tính, tính chiều dài chuẩn bội số của chiều dài xuất xưởng cộng đúng lượng bù hao hụt công nghệ (ví dụ: 4 × 500m + 15m hao đầu-đuôi đùn = 2,015m thay vì 2,150m).\n"
+            "  2. Dùng mô hình toán học tối ưu tổ hợp cắt (Excel Solver / Python PuLP Cutting Stock) để ghép các đơn lẻ (vd: 300m + 500m + 1,200m = 2,000m) vào chung một mẻ đùn dài.\n"
+            "  3. Kiểm chuẩn đồng hồ đếm mét (Length Counter Calibration) định kỳ trên máy bện & máy đùn: sai số đếm mét 1–2% trên cuộn 2,000m sẽ gây thiếu 20–40m (phải cắt bỏ cả cuộn 500m cuối!).\n"
+            "  4. Thiết lập kho tồn mẩu ngắn (Remnant Database) trên ERP/Excel để bộ phận điều độ ưu tiên lấy mẩu dư cắt cho các đơn nhỏ trước khi phát lệnh chạy mới."
+        )
+    },
+    {
+        "id": "q_cable_10",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Phân biệt 2 công nghệ lưu hóa/khâu mạch cách điện XLPE phổ biến trong nhà máy cáp điện: Dây chuyền CCV (Catenary Continuous Vulcanization) và công nghệ Silane XLPE (Bể nước nóng / Phòng xông hơi Sauna)? Tác động của chúng tới Lead Time và WIP?",
+        "key_points": (
+            "• Công nghệ Silane XLPE (Moisture Cross-linking — phổ biến cho cáp hạ thế 0.6/1kV tại nhiều nhà máy CADIVI):\n"
+            "  - Đùn bọc nhựa PE ghép Silane trên máy đùn thường → Sau đó đưa các rulo lõi vào Bể nước nóng (~80–90°C) hoặc Phòng xông hơi (Sauna) từ 4–12 giờ để xảy ra phản ứng khâu mạch hóa học.\n"
+            "  - Tác động OE: Tạo ra điểm dừng chờ giữa công đoạn Đùn lõi và Ghép lõi (tăng WIP rulo và Lead Time), dễ tắc nghẽn nếu bể xông hơi nhỏ; cần tối ưu lịch xếp mẻ bể Sauna và kiểm soát độ ẩm/nhiệt độ để không phải xông lại.\n"
+            "• Công nghệ CCV (Khâu mạch liên tục bằng Peroxide trong ống áp suất khí Nitơ nhiệt độ cao — dùng cho cáp trung thế/cao thế):\n"
+            "  - Quá trình đùn 3 lớp (bán dẫn trong – cách điện XLPE – bán dẫn ngoài) và lưu hóa diễn ra liên tục trong 1 lượt chạy.\n"
+            "  - Tác động OE: Chi phí khởi động/dừng máy và xả nhựa CỰC ĐẮT → Bắt buộc chạy theo chiến dịch dài (Campaign Run), kiểm soát bảo trì phòng ngừa TPM cực chặt để không dừng máy đột ngột giữa chừng."
+        )
+    },
+    {
+        "id": "q_cable_11",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Các phép thử QA/QC trọng yếu trong phòng thí nghiệm dây cáp điện (theo TCVN 5935 / IEC 60502 / IEC 60228) là gì, và Chuyên viên OE sử dụng dữ liệu từ phòng Lab như thế nào để cải tiến sản xuất?",
+        "key_points": (
+            "• 5 nhóm phép thử bắt buộc trong Lab cáp điện:\n"
+            "  1. Điện trở ruột dẫn 1 chiều quy về 20°C (Cầu Kelvin / Micro-ohmmeter theo IEC 60228) → đánh giá độ tinh khiết đồng, độ ủ và tiết diện thực.\n"
+            "  2. Kích thước hình học cách điện/vỏ bọc (chiều dày trung bình, chiều dày điểm mỏng nhất, độ lệch tâm) đo bằng kính hiển vi/máy chiếu Profile Projector.\n"
+            "  3. Cơ lý tính trước và sau lão hóa nhiệt (Máy kéo đứt Tensile + Tủ sấy Aging Oven): đo lực kéo đứt (MPa) & độ giãn dài (%).\n"
+            "  4. Thử nghiệm điện áp cao (HV Withstand Test ngâm nước, Spark Test, đo phóng điện cục bộ PD đối với cáp trung thế).\n"
+            "  5. Thử nghiệm đặc thù: Thử biến dạng nhiệt (Hot Set Test cho XLPE kiểm tra độ khâu mạch), thử cháy lan (IEC 60332), thử độ đậm đặc khói/khí halogen (cho cáp LSHF/LSZH).\n"
+            "• Cách OE khai thác dữ liệu Lab:\n"
+            "  - Không chỉ dừng ở 'Đạt / Không đạt (Pass/Fail)'! OE lấy số liệu đo liên tục (điện trở thực tế so với trần IEC, chiều dày thực tế so với min IEC) đưa vào Minitab tính Cpk để tối ưu thu hẹp biên độ dư đồng (Copper Give-away) và dư nhựa (Over-thickness)."
+        )
+    },
+    {
+        "id": "q_cable_12",
+        "category": "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+        "type": "Phân Tích Sâu",
+        "question": "Trong nhà máy CADIVI Miền Trung có sự đa dạng lớn từ dây dân dụng (VC, VCm, VCmt) chạy số lượng cực lớn đến cáp lực hạ thế/trung thế tiết diện tới 300 mm² chạy theo dự án. Chiến lược OE áp dụng cho 2 dòng sản phẩm này khác nhau thế nào?",
+        "key_points": (
+            "• Dòng 1 — Dây dân dụng (High-Volume, Low-Mix: VC, VCm, VCmd cuộn 100m):\n"
+            "  - Đặc trưng: Nhu cầu ổn định, sản lượng mét cực lớn, cạnh tranh khốc liệt về giá thành.\n"
+            "  - Trọng tâm OE: Tối đa hóa tốc độ đùn & kéo (OEE Performance), áp dụng hệ thống Kéo/Siêu thị thành phẩm (Make-to-Stock + Kanban), tự động hóa khâu cuộn khoanh/bọc màng co để nâng OLE, và siết từng 0.01 mm nhựa/đồng bằng SPC.\n"
+            "• Dòng 2 — Cáp lực & Cáp công trình tiết diện lớn (High-Mix, Low-Volume: CXV, CVV, DSTA lên đến 300 mm²):\n"
+            "  - Đặc trưng: Đơn hàng dự án đa dạng quy cách/chiều dài rulo, thời gian đổi mã dài, rulo rất nặng (1–5 tấn).\n"
+            "  - Trọng tâm OE: Áp dụng Make-to-Order (MTO), SMED rút ngắn thời gian nạp rulo/đổi khuôn bện-đùn, tối ưu Cut-Length chống thừa mẩu cáp, rút ngắn Lead Time tổng bằng VSM & TOC, và tối ưu điều phối cầu trục/kho đệm rulo WIP."
+        )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 12: OE, SIX SIGMA (DMAIC), TOC, TPM & PFMEA
+    # =========================================================================
+    {
+        "id": "q_oe_01",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Phân biệt sự khác nhau và mối liên kết giữa 4 khái niệm: Operational Excellence (OE), Lean Manufacturing, Six Sigma và Industrial Engineering (IE)?",
+        "key_points": (
+            "• Phân biệt rõ vai trò từng trụ cột:\n"
+            "  1. Industrial Engineering (IE — Kỹ thuật Công nghiệp): Nền tảng kỹ thuật cơ sở: Time & Motion Study, định mức lao động, thiết kế Layout, cân bằng chuyền, Ergonomics, hoạch định năng lực.\n"
+            "  2. Lean Manufacturing (Sản xuất Tinh gọn): Tập trung vào TỐC ĐỘ DÒNG CHẢY và LOẠI BỎ LÃNG PHÍ (8 Wastes, VSM, 5S, SMED, Kanban, Pull) để giảm Lead Time.\n"
+            "  3. Six Sigma: Tập trung vào GIẢM ĐỘ BIẾN THIÊN (Variation) và TRIỆT TIÊU KHUYẾT TẬT (Defects < 3.4 DPMO) bằng tư duy thống kê chặt chẽ (DMAIC, SPC, DOE, Hypothesis Testing).\n"
+            "  4. Operational Excellence (OE — Xuất sắc Vận hành): Là TẦNG HỆ THỐNG TỔNG THỂ bao trùm cả IE + Lean + Six Sigma + Văn hóa quản trị hàng ngày (Daily Management System) + Chiến lược kinh doanh (Hoshin Kanri), nhằm tạo ra năng lực vận hành bền vững, chi phí tối ưu và giao hàng chuẩn xác."
+        )
+    },
+    {
+        "id": "q_oe_02",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Hãy trình bày cụ thể cách bạn triển khai 1 dự án Lean Six Sigma theo chu trình 5 pha DMAIC để giảm tỷ lệ phế phẩm đùn bọc cách điện từ 3.8% xuống dưới 1.0% trong 3 tháng?",
+        "key_points": (
+            "• Lộ trình 5 pha DMAIC chuẩn Green Belt:\n"
+            "  - D (Define — Xác định): Lập Project Charter (Mục tiêu giảm Scrap từ 3.8% → <1.0%, tiết kiệm dự kiến X triệu/năm), vẽ SIPOC và xác định CTQ (Critical to Quality: đường kính ngoài, chiều dày min, 0 lỗi Spark).\n"
+            "  - M (Measure — Đo lường): Kiểm định hệ thống đo (MSA Gage R&R < 10%), thu thập dữ liệu nền 30 ngày (Baseline), phân tầng lỗi bằng biểu đồ Pareto, tính năng lực quy trình hiện tại (Cpk/Sigma Level).\n"
+            "  - A (Analyze — Phân tích): Vẽ biểu đồ Xương cá (Fishbone), làm PFMEA chọn ra top X nguyên nhân tiềm ẩn (nhiệt độ vùng 3, độ ẩm hạt PVC, tốc độ vít, mòn đầu cối) → Dùng kiểm định giả thuyết (t-test, ANOVA, Regression) chứng minh thống kê nguyên nhân nào thực sự tác động (p-value < 0.05).\n"
+            "  - I (Improve — Cải tiến): Chạy thí nghiệm thiết kế (DOE) tìm cửa sổ thông số tối ưu (nhiệt độ, tốc độ, sấy hạt), áp dụng Poka-Yoke/SMED và chạy thử Pilot Line kiểm chứng kết quả bằng 2-Sample t-test Trước–Sau.\n"
+            "  - C (Control — Kiểm soát): Khóa chặt kết quả bằng Control Plan, biểu đồ SPC theo ca, cập nhật SOP/OPL và bàn giao quy trình kiểm soát cho Quản đốc theo dõi liên tục 3 tháng."
+        )
+    },
+    {
+        "id": "q_oe_03",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Trình bày 5 bước tập trung của Lý thuyết Điểm nghẽn (Theory of Constraints - TOC của Eliyahu Goldratt) và cách áp dụng cơ chế Drum-Buffer-Rope (DBR) trong nhà máy nhiều công đoạn?",
+        "key_points": (
+            "• 5 Bước Tập Trung (5 Focusing Steps of TOC):\n"
+            "  1. Identify (Xác định): Tìm đúng điểm nghẽn duy nhất quyết định sản lượng toàn nhà máy (ví dụ: dây chuyền Đùn bọc vỏ số 2 luôn có hàng rulo chờ ùn tắc phía trước).\n"
+            "  2. Exploit (Khai thác tối đa): Bóc sạch mọi lãng phí tại điểm nghẽn mà chưa cần mua máy mới (ăn ca luân phiên không tắt máy, SMED, QC đầu vào kỹ để điểm nghẽn không bao giờ gia công hàng lỗi).\n"
+            "  3. Subordinate (Bắt các khâu khác phục tùng): Điều chỉnh nhịp chạy của các máy Kéo/Bện phía trước khớp với nhịp điểm nghẽn để không chất núi WIP.\n"
+            "  4. Elevate (Nâng cấp năng lực): Nếu khai thác hết vẫn thiếu công suất → mới đầu tư mở thêm ca, nâng cấp tốc độ hoặc mua máy mới.\n"
+            "  5. Repeat (Lặp lại): Khi điểm nghẽn cũ được giải tỏa, điểm nghẽn mới sẽ xuất hiện ở công đoạn khác — quay lại Bước 1, không để sức ỳ làm hỏng hệ thống.\n"
+            "• Cơ chế Drum-Buffer-Rope (Trống – Đệm – Dây kéo): Điểm nghẽn gõ nhịp sản xuất (Drum); đặt kho đệm thời gian an toàn ngay trước điểm nghẽn để nó không bao giờ bị đói hàng (Buffer); và kéo dây tín hiệu (Rope) báo cho công đoạn đầu tiên chỉ nhả nguyên liệu đúng bằng tốc độ điểm nghẽn tiêu thụ."
+        )
+    },
+    {
+        "id": "q_oe_04",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Tính và giải thích 2 chỉ số độ tin cậy thiết bị cốt lõi trong TPM: MTBF (Mean Time Between Failures) và MTTR (Mean Time To Repair)? Làm sao cải thiện cả hai chỉ số này?",
+        "key_points": (
+            "• Định nghĩa & Công thức:\n"
+            "  - MTBF (Thời gian trung bình giữa 2 lần hỏng — đo ĐỘ TIN CẬY): MTBF = Tổng thời gian chạy máy / Số lần hỏng hóc đột xuất. (MTBF càng CAO càng tốt).\n"
+            "  - MTTR (Thời gian trung bình để sửa chữa — đo TỐC ĐỘ PHỤC HỒI): MTTR = Tổng thời gian dừng sửa chữa / Số lần hỏng hóc đột xuất. (MTTR càng THẤP càng tốt).\n"
+            "  - Ví dụ: Trong tháng máy chạy 400 giờ và hỏng 8 lần với tổng thời gian sửa 12 giờ → MTBF = 50 giờ/lần; MTTR = 1.5 giờ/lần.\n"
+            "• Giải pháp nâng cao:\n"
+            "  - Tăng MTBF: Triển khai Bảo trì tự quản (Jishu Hozen), bảo trì phòng ngừa PM đúng hạn, giám sát rung/nhiệt độ bạc đạn động cơ bằng cảm biến bảo trì dự đoán (PdM), triệt tiêu nguyên nhân gốc lỗi lặp lại.\n"
+            "  - Giảm MTTR: Lưu sẵn phụ tùng chiến lược (Critical Spare Parts: vòng bi, điện trở gia nhiệt, cảm biến nhiệt thermocouple, dây curoa), chuẩn hóa tài liệu xử lý sự cố nhanh (Troubleshooting Guide) và đào tạo thợ bảo trì."
+        )
+    },
+    {
+        "id": "q_oe_05",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Phân Tích Sâu",
+        "question": "PFMEA (Process Failure Mode and Effects Analysis) là gì? Cách tính chỉ số rủi ro RPN và tại sao chuẩn AIAG-VDA mới không chỉ nhìn vào tổng điểm RPN đơn thuần?",
+        "key_points": (
+            "• Bản chất PFMEA:\n"
+            "  - Công cụ phân tích rủi ro phòng ngừa theo từng bước quy trình để phát hiện lỗi tiềm ẩn TRƯỚC KHI sản xuất hàng loạt.\n"
+            "• Công thức RPN truyền thống:\n"
+            "  - RPN = Severity (S — Mức độ nghiêm trọng 1–10) × Occurrence (O — Tần suất xảy ra 1–10) × Detection (D — Khả năng phát hiện 1–10).\n"
+            "  - Ví dụ trên máy đùn cáp: Lỗi 'Cách điện bị lệch tâm mỏng hơn chuẩn TCVN' → S = 9 (nguy cơ chập cháy điện mất an toàn), O = 4, D = 5 (chỉ cắt mẫu kiểm tra đầu/cuộn cuộn) → RPN = 180 (Cao, phải hành động ngay bằng cách gắn thiết bị đo độ lệch tâm trực tuyến kéo D xuống 2!).\n"
+            "• Cảnh báo theo chuẩn AIAG-VDA mới (Action Priority - AP):\n"
+            "  - Không được chỉ dựa vào RPN! Ví dụ Lỗi A có S=10, O=2, D=2 (RPN=40 — nguy cơ cháy nổ chết người!) nguy hiểm hơn rất nhiều so với Lỗi B có S=4, O=5, D=5 (RPN=100 — chỉ trầy nhẹ vỏ ngoài). Do đó PHẢI ưu tiên hành động ngay cho mọi mục có Severity ≥ 9 bất kể RPN thấp."
+        )
+    },
+    {
+        "id": "q_oe_06",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Sau 1 dự án Kaizen trên máy đùn, dữ liệu 15 ngày trước cải tiến có tỷ lệ phế trung bình là 2.4%, 15 ngày sau cải tiến là 2.1%. Làm sao bạn chứng minh trước Ban Giám đốc rằng mức giảm 0.3% này là kết quả thật của cải tiến chứ không phải dao động ngẫu nhiên?",
+        "key_points": (
+            "• Sai lầm của người làm cải tiến nghiệp dư:\n"
+            "  - Chỉ trừ 2 con số trung bình (2.4% - 2.1% = 0.3%) rồi vội kết luận 'thành công', trong khi độ lệch chuẩn dao động từng ngày vốn đã là ±0.6%!\n"
+            "• Phương pháp kiểm chứng khoa học (Statistical Hypothesis Testing):\n"
+            "  1. Đặt giả thuyết: H0 (Không có sự khác biệt thực sự giữa trước và sau) vs H1 (Phế phẩm sau cải tiến thực sự giảm có ý nghĩa).\n"
+            "  2. Kiểm tra tính chuẩn của dữ liệu (Normality Test — Anderson-Darling) trên Minitab/Python (`scipy.stats`).\n"
+            "  3. Nếu dữ liệu chuẩn: Chạy kiểm định **2-Sample t-test** (hoặc Mann-Whitney U test nếu phi chuẩn; 2-Proportions Test nếu dùng tỷ lệ lỗi đếm).\n"
+            "  4. Đọc chỉ số **p-value** (với mức ý nghĩa α = 0.05):\n"
+            "     - Nếu p-value < 0.05 → Bác bỏ H0, khẳng định chắc chắn ≥ 95% cải tiến có hiệu quả thực sự!\n"
+            "     - Nếu p-value ≥ 0.05 → Chưa đủ bằng chứng thống kê, cần tiếp tục thu thập thêm mẫu hoặc tối ưu sâu hơn trước khi báo cáo ROI."
+        )
+    },
+    {
+        "id": "q_oe_07",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Khi đề xuất Ban Giám đốc đầu tư một thiết bị cải tiến tự động (ví dụ: hệ thống đo đường kính/độ lệch tâm Laser hoặc máy đo tự động trị giá 1.2 tỷ VNĐ), bạn trình bày bài toán tài chính ROI và Payback Period như thế nào để thuyết phục được phòng Kế toán & Giám đốc?",
+        "key_points": (
+            "• Cấu trúc 1 bản thuyết minh CAPEX chuẩn OE (không bao giờ chỉ nêu con số cảm tính):\n"
+            "  1. Tổng vốn đầu tư đầy đủ (Total CAPEX): Giá máy + thuế/lắp đặt + đồ gá/phần mềm + chi phí đào tạo + chi phí bảo trì hàng năm (OPEX).\n"
+            "  2. Bóc tách Lợi ích ròng (Hard Savings vs Soft Savings):\n"
+            "     - Hard Savings (Tiền tươi thật — kế toán công nhận): Giảm vật tư nhựa/đồng phế phẩm (kg × đơn giá), giảm giờ tăng ca thực tế, giảm số nhân công luân chuyển sang chuyền mới thiếu người.\n"
+            "     - Soft Savings (Lợi ích gián tiếp — ghi chú riêng, KHÔNG gộp chung để thổi phồng Payback): Giảm thời gian chờ báo cáo, tăng uy tín khách hàng.\n"
+            "  3. Công thức minh bạch:\n"
+            "     - Thời gian hoàn vốn đơn giản (Payback Period) = Tổng vốn đầu tư / Tiết kiệm ròng hằng tháng (hoặc hằng năm).\n"
+            "     - ROI 1 năm (%) = (Lợi ích ròng năm 1 - Chi phí vận hành) / Tổng vốn đầu tư × 100%.\n"
+            "  4. Phân tích độ nhạy 3 kịch bản (Thận trọng / Cơ sở / Tích cực) để chứng minh ngay cả ở kịch bản thận trọng dự án vẫn hoàn vốn dưới 18–24 tháng."
+        )
+    },
+    {
+        "id": "q_oe_08",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Phân biệt khi nào nên dùng chu trình PDCA, Báo cáo A3 (Toyota A3 Report) và Quy trình 8D (Eight Disciplines) trong vận hành nhà máy?",
+        "key_points": (
+            "• Phân biệt đúng công cụ theo bối cảnh:\n"
+            "  - PDCA (Plan–Do–Check–Act): Vòng tròn tư duy cải tiến nền tảng cho mọi hoạt động hàng ngày và Kaizen quy mô nhỏ/vừa, lặp liên tục không dừng.\n"
+            "  - Báo cáo A3 (Toyota A3 Thinking): Tóm gọn toàn bộ một dự án cải tiến/giải quyết vấn đề nội bộ trên ĐÚNG 1 TỜ GIẤY A3 (Bối cảnh → Hiện trạng → Mục tiêu → Phân tích gốc → Kế hoạch đối sách → Theo dõi kết quả). Cực mạnh để trình bày nhanh cho Ban Giám đốc và huấn luyện tư duy logic.\n"
+            "  - Báo cáo 8D: Tiêu chuẩn bắt buộc cho SỰ CỐ CHẤT LƯỢNG NGHIÊM TRỌNG / KHIẾU NẠI KHÁCH HÀNG (nhấn mạnh bước D3 Containment cô lập lô lỗi ngay trong 24h, D5/D6 Corrective Action và D7 Prevent Recurrence nhân rộng sang các dây chuyền tương tự)."
+        )
+    },
+    {
+        "id": "q_oe_09",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Phân Tích Sâu",
+        "question": "Trong sản xuất liên tục như kéo sợi và đùn bọc cáp, luôn có sự đánh đổi (Trade-off) giữa 'Tăng tốc độ chạy máy' (Performance) và 'Tỷ lệ phế phẩm / Đứt sợi' (Quality & Availability). Làm sao tìm điểm vận hành tối ưu nhất?",
+        "key_points": (
+            "• Tư duy tối ưu toàn cục (Total Effective Output & Unit Cost):\n"
+            "  - Tăng tốc độ máy đùn từ 300 lên 400 m/phút nhưng làm lỗi Spark tăng từ 0.5% lên 5% và đứt dây thêm 30 phút/ca → Thực tế sản lượng ĐẠT CHUẨN (Good Meters/Hour) lại GIẢM và chi phí phế liệu đồng-nhựa tăng vọt!\n"
+            "• Cách tìm điểm ngọt vận hành (Optimal Operating Window):\n"
+            "  1. Thiết kế thí nghiệm thực tế (DOE — Design of Experiments) thử nghiệm theo các bậc tốc độ (vd: 300 – 330 – 360 – 390 m/phút) kết hợp điều chỉnh đồng bộ nhiệt độ vùng đùn & nhiệt độ nước làm mát.\n"
+            "  2. Đo đồng thời 3 hàm mục tiêu tại mỗi bậc: (a) Sản lượng mét đạt chuẩn/giờ, (b) Tỷ lệ phế phẩm & Cpk đường kính, (c) Điện năng tiêu thụ kWh/km.\n"
+            "  3. Vẽ đường cong chi phí đơn vị (Cost per km) để chọn dải tốc độ tối ưu nhất về mặt kinh tế, sau đó khóa thành thông số chuẩn (Standard Parameter Sheet) trên PLC."
+        )
+    },
+    {
+        "id": "q_oe_10",
+        "category": "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Hệ thống Quản trị Hàng ngày Đa tầng (Tiered Daily Management System — Tier 1, Tier 2, Tier 3) vận hành thế nào để các bảng KPI OEE/OLE tại nhà máy thực sự phát huy tác dụng thay vì chỉ treo cho đẹp?",
+        "key_points": (
+            "• Cấu trúc họp nhanh đứng (Daily Tier Meetings) chuẩn OE:\n"
+            "  - Tier 1 (Cấp Tổ/Chuyền — 5–10 phút đầu ca, do Tổ trưởng chủ trì): Xem kết quả SQDC (Safety – Quality – Delivery – Cost) của ca trước, điểm danh nhân sự, phân công xử lý các vấn đề nhỏ trong tầm tay, báo cáo vấn đề vượt thẩm quyền lên Tier 2.\n"
+            "  - Tier 2 (Cấp Phân xưởng — 15 phút buổi sáng, do Quản đốc + OE + Bảo trì + QC + Kế hoạch): Giải quyết các điểm nghẽn chuyển từ Tier 1 (máy hỏng lặp lại, thiếu vật tư, OEE dưới ngưỡng mục tiêu), phân rõ 'Ai làm – Việc gì – Hạn chót (Who–What–When)'.\n"
+            "  - Tier 3 (Cấp Nhà máy — 15 phút hàng ngày/tuần, Giám đốc nhà máy + các Trưởng phòng): Quyết định nguồn lực liên phòng ban, tiến độ các dự án Kaizen trọng điểm và đơn hàng chiến lược.\n"
+            "• Nguyên tắc sống còn: Bảng KPI phải có ngưỡng Xanh/Đỏ trực quan; bất kỳ ngày nào có chỉ số Đỏ BẮT BUỘC phải có thẻ hành động khắc phục đi kèm, không chỉ đọc số cho xong."
+        )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 13: HOẠCH ĐỊNH NĂNG LỰC, ĐIỀU ĐỘ & CHI PHÍ SẢN XUẤT
+    # =========================================================================
+    {
+        "id": "q_cap_01",
+        "category": "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Ban Giám đốc hỏi: 'Tháng tới phòng Kinh doanh nhận thêm đơn hàng 120 tấn cáp lực CXV, nhà máy hiện tại có đủ năng lực đáp ứng không?'. Là Chuyên viên OE, bạn tính toán Hoạch định Năng lực Thô (RCCP) theo những bước nào?",
+        "key_points": (
+            "• 5 bước tính Năng lực Sản xuất (Rough-Cut Capacity Planning — RCCP):\n"
+            "  1. Quy đổi sản lượng thương mại sang Nhu cầu Giờ máy (Required Machine Hours) ở TỪNG công đoạn (Kéo thô RBD → Kéo trung → Bện ruột → Đùn cách điện → Bể xông XLPE → Ghép lõi → Đùn vỏ) dựa trên tốc độ chuẩn (m/phút hoặc kg/giờ) và số lượng lần đổi mã dự kiến.\n"
+            "  2. Tính Năng lực Khả dụng Thực tế (Demonstrated Capacity) của từng nhóm máy = Số máy × Số ca × Giờ kế hoạch/ca × Số ngày làm việc × OEE thực tế lịch sử (TUYỆT ĐỐI không nhân với 100% công suất lý thuyết!).\n"
+            "  3. Tính Tỷ lệ Tải (Load % = Giờ máy yêu cầu / Giờ máy khả dụng) cho từng công đoạn.\n"
+            "  4. Nhận diện công đoạn quá tải (> 85–90% tải → rủi ro trễ giao hàng) và công đoạn dư tải.\n"
+            "  5. Đề xuất phương án cân bằng cụ thể cho Giám đốc: tăng ca cục bộ ở đúng công đoạn nút thắt (thay vì tăng ca cả xưởng), gộp lệnh giảm thời gian đổi mã SMED, hoặc gia công ngoài/điều chuyển giữa các nhà máy trong hệ thống CADIVI."
+        )
+    },
+    {
+        "id": "q_cap_02",
+        "category": "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Lập lịch theo Chiến dịch (Campaign Scheduling) và Công nghệ Nhóm (Group Technology) giúp tăng năng lực sản xuất thực tế cho nhà máy cáp điện thêm 15–20% mà không tốn tiền đầu tư máy móc như thế nào?",
+        "key_points": (
+            "• Thực trạng lãng phí điều độ phổ biến:\n"
+            "  - Điều độ phát lệnh theo kiểu 'ai giục trước chạy trước' → Máy đùn sáng chạy dây 1.5 Đen, trưa đổi sang 2.5 Trắng, chiều lại đổi sang 1.5 Đỏ → Mỗi ngày mất 2–3 giờ chỉ để tháo khuôn và xả nhựa purging!\n"
+            "• Nguyên lý Campaign Scheduling & Group Technology:\n"
+            "  1. Nhóm các mã hàng có chung vật liệu nhựa (PVC riêng, XLPE riêng, LSZH riêng), chung đường kính trục vít/bộ khuôn và sắp xếp theo chuỗi màu Sáng → Tối.\n"
+            "  2. Cố định 'Bánh xe sản xuất' (Product Wheel) theo chu kỳ tuần (vd: Thứ 2–3 chạy nhóm dây dân dụng tiết diện nhỏ; Thứ 4–5 chạy nhóm tiết diện trung; Thứ 6 chạy nhóm đặc biệt/cáp lực).\n"
+            "  3. Kết quả: Thời gian dừng đổi mã giảm 50%, lượng nhựa purge giảm 60%, giải phóng ngay 15–20% thời gian chạy máy thực tế để nhận thêm đơn hàng."
+        )
+    },
+    {
+        "id": "q_cap_03",
+        "category": "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Cấu trúc giá thành sản xuất (Manufacturing Cost Breakdown) của một nhà máy dây cáp điện gồm những thành phần nào? Chuyên viên OE có thể tác động mạnh nhất vào những khoản mục chi phí nào?",
+        "key_points": (
+            "• 3 nhóm cấu thành Giá thành Sản xuất (COGS):\n"
+            "  1. Nguyên vật liệu trực tiếp (Direct Material — ~80–88%): Đồng/Nhôm rod (60–75%), hạt nhựa PVC/XLPE/LSZH (15–25%), băng thép/băng quấn/rulo bao bì.\n"
+            "  2. Nhân công trực tiếp (Direct Labor — ~4–7%): Lương công nhân đứng máy kéo, bện, đùn, đóng cuộn, tăng ca.\n"
+            "  3. Chi phí sản xuất chung (Manufacturing Overhead — ~6–12%): Điện năng vận hành máy & lò ủ/đùn (rất lớn!), khấu hao máy móc, vật tư tiêu hao (khuôn kéo PCD, dầu nhũ tương, lưới lọc), bảo trì.\n"
+            "• Thứ tự đòn bẩy giảm chi phí hiệu quả nhất của OE:\n"
+            "  - Đòn bẩy #1 (Tác động lớn nhất): Giảm Copper Give-away, giảm nhựa Over-thickness, giảm tỷ lệ phế đồng dính nhựa và phế startup/cut-length.\n"
+            "  - Đòn bẩy #2: Giảm chi phí điện năng (kWh/tấn đồng) qua tối ưu chạy đầy tải, giảm thời gian máy đùn bật gia nhiệt chờ không tải (Idle Heating), tối ưu hệ thống khí nén/Chiller.\n"
+            "  - Đòn bẩy #3: Tăng OEE (giảm khấu hao phân bổ trên mỗi km cáp) & tăng OLE qua Man-Machine Chart (1 người đứng nhiều máy)."
+        )
+    },
+    {
+        "id": "q_cap_04",
+        "category": "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Làm thế nào để tối ưu mô hình '1 công nhân vận hành nhiều máy' (Multi-Machine Tending) ở khu vực máy kéo sợi hoặc máy bện bằng Biểu đồ Người–Máy (Man-Machine Chart)?",
+        "key_points": (
+            "• Phương pháp lập Biểu đồ Người–Máy (Man-Machine / Multiple Activity Chart):\n"
+            "  1. Đo tách bạch 2 thành phần thời gian cho 1 chu kỳ chạy của 1 máy (vd: máy bện Buncher):\n"
+            "     - Thời gian thao tác công nhân bắt buộc (a — nạp rulo, hàn nối, bấm chạy): 8 phút.\n"
+            "     - Thời gian công nhân di chuyển & kiểm tra giữa các máy (w): 2 phút.\n"
+            "     - Thời gian máy tự chạy độc lập không cần người đứng cạnh (T — máy chạy hết 1 rulo): 32 phút.\n"
+            "  2. Tính số máy tối ưu 1 người có thể đứng (N):\n"
+            "     - N = (a + T) / (a + w) = (8 + 32) / (8 + 2) = 40 / 10 = 4 máy.\n"
+            "  3. Đánh giá giao thoa máy (Machine Interference — xác suất 2 máy dừng cùng lúc): Nếu đứng 4 máy làm thời gian chờ máy tăng cao ở công đoạn điểm nghẽn, chốt phương án tối ưu là **1 công nhân đứng 3 máy** (công nhân bận 75%, có 25% thời gian đệm xử lý sự cố đứt sợi & kiểm tra chất lượng, không để máy phải chờ người!)."
+        )
+    },
+    {
+        "id": "q_cap_05",
+        "category": "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Khu vực sàn giữa công đoạn Kéo đồng, Bện ruột và Đùn bọc luôn chất đầy hàng trăm rulo bán thành phẩm (WIP) chiếm kín lối đi, nhưng máy đùn vẫn thường xuyên phải dừng chờ 'không có đúng mã rulo cần chạy'. Bạn xử lý nghịch lý này thế nào?",
+        "key_points": (
+            "• Chẩn đoán gốc rễ nghịch lý 'Thừa WIP nhưng vẫn đói hàng':\n"
+            "  - Công đoạn Kéo và Bện đang chạy theo hệ thống ĐẨY (Push) — thấy mã nào dễ chạy/lô to thì chạy lấy sản lượng tấn để đạt KPI thưởng ca, tạo ra hàng chục rulo chưa cần dùng ngay trong khi các mã rulo mà máy Đùn sắp cần lại chưa bện kịp.\n"
+            "  - Ngoài ra, quản lý vị trí rulo kém (không đánh mã địa chỉ/FIFO) làm xe nâng mất 20 phút đi tìm rulo.\n"
+            "• Giải pháp 3 bước của OE:\n"
+            "  1. Thiết lập Siêu thị Rulo WIP có giới hạn sức chứa vật lý (CONWIP / Kanban Board) kẻ vạch rõ ràng theo nhóm tiết diện — đầy vạch thì máy trước DỪNG, không cho bện thừa.\n"
+            "  2. Chuyển KPI xưởng Kéo/Bện từ 'Tổng tấn sản lượng' sang 'Tỷ lệ hoàn thành đúng lịch kéo của máy Đùn (Schedule Adherence %)'.\n"
+            "  3. Gắn thẻ Barcode/QR cố định trên mỗi rulo thép để quét nhập vị trí (Location Tracking), đảm bảo 100% FIFO và tìm rulo dưới 2 phút."
+        )
+    },
+    {
+        "id": "q_cap_06",
+        "category": "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Hóa đơn tiền điện nhà máy tăng 14% trong quý vừa qua dù sản lượng tấn đồng chỉ tăng 5%. Là Chuyên viên OE, bạn phân tích và đề xuất giải pháp tiết kiệm năng lượng (kWh/tấn) như thế nào?",
+        "key_points": (
+            "• Chỉ số đo lường chuẩn: Cường độ năng lượng **SEC (Specific Energy Consumption = kWh / tấn sản phẩm)** theo từng phân xưởng.\n"
+            "• 5 'hố đen' lãng phí điện đặc thù nhà máy cáp điện:\n"
+            "  1. Máy đùn bật điện trở gia nhiệt nòng/đầu đùn ở 170–200°C chờ đợi hàng giờ trong lúc chờ rulo hoặc đổi mã (Idle Heating Loss) — tốn điện cực lớn!\n"
+            "  2. Lò ủ chuông và bể xông hơi XLPE chạy non tải (mẻ chỉ xếp 50% sức chứa rulo) hoặc gioăng cửa hở thất thoát nhiệt.\n"
+            "  3. Rò rỉ khí nén ở các van khớp nối (khí nén là nguồn năng lượng đắt nhất nhà máy; chỉ 1 lỗ rò 3mm tốn hàng trăm triệu tiền điện/năm).\n"
+            "  4. Chạy các máy công suất lớn (máy kéo thô RBD, máy đùn lớn) vào giờ CAO ĐIỂM điện lực (giá điện gấp 2.5–3 lần giờ thấp điểm) cho các lệnh không gấp.\n"
+            "• Hành động OE: Gắn đồng hồ điện phụ (Sub-meter) cho cụm máy lớn, lập lịch chuyển các mẻ ủ/kéo nặng sang khung giờ thấp điểm ca đêm, kiểm toán rò rỉ khí nén bằng siêu âm và bọc cách nhiệt nòng máy đùn (Insulation Jackets — giảm 15–25% điện gia nhiệt)."
+        )
+    },
+    {
+        "id": "q_cap_07",
+        "category": "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+        "type": "Phân Tích Sâu",
+        "question": "Phòng Kinh doanh liên tục chen 'Đơn hàng gấp' (Rush Order) phá vỡ lịch sản xuất máy đùn giữa chừng, khiến thời gian đổi mã và phế phẩm xả nhựa tăng gấp đôi. Bạn điều phối xử lý xung đột này giữa Kinh doanh và Sản xuất ra sao?",
+        "key_points": (
+            "• Tư duy hệ thống — không nói 'Không' cứng nhắc mà dùng DỮ LIỆU CHI PHÍ để ra quyết định:\n"
+            "  1. Định lượng rõ 'Chi phí phá vỡ lịch' (Cost of Schedule Disruption): Mỗi lần cắt ngang máy đùn mất X phút dừng máy + Y kg nhựa purge + Z đồng công suất bị mất → minh bạch con số này với Kinh doanh và Ban Giám đốc.\n"
+            "  2. Phân loại sản phẩm theo mô hình ABC-XYZ (Runner – Repeater – Stranger): Các mã dây bán chạy (Runners) duy trì kho đệm an toàn (MTS) để xuất giao ngay không bao giờ phải phá lịch máy.\n"
+            "  3. Thiết lập 'Lịch đóng băng' (Frozen Schedule Window — ví dụ đóng băng 24–48 giờ tới) cho các dây chuyền nút thắt, đồng thời dành sẵn 1 khe thời gian dự phòng (Reserved Rush Slot — khoảng 10% công suất) hoặc 1 dây chuyền linh hoạt SMED chuyên xử lý đơn lẻ gấp."
+        )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 14: PHỎNG VẤN HÀNH VI (STAR) & PHẢN BIỆN CV OE
+    # =========================================================================
+    {
+        "id": "q_star_01",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Hãy giới thiệu bản thân trong 2 phút sao cho đánh trúng trọng tâm vị trí Chuyên viên Tối ưu Quy trình (OE) tại Nhà máy CADIVI Miền Trung?",
+        "key_points": (
+            "• Công thức 3 phần (Hiện tại → Thành tích định lượng → Liên kết CADIVI):\n"
+            "  1. Định vị (25s): 'Em là kỹ sư Cơ khí, hiện là Nhóm trưởng Phòng Kiểm tra tại Mabuchi Motor Đà Nẵng, và trước đó có 2 năm làm Quản lý & Cải tiến Sản xuất tại Fujikura Automotive (ngành dây dẫn ô tô). Điểm giao thoa mạnh nhất của em là bám sát hiện trường xưởng, đo lường bằng Time Study/dữ liệu thực và tự xây công cụ tự động hóa báo cáo.'\n"
+            "  2. Thành tích định lượng (60s): Nêu 3 kết quả thật đo được:\n"
+            "     - Thực hiện Time Study & cải tiến phương pháp đo Canon INEX giảm 50% thời gian đo (60 → 30 giây/hạng mục), cải tiến đồ gá từ 1 lên 16 mẫu/lượt gá.\n"
+            "     - Tự phát triển công cụ Python/VBA/Excel rút thời gian tổng hợp báo cáo khách hàng từ 3–7 ngày xuống 2 giờ/tháng và nhập dữ liệu máy OGP từ 120 phút xuống 15 phút/ngày (giảm 87.5%).\n"
+            "     - Tại Fujikura, triển khai quét mã vạch công đoạn RE7 thay sổ tay để truy xuất lỗi, năng suất theo công đoạn và người thao tác.\n"
+            "  3. Lý do chọn CADIVI OE (35s): 'Em muốn tập trung toàn thời gian vào bài toán OE tại một nhà máy sản xuất quy mô lớn như CADIVI Miền Trung — nơi em có thể kết hợp nền tảng cơ khí, kinh nghiệm môi trường sản xuất Nhật Bản và khả năng phân tích dữ liệu để tối ưu OEE, OLE, SMED và hao phí BOM đồng/nhựa.'"
+        )
+    },
+    {
+        "id": "q_star_02",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi xoáy CV: 'Bạn đang làm Nhóm trưởng Phòng Kiểm tra (QC) tại Mabuchi Motor, chưa từng trực tiếp vận hành nhà máy dây cáp điện. Điều gì đảm bảo bạn sẽ làm tốt vị trí Chuyên viên Tối ưu Quy trình (OE) tại CADIVI?'",
+        "key_points": (
+            "• Cách hóa giải điểm nghi ngại thành lợi thế cạnh tranh:\n"
+            "  1. Khẳng định điểm chung cốt lõi: 'OE không phải là công việc đứng máy thay thợ vận hành, mà là năng lực phương pháp luận — đo thời gian (Time Study), phân tích dữ liệu (OEE/OLE/SPC/BOM), nhận diện lãng phí, cải tiến đồ gá/thao tác và chuẩn hóa quy trình. Những kỹ năng này em đã trực tiếp làm và ra số liệu thực tế nhiều năm.'\n"
+            "  2. Liên kết kinh nghiệm ngành dây dẫn & đo kiểm: 'Trước Mabuchi, em từng làm Cải tiến Sản xuất 2 năm tại Fujikura Automotive chuyên về dây dẫn điện, rất quen với việc thống kê sản lượng, tỷ lệ lỗi theo công đoạn/mã hàng và số hóa dữ liệu xưởng bằng barcode. Ngoài ra, kinh nghiệm đo kiểm chính xác (OGP, Canon INEX, Keyence) giúp em đọc hiểu nhanh dữ liệu phòng Lab cáp điện (độ dày cách điện, lệch tâm, điện trở) để tối ưu dung sai nhựa/đồng.'\n"
+            "  3. Cam kết học nhanh công nghệ cáp: 'Em đã chủ động tìm hiểu chuỗi công nghệ Kéo–Ủ–Bện–Đùn PVC/XLPE–Spark Test của CADIVI và cam kết trong 2 tuần đầu bám sát hiện trường Genba để nắm vững đặc thù từng dây chuyền.'"
+        )
+    },
+    {
+        "id": "q_star_03",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi kiểm tra độ trung thực số liệu CV: 'Trong CV bạn ghi cải tiến bệ đo từ 1 lên 16 mẫu/lượt gá và rút thời gian đo Canon INEX từ 60 xuống 30 giây. Vậy có phải năng suất tăng 16 lần hoặc giảm 50% số người không?'",
+        "key_points": (
+            "• Điểm cộng CỰC LỚN khi trả lời chính xác, khiêm tốn và đúng chuẩn tư duy kỹ sư OE:\n"
+            "  - Trả lời dứt khoát: 'KHÔNG ạ! Em luôn tách bạch rất rõ hai con số để không báo cáo ảo:'\n"
+            "  1. 'Tăng từ 1 lên 16 mẫu/lượt gá là TĂNG SỨC CHỨA MỖI LẦN GÁ (Batch Fixture Capacity), giúp cắt giảm thao tác gá đặt lặp đi lặp lại, thời gian chạy về gốc và thời gian chờ người thao tác — KHÔNG suy diễn thành tăng năng suất 16 lần vì máy vẫn cần thời gian quét đo từng mẫu.'\n"
+            "  2. 'Rút từ 60 xuống 30 giây/hạng mục là giảm 50% thời gian đo trên hạng mục đó; còn tổng số giờ công hay số người tiết kiệm thực tế phải tính theo tổng khối lượng đo, thời gian chuẩn bị mẫu, báo cáo và các hạng mục đo khác.'\n"
+            "  → Câu trả lời này chứng minh tư duy số liệu sắc bén, trung thực tuyệt đối — phẩm chất quan trọng nhất của người làm OE!"
+        )
+    },
+    {
+        "id": "q_star_04",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Hãy chia sẻ cách bạn đã dùng Python, VBA và Excel/Access để tự động hóa dữ liệu sản xuất/đo kiểm, và bạn thấy kỹ năng này sẽ giải quyết bài toán cụ thể nào ngay tại CADIVI Miền Trung?",
+        "key_points": (
+            "• Trả lời theo mô hình STAR:\n"
+            "  - Situation/Task: Việc tổng hợp dữ liệu từ máy đo OGP mất 120 phút/ngày và tổng hợp báo cáo gửi khách hàng định kỳ mất 3–7 ngày/tháng do thao tác copy-paste thủ công dễ sai sót.\n"
+            "  - Action: Tự viết tool bằng Python/VBA chuẩn hóa cấu trúc file xuất thô, tự động kiểm tra bất thường dữ liệu, tính chỉ số và xuất báo cáo chuẩn.\n"
+            "  - Result: Giảm nhập liệu OGP từ 120 xuống 15 phút/ngày (-87.5%), báo cáo tháng xuống còn 2 giờ, sai số nhập tay về 0.\n"
+            "• Ứng dụng ngay vào JD CADIVI (35C8613F):\n"
+            "  - Gom tự động file báo cáo ca từ nhiều tổ Kéo/Bện/Đùn để tính tức thì OEE (theo mét/phút), OLE, Pareto nguyên nhân dừng máy và chênh lệch BOM vật tư đồng/nhựa mỗi sáng thay vì chờ cuối tháng mới biết lỗ ở đâu."
+        )
+    },
+    {
+        "id": "q_star_05",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Tình huống xung đột hiện trường: Bạn là người mới vào CADIVI, khi bạn đề xuất thay đổi quy trình đổi mã máy đùn (SMED), một Quản đốc phân xưởng 20 năm kinh nghiệm gạt phắt đi: 'Cậu mới vào biết gì về máy đùn cáp mà đòi chỉ tôi? Xưa giờ chạy vậy vẫn ra hàng!'. Bạn ứng xử thế nào?",
+        "key_points": (
+            "• Nghệ thuật Quản trị Thay đổi (Change Management) & Tôn trọng Genba:\n"
+            "  1. Tuyệt đối KHÔNG tranh cãi lý thuyết hay dùng quyền Ban Giám đốc ép xuống.\n"
+            "  2. Hạ cái tôi, công nhận chuyên môn thực chiến của anh Quản đốc: 'Anh có 20 năm kinh nghiệm chạy máy đùn, chắc chắn anh hiểu máy hơn em gấp nhiều lần. Em không xuống đây để chỉ lại cách chạy máy, mà em xuống để đo xem đoạn nào anh em thợ đang vất vả nhất để em hỗ trợ gỡ khó.'\n"
+            "  3. Bắt đầu từ 'Nỗi đau của chính họ' (Quick Win): Hỏi xem tổ đang bực nhất chuyện gì (ví dụ: mỗi lần đổi khuôn phải đi tìm cờ lê, nâng khuôn nặng mỏi lưng, hay chờ kho cấp nhựa lâu) → làm cải tiến giúp họ NHẸ VIỆC hơn trước.\n"
+            "  4. Dùng bằng chứng thực tế trên 1 máy mẫu (Pilot Line) cùng anh Quản đốc đứng tên đồng tác giả dự án. Khi thấy kết quả giảm mệt mỏi và tăng thưởng năng suất cho tổ, anh ấy sẽ trở thành đồng minh mạnh nhất."
+        )
+    },
+    {
+        "id": "q_star_06",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Nếu phát hiện số liệu ghi chép dừng máy hoặc sản lượng trong sổ ca của phân xưởng bị 'làm đẹp' (ví dụ: giấu thời gian hỏng máy vào mục 'chờ kế hoạch' để báo cáo OEE cao hơn thực tế), bạn xử lý thế nào?",
+        "key_points": (
+            "• Nguyên tắc vàng của OE: 'Dữ liệu sai dẫn tới quyết định sai' — nhưng phải xử lý khéo léo để không gây thù địch:\n"
+            "  1. Xác minh chéo khách quan trước khi kết luận: Đối chiếu đồng hồ đếm mét trên máy/PLC, sản lượng nhập kho thực tế, phiếu cân phế liệu và tiêu thụ điện/vật tư.\n"
+            "  2. Tìm hiểu động cơ đằng sau việc làm đẹp số liệu: Thường do KPI phạt nặng khi OEE thấp nên tổ trưởng sợ bị trừ thưởng mới che giấu lỗi!\n"
+            "  3. Báo cáo trung thực & Đề xuất giải pháp hệ thống: Làm việc riêng với Quản đốc trước trên tinh thần 'tìm tổn thất để gỡ khó, không tìm lỗi để phạt'; thống nhất lại bảng định nghĩa mã dừng máy (Downtime Reason Code) rõ ràng, và đề xuất dần chuyển sang ghi nhận tự động qua cảm biến/barcode/MES để dữ liệu minh bạch khách quan."
+        )
+    },
+    {
+        "id": "q_star_07",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Kể về một dự án cải tiến bạn từng đề xuất nhưng thất bại hoặc gặp phản kháng mạnh. Bạn đã rút ra bài học gì?",
+        "key_points": (
+            "• Cách trả lời STAR trưởng thành (tránh câu sáo rỗng 'em chưa từng thất bại'):\n"
+            "  - Chọn 1 tình huống thật (ví dụ: thiết kế biểu mẫu ghi nhận dữ liệu hoặc công cụ tự động mới quá chi tiết nhiều cột nhập liệu khiến công nhân dưới chuyền thấy rườm rà và bỏ không ghi, hoặc thử nghiệm đồ gá phiên bản 1 bị vướng thao tác tay).\n"
+            "  - Bài học rút ra: (1) Mọi giải pháp OE phải được đồng thiết kế cùng người trực tiếp thao tác (Co-design tại Genba), (2) Quy tắc 'Đơn giản hóa trước khi số hóa' — thao tác càng ít chạm (như quét 1 phát barcode thay vì gõ 5 ô) thì tỷ lệ tuân thủ mới đạt 100%, (3) Luôn chạy thử Pilot quy mô nhỏ, nhận phản hồi chỉnh sửa nhanh rồi mới nhân rộng."
+        )
+    },
+    {
+        "id": "q_star_08",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Nếu nhận việc Chuyên viên OE tại Nhà máy CADIVI Miền Trung, hãy trình bày cụ thể Kế hoạch hành động 30 – 60 – 90 ngày đầu tiên của bạn?",
+        "key_points": (
+            "• Kế hoạch 30–60–90 ngày sắc nét, thực tế:\n"
+            "  - 30 Ngày đầu (Học & Chuẩn hóa Dữ liệu): Bám Genba đủ 4 khu vực Kéo – Bện – Đùn – Lab/Đóng gói; học quy trình, BOM, tiêu chuẩn TCVN/IEC và hệ thống báo cáo hiện hành; rà soát độ tin cậy số liệu OEE/OLE/Downtime/Scrap; tạo quan hệ tin cậy với Quản đốc, Tổ trưởng, Bảo trì và QC.\n"
+            "  - 60 Ngày (Phân tích & Chạy Pilot Quick-Win): Chuẩn hóa template/Dashboard tự động theo dõi OEE (m/phút), OLE và Pareto tổn thất/hao phí BOM bằng Excel Power Query/Power BI/Python; chọn đúng 1 dây chuyền điểm nghẽn (ví dụ 1 máy đùn chủ lực) để triển khai dự án Pilot đầu tiên (SMED đổi màu hoặc giảm phế startup/over-thickness) có đo lường Trước–Sau.\n"
+            "  - 90 Ngày (Chứng minh ROI & Chuẩn hóa Nhân rộng): Báo cáo tổng kết hiệu quả kinh tế Trước–Sau có kiểm định thống kê cho Ban Giám đốc; khóa thành SOP/OPL đào tạo tổ sản xuất; lập danh mục lộ trình dự án Kaizen 6 tháng tiếp theo cho toàn nhà máy."
+        )
+    },
+    {
+        "id": "q_star_09",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Phân Tích Sâu",
+        "question": "Khi bạn từng tham gia thẩm định hiệu quả đầu tư thiết bị (ví dụ dự án ~1.2 tỷ VNĐ), hội đồng hỏi: 'Làm sao bạn chắc chắn con số tiết kiệm hàng tháng là chính xác và không bị phòng ban khác phản bác?'",
+        "key_points": (
+            "• Cách trả lời thể hiện bản lĩnh tài chính & kiểm soát rủi ro:\n"
+            "  1. Nguồn số liệu có ký xác nhận chéo (Cross-functional Sign-off): Thời gian đo kiểm lấy từ Time Study thực tế; sản lượng lấy từ phòng Kế hoạch; đơn giá nhân công/vật tư/điện năng lấy từ phòng Kế toán — không tự ước lượng một mình.\n"
+            "  2. Tách rõ tiết kiệm ròng thực (Net Realized Savings) sau khi trừ chi phí khấu hao, điện năng, bảo trì và thời gian học việc (Ramp-up).\n"
+            "  3. Thực hiện chạy kiểm chứng thực tế sau đầu tư 3 tháng (Post-Implementation Audit) so sánh Actual vs Plan để chứng minh độ tin cậy."
+        )
+    },
+    {
+        "id": "q_star_10",
+        "category": "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Trong công việc OE, bạn cùng lúc nhận 5 yêu cầu gấp: Giám đốc hỏi báo cáo BOM tháng, xưởng đùn báo máy giảm tốc độ, tổ đóng gói thiếu người, phòng kế hoạch cần tính lại năng lực và sắp có đợt audit 5S. Bạn sắp xếp thứ tự ưu tiên thế nào?",
+        "key_points": (
+            "• Áp dụng Ma trận Eisenhower kết hợp Tác động Giá trị (Impact vs Effort) & Thứ tự SQDC:\n"
+            "  1. Safety & Dừng chuyền nghiêm trọng trước: Kiểm tra nhanh sự cố máy đùn giảm tốc độ (ảnh hưởng trực tiếp sản lượng & chất lượng ngay trong ca — phối hợp kỹ thuật/bảo trì khoanh vùng trong 30 phút).\n"
+            "  2. Hạn chót lãnh đạo (Deadline cứng): Hoàn tất báo cáo BOM & tính năng lực (tận dụng hệ thống template/script tự động để xuất số nhanh, chính xác).\n"
+            "  3. Điều phối ngắn hạn: Hỗ trợ tổ trưởng đóng gói cân bằng tải tạm thời theo Ma trận kỹ năng đa năng.\n"
+            "  4. Lập kế hoạch dài hơi: Đưa chuẩn bị Audit 5S vào lịch checklist phân công cụ thể cho các tổ trưởng thực hiện đồng bộ, không ôm đồm làm thay xưởng."
+        )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 15: CÂU HỎI CHIẾN LƯỢC HỎI NGƯỢC NHÀ TUYỂN DỤNG CADIVI
+    # =========================================================================
+    {
+        "id": "q_rev_01",
+        "category": "Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI",
+        "type": "Phân Tích Sâu",
+        "question": "[Hỏi Giám đốc Nhà máy / Trưởng phòng OE] 'Trong 6 đến 12 tháng tới, đâu là chỉ số hoặc nút thắt lớn nhất mà Nhà máy CADIVI Miền Trung kỳ vọng vị trí Chuyên viên OE này tập trung giải quyết đầu tiên?'",
+        "key_points": (
+            "• Tại sao câu hỏi này cực kỳ ghi điểm:\n"
+            "  - Cho thấy bạn có tư duy định hướng kết quả (Result-oriented), không làm cải tiến lan man mà muốn bám sát ưu tiên chiến lược của nhà máy.\n"
+            "  - Giúp bạn biết ngay 'nỗi đau thật' của CADIVI Miền Trung hiện tại là OEE máy đùn/kéo, hao phí đồng/nhựa, thời gian chuyển đổi SMED hay năng suất đóng gói — để bạn điều chỉnh kế hoạch 90 ngày chuẩn xác ngay khi nhận việc."
+        )
+    },
+    {
+        "id": "q_rev_02",
+        "category": "Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI",
+        "type": "Phân Tích Sâu",
+        "question": "[Hỏi về hệ thống dữ liệu] 'Hiện tại nhà máy mình đang thu thập dữ liệu sản lượng, dừng máy OEE và hao phí vật tư BOM hoàn toàn tự động qua ERP/MES hay vẫn đang kết hợp ghi chép nhật ký ca và Excel ạ?'",
+        "key_points": (
+            "• Tại sao câu hỏi này ghi điểm:\n"
+            "  - Thể hiện sự am hiểu thực tế vận hành nhà máy tại Việt Nam (không ảo tưởng mọi thứ đã 4.0 hoàn hảo).\n"
+            "  - Nếu nhà máy vẫn đang dùng nhiều file Excel/sổ ca rời rạc → đây là cơ hội vàng để bạn nhấn mạnh lại thế mạnh Python/VBA/Power Query/Power BI giúp tự động hóa ngay trong tháng đầu tiên!"
+        )
+    },
+    {
+        "id": "q_rev_03",
+        "category": "Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI",
+        "type": "Phân Tích Sâu",
+        "question": "[Hỏi về cơ chế phối hợp] 'Tại CADIVI Miền Trung, Chuyên viên OE nằm trong cơ cấu trực thuộc Ban Giám đốc nhà máy hay phòng Kỹ thuật/Kế hoạch, và cơ chế phối hợp với Quản đốc phân xưởng cùng đội OE của Tổng công ty diễn ra như thế nào ạ?'",
+        "key_points": (
+            "• Tại sao câu hỏi này ghi điểm:\n"
+            "  - Chứng tỏ bạn hiểu rõ đặc thù làm OE: hiệu quả của cải tiến phụ thuộc rất lớn vào cơ chế bảo trợ của lãnh đạo (Management Sponsorship) và sự phối hợp liên phòng ban.\n"
+            "  - Giúp bạn hiểu rõ quyền hạn thực thi, lộ trình báo cáo và cách tương tác giữa Nhà máy Miền Trung với khối OE Tổng công ty CADIVI."
+        )
+    },
+    {
+        "id": "q_rev_04",
+        "category": "Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI",
+        "type": "Phân Tích Sâu",
+        "question": "[Hỏi về văn hóa cải tiến] 'Phong trào 5S và Kaizen tại các phân xưởng hiện đang ở giai đoạn nào (mới khởi động, đã có bảng đánh giá định kỳ hay đã gắn với cơ chế thưởng thi đua), và khó khăn lớn nhất khi duy trì là gì ạ?'",
+        "key_points": (
+            "• Tại sao câu hỏi này ghi điểm:\n"
+            "  - Thể hiện bạn thực sự có kinh nghiệm triển khai Lean/5S tại nhà máy (biết rằng 'làm 5S ban đầu thì dễ, duy trì bền vững S4-S5 mới khó').\n"
+            "  - Giúp bạn đánh giá độ trưởng thành văn hóa Lean tại nhà máy trước khi quyết định nhận offer."
+        )
+    },
+    {
+        "id": "q_rev_05",
+        "category": "Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI",
+        "type": "Phân Tích Sâu",
+        "question": "[Hỏi về tiêu chí thành công thử việc] 'Sau 2 tháng thử việc, những kết quả cụ thể nào sẽ khiến anh/chị đánh giá rằng việc tuyển dụng em vào vị trí Chuyên viên OE này là một quyết định hoàn toàn đúng đắn?'",
+        "key_points": (
+            "• Tại sao câu hỏi này ghi điểm tuyệt đối cuối buổi phỏng vấn:\n"
+            "  - Khẳng định sự tự tin, cam kết minh bạch bằng KPI cụ thể và tinh thần chịu trách nhiệm cao.\n"
+            "  - Khi người phỏng vấn trả lời câu này, họ đang vô thức hình dung bạn đã là nhân viên chính thức trong đội ngũ của họ!"
+        )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 16: KẾ HOẠCH S&OP/MRP/CRP, FPY/RTY, AN TOÀN LOTO/ISO & STANDARD COST
+    # =========================================================================
+    {
+        "id": "q_plan_01",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Trình bày chuỗi phân tầng hoạch định sản xuất [[S&OP]] → [[MPS]] → [[MRP]] → [[RCCP]] → [[CRP]] và vai trò phối hợp của Chuyên viên [[OE]] trong chuỗi này?",
+        "key_points": (
+            "• 5 tầng hoạch định chuẩn quốc tế (APICS):\n"
+            "  1. [[S&OP]] (3–18 tháng): Cân đối dự báo bán hàng tổng thể (theo tấn đồng/họ cáp) với tổng công suất nhà máy.\n"
+            "  2. [[MPS]] (4–12 tuần): Lịch sản xuất tổng thể theo từng mã cáp SKU và tuần giao hàng.\n"
+            "  3. [[RCCP]]: Kiểm tra nhanh xem MPS có vượt năng lực các công đoạn nút thắt (như máy đùn) không.\n"
+            "  4. [[MRP]]: Bùng nổ cây [[BOM]] để tính chính xác ngày đặt/nhập đồng rod, nhôm rod, hạt PVC/XLPE, rulo gỗ.\n"
+            "  5. [[CRP]]: Kiểm tra tải chi tiết từng máy cụ thể theo từng ca để điều độ phát lệnh sản xuất.\n"
+            "• Vai trò của OE: Cung cấp dữ liệu đầu vào CHUẨN XÁC (OEE lịch sử, tốc độ m/phút thực tế, thời gian đổi mã SMED, định mức MBOM đúng hệ số xoắn) để toàn bộ chuỗi kế hoạch không bị 'ảo trên giấy'."
+        )
+    },
+    {
+        "id": "q_plan_02",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Sự khác biệt giữa [[FPY]] (First Pass Yield) và [[RTY]] (Rolled Throughput Yield)? Vì sao báo cáo từng công đoạn đều đạt 96–98% nhưng nhà máy vẫn đối mặt 'Nhà máy ẩn' (Hidden Factory) gây đội chi phí?",
+        "key_points": (
+            "• Phân biệt rõ:\n"
+            "  - [[FPY]]: Tỷ lệ đạt ngay lần đầu tại 1 công đoạn riêng lẻ (chưa tính hàng sửa lại [[Rework]]).\n"
+            "  - [[RTY]]: Tích nhân xác suất FPY của toàn chuỗi công đoạn nối tiếp (RTY = FPY_1 × FPY_2 × ... × FPY_n).\n"
+            "• Ví dụ nhà máy cáp qua 6 công đoạn (Kéo 98% × Ủ 99% × Bện 97% × Đùn XLPE 95% × Ghép lõi 96% × Đùn vỏ 97%):\n"
+            "  - RTY chỉ đạt 83.27% — nghĩa là gần 17% dòng sản xuất đã phải dừng cắt nối, sang cuộn lại hoặc hủy phế (Hidden Factory) mà chỉ số kiểm tra cuối chuyền thường che khuất!\n"
+            "• Hành động OE: Luôn đo và báo cáo RTY thay vì chỉ nhìn Final Yield để ép cải tiến chất lượng ngay tại nguồn."
+        )
+    },
+    {
+        "id": "q_plan_03",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Cuối tháng phòng Kế toán báo giá thành sản xuất thực tế của xưởng vượt [[Standard Cost|giá thành định mức]] +7.5% và quy trách nhiệm cho phân xưởng. Là Chuyên viên [[OE]], bạn phân tách biến động này như thế nào để bảo vệ tính công bằng và chỉ đúng điểm cần sửa?",
+        "key_points": (
+            "• Phân tách chuẩn kế toán quản trị thành 3 thành phần rõ ràng:\n"
+            "  1. Price Variance (Biến động giá mua NVL): Do giá đồng LME/hạt nhựa thế giới tăng → Thuộc biến động thị trường / Mua hàng, XƯỞNG KHÔNG CHỊU LỖI.\n"
+            "  2. Usage / Efficiency Variance (Biến động định mức & năng suất): Do xưởng kéo dư đồng ([[Copper Give-away]]), bọc dư nhựa ([[Over-thickness]]), phế [[Spark Tester]] hoặc tốn giờ công tăng ca → TRÁCH NHIỆM TRỰC TIẾP CỦA XƯỞNG & OE.\n"
+            "  3. Overhead Absorption Variance (Hấp thụ định phí): Khi sản lượng thực tế thấp hơn kế hoạch (do thiếu đơn hoặc [[OEE]] tụt), chi phí khấu hao & quản lý cố định phân bổ trên mỗi km cáp tăng vọt.\n"
+            "• Giá trị OE: Minh bạch 3 cột này giúp Ban Giám đốc xử đúng người đúng việc và tập trung hành động vào đúng Usage Variance."
+        )
+    },
+    {
+        "id": "q_plan_04",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Khi triển khai dự án [[SMED]] 2 người phối hợp song song đổi khuôn [[Crosshead]] trên máy đùn 180°C và máy bện lồng cứng, bạn đảm bảo quy trình an toàn [[LOTO]] và [[EHS]] như thế nào để tuyệt đối không xảy ra tai nạn lao động?",
+        "key_points": (
+            "• Nguyên tắc bất di bất dịch: 'Nhanh nhưng KHÔNG BAO GIỜ đánh đổi An toàn' (Safety First trong [[KPI|SQDC]]).\n"
+            "• 6 bước [[LOTO]] bắt buộc trong SOP SMED:\n"
+            "  1. Dừng máy chuẩn và cắt cầu dao nguồn chính / khóa van khí nén.\n"
+            "  2. CẢ 2 kỹ thuật viên đều gắn ổ khóa cá nhân + thẻ tên lên kẹp khóa đa điểm (Hasp) — chỉ khi cả 2 cùng ra khỏi vùng nguy hiểm và tự mở khóa của mình mới cấp điện lại được.\n"
+            "  3. Thử bấm Start (Try-out) xác nhận trạng thái Zero Energy.\n"
+            "  4. Trang bị PPE chịu nhiệt (găng tay chống bỏng 250°C, kính bảo hộ) khi tháo đầu đùn nóng và tuân thủ tải trọng móc cẩu rulo theo chuẩn [[ISO 45001]]."
+        )
+    },
+    {
+        "id": "q_plan_05",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "So sánh đặc thù sản xuất giữa cáp ruột đồng và cáp ruột nhôm ([[ACSR]], [[ABC Cable|cáp nhôm ABC]]) tại Nhà máy CADIVI Miền Trung? Chuyên viên OE cần chú ý những rủi ro nào khi tối ưu dây chuyền nhôm?",
+        "key_points": (
+            "• 4 khác biệt kỹ thuật & vận hành sống còn:\n"
+            "  1. Cơ tính & lực kéo đứt: Nhôm mềm và bền kéo thấp hơn đồng nhiều → Cực nhạy với lực căng (Tension) ở bộ [[Pay-off]] / [[Dancer]] / [[Capstan]]; dễ bị kéo giãn làm nhỏ tiết diện (tăng điện trở) hoặc đứt sợi.\n"
+            "  2. Khối lượng riêng & Độ dẫn điện: Nhôm nhẹ (2.703 g/cm³ vs đồng 8.89 g/cm³) và độ dẫn ~61% [[IACS]] (đồng ≥ 100% [[IACS]]) → Để dẫn cùng dòng điện, tiết diện cáp nhôm phải lớn hơn cáp đồng.\n"
+            "  3. Cách ly hoàn toàn bể dầu & máy móc: Nhôm tạo lớp oxit cứng gây mòn khuôn [[PCD]] nhanh và TUYỆT ĐỐI không dùng chung bể [[Drawing Emulsion]] hay lẫn mạt phế liệu với đồng (nhiễm tạp làm hỏng chất lượng phế thu hồi!).\n"
+            "  4. Cáp [[ACSR]] (lõi thép chịu lực) & [[ABC Cable|cáp ABC]] (vặn xoắn treo ngoài trời vỏ XLPE đen chống UV) có tốc độ chuẩn & bước xoắn riêng biệt khi lập BOM và tính OEE."
+        )
+    },
+    {
+        "id": "q_plan_06",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Kết hợp phân loại [[ABC-XYZ]] (Runner – Repeater – Stranger) với công thức [[Safety Stock]] & [[ROP]] như thế nào để vừa không bao giờ thiếu vật tư dừng máy, vừa không ôm tồn kho dư thừa?",
+        "key_points": (
+            "• Chiến lược theo 2 trục Giá trị (A–B–C) × Độ ổn định nhu cầu (X–Y–Z):\n"
+            "  - Nhóm AX (Runners — Dây dân dụng bán chạy & đồng rod, PVC chuẩn): Nhu cầu ổn định → Áp dụng Make-to-Stock + [[Safety Stock]] thấp + đặt hàng tự động theo [[ROP]] & [[Kanban]].\n"
+            "  - Nhóm AZ/BZ (Strangers — Cáp dự án [[Mica FR]], cáp lực cỡ lớn 300mm²): Nhu cầu thất thường → Áp dụng Make-to-Order (không trữ tồn kho thành phẩm!), dồn nguồn lực vào [[SMED]] & rút [[Lead Time]].\n"
+            "• Công thức chuẩn: Safety Stock = Z × σ_demand × sqrt(Lead Time); ROP = (Nhu cầu TB/ngày × Lead Time) + Safety Stock."
+        )
+    },
+    {
+        "id": "q_plan_07",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Phân biệt vai trò của 4 bộ tiêu chuẩn hệ thống quản lý tại nhà máy hiện đại: [[ISO 9001]], [[ISO 14001]], [[ISO 45001]] và [[ISO 50001]] đối với công việc hàng ngày của Chuyên viên OE?",
+        "key_points": (
+            "• Liên kết trực tiếp OE với 4 hệ thống ISO:\n"
+            "  1. [[ISO 9001]] (Chất lượng): OE chuẩn hóa [[SOP]], [[Control Plan]], kiểm định đo lường [[Gage R&R]] và duy trì bằng chứng cải tiến liên tục.\n"
+            "  2. [[ISO 14001]] (Môi trường): Giảm rác thải nhựa [[Purging]], giảm tiêu hao [[Drawing Emulsion]] thải và kiểm soát khí/bụi khu đùn.\n"
+            "  3. [[ISO 45001]] (An toàn [[EHS]]): Tích hợp [[LOTO]] vào mọi quy trình [[SMED]], cải thiện [[Ergonomics]] & hành lang cầu trục/xe nâng.\n"
+            "  4. [[ISO 50001]] (Năng lượng): Thiết lập đường cơ sở [[SEC|kWh/tấn]], lắp biến tần [[VFD]], bọc cách nhiệt nòng đùn và tối ưu lịch chạy giờ thấp điểm."
+        )
+    },
+    {
+        "id": "q_plan_08",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Kể tên đủ [[7 QC Tools|7 Công cụ QC cổ điển]] và cho biết công cụ nào dùng để chứng minh mối quan hệ nhân–quả giữa nhiệt độ nước [[Cooling Trough]] và tỷ lệ lỗi bề mặt vỏ cáp?",
+        "key_points": (
+            "• 7 Công cụ QC cổ điển: (1) Check Sheet, (2) [[Histogram]], (3) [[Pareto]], (4) [[Ishikawa]] (Xương cá), (5) [[Scatter]] (Biểu đồ phân tán), (6) [[SPC]] Control Chart, (7) Stratification (Phân tầng).\n"
+            "• Công cụ kiểm tra tương quan 2 biến liên tục (Nhiệt độ nước làm mát vs Tỷ lệ lỗi/Độ nhám):\n"
+            "  - Dùng **Biểu đồ phân tán [[Scatter]]** kết hợp tính hệ số tương quan r và chạy **Hồi quy [[Regression]]** (kiểm tra R² và p-value < 0.05) trên [[Minitab]] để định lượng chính xác mức tăng nhiệt gây tăng lỗi bao nhiêu %."
+        )
+    },
+    {
+        "id": "q_plan_09",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Phân Tích Sâu",
+        "question": "Kỹ thuật [[Masterbatch]] (cấp hạt màu trực tiếp tại cổ phễu đùn) giúp giải quyết đồng thời bài toán tồn kho nhựa và thời gian đổi màu [[SMED]] như thế nào so với mua hạt nhựa PVC đã pha sẵn màu?",
+        "key_points": (
+            "• Hạn chế của hạt nhựa pha sẵn màu: Phải trữ tồn kho riêng 8–10 mã bao nhựa cho 8–10 màu khác nhau (tăng vốn tồn kho, dễ dư màu hiếm hết hạn) và mỗi lần đổi màu phải hút cạn toàn bộ phễu lớn.\n"
+            "• Ưu điểm của [[Masterbatch]] (Hạt nền PVC tự nhiên/không màu + Bộ định lượng hạt màu đậm đặc 1–3% gắn ngay cổ họng máy đùn):\n"
+            "  1. Cắt giảm 60–70% số mã tồn kho nhựa nền (chỉ cần trữ 1 loại PVC nền tự nhiên với khối lượng lớn, mua giá tốt hơn!).\n"
+            "  2. Đổi màu cực nhanh: chỉ cần đổi phễu định lượng nhỏ chứa 2–5% hạt màu, giảm mạnh nhựa xả [[Purging]] và rút ngắn thời gian [[SMED]]."
+        )
+    },
+    {
+        "id": "q_plan_10",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Phân Tích Sâu",
+        "question": "Khi nào cần dùng thử nghiệm [[Partial Discharge|phóng điện cục bộ (PD)]] và thử nghiệm [[Water Immersion|cao áp ngâm nước]]? Nếu lô cáp trung thế XLPE không đạt chuẩn PD (vượt 5 pC), nguyên nhân gốc thường nằm ở đâu trên dây chuyền?",
+        "key_points": (
+            "• Phân biệt 2 phép thử Lab:\n"
+            "  - [[Water Immersion]]: Dùng phổ biến cho dây dân dụng & cáp hạ thế (ngâm cuộn cáp trong bể nước thử cao áp chịu đựng phát hiện thủng cách điện).\n"
+            "  - [[Partial Discharge|PD Test]]: Bắt buộc cho cáp trung thế/cao thế XLPE (6–35 kV) trong phòng chắn nhiễu để đo phóng điện vi mô bên trong lớp cách điện.\n"
+            "• Nguyên nhân gốc gây rớt PD: Bọt khí siêu nhỏ (Micro-voids) trong lớp XLPE do hạt nhựa nhiễm ẩm/bụi, độ bám dính kém hoặc gợn nhấp nhô tại mặt tiếp giáp lớp bán dẫn trong/ngoài trên dây chuyền [[CCV]], hoặc lưới lọc [[Screen Pack]] bị rách lọt tạp chất."
+        )
+    },
+    {
+        "id": "q_plan_11",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Giải thích quy trình [[Hoshin Kanri]] (Triển khai chiến lược theo chính sách) & cơ chế Catchball, cùng mô hình [[ADKAR]] trong quản trị thay đổi tại nhà máy sản xuất?",
+        "key_points": (
+            "• [[Hoshin Kanri]] & Catchball:\n"
+            "  - Là phương pháp kết nối mục tiêu chiến lược 1–3 năm của Ban Lãnh đạo Tổng công ty thành các dự án OE cụ thể và KPI hàng ngày ở từng tổ máy (bảng X-Matrix).\n"
+            "  - Catchball (Tung–Hứng bóng): Thay vì áp đặt chỉ tiêu một chiều, lãnh đạo và Quản đốc/OE trao đổi qua lại về tính khả thi, nguồn lực và lộ trình để mọi cấp cùng đồng thuận cam kết.\n"
+            "• Mô hình [[ADKAR]] (5 bước dẫn dắt con người chấp nhận cải tiến mới):\n"
+            "  - Awareness (Hiểu lý do cần đổi) → Desire (Muốn thay đổi nhờ Quick-Win) → Knowledge (Được đào tạo [[TWI]]/[[SOP]]) → Ability (Thực hành thành thạo) → Reinforcement (Duy trì bền vững qua Audit & thưởng)."
+        )
+    },
+    {
+        "id": "q_plan_12",
+        "category": "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Cáp chống cháy [[Mica FR]] đang có tỷ lệ dừng máy quấn băng Mica cao (đứt băng 8 lần/ca) và phế phẩm tăng. Bạn tiếp cận phân tích và chuẩn hóa lại công đoạn này theo tư duy [[OE]] ra sao?",
+        "key_points": (
+            "• Phân tích hiện trường Genba tại máy quấn băng Mica:\n"
+            "  1. Kiểm tra lực căng đầu quấn (Taping Head Tension) & độ đồng tâm trục cuộn băng: lực căng không đều hoặc phanh hãm rít làm băng Mica giòn bị xé rách khi máy tăng tốc.\n"
+            "  2. Kiểm tra góc quấn & độ chồng mí (Overlap ≥ 50% theo chuẩn chống cháy IEC 60331) cùng bề mặt ruột đồng (gai đồng đứt sẽ rạch rách băng ngay lập tức!).\n"
+            "  3. Lắp cảm biến đứt băng [[Poka-Yoke]] dừng máy trong 0.5s, chuẩn hóa bảo quản cuộn băng Mica chống ẩm và lập [[Control Plan]] + bảng tốc độ chuẩn cho từng tiết diện cáp FR."
+        )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 17: ĐÙN CÁP CHUYÊN SÂU, ĐỨT SỢI, THỰC ĐỊA LSW/WCM & TEST VÒNG 2 (16 CÂU)
+    # =========================================================================
+    {
+        "id": "q_adv_01",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Phân Tích Sâu",
+        "question": "Tại sao không thể dùng chung một trục vít máy đùn ([[L/D Ratio]]) của nhựa [[PVC]] để chạy nhựa [[XLPE]] hoặc [[LSZH]]? Nếu cố chạy chung sẽ xảy ra hậu quả gì?",
+        "key_points": (
+            "• Khác biệt bản chất lưu biến:\n"
+            "  1. [[PVC]] nhạy nhiệt, dễ phân hủy sinh khí axit HCl ăn mòn nòng nếu lưu quá lâu → cần trục vít ngắn hơn (`L/D 20–24:1`), tỷ số nén vừa (`2.0–2.5:1`).\n"
+            "  2. PE/[[XLPE]] cần hóa dẻo đồng nhất ở tốc độ cao → cần trục vít dài (`L/D 25–30:1`, vùng Barrier, tỷ số nén `2.8–3.5:1`).\n"
+            "  3. [[LSZH]] chứa hàm lượng chất độn chống cháy vô cơ cao, cực kỳ nhạy nhiệt cắt trượt → cần trục vít nén thấp (`1.8–2.3:1`).\n"
+            "• Hậu quả chạy sai trục vít: Quá nhiệt ma sát gây cháy xém Scorch, bọt khí Voids, sần [[Sharkskin]] hoặc tắc chết nòng đùn; OE bắt buộc kiểm tra tương thích trục vít khi lập lịch san tải [[RCCP]]."
+        )
+    },
+    {
+        "id": "q_adv_02",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Khi theo dõi đồng hồ [[Melt Pressure]] trên máy đùn cáp thấy áp suất tăng dần +30% trong ca hoặc dao động nhịp nhàng ±15 bar (Surging), bạn chẩn đoán điều gì và xử lý ra sao?",
+        "key_points": (
+            "• Đọc chẩn đoán từ tín hiệu [[Melt Pressure]]:\n"
+            "  1. Tăng đều +25–30% ở cùng vòng quay trục vít: Lưới lọc [[Screen Pack]] đã tích bẩn/nhựa cháy gây cản dòng → lên lịch thay lưới lọc ngay cuối lệnh sản xuất (tránh rách lưới gây tạp chất rớt [[Partial Discharge|PD]] hoặc quá áp vỡ đĩa an toàn).\n"
+            "  2. Dao động chu kỳ ±15 bar (Surging): Vùng cấp liệu bị trượt hoặc nhiệt độ vùng nạp/trục vít không ổn định → làm đường kính cáp trên [[Laser Gauge]] biến thiên hình sin khiến [[Cpk]] tụt mạnh.\n"
+            "• Giải pháp OE: Đưa tín hiệu Melt Pressure & Melt Temperature lên [[MES]] đặt ngưỡng cảnh báo bảo trì dự đoán ([[CBM / PdM]]) để thay lưới chủ động đúng dịp đổi mã [[SMED]]."
+        )
+    },
+    {
+        "id": "q_adv_03",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "[[DDR|Draw-Down Ratio (DDR)]] và DRB trong đùn bọc cáp là gì? Phân biệt nhanh Đùn Ép (Pressure Tooling) và Đùn Ống (Tube Tooling).",
+        "key_points": (
+            "• Phân biệt 2 kiểu đầu Chày–Cối (Tip & Die):\n"
+            "  1. Đùn Ép (Pressure Tooling): Chày thụt vào trong cối, nhựa ép mạnh bám chặt vào khe sợi lõi (dùng khi cần điền đầy hoặc bám dính cao).\n"
+            "  2. Đùn Ống (Tube Tooling): Chày ngang miệng cối tạo ống nhựa rồi kéo rút + hút chân không ôm sát lõi (chạy tốc độ cao, đều độ dày, thợ điện dễ tuốt vỏ).\n"
+            "• Ý nghĩa [[DDR]] & DRB: `DDR = (D_die² - D_tip²) / (D_cable² - D_core²)` (PVC chuẩn 1.5–2.5; PE/XLPE 1.3–2.2; DRB tối ưu 0.95–1.08). Chọn cối quá rộng làm DDR quá cao gây ứng suất dư, co ngót đầu cáp, nứt lạnh và lãng phí nhựa [[Over-thickness]]."
+        )
+    },
+    {
+        "id": "q_adv_04",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Khi bạn đề xuất tăng tốc độ máy đùn thêm +20% để nâng OEE Performance, bề mặt vỏ cáp xuất hiện sần nhám mờ ([[Sharkskin]]) và đóng cặn mép cối ([[Die Drool]]). Bạn xử lý thế nào?",
+        "key_points": (
+            "• Hiểu bản chất để không đánh đổi Quality lấy Performance:\n"
+            "  1. [[Sharkskin]] xảy ra khi ứng suất cắt tại miệng cối vượt ngưỡng tới hạn do tốc độ cao & độ nhớt lớn.\n"
+            "  2. [[Die Drool]] do nhựa ẩm, bột độn [[CaCO3 Filler]] hoặc nhiệt cắt quá cao tích tụ ngoài mép cối rồi rơi bám lên vỏ cáp gây cục u/lỗi [[Spark Tester]].\n"
+            "• 4 bước giải quyết chuẩn OE + Kỹ thuật:\n"
+            "  - Kiểm tra sấy hạt nhựa đạt chuẩn trên [[Hopper Dryer]] (triệt độ ẩm).\n"
+            "  - Tăng nhẹ nhiệt độ miệng cối Die `+5–10°C`, đánh bóng/vát mép thoát 45° lòng cối và kiểm tra lại tỷ lệ [[DDR]].\n"
+            "  - Thử nghiệm [[DOE]] (Minitab) tìm tốc độ tối ưu kết hợp phụ gia trợ gia công PPA 0.5% rồi khóa thành cửa sổ công nghệ mới qua quy trình [[MOC / ECN]]."
+        )
+    },
+    {
+        "id": "q_adv_05",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Phân Tích Sâu",
+        "question": "Phòng Mua hàng đề xuất chuyển sang hạt [[PVC]] loại B rẻ hơn 2.5% giá/kg (do độn thêm [[CaCO3 Filler]]) nhưng [[Specific Gravity|tỷ trọng]] tăng từ 1.45 lên 1.54 g/cm³. Với tư cách OE, bạn đồng ý hay phản đối?",
+        "key_points": (
+            "• Phản đối dựa trên bài toán Chi Phí Theo Thể Tích (Volume Cost)!\n"
+            "  1. Cáp điện bọc theo THỂ TÍCH (chiều dày × chu vi × km), KHÔNG bọc theo kg.\n"
+            "  2. Tỷ trọng tăng từ 1.45 lên 1.54 (+6.21%) nghĩa là mỗi km cáp sẽ phải tiêu tốn nhiều hơn +6.21% khối lượng nhựa!\n"
+            "  3. Nhân chéo hiệu ứng giá: `0.975 (giá giảm 2.5%) × 1.0621 (tốn kg hơn 6.21%) = 1.0355` → Thực tế CHI PHÍ NHỰA TRÊN MỖI KM CÁP ĐẮT THÊM +3.55%!\n"
+            "• Rủi ro cộng thêm: Tăng [[CaCO3 Filler]] còn làm dễ đóng cặn [[Die Drool]], tăng mòn trục vít và dễ trượt phép thử độ giãn dài [[Tensile]]/[[Aging Oven]]."
+        )
+    },
+    {
+        "id": "q_adv_06",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Xưởng Kéo sợi [[Multi-wire]] bị đứt sợi đồng liên tục làm [[OEE]] tụt xuống 58%. Xưởng đổ lỗi cho đồng Rod kém, còn Mua hàng bảo do máy/khuôn. Bạn dùng kỹ thuật gì để phân xử khách quan 100%?",
+        "key_points": (
+            "• Áp dụng [[Wire Break Forensics]] (Phân tích mặt gãy đầu sợi dưới kính hiển vi):\n"
+            "  1. Thu thập 20–30 đầu sợi đứt liên tiếp, phân loại định lượng bằng biểu đồ [[Pareto]]:\n"
+            "     - Mặt gãy hình [[Cup-and-Cone]] (thắt cổ chai đối xứng) → Lỗi nội bộ xưởng Kéo (khuôn [[PCD]] mòn, vòi [[Drawing Emulsion|nhũ tương]] tắc, lực căng kẹt rulo).\n"
+            "     - Mặt gãy dẹt có tạp chất cứng / vảy gấp (Inclusion / Sliver) → Lỗi đồng Rod đầu vào (đối chiếu COA theo chuẩn [[ASTM B49]] và lập [[8D|báo cáo 8D]] với nhà cung cấp).\n"
+            "     - Mặt gãy phẳng giòn ngay mối hàn (Weld Break) → Lỗi thao tác hàn đối đầu [[Butt Welder]] hoặc quên ủ mềm sau hàn.\n"
+            "• Chuẩn hóa bảng mẫu ảnh mặt gãy nhập mã lỗi lên [[MES]] để xử lý đúng gốc rễ, chấm dứt tranh cãi cảm tính."
+        )
+    },
+    {
+        "id": "q_adv_07",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Trình bày đặc thù sản xuất & điểm cần tối ưu OE đối với [[Solar Cable|Cáp Năng Lượng Mặt Trời H1Z2Z2-K]] và công đoạn bện lưới đồng chống nhiễu ([[Braiding]]) tại CADIVI.",
+        "key_points": (
+            "• Với [[Solar Cable]] (EN 50618, DC 1,500V, tuổi thọ 25 năm):\n"
+            "  - Ruột đồng mềm mạ thiếc ([[Tinned Copper]]) dễ xước lớp mạ → kiểm soát puly dẫn bằng gốm, lực căng đều; lớp cách điện/vỏ kép XLPO đắt tiền → gom đơn [[Color Sequencing]] (Đỏ/Đen) và tối ưu tải rulo khi chiếu xạ [[E-beam]] để giảm chi phí & [[Lead Time]].\n"
+            "• Với công đoạn [[Braiding]] (bện lưới 16–24 suốt cho cáp điều khiển chống nhiễu):\n"
+            "  - Tốc độ cực chậm (2–8 m/phút) dễ thành cổ chai → Áp dụng [[Man-Machine Chart]] (1 công nhân đứng 4–8 máy) và đồng bộ chiều dài đánh suốt [[Kitting]] để cả 24 suốt hết cùng lúc thay 1 lần, thay vì dừng máy 16 lần/ca!"
+        )
+    },
+    {
+        "id": "q_adv_08",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Làm sao phân loại & quản trị phế nhựa [[Regrind]] trong nhà máy dây cáp điện để vừa tối ưu chi phí [[BOM]], vừa không vi phạm tiêu chuẩn chất lượng [[QCVN 4]] / [[IEC 60502]]?",
+        "key_points": (
+            "• Phân biệt rạch ròi 2 họ nhựa:\n"
+            "  1. [[XLPE]] sau lưu hóa là nhựa nhiệt rắn → KHÔNG thể nghiền đùn tái chế lại làm cách điện.\n"
+            "  2. [[PVC]] là nhựa nhiệt dẻo → có thể nghiền tái chế ([[Regrind]]) nếu phân loại sạch ngay tại nguồn.\n"
+            "• 3 nguyên tắc vàng quản trị Regrind của OE:\n"
+            "  - Tuyệt đối KHÔNG dùng Regrind cho lớp cách điện chịu điện áp hay dây dân dụng chịu quản lý bắt buộc [[QCVN 4]] nếu chưa qua phê duyệt [[MOC / ECN]] & test Lab đạt 100% [[Tensile]]/[[Aging Oven]].\n"
+            "  - Chỉ xem xét dùng tỷ lệ kiểm soát (5–15% nhựa sạch không dính đồng, cùng màu) cho lớp độn trong hoặc sản phẩm phù hợp tiêu chuẩn kỹ thuật.\n"
+            "  - Tách riêng thùng phế PVC sạch vs PVC lẫn đồng/bẩn ngay tại máy đùn để tối đa hóa giá trị thu hồi phế liệu."
+        )
+    },
+    {
+        "id": "q_adv_09",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Phân Tích Sâu",
+        "question": "Khi nào OE nên dùng [[Work Sampling]] thay cho bấm giờ [[Time Study]]? Trình bày công thức cỡ mẫu và ví dụ áp dụng tại nhà máy CADIVI.",
+        "key_points": (
+            "• Khi nào chọn [[Work Sampling]]: Cho công việc chu kỳ dài, biến động hoặc không lặp đều (công nhân đứng đa máy kéo/bện, đội xe nâng kho rulo, đội bảo trì cơ điện, kho thành phẩm) — đo nhanh, ít tốn nhân lực khảo sát và không gây căng thẳng cho người bị bấm giờ.\n"
+            "• Công thức cỡ mẫu (tin cậy 95%, Z = 1.96): `N = [ Z² × p × (1 - p) ] / e²`. Ví dụ ước lượng thời gian chờ p = 0.25, sai số e = ±0.03 → `N = 800 lượt` quan sát ngẫu nhiên.\n"
+            "• Ví dụ CADIVI: Chụp mẫu 800 lượt trên 4 xe nâng xưởng cáp phát hiện 34% thời gian chạy rỗng/tìm rulo → thiết kế tuyến [[Milk Run]] & sơ đồ vị trí kho rulo giải quyết nghẽn cấp liệu mà không cần mua thêm xe nâng!"
+        )
+    },
+    {
+        "id": "q_adv_10",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Phân Tích Sâu",
+        "question": "[[Loss Tree|OEE Waterfall / Loss Tree]] và [[Cost Deployment]] (WCM) giúp Chuyên viên OE thuyết phục Ban Giám đốc duyệt dự án ưu tiên nhanh hơn cách báo cáo truyền thống như thế nào?",
+        "key_points": (
+            "• Khác biệt tư duy:\n"
+            "  - Báo cáo truyền thống chỉ nêu 20 vấn đề rời rạc bằng % hoặc số phút → Giám đốc khó quyết định nên rót tiền & người vào đâu trước.\n"
+            "  - [[Loss Tree]] phân rã 100% thời gian lịch thành từng nhánh tổn thất rõ chủ sở hữu; [[Cost Deployment]] quy đổi thẳng từng nhánh đó sang **VNĐ/tháng** theo [[Standard Cost]].\n"
+            "• Ví dụ CADIVI: Đặt lên cùng 1 bảng thấy [[Over-thickness]] nhựa mất 195 tr/tháng, [[Copper Give-away]] mất 165 tr/tháng, phế đổi mã mất 110 tr/tháng, còn rò khí nén mất 24 tr/tháng → Ban Giám đốc phê duyệt tập trung nguồn lực đánh ngay 2 mũi nhọn đầu tiên trong vòng 5 phút!"
+        )
+    },
+    {
+        "id": "q_adv_11",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Dự án [[SMED]] và [[5S]] của bạn chạy rất đẹp tháng đầu, nhưng 2 tháng sau khi bạn sang xưởng khác thì mọi thứ lại tụt về như cũ. Bạn thiết kế hệ thống gì để duy trì bền vững?",
+        "key_points": (
+            "• Không thể dựa vào trí nhớ hay thiện chí mà phải khóa bằng Bộ 3 Quản trị Duy trì:\n"
+            "  1. [[LSW]] (Leader Standard Work): Nhúng 2–3 hạng mục kiểm tra đầu ca (tủ sấy Tip/Die, xe đồ nghề 5S, bảng giờ) vào lịch kiểm tra bắt buộc hàng ngày của Tổ trưởng & Quản đốc.\n"
+            "  2. [[LPA]] (Layered Process Audit): Kiểm tra phân tầng 3 cấp (Tổ trưởng hàng ngày → Quản đốc/OE hàng tuần → Giám đốc 2 tuần/lần) bằng phiếu 8–10 câu Có/Không đi thẳng xuống máy.\n"
+            "  3. [[Visual Management]] & [[ADKAR]] (bước Reinforcement): Công khai biểu đồ xu hướng đổi mã/OEE ngay bảng chuyền, gắn thưởng nóng tổ/ca khi giữ chuẩn 30 ngày liên tiếp và phản hồi ngay khi lệch chuẩn."
+        )
+    },
+    {
+        "id": "q_adv_12",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Phân xưởng phàn nàn mỗi lần máy đùn hỏng gọi Bảo trì chờ 25–30 phút mới có người tới, còn Bảo trì than thiếu người ngập đầu sửa chữa. Bạn giải bài toán này bằng chỉ số và cơ chế nào?",
+        "key_points": (
+            "• 3 bước xử lý đồng bộ không đổ lỗi:\n"
+            "  1. Lập [[Escalation Matrix]] có SLA rõ ràng (0–5p Tổ trưởng → 5–15p Bảo trì → 15–30p Quản đốc/OE → >60p Giám đốc) kết hợp đèn [[Andon]]/cảnh báo [[MES]] cho máy cổ chai.\n"
+            "  2. Dùng [[Work Sampling]] đo [[Wrench Time]] của đội Bảo trì: nếu chỉ ~30% do mất thời gian tìm bạc đạn/điện trở → chuẩn hóa kho phụ tùng 5S + soạn sẵn bộ [[Kitting]] cho các lỗi lặp lại.\n"
+            "  3. Nâng [[PM Compliance]] lên ≥ 90% (khóa giờ giao máy PM cố định trên lịch [[MPS]]) và áp dụng [[CBM / PdM]] (camera nhiệt ảnh tủ điện, đo rung bạc đạn) để cắt 50% sự cố chữa cháy đột xuất!"
+        )
+    },
+    {
+        "id": "q_adv_13",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Đề Test Thực Hành Vòng 2: Cho bảng log 5 ca máy đùn dây VC 2.5mm² (tốc độ chuẩn 320 m/p, 450p/ca), tổng dừng 275p, sản lượng 548,000m, phế 14,000m. Cách tính OEE tổng 5 ca đúng và bẫy Excel thường gặp là gì?",
+        "key_points": (
+            "• Tính chuẩn trên TỔNG dữ liệu gốc (tuyệt đối KHÔNG lấy `AVERAGE` của 5 con số OEE từng ca!):\n"
+            "  1. `Planned Time = 5 × 450 = 2,250p` → `Operating Time = 2,250 - 275 = 1,975p` → `A = 1,975 / 2,250 = 87.78%`.\n"
+            "  2. `P = 548,000 / (1,975 × 320) = 548,000 / 632,000 = 86.71%` (tốc độ thực bình quân 277.5 m/p).\n"
+            "  3. `Good Length = 548,000 - 14,000 = 534,000m` → `Q = 534,000 / 548,000 = 97.45%`.\n"
+            "  4. `OEE = 87.78% × 86.71% × 97.45% = 74.16%`.\n"
+            "• 3 bẫy Excel cần tránh: (1) Lấy trung bình cộng % các ca sai trọng số, (2) Quên trừ nghỉ ăn ca khỏi Planned Time, (3) So sánh BOM với tổng mét đùn (548 km) thay vì sản lượng ĐẠT (534 km) làm che giấu phế phẩm!"
+        )
+    },
+    {
+        "id": "q_adv_14",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Khi sản lượng CADIVI tăng đột biến +35% mùa cao điểm, xưởng Đùn quá tải 122% nhưng bị ràng buộc KHÔNG mua máy mới và KHÔNG tăng ca vượt trần 40 giờ/người/tháng. Bạn lập phương án [[Headcount Planning]] & năng lực thế nào?",
+        "key_points": (
+            "• Phương án 4 mũi nhọn tuân thủ [[TOC]] & Luật Lao động VN:\n"
+            "  1. Không tăng ca dàn trải ở xưởng Kéo/Đóng gói đang dư tải (tránh sinh [[WIP]]).\n"
+            "  2. Khai thác ngay tại máy Đùn cổ chai: gom đơn cùng tiết diện + [[Color Sequencing]] + [[SMED]] nâng OEE máy đùn từ ~66% lên 75% (giải phóng ngay ~13% giờ máy ròng miễn phí).\n"
+            "  3. Bố trí [[Headcount Planning|3 Ca – 4 Kíp]] cục bộ cho riêng 2 máy Đùn nút thắt bằng cách điều chuyển tạm công nhân đa kỹ năng từ xưởng dư tải + tính [[Learning Curve]] cho nhân sự bổ sung khâu đóng gói đơn giản.\n"
+            "  4. Khóa [[Escalation Matrix]] 5 phút & giữ đệm 1 ca bán thành phẩm trước máy Đùn để máy không bao giờ đói hàng."
+        )
+    },
+    {
+        "id": "q_adv_15",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Phân Tích Sâu",
+        "question": "Trước khi nhân rộng một cải tiến giảm chiều dày bọc nhựa hoặc thay đổi bộ khuôn đùn cho cả 6 máy tại CADIVI, bạn cần chạy quy trình [[MOC / ECN]] như thế nào để bảo đảm an toàn pháp lý [[QCVN 4]]?",
+        "key_points": (
+            "• Quy trình 5 bước kiểm soát thay đổi [[MOC / ECN]] bắt buộc:\n"
+            "  1. Lập hồ sơ đề xuất thay đổi nêu rõ thông số cũ–mới và mục tiêu kinh tế/kỹ thuật.\n"
+            "  2. Đánh giá rủi ro liên phòng ban ([[PFMEA]] với Kỹ thuật, QA/QC, [[EHS]], Kế toán BOM) — đảm bảo cận dưới kiểm soát nội bộ cao hơn chuẩn bắt buộc [[QCVN 4]] / [[IEC 60502]] tối thiểu `3σ`.\n"
+            "  3. Chạy thử nghiệm lô nhỏ (Pilot Trial 1 máy) và gửi đủ mẫu phòng Lab đo chiều dày, [[Spark Tester]], [[Water Immersion]], [[Tensile]]/[[Aging Oven]], tính [[Cpk]] ≥ 1.33–1.67.\n"
+            "  4. Phê duyệt chính thức bằng văn bản.\n"
+            "  5. Cập nhật đồng bộ [[SOP]], [[Control Plan]], MBOM trên [[ERP]] và đào tạo công nhân trước khi chạy hàng loạt."
+        )
+    },
+    {
+        "id": "q_adv_16",
+        "category": "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Khi hội đồng hỏi về thành tích thẩm định ROI thiết bị ở công ty cũ (~1.2 tỷ) và kỳ vọng mức lương 16–18 triệu tại CADIVI Miền Trung, bạn trả lời thế nào vừa thuyết phục vừa chuyên nghiệp?",
+        "key_points": (
+            "• Nguyên tắc ứng xử số liệu CV (Trung thực & Bảo mật):\n"
+            "  1. Với thành tích Canon INEX (60s → 30s/hạng mục, giảm 50% thời gian đo) và bệ đo (1 → 16 mẫu/lượt gá): nhấn mạnh đây là tối ưu thao tác & tăng sức chứa mỗi lượt gá, KHÔNG thổi phồng thành tăng năng suất 16 lần hay cắt 50% nhân sự.\n"
+            "  2. Với dự án thẩm định đầu tư thiết bị: tôn trọng bảo mật tài chính công ty cũ, tập trung trình bày **PHƯƠNG PHÁP LUẬN** thẩm định [[ROI]] / [[Payback]] (tách Hard Savings vs Soft Savings, đối chiếu Kế toán, chạy 3 kịch bản độ nhạy Thận trọng–Cơ sở–Lạc quan).\n"
+            "• Về kỳ vọng thu nhập tại CADIVI (16–18 triệu + thưởng năm/phụ cấp): thể hiện rõ sự tìm hiểu về tổng thu nhập năm của hệ thống CADIVI/GELEX, khẳng định sẵn sàng bắt đầu trong khung ngân sách phù hợp năng lực và cam kết tạo ra giá trị tiết kiệm thực (Hard Savings) vượt xa chi phí lương ngay trong 90 ngày đầu!"
+        )
     }
 ]
 
@@ -906,17 +1920,24 @@ CATEGORIES = [
     "Định Mức BOM & Hao Phí",
     "SPC, Minitab & Cp/Cpk",
     "Bố Trí Mặt Bằng & Luồng 1 Sản Phẩm",
-    "ERP/MES & Quản Lý Genba"
+    "ERP/MES & Quản Lý Genba",
+    "Công Nghệ & Máy Móc Dây Cáp Điện (CADIVI)",
+    "OE, Six Sigma (DMAIC), TOC, TPM & PFMEA",
+    "Hoạch Định Năng Lực, Điều Độ & Chi Phí",
+    "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
+    "Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI",
+    "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
+    "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2"
 ]
 
 
 def get_all_questions():
-    """Trả về toàn bộ danh sách 56 câu hỏi."""
+    """Trả về toàn bộ danh sách câu hỏi phỏng vấn thực chiến (128 câu)."""
     return QUESTIONS
 
 
 def get_categories():
-    """Trả về danh sách 10 chủ đề."""
+    """Trả về danh sách 17 chủ đề + Tất cả chủ đề."""
     return CATEGORIES
 
 
@@ -928,7 +1949,7 @@ def get_questions_by_category(category_name):
 
 
 def search_questions(keyword):
-    """Tìm kiếm câu hỏi theo từ khóa trong câu hỏi hoặc gợi ý trả lời."""
+    """Tìm kiếm câu hỏi theo từ khóa trong câu hỏi hoặc gợi ý trả lời (hỗ trợ cả văn bản thuần & công thức [[Key|Text]])."""
     if not keyword or not keyword.strip():
         return QUESTIONS
     kw = keyword.strip().lower()
@@ -940,4 +1961,9 @@ def search_questions(keyword):
         q_type = q.get("type", "").lower()
         if kw in q_text or kw in kp_text or kw in cat or kw in q_type:
             results.append(q)
+        else:
+            stripped_q = _FORMULA_STRIP_RE.sub(r"\1", q_text)
+            stripped_kp = _FORMULA_STRIP_RE.sub(r"\1", kp_text)
+            if kw in stripped_q or kw in stripped_kp:
+                results.append(q)
     return results

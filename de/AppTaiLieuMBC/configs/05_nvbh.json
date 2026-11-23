@@ -1,0 +1,1769 @@
+{
+  "id": "nvbh",
+  "name": "Nghiệp Vụ Bảo Hành (NVBH)",
+  "excel_remote": "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\(IT)   BIEU LIET KE  一覧表.xls",
+  "excel_local_name": "(IT) BIEU LIET KE.xls",
+  "local_subfolder": "01_TIEU_CHUAN_KIEM_TRA/IT HOA TIEU CHUAN NGHIEP VU BAO HANH",
+  "remote_scan_roots": [
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH"
+  ],
+  "rules": {
+    "vietnamese_markers": [
+      "-v.pdf",
+      "_v.pdf",
+      "(v)",
+      "(v it)",
+      "-v ",
+      "ban viet",
+      "ban v",
+      "vdm"
+    ],
+    "japanese_exclude": [
+      "-j.pdf",
+      "_j.pdf",
+      "(j)",
+      "(j it)",
+      "-j ",
+      "ban nhat",
+      "ban j"
+    ],
+    "canceled_keywords": [
+      "hủy",
+      "huy",
+      "hủy bỏ",
+      "huy bo",
+      "haishi"
+    ]
+  },
+  "last_sync_time": "2026-11-20 09:18:14",
+  "sync_state": {
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-001\\VDMBH-CL-001-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-001\\VDMBH-CL-001-V.pdf",
+      "clean_filename": "VDMBH-CL-001-V.pdf",
+      "doc_code": "VDMBH-CL-001-V",
+      "mtime": 1757474427.1049745,
+      "size": 1766245,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:07.969306"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-004\\VDMBH-CL-004-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-004\\VDMBH-CL-004-JV.pdf",
+      "clean_filename": "VDMBH-CL-004-JV.pdf",
+      "doc_code": "VDMBH-CL-004-JV",
+      "mtime": 1392016300.678362,
+      "size": 5090186,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:08.784205"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-005\\VDMBH-CL-005-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-005\\VDMBH-CL-005-V.pdf",
+      "clean_filename": "VDMBH-CL-005-V.pdf",
+      "doc_code": "VDMBH-CL-005-V",
+      "mtime": 1718855883.495696,
+      "size": 476860,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:08.895470"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-007\\VDMBH-CL-007-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-007\\VDMBH-CL-007-V.pdf",
+      "clean_filename": "VDMBH-CL-007-V.pdf",
+      "doc_code": "VDMBH-CL-007-V",
+      "mtime": 1679554379.909454,
+      "size": 352220,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:08.999064"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-008\\VDMBH-CL-008-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-008\\VDMBH-CL-008-JV.pdf",
+      "clean_filename": "VDMBH-CL-008-JV.pdf",
+      "doc_code": "VDMBH-CL-008-JV",
+      "mtime": 1604023068.012695,
+      "size": 1760013,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:09.219376"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-009\\VDMBH-CL-009-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-009\\VDMBH-CL-009-JV.pdf",
+      "clean_filename": "VDMBH-CL-009-JV.pdf",
+      "doc_code": "VDMBH-CL-009-JV",
+      "mtime": 1502848432.3906941,
+      "size": 220481,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:09.271634"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-010\\VDMBH-CL-010-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-010\\VDMBH-CL-010-V.pdf",
+      "clean_filename": "VDMBH-CL-010-V.pdf",
+      "doc_code": "VDMBH-CL-010-V",
+      "mtime": 1777437959.7018669,
+      "size": 942915,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:09.419144"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-011\\VDMBH-CL-011-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-011\\VDMBH-CL-011-V.pdf",
+      "clean_filename": "VDMBH-CL-011-V.pdf",
+      "doc_code": "VDMBH-CL-011-V",
+      "mtime": 1726303967.2910862,
+      "size": 462645,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:09.534846"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-012\\VDMBH-CL-012-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-012\\VDMBH-CL-012-V.pdf",
+      "clean_filename": "VDMBH-CL-012-V.pdf",
+      "doc_code": "VDMBH-CL-012-V",
+      "mtime": 1758256124.1537538,
+      "size": 677928,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:09.763326"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-013\\VDMBH-CL-013-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-013\\VDMBH-CL-013-V.pdf",
+      "clean_filename": "VDMBH-CL-013-V.pdf",
+      "doc_code": "VDMBH-CL-013-V",
+      "mtime": 1667382945.3627264,
+      "size": 240492,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:09.879446"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-014\\VDMBH-CL-014-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-014\\VDMBH-CL-014-V.pdf",
+      "clean_filename": "VDMBH-CL-014-V.pdf",
+      "doc_code": "VDMBH-CL-014-V",
+      "mtime": 1709364217.5220134,
+      "size": 2399225,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:10.340306"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-015\\VDMBH-CL-015-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-015\\VDMBH-CL-015-JV.pdf",
+      "clean_filename": "VDMBH-CL-015-JV.pdf",
+      "doc_code": "VDMBH-CL-015-JV",
+      "mtime": 1735204637.0882308,
+      "size": 530211,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:10.481302"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-016\\VDMBH-CL-016-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-016\\VDMBH-CL-016-V.pdf",
+      "clean_filename": "VDMBH-CL-016-V.pdf",
+      "doc_code": "VDMBH-CL-016-V",
+      "mtime": 1788568609.3639884,
+      "size": 1041267,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:10.665629"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-017\\VDMBH-CL-017-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-017\\VDMBH-CL-017-V.pdf",
+      "clean_filename": "VDMBH-CL-017-V.pdf",
+      "doc_code": "VDMBH-CL-017-V",
+      "mtime": 1586137550.5201707,
+      "size": 401726,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:10.784842"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-018\\VDMBH-CL-018-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-018\\VDMBH-CL-018-V.pdf",
+      "clean_filename": "VDMBH-CL-018-V.pdf",
+      "doc_code": "VDMBH-CL-018-V",
+      "mtime": 1793238420.0,
+      "size": 1001406,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:10.950504"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-020\\VDMBH-CL-020-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-CL\\VDMBH-CL-020\\VDMBH-CL-020-V.pdf",
+      "clean_filename": "VDMBH-CL-020-V.pdf",
+      "doc_code": "VDMBH-CL-020-V",
+      "mtime": 1674004348.2725365,
+      "size": 363276,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:11.073710"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-001\\VDMBH-GD-001-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-001\\VDMBH-GD-001-V.pdf",
+      "clean_filename": "VDMBH-GD-001-V.pdf",
+      "doc_code": "VDMBH-GD-001-V",
+      "mtime": 1780643123.0888715,
+      "size": 571307,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:11.234732"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-002 Huy bo\\VDMBH-GD-002-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-002 Huy bo\\VDMBH-GD-002-V.pdf",
+      "clean_filename": "VDMBH-GD-002-V.pdf",
+      "doc_code": "VDMBH-GD-002-V",
+      "mtime": 1784088958.0990465,
+      "size": 1962650,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:11.519295"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-004\\VDMBH-GD-004-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-004\\VDMBH-GD-004-V.pdf",
+      "clean_filename": "VDMBH-GD-004-V.pdf",
+      "doc_code": "VDMBH-GD-004-V",
+      "mtime": 1495609837.190622,
+      "size": 18846662,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:14.619379"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-007\\VDMBH-GD-007-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-007\\VDMBH-GD-007-V.pdf",
+      "clean_filename": "VDMBH-GD-007-V.pdf",
+      "doc_code": "VDMBH-GD-007-V",
+      "mtime": 1639720179.2928839,
+      "size": 2307117,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:14.901562"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-009 Huy bo\\VDMBH-GD-009-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-009 Huy bo\\VDMBH-GD-009-V.pdf",
+      "clean_filename": "VDMBH-GD-009-V.pdf",
+      "doc_code": "VDMBH-GD-009-V",
+      "mtime": 1784089073.1659558,
+      "size": 5019228,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:15.700679"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-010\\VDMBH-GD-010-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-010\\VDMBH-GD-010-JV.pdf",
+      "clean_filename": "VDMBH-GD-010-JV.pdf",
+      "doc_code": "VDMBH-GD-010-JV",
+      "mtime": 1368683610.104653,
+      "size": 9559763,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:17.036005"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-011\\VDMBH-GD-011-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-011\\VDMBH-GD-011-V.pdf",
+      "clean_filename": "VDMBH-GD-011-V.pdf",
+      "doc_code": "VDMBH-GD-011-V",
+      "mtime": 1495609507.21811,
+      "size": 6508648,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:18.301817"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-012 Huy bo\\VDMBH-GD-012-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-012 Huy bo\\VDMBH-GD-012-V.pdf",
+      "clean_filename": "VDMBH-GD-012-V.pdf",
+      "doc_code": "VDMBH-GD-012-V",
+      "mtime": 1784091224.0877135,
+      "size": 646438,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:18.429235"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-013\\VDMBH-GD-013-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-013\\VDMBH-GD-013-V.pdf",
+      "clean_filename": "VDMBH-GD-013-V.pdf",
+      "doc_code": "VDMBH-GD-013-V",
+      "mtime": 1699263720.0,
+      "size": 3218675,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:19.164571"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-016\\VDMBH-GD-016-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-016\\VDMBH-GD-016-V.pdf",
+      "clean_filename": "VDMBH-GD-016-V.pdf",
+      "doc_code": "VDMBH-GD-016-V",
+      "mtime": 1779075278.4527955,
+      "size": 468914,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:19.372248"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-017\\VDMBH-GD-017-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-017\\VDMBH-GD-017-V.pdf",
+      "clean_filename": "VDMBH-GD-017-V.pdf",
+      "doc_code": "VDMBH-GD-017-V",
+      "mtime": 1770630174.462293,
+      "size": 2991458,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:20.113417"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-018\\VDMBH-GD-018-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-018\\VDMBH-GD-018-V.pdf",
+      "clean_filename": "VDMBH-GD-018-V.pdf",
+      "doc_code": "VDMBH-GD-018-V",
+      "mtime": 1770369384.8386433,
+      "size": 2493871,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:20.449393"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-019 Huy bo\\VDMBH-GD-019-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-019 Huy bo\\VDMBH-GD-019-V.pdf",
+      "clean_filename": "VDMBH-GD-019-V.pdf",
+      "doc_code": "VDMBH-GD-019-V",
+      "mtime": 1784089210.8762414,
+      "size": 478824,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:20.572462"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-020\\VDMBH-GD-020-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-020\\VDMBH-GD-020-V.pdf",
+      "clean_filename": "VDMBH-GD-020-V.pdf",
+      "doc_code": "VDMBH-GD-020-V",
+      "mtime": 1585203209.9937365,
+      "size": 7794257,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:21.969625"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-024 Huy bo\\VDMBH-GD-024-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-024 Huy bo\\VDMBH-GD-024-V.pdf",
+      "clean_filename": "VDMBH-GD-024-V.pdf",
+      "doc_code": "VDMBH-GD-024-V",
+      "mtime": 1784089516.7931635,
+      "size": 7644366,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:23.044457"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-025 Huy bo\\VDMBH-GD-025-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-025 Huy bo\\VDMBH-GD-025-V.pdf",
+      "clean_filename": "VDMBH-GD-025-V.pdf",
+      "doc_code": "VDMBH-GD-025-V",
+      "mtime": 1784089705.5592082,
+      "size": 4694698,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:23.867263"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-027 Huy bo\\VDMBH-GD-027-00.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-027 Huy bo\\VDMBH-GD-027-00.pdf",
+      "clean_filename": "VDMBH-GD-027-00.pdf",
+      "doc_code": "VDMBH-GD-027-00",
+      "mtime": 1682324237.2643828,
+      "size": 5090650,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:25.124768"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-028 Huy bo\\VDMBH-GD-028-01.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-028 Huy bo\\VDMBH-GD-028-01.pdf",
+      "clean_filename": "VDMBH-GD-028-01.pdf",
+      "doc_code": "VDMBH-GD-028-01",
+      "mtime": 1682324190.7863853,
+      "size": 1835833,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:25.380395"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-029 Huy bo\\VDMBH-GD-029-00.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-029 Huy bo\\VDMBH-GD-029-00.pdf",
+      "clean_filename": "VDMBH-GD-029-00.pdf",
+      "doc_code": "VDMBH-GD-029-00",
+      "mtime": 1682324215.5328572,
+      "size": 4707186,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:26.149515"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-030\\VDMBH-GD-030-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-030\\VDMBH-GD-030-V.pdf",
+      "clean_filename": "VDMBH-GD-030-V.pdf",
+      "doc_code": "VDMBH-GD-030-V",
+      "mtime": 1711693478.7398577,
+      "size": 1005717,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:26.373041"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-031 Huy bo\\VDMBH-GD-031-00-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-031 Huy bo\\VDMBH-GD-031-00-V.pdf",
+      "clean_filename": "VDMBH-GD-031-00-V.pdf",
+      "doc_code": "VDMBH-GD-031-00",
+      "mtime": 1784090109.5490663,
+      "size": 22134677,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:29.450067"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-032\\VDMBH-GD-032-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-032\\VDMBH-GD-032-JV.pdf",
+      "clean_filename": "VDMBH-GD-032-JV.pdf",
+      "doc_code": "VDMBH-GD-032-JV",
+      "mtime": 1467166281.065216,
+      "size": 136275,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:29.512275"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-033 Huy bo\\VDMBH-GD-033-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-033 Huy bo\\VDMBH-GD-033-V.pdf",
+      "clean_filename": "VDMBH-GD-033-V.pdf",
+      "doc_code": "VDMBH-GD-033-V",
+      "mtime": 1784090357.6115463,
+      "size": 3066863,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:30.123801"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-034 Huy bo\\VDMBH-GD-034-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-034 Huy bo\\VDMBH-GD-034-V.pdf",
+      "clean_filename": "VDMBH-GD-034-V.pdf",
+      "doc_code": "VDMBH-GD-034-V",
+      "mtime": 1784090521.2347054,
+      "size": 6546507,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:31.049678"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-035 Huy bo\\VDMBH-GD-035-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-035 Huy bo\\VDMBH-GD-035-V.pdf",
+      "clean_filename": "VDMBH-GD-035-V.pdf",
+      "doc_code": "VDMBH-GD-035-V",
+      "mtime": 1784090672.42159,
+      "size": 2611481,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:31.310813"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-036\\VDMBH-GD-036-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-036\\VDMBH-GD-036-V.pdf",
+      "clean_filename": "VDMBH-GD-036-V.pdf",
+      "doc_code": "VDMBH-GD-036-V",
+      "mtime": 1791257349.6618094,
+      "size": 810007,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:31.493084"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-037 Huy bo\\VDMBH-GD-037-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-037 Huy bo\\VDMBH-GD-037-V.pdf",
+      "clean_filename": "VDMBH-GD-037-V.pdf",
+      "doc_code": "VDMBH-GD-037-V",
+      "mtime": 1784090867.901393,
+      "size": 389751,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:31.659650"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-039\\VDMBH-GD-039-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-039\\VDMBH-GD-039-V.pdf",
+      "clean_filename": "VDMBH-GD-039-V.pdf",
+      "doc_code": "VDMBH-GD-039-V",
+      "mtime": 1447916148.2148278,
+      "size": 3465511,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:32.306084"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-040\\VDMBH-GD-040-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-040\\VDMBH-GD-040-V.pdf",
+      "clean_filename": "VDMBH-GD-040-V.pdf",
+      "doc_code": "VDMBH-GD-040-V",
+      "mtime": 1626145120.7433846,
+      "size": 1906491,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:32.523072"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-041\\VDMBH-GD-041-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-041\\VDMBH-GD-041-V.pdf",
+      "clean_filename": "VDMBH-GD-041-V.pdf",
+      "doc_code": "VDMBH-GD-041-V",
+      "mtime": 1779075398.5518014,
+      "size": 562639,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:32.669451"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-042\\VDMBH-GD-042-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-042\\VDMBH-GD-042-V.pdf",
+      "clean_filename": "VDMBH-GD-042-V.pdf",
+      "doc_code": "VDMBH-GD-042-V",
+      "mtime": 1681892163.901353,
+      "size": 631517,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:32.811628"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-043\\VDMBH-GD-043-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-043\\VDMBH-GD-043-JV.pdf",
+      "clean_filename": "VDMBH-GD-043-JV.pdf",
+      "doc_code": "VDMBH-GD-043-JV",
+      "mtime": 1588825966.5704336,
+      "size": 1043823,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:32.959719"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-044\\VDMBH-GD-044-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-044\\VDMBH-GD-044-V.pdf",
+      "clean_filename": "VDMBH-GD-044-V.pdf",
+      "doc_code": "VDMBH-GD-044-V",
+      "mtime": 1492063320.0,
+      "size": 11798062,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:35.210329"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-045\\VDMBH-GD-045-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-045\\VDMBH-GD-045-V.pdf",
+      "clean_filename": "VDMBH-GD-045-V.pdf",
+      "doc_code": "VDMBH-GD-045-V",
+      "mtime": 1773987780.0,
+      "size": 4354090,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:36.019614"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-047\\VDMBH-GD-047-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-047\\VDMBH-GD-047-V.pdf",
+      "clean_filename": "VDMBH-GD-047-V.pdf",
+      "doc_code": "VDMBH-GD-047-V",
+      "mtime": 1668140258.9358072,
+      "size": 1982988,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:36.689798"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-048\\VDMBH-GD-048-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-048\\VDMBH-GD-048-V.pdf",
+      "clean_filename": "VDMBH-GD-048-V.pdf",
+      "doc_code": "VDMBH-GD-048-V",
+      "mtime": 1624603125.6064935,
+      "size": 2395634,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:36.999941"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-050\\VDMBH-GD-050-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-050\\VDMBH-GD-050-V.pdf",
+      "clean_filename": "VDMBH-GD-050-V.pdf",
+      "doc_code": "VDMBH-GD-050-V",
+      "mtime": 1519974109.3896005,
+      "size": 240712,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:37.060118"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-051\\VDMBH-GD-051-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-051\\VDMBH-GD-051-V.pdf",
+      "clean_filename": "VDMBH-GD-051-V.pdf",
+      "doc_code": "VDMBH-GD-051-V",
+      "mtime": 1519974511.6425443,
+      "size": 674849,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:37.153518"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-052\\VDMBH-GD-052-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-052\\VDMBH-GD-052-V.pdf",
+      "clean_filename": "VDMBH-GD-052-V.pdf",
+      "doc_code": "VDMBH-GD-052-V",
+      "mtime": 1519974718.8724446,
+      "size": 169261,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:37.215937"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-053\\VDMBH-GD-053-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-053\\VDMBH-GD-053-V.pdf",
+      "clean_filename": "VDMBH-GD-053-V.pdf",
+      "doc_code": "VDMBH-GD-053-V",
+      "mtime": 1524284786.9314868,
+      "size": 6183112,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:38.315398"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-054\\VDMBH-GD-054-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-054\\VDMBH-GD-054-V.pdf",
+      "clean_filename": "VDMBH-GD-054-V.pdf",
+      "doc_code": "VDMBH-GD-054-V",
+      "mtime": 1769152034.2704985,
+      "size": 765373,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:38.439585"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-055\\VDMBH-GD-055-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-055\\VDMBH-GD-055-V.pdf",
+      "clean_filename": "VDMBH-GD-055-V.pdf",
+      "doc_code": "VDMBH-GD-055-V",
+      "mtime": 1733451582.421305,
+      "size": 509252,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:38.545368"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-056\\VDMBH-GD-056-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-056\\VDMBH-GD-056-V.pdf",
+      "clean_filename": "VDMBH-GD-056-V.pdf",
+      "doc_code": "VDMBH-GD-056-V",
+      "mtime": 1530504990.2120636,
+      "size": 881766,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:38.640650"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-057\\VDMBH-GD-057-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-057\\VDMBH-GD-057-V.pdf",
+      "clean_filename": "VDMBH-GD-057-V.pdf",
+      "doc_code": "VDMBH-GD-057-V",
+      "mtime": 1676858637.265309,
+      "size": 1897698,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:38.869884"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-058\\VDMBH-GD-058-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-058\\VDMBH-GD-058-V.pdf",
+      "clean_filename": "VDMBH-GD-058-V.pdf",
+      "doc_code": "VDMBH-GD-058-V",
+      "mtime": 1737687337.0670788,
+      "size": 652204,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:39.303641"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-059\\VDMBH-GD-059-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-059\\VDMBH-GD-059-V.pdf",
+      "clean_filename": "VDMBH-GD-059-V.pdf",
+      "doc_code": "VDMBH-GD-059-V",
+      "mtime": 1701484211.7031715,
+      "size": 1904319,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:39.535443"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-060\\VDMBH-GD-060-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-060\\VDMBH-GD-060-V.pdf",
+      "clean_filename": "VDMBH-GD-060-V.pdf",
+      "doc_code": "VDMBH-GD-060-V",
+      "mtime": 1726131919.6551144,
+      "size": 683002,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:39.714552"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-061\\VDMBH-GD-061-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-061\\VDMBH-GD-061-V.pdf",
+      "clean_filename": "VDMBH-GD-061-V.pdf",
+      "doc_code": "VDMBH-GD-061-V",
+      "mtime": 1727152887.1190455,
+      "size": 571433,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:40.122094"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-062\\VDMBH-GD-062-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-062\\VDMBH-GD-062-V.pdf",
+      "clean_filename": "VDMBH-GD-062-V.pdf",
+      "doc_code": "VDMBH-GD-062-V",
+      "mtime": 1556848452.9940283,
+      "size": 13203078,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:42.123049"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-063\\VDMBH-GD-063-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-063\\VDMBH-GD-063-V.pdf",
+      "clean_filename": "VDMBH-GD-063-V.pdf",
+      "doc_code": "VDMBH-GD-063-V",
+      "mtime": 1676858852.0720723,
+      "size": 2201927,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:42.402786"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-064\\VDMBH-GD-064-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-064\\VDMBH-GD-064-V.pdf",
+      "clean_filename": "VDMBH-GD-064-V.pdf",
+      "doc_code": "VDMBH-GD-064-V",
+      "mtime": 1779858480.0,
+      "size": 7803794,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:43.952580"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-065\\VDMBH-GD-065-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-065\\VDMBH-GD-065-V.pdf",
+      "clean_filename": "VDMBH-GD-065-V.pdf",
+      "doc_code": "VDMBH-GD-065-V",
+      "mtime": 1662775094.5925808,
+      "size": 1721647,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:44.229603"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-066\\VDMBH-GD-066-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-066\\VDMBH-GD-066-V.pdf",
+      "clean_filename": "VDMBH-GD-066-V.pdf",
+      "doc_code": "VDMBH-GD-066-V",
+      "mtime": 1770263700.0,
+      "size": 1739964,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:44.541653"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-067\\VDMBH-GD-067-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-067\\VDMBH-GD-067-V.pdf",
+      "clean_filename": "VDMBH-GD-067-V.pdf",
+      "doc_code": "VDMBH-GD-067-V",
+      "mtime": 1721114160.0,
+      "size": 3629184,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:45.210402"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-068\\VDMBH-GD-068-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-068\\VDMBH-GD-068-V.pdf",
+      "clean_filename": "VDMBH-GD-068-V.pdf",
+      "doc_code": "VDMBH-GD-068-V",
+      "mtime": 1776931482.6261077,
+      "size": 2569386,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:45.505552"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-069\\VDMBH-GD-069-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-069\\VDMBH-GD-069-V.pdf",
+      "clean_filename": "VDMBH-GD-069-V.pdf",
+      "doc_code": "VDMBH-GD-069-V",
+      "mtime": 1746597931.427281,
+      "size": 2047103,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:46.055351"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-070\\VDMBH-GD-070-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-070\\VDMBH-GD-070-V.pdf",
+      "clean_filename": "VDMBH-GD-070-V.pdf",
+      "doc_code": "VDMBH-GD-070-V",
+      "mtime": 1738825342.938226,
+      "size": 1170414,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:46.243149"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-071 Huy bo\\VDMBH-GD-071-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-071 Huy bo\\VDMBH-GD-071-V.pdf",
+      "clean_filename": "VDMBH-GD-071-V.pdf",
+      "doc_code": "VDMBH-GD-071-V",
+      "mtime": 1784091008.064313,
+      "size": 1613934,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:46.469872"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-072\\VDMBH-GD-072-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-072\\VDMBH-GD-072-V.pdf",
+      "clean_filename": "VDMBH-GD-072-V.pdf",
+      "doc_code": "VDMBH-GD-072-V",
+      "mtime": 1637210357.58806,
+      "size": 1499174,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:46.640016"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-073\\VDMBH-GD-073-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-073\\VDMBH-GD-073-V.pdf",
+      "clean_filename": "VDMBH-GD-073-V.pdf",
+      "doc_code": "VDMBH-GD-073-V",
+      "mtime": 1742285297.6058364,
+      "size": 598245,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:46.803552"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-074\\VDMBH-GD-074-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-074\\VDMBH-GD-074-V.pdf",
+      "clean_filename": "VDMBH-GD-074-V.pdf",
+      "doc_code": "VDMBH-GD-074-V",
+      "mtime": 1744348446.3648229,
+      "size": 2111812,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:47.079793"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-075\\VDMBH-GD-075-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-075\\VDMBH-GD-075-V.pdf",
+      "clean_filename": "VDMBH-GD-075-V.pdf",
+      "doc_code": "VDMBH-GD-075-V",
+      "mtime": 1664589484.215831,
+      "size": 1750588,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:47.319732"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-076\\VDMBH-GD-076-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-076\\VDMBH-GD-076-V.pdf",
+      "clean_filename": "VDMBH-GD-076-V.pdf",
+      "doc_code": "VDMBH-GD-076-V",
+      "mtime": 1676874913.1615078,
+      "size": 2243692,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:47.630114"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-077\\VDMBH-GD-077-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-077\\VDMBH-GD-077-V.pdf",
+      "clean_filename": "VDMBH-GD-077-V.pdf",
+      "doc_code": "VDMBH-GD-077-V",
+      "mtime": 1761878580.0,
+      "size": 3665505,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:48.360014"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-078\\VDMBH-GD-078-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-078\\VDMBH-GD-078-V.pdf",
+      "clean_filename": "VDMBH-GD-078-V.pdf",
+      "doc_code": "VDMBH-GD-078-V",
+      "mtime": 1696217460.0,
+      "size": 1497316,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:48.650042"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-079\\VDMBH-GD-079-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-079\\VDMBH-GD-079-V.pdf",
+      "clean_filename": "VDMBH-GD-079-V.pdf",
+      "doc_code": "VDMBH-GD-079-V",
+      "mtime": 1712897945.7773619,
+      "size": 513620,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:48.769843"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-080\\VDMBH-GD-080-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-080\\VDMBH-GD-080-JV.pdf",
+      "clean_filename": "VDMBH-GD-080-JV.pdf",
+      "doc_code": "VDMBH-GD-080-JV",
+      "mtime": 1715160737.8059132,
+      "size": 1081209,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:48.945987"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-081\\VDMBH-GD-081-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-081\\VDMBH-GD-081-V.pdf",
+      "clean_filename": "VDMBH-GD-081-V.pdf",
+      "doc_code": "VDMBH-GD-081-V",
+      "mtime": 1715161093.9131708,
+      "size": 2338118,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:49.257205"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-082\\VDMBH-GD-082-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-082\\VDMBH-GD-082-V.pdf",
+      "clean_filename": "VDMBH-GD-082-V.pdf",
+      "doc_code": "VDMBH-GD-082-V",
+      "mtime": 1716858580.6452425,
+      "size": 1470748,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:49.454473"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-083\\VDMBH-GD-083-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-083\\VDMBH-GD-083-V.pdf",
+      "clean_filename": "VDMBH-GD-083-V.pdf",
+      "doc_code": "VDMBH-GD-083-V",
+      "mtime": 1724130231.8705583,
+      "size": 4963569,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:50.289989"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-084\\VDMBH-GD-084-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-084\\VDMBH-GD-084-V.pdf",
+      "clean_filename": "VDMBH-GD-084-V.pdf",
+      "doc_code": "VDMBH-GD-084-V",
+      "mtime": 1735291972.4755442,
+      "size": 686217,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:50.489936"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-085\\VDMBH-GD-085-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-085\\VDMBH-GD-085-V.pdf",
+      "clean_filename": "VDMBH-GD-085-V.pdf",
+      "doc_code": "VDMBH-GD-085-V",
+      "mtime": 1744266145.9633784,
+      "size": 2070783,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:50.754996"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-086\\VDMBH-GD-086-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-086\\VDMBH-GD-086-V.pdf",
+      "clean_filename": "VDMBH-GD-086-V.pdf",
+      "doc_code": "VDMBH-GD-086-V",
+      "mtime": 1745465893.2060962,
+      "size": 2006709,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:51.019946"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-087\\VDMBH-GD-087-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-087\\VDMBH-GD-087-V.pdf",
+      "clean_filename": "VDMBH-GD-087-V.pdf",
+      "doc_code": "VDMBH-GD-087-V",
+      "mtime": 1750393024.1698892,
+      "size": 2757785,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:51.910285"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-088\\VDMBH-GD-088-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-088\\VDMBH-GD-088-V.pdf",
+      "clean_filename": "VDMBH-GD-088-V.pdf",
+      "doc_code": "VDMBH-GD-088-V",
+      "mtime": 1754968490.3117282,
+      "size": 2565125,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:52.259809"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-089\\VDMBH-GD-089-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-089\\VDMBH-GD-089-V.pdf",
+      "clean_filename": "VDMBH-GD-089-V.pdf",
+      "doc_code": "VDMBH-GD-089-V",
+      "mtime": 1786352798.2060726,
+      "size": 2530330,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:52.880256"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-090\\VDMBH-GD-090-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-090\\VDMBH-GD-090-V.pdf",
+      "clean_filename": "VDMBH-GD-090-V.pdf",
+      "doc_code": "VDMBH-GD-090-V",
+      "mtime": 1793351100.0,
+      "size": 1917658,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:53.130189"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-091\\VDMBH-GD-091-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-GD\\VDMBH-GD-091\\VDMBH-GD-091-V.pdf",
+      "clean_filename": "VDMBH-GD-091-V.pdf",
+      "doc_code": "VDMBH-GD-091-V",
+      "mtime": 1793762280.0,
+      "size": 2772379,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:53.740221"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-001 Huy bo\\VDMBH-KT-001-02 (V IT).pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-001 Huy bo\\VDMBH-KT-001-02 (V IT).pdf",
+      "clean_filename": "VDMBH-KT-001-02 (V IT).pdf",
+      "doc_code": "VDMBH-KT-001-02",
+      "mtime": 1682324311.5969603,
+      "size": 3244612,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:54.410116"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-002 Huy bo\\VDMBH-KT-02-001 VJ.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-002 Huy bo\\VDMBH-KT-02-001 VJ.pdf",
+      "clean_filename": "VDMBH-KT-02-001 VJ.pdf",
+      "doc_code": "VDMBH-KT-02-001",
+      "mtime": 1682324366.0926566,
+      "size": 3181069,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:55.060111"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-003 Huy bo\\VDMBH-KT-003-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-003 Huy bo\\VDMBH-KT-003-V.pdf",
+      "clean_filename": "VDMBH-KT-003-V.pdf",
+      "doc_code": "VDMBH-KT-003-V",
+      "mtime": 1784103248.2684922,
+      "size": 586477,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:55.170981"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-004 Huy bo\\VDMBH-KT-004-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-004 Huy bo\\VDMBH-KT-004-V.pdf",
+      "clean_filename": "VDMBH-KT-004-V.pdf",
+      "doc_code": "VDMBH-KT-004-V",
+      "mtime": 1784103340.4938672,
+      "size": 718032,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:55.297516"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-005\\VDMBH-KT-005-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-005\\VDMBH-KT-005-V.pdf",
+      "clean_filename": "VDMBH-KT-005-V.pdf",
+      "doc_code": "VDMBH-KT-005-V",
+      "mtime": 1726796834.270343,
+      "size": 415085,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:55.512298"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-005\\CŨ\\VDMBH-KT-005-00-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-005\\CU\\VDMBH-KT-005-00-JV.pdf",
+      "clean_filename": "VDMBH-KT-005-00-JV.pdf",
+      "doc_code": "VDMBH-KT-005-00",
+      "mtime": 1290566417.3187194,
+      "size": 257414,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:55.608826"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-005\\CŨ\\VDMBH-KT-005-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-005\\CU\\VDMBH-KT-005-V.pdf",
+      "clean_filename": "VDMBH-KT-005-V.pdf",
+      "doc_code": "VDMBH-KT-005-V",
+      "mtime": 1684478580.8770945,
+      "size": 273576,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:55.700340"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-007 Huy bo\\VDMBH-KT-007-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-007 Huy bo\\VDMBH-KT-007-V.pdf",
+      "clean_filename": "VDMBH-KT-007-V.pdf",
+      "doc_code": "VDMBH-KT-007-V",
+      "mtime": 1784103493.297159,
+      "size": 1467056,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:55.910125"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-008\\VDMBH-KT-008-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-008\\VDMBH-KT-008-V.pdf",
+      "clean_filename": "VDMBH-KT-008-V.pdf",
+      "doc_code": "VDMBH-KT-008-V",
+      "mtime": 1770361009.2561092,
+      "size": 511371,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:56.036927"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-009 Huy bo\\VDMBH-KT-009-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-009 Huy bo\\VDMBH-KT-009-V.pdf",
+      "clean_filename": "VDMBH-KT-009-V.pdf",
+      "doc_code": "VDMBH-KT-009-V",
+      "mtime": 1784103591.7686841,
+      "size": 671003,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:56.153717"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-010 Huy bo\\VDMBH-KT-010-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-010 Huy bo\\VDMBH-KT-010-V.pdf",
+      "clean_filename": "VDMBH-KT-010-V.pdf",
+      "doc_code": "VDMBH-KT-010-V",
+      "mtime": 1784103704.2013967,
+      "size": 530777,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:56.270093"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-011 Huy bo\\VDMBH-KT-011-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-011 Huy bo\\VDMBH-KT-011-V.pdf",
+      "clean_filename": "VDMBH-KT-011-V.pdf",
+      "doc_code": "VDMBH-KT-011-V",
+      "mtime": 1784103800.853836,
+      "size": 475038,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:56.406074"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-012 Huy bo\\VDMBH-KT-012-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-012 Huy bo\\VDMBH-KT-012-V.pdf",
+      "clean_filename": "VDMBH-KT-012-V.pdf",
+      "doc_code": "VDMBH-KT-012-V",
+      "mtime": 1784103887.8846896,
+      "size": 719260,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:56.532993"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-013\\VDMBH-KT-013-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-013\\VDMBH-KT-013-V.pdf",
+      "clean_filename": "VDMBH-KT-013-V.pdf",
+      "doc_code": "VDMBH-KT-013-V",
+      "mtime": 1463038311.716793,
+      "size": 124939,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:56.564956"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-014 Huy bo\\VDMBH-KT-014-00.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-014 Huy bo\\VDMBH-KT-014-00.pdf",
+      "clean_filename": "VDMBH-KT-014-00.pdf",
+      "doc_code": "VDMBH-KT-014-00",
+      "mtime": 1682324405.027132,
+      "size": 922621,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:56.756475"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-015\\VDMBH-KT-015-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-015\\VDMBH-KT-015-V.pdf",
+      "clean_filename": "VDMBH-KT-015-V.pdf",
+      "doc_code": "VDMBH-KT-015-V",
+      "mtime": 1770629312.884429,
+      "size": 1157272,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:56.934060"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-016\\VDMBH-KT-016-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-016\\VDMBH-KT-016-V.pdf",
+      "clean_filename": "VDMBH-KT-016-V.pdf",
+      "doc_code": "VDMBH-KT-016-V",
+      "mtime": 1727153249.1432922,
+      "size": 976594,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:57.114323"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-017 Huy bo\\VDMBH-KT-017-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-017 Huy bo\\VDMBH-KT-017-V.pdf",
+      "clean_filename": "VDMBH-KT-017-V.pdf",
+      "doc_code": "VDMBH-KT-017-V",
+      "mtime": 1784104128.8964558,
+      "size": 527721,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:57.230059"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-018 Huy bo\\VDMBH-KT-018-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-018 Huy bo\\VDMBH-KT-018-V.pdf",
+      "clean_filename": "VDMBH-KT-018-V.pdf",
+      "doc_code": "VDMBH-KT-018-V",
+      "mtime": 1784104228.0449202,
+      "size": 488287,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:57.309943"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-019\\VDMBH-KT-019-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-019\\VDMBH-KT-019-V.pdf",
+      "clean_filename": "VDMBH-KT-019-V.pdf",
+      "doc_code": "VDMBH-KT-019-V",
+      "mtime": 1770369687.3631585,
+      "size": 402125,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:57.459055"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-020 Huy bo\\VDMBH-KT-020-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-020 Huy bo\\VDMBH-KT-020-V.pdf",
+      "clean_filename": "VDMBH-KT-020-V.pdf",
+      "doc_code": "VDMBH-KT-020-V",
+      "mtime": 1784104357.2952673,
+      "size": 1210421,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:57.629791"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-021 Huy bo\\VDMBH-KT-021-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-021 Huy bo\\VDMBH-KT-021-V.pdf",
+      "clean_filename": "VDMBH-KT-021-V.pdf",
+      "doc_code": "VDMBH-KT-021-V",
+      "mtime": 1784104448.6378164,
+      "size": 609143,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:57.764437"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-022 Huy bo\\VDMBH-KT-022-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-022 Huy bo\\VDMBH-KT-022-V.pdf",
+      "clean_filename": "VDMBH-KT-022-V.pdf",
+      "doc_code": "VDMBH-KT-022-V",
+      "mtime": 1784104550.1494899,
+      "size": 1838472,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:58.000180"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-023 Huy bo\\VDMBH-KT-023-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-023 Huy bo\\VDMBH-KT-023-V.pdf",
+      "clean_filename": "VDMBH-KT-023-V.pdf",
+      "doc_code": "VDMBH-KT-023-V",
+      "mtime": 1784104673.9644365,
+      "size": 448246,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:58.099924"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-025 Huy bo\\VDMBH-KT-025-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-025 Huy bo\\VDMBH-KT-025-V.pdf",
+      "clean_filename": "VDMBH-KT-025-V.pdf",
+      "doc_code": "VDMBH-KT-025-V",
+      "mtime": 1784104764.7656753,
+      "size": 500502,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:58.210071"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-026 Huy bo\\VDMBH-KT-026-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-026 Huy bo\\VDMBH-KT-026-V.pdf",
+      "clean_filename": "VDMBH-KT-026-V.pdf",
+      "doc_code": "VDMBH-KT-026-V",
+      "mtime": 1786583551.4573312,
+      "size": 974823,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:58.363093"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-027 Huy bo\\VDMBH-KT-027 Rev.00(JV).pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-027 Huy bo\\VDMBH-KT-027 Rev.00(JV).pdf",
+      "clean_filename": "VDMBH-KT-027 Rev.00(JV).pdf",
+      "doc_code": "VDMBH-KT-027",
+      "mtime": 1682324428.128367,
+      "size": 336110,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:58.496608"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-028\\VDMBH-KT-028-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-028\\VDMBH-KT-028-V.pdf",
+      "clean_filename": "VDMBH-KT-028-V.pdf",
+      "doc_code": "VDMBH-KT-028-V",
+      "mtime": 1737078224.1067245,
+      "size": 639393,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:58.671451"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-030\\VDMBH-KT-030-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-030\\VDMBH-KT-030-V.pdf",
+      "clean_filename": "VDMBH-KT-030-V.pdf",
+      "doc_code": "VDMBH-KT-030-V",
+      "mtime": 1759193566.0658765,
+      "size": 351747,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:58.868395"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-031 Huy bo\\VDMBH-KT-031-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-031 Huy bo\\VDMBH-KT-031-V.pdf",
+      "clean_filename": "VDMBH-KT-031-V.pdf",
+      "doc_code": "VDMBH-KT-031-V",
+      "mtime": 1784104982.1043649,
+      "size": 720830,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:59.160081"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-032 Huy bo\\VDMBH-KT-032-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-032 Huy bo\\VDMBH-KT-032-V.pdf",
+      "clean_filename": "VDMBH-KT-032-V.pdf",
+      "doc_code": "VDMBH-KT-032-V",
+      "mtime": 1779760073.1981993,
+      "size": 698422,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:17:59.350067"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-033\\VDMBH-KT-033-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-033\\VDMBH-KT-033-V.pdf",
+      "clean_filename": "VDMBH-KT-033-V.pdf",
+      "doc_code": "VDMBH-KT-033-V",
+      "mtime": 1728461605.015793,
+      "size": 607027,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:59.510221"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-034\\VDMBH-KT-034-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-034\\VDMBH-KT-034-V.pdf",
+      "clean_filename": "VDMBH-KT-034-V.pdf",
+      "doc_code": "VDMBH-KT-034-V",
+      "mtime": 1770280036.1702037,
+      "size": 533703,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:59.630062"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-035\\VDMBH-KT-035-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-035\\VDMBH-KT-035-V.pdf",
+      "clean_filename": "VDMBH-KT-035-V.pdf",
+      "doc_code": "VDMBH-KT-035-V",
+      "mtime": 1779075613.7166934,
+      "size": 638416,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:59.780151"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-036\\VDMBH-KT-036-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-036\\VDMBH-KT-036-V.pdf",
+      "clean_filename": "VDMBH-KT-036-V.pdf",
+      "doc_code": "VDMBH-KT-036-V",
+      "mtime": 1680229024.5404847,
+      "size": 738068,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:59.940329"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-037\\VDMBH-KT-037-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-037\\VDMBH-KT-037-V.pdf",
+      "clean_filename": "VDMBH-KT-037-V.pdf",
+      "doc_code": "VDMBH-KT-037-V",
+      "mtime": 1770280041.9844685,
+      "size": 615382,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:00.061135"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-038\\VDMBH-KT-038-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-038\\VDMBH-KT-038-V.pdf",
+      "clean_filename": "VDMBH-KT-038-V.pdf",
+      "doc_code": "VDMBH-KT-038-V",
+      "mtime": 1770283150.602701,
+      "size": 2158987,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:00.331954"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-039 Huy bo\\VDMBH-KT-039-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-039 Huy bo\\VDMBH-KT-039-V.pdf",
+      "clean_filename": "VDMBH-KT-039-V.pdf",
+      "doc_code": "VDMBH-KT-039-V",
+      "mtime": 1784105771.4456167,
+      "size": 6408954,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:01.616688"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-040\\VDMBH-KT-040-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-040\\VDMBH-KT-040-V.pdf",
+      "clean_filename": "VDMBH-KT-040-V.pdf",
+      "doc_code": "VDMBH-KT-040-V",
+      "mtime": 1587633322.341156,
+      "size": 972942,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:01.805577"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-041\\VDMBH-KT-041-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-041\\VDMBH-KT-041-V.pdf",
+      "clean_filename": "VDMBH-KT-041-V.pdf",
+      "doc_code": "VDMBH-KT-041-V",
+      "mtime": 1534836413.4290116,
+      "size": 637726,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:01.900272"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-042\\VDMBH-KT-042-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-042\\VDMBH-KT-042-V.pdf",
+      "clean_filename": "VDMBH-KT-042-V.pdf",
+      "doc_code": "VDMBH-KT-042-V",
+      "mtime": 1778145932.9204166,
+      "size": 318476,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:02.020039"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-043 Huy bo\\VDMBH-KT-043-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-043 Huy bo\\VDMBH-KT-043-V.pdf",
+      "clean_filename": "VDMBH-KT-043-V.pdf",
+      "doc_code": "VDMBH-KT-043-V",
+      "mtime": 1779853977.151782,
+      "size": 714036,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:02.163305"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-044\\VDMBH-KT-044-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-044\\VDMBH-KT-044-V.pdf",
+      "clean_filename": "VDMBH-KT-044-V.pdf",
+      "doc_code": "VDMBH-KT-044-V",
+      "mtime": 1791254129.7627177,
+      "size": 2907002,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:02.780289"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-045\\VDMBH-KT-045-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-045\\VDMBH-KT-045-V.pdf",
+      "clean_filename": "VDMBH-KT-045-V.pdf",
+      "doc_code": "VDMBH-KT-045-V",
+      "mtime": 1640147093.6775036,
+      "size": 1015024,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:02.940419"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-046\\VDMBH-KT-046-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-046\\VDMBH-KT-046-V.pdf",
+      "clean_filename": "VDMBH-KT-046-V.pdf",
+      "doc_code": "VDMBH-KT-046-V",
+      "mtime": 1709524330.2142794,
+      "size": 698048,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:03.242727"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-047\\VDMBH-KT-047-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-047\\VDMBH-KT-047-V.pdf",
+      "clean_filename": "VDMBH-KT-047-V.pdf",
+      "doc_code": "VDMBH-KT-047-V",
+      "mtime": 1615973171.7056596,
+      "size": 816286,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:03.430277"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-048 Huy bo\\VDMBH-KT-048-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-048 Huy bo\\VDMBH-KT-048-V.pdf",
+      "clean_filename": "VDMBH-KT-048-V.pdf",
+      "doc_code": "VDMBH-KT-048-V",
+      "mtime": 1779760095.5800447,
+      "size": 2751377,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:04.020527"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-050\\VDMBH-KT-050-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-050\\VDMBH-KT-050-V.pdf",
+      "clean_filename": "VDMBH-KT-050-V.pdf",
+      "doc_code": "VDMBH-KT-050-V",
+      "mtime": 1632736483.007848,
+      "size": 664224,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:04.120120"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-051\\VDMBH-KT-051-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-051\\VDMBH-KT-051-V.pdf",
+      "clean_filename": "VDMBH-KT-051-V.pdf",
+      "doc_code": "VDMBH-KT-051-V",
+      "mtime": 1778057480.776231,
+      "size": 326401,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:04.210234"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-052 Huy bo\\VDMBH-KT-052-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-052 Huy bo\\VDMBH-KT-052-V.pdf",
+      "clean_filename": "VDMBH-KT-052-V.pdf",
+      "doc_code": "VDMBH-KT-052-V",
+      "mtime": 1779760102.7251086,
+      "size": 1316858,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:04.410010"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-055\\VDMBH-KT-055-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-055\\VDMBH-KT-055-V.pdf",
+      "clean_filename": "VDMBH-KT-055-V.pdf",
+      "doc_code": "VDMBH-KT-055-V",
+      "mtime": 1776322002.1864908,
+      "size": 1349019,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:04.620018"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-056\\VDMBH-KT-056-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-056\\VDMBH-KT-056-V.pdf",
+      "clean_filename": "VDMBH-KT-056-V.pdf",
+      "doc_code": "VDMBH-KT-056-V",
+      "mtime": 1751606170.7623239,
+      "size": 425805,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:04.750297"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-057 Huy bo\\VDMBH-KT-057-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-057 Huy bo\\VDMBH-KT-057-V.pdf",
+      "clean_filename": "VDMBH-KT-057-V.pdf",
+      "doc_code": "VDMBH-KT-057-V",
+      "mtime": 1779760107.8067036,
+      "size": 473109,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:04.874981"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-058\\VDMBH-KT-058-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-058\\VDMBH-KT-058-V.pdf",
+      "clean_filename": "VDMBH-KT-058-V.pdf",
+      "doc_code": "VDMBH-KT-058-V",
+      "mtime": 1763956175.8204155,
+      "size": 593194,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:05.000394"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-059\\VDMBH-KT-059-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-059\\VDMBH-KT-059-V.pdf",
+      "clean_filename": "VDMBH-KT-059-V.pdf",
+      "doc_code": "VDMBH-KT-059-V",
+      "mtime": 1763972488.1038399,
+      "size": 615836,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:05.140277"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-062\\VDMBH-KT-062-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-KT\\VDMBH-KT-062\\VDMBH-KT-062-V.pdf",
+      "clean_filename": "VDMBH-KT-062-V.pdf",
+      "doc_code": "VDMBH-KT-062-V",
+      "mtime": 1792546680.0,
+      "size": 971459,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:05.300043"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-001\\VDMBH-MT-001-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-001\\VDMBH-MT-001-V.pdf",
+      "clean_filename": "VDMBH-MT-001-V.pdf",
+      "doc_code": "VDMBH-MT-001-V",
+      "mtime": 1661757143.9703543,
+      "size": 855636,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:05.470630"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-002 Huy bo\\VDMBH-MT-002-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-002 Huy bo\\VDMBH-MT-002-V.pdf",
+      "clean_filename": "VDMBH-MT-002-V.pdf",
+      "doc_code": "VDMBH-MT-002-V",
+      "mtime": 1784107566.2160378,
+      "size": 4074416,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:06.150170"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-003 Huy bo\\VDMBH-MT-003-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-003 Huy bo\\VDMBH-MT-003-V.pdf",
+      "clean_filename": "VDMBH-MT-003-V.pdf",
+      "doc_code": "VDMBH-MT-003-V",
+      "mtime": 1784107706.8907075,
+      "size": 1054671,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:06.323987"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-004\\VDMBH-MT-004-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-004\\VDMBH-MT-004-V.pdf",
+      "clean_filename": "VDMBH-MT-004-V.pdf",
+      "doc_code": "VDMBH-MT-004-V",
+      "mtime": 1473129963.5372524,
+      "size": 22555,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:06.365679"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-005 Huy bo\\VDMBH-MT-005.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-005 Huy bo\\VDMBH-MT-005.pdf",
+      "clean_filename": "VDMBH-MT-005.pdf",
+      "doc_code": "VDMBH-MT-005",
+      "mtime": 1682323551.6658294,
+      "size": 362344,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:06.500328"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-006 Huy bo\\VDMBH-MT-006.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-006 Huy bo\\VDMBH-MT-006.pdf",
+      "clean_filename": "VDMBH-MT-006.pdf",
+      "doc_code": "VDMBH-MT-006",
+      "mtime": 1682323631.466569,
+      "size": 1704351,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:06.900582"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-007 Huy bo\\VDMBH-MT-007-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-007 Huy bo\\VDMBH-MT-007-V.pdf",
+      "clean_filename": "VDMBH-MT-007-V.pdf",
+      "doc_code": "VDMBH-MT-007-V",
+      "mtime": 1784107892.2643268,
+      "size": 1438087,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:07.135079"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-008 Huy bo\\VDMBH-MT-008-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-008 Huy bo\\VDMBH-MT-008-V.pdf",
+      "clean_filename": "VDMBH-MT-008-V.pdf",
+      "doc_code": "VDMBH-MT-008-V",
+      "mtime": 1784108026.6774454,
+      "size": 1082407,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:07.328871"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-009 Huy bo\\VDMBH-MT-009-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-009 Huy bo\\VDMBH-MT-009-V.pdf",
+      "clean_filename": "VDMBH-MT-009-V.pdf",
+      "doc_code": "VDMBH-MT-009-V",
+      "mtime": 1682323650.5539434,
+      "size": 1404805,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:07.540302"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-010 Huy bo\\VDMBH-MT-010.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-010 Huy bo\\VDMBH-MT-010.pdf",
+      "clean_filename": "VDMBH-MT-010.pdf",
+      "doc_code": "VDMBH-MT-010",
+      "mtime": 1682323673.276626,
+      "size": 1387267,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:07.804528"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-011 Huy bo\\VDMBH-MT-011.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-011 Huy bo\\VDMBH-MT-011.pdf",
+      "clean_filename": "VDMBH-MT-011.pdf",
+      "doc_code": "VDMBH-MT-011",
+      "mtime": 1682323701.327308,
+      "size": 671252,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:08.021942"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-012 Huy bo\\VDMBH-MT-012.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-012 Huy bo\\VDMBH-MT-012.pdf",
+      "clean_filename": "VDMBH-MT-012.pdf",
+      "doc_code": "VDMBH-MT-012",
+      "mtime": 1784108386.9666307,
+      "size": 1018956,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:08.150268"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-013 Huy bo\\VDMBH-MT-013.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-013 Huy bo\\VDMBH-MT-013.pdf",
+      "clean_filename": "VDMBH-MT-013.pdf",
+      "doc_code": "VDMBH-MT-013",
+      "mtime": 1682323717.9839234,
+      "size": 383273,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:08.301759"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-014 Huy bo\\VDMBH-MT-014.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-014 Huy bo\\VDMBH-MT-014.pdf",
+      "clean_filename": "VDMBH-MT-014.pdf",
+      "doc_code": "VDMBH-MT-014",
+      "mtime": 1682323746.218614,
+      "size": 525384,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:08.440059"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-015 Huy bo\\VDMBH-MT-015.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-015 Huy bo\\VDMBH-MT-015.pdf",
+      "clean_filename": "VDMBH-MT-015.pdf",
+      "doc_code": "VDMBH-MT-015",
+      "mtime": 1682323766.8050354,
+      "size": 1834584,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:08.670251"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-016 Huy bo\\VDMBH-MT-016-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-016 Huy bo\\VDMBH-MT-016-V.pdf",
+      "clean_filename": "VDMBH-MT-016-V.pdf",
+      "doc_code": "VDMBH-MT-016-V",
+      "mtime": 1784108618.3459475,
+      "size": 2807174,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:09.320453"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-017 Huy bo\\VDMBH-MT-017.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-017 Huy bo\\VDMBH-MT-017.pdf",
+      "clean_filename": "VDMBH-MT-017.pdf",
+      "doc_code": "VDMBH-MT-017",
+      "mtime": 1682323785.538295,
+      "size": 1018180,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:09.520150"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-018\\VDMBH-MT-018-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-018\\VDMBH-MT-018-V.pdf",
+      "clean_filename": "VDMBH-MT-018-V.pdf",
+      "doc_code": "VDMBH-MT-018-V",
+      "mtime": 1779419940.0,
+      "size": 504211,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:09.690483"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-019\\VDMBH-MT-019-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-019\\VDMBH-MT-019-V.pdf",
+      "clean_filename": "VDMBH-MT-019-V.pdf",
+      "doc_code": "VDMBH-MT-019-V",
+      "mtime": 1620695508.7446086,
+      "size": 859697,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:09.890113"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-020 Huy bo\\VDMBH-MT-020-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-020 Huy bo\\VDMBH-MT-020-V.pdf",
+      "clean_filename": "VDMBH-MT-020-V.pdf",
+      "doc_code": "VDMBH-MT-020-V",
+      "mtime": 1784108800.8155515,
+      "size": 1677806,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:10.134212"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-021 Huy bo\\VDMBH-MT-021-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-021 Huy bo\\VDMBH-MT-021-V.pdf",
+      "clean_filename": "VDMBH-MT-021-V.pdf",
+      "doc_code": "VDMBH-MT-021-V",
+      "mtime": 1784108881.4848185,
+      "size": 2200678,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:10.400223"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-022 Huy bo\\VDMBH-MT-022-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-022 Huy bo\\VDMBH-MT-022-V.pdf",
+      "clean_filename": "VDMBH-MT-022-V.pdf",
+      "doc_code": "VDMBH-MT-022-V",
+      "mtime": 1784109030.2977931,
+      "size": 2962053,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:11.134966"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-023 Huy bo\\VDMBH-MT-023-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-023 Huy bo\\VDMBH-MT-023-V.pdf",
+      "clean_filename": "VDMBH-MT-023-V.pdf",
+      "doc_code": "VDMBH-MT-023-V",
+      "mtime": 1784109215.5993223,
+      "size": 536078,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:11.290367"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-024 Huy bo\\VDMBH-MT-024-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-024 Huy bo\\VDMBH-MT-024-V.pdf",
+      "clean_filename": "VDMBH-MT-024-V.pdf",
+      "doc_code": "VDMBH-MT-024-V",
+      "mtime": 1784109346.9724002,
+      "size": 745357,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:11.430054"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-025\\VDMBH-MT-025-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-025\\VDMBH-MT-025-V.pdf",
+      "clean_filename": "VDMBH-MT-025-V.pdf",
+      "doc_code": "VDMBH-MT-025-V",
+      "mtime": 1746177217.2755518,
+      "size": 645497,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:11.570232"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-026\\VDMBH-MT-026-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-026\\VDMBH-MT-026-V.pdf",
+      "clean_filename": "VDMBH-MT-026-V.pdf",
+      "doc_code": "VDMBH-MT-026-V",
+      "mtime": 1775035200.0,
+      "size": 639796,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:11.710263"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-027 Huy bo\\VDMBH-MT-027-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-MT\\VDMBH-MT-027 Huy bo\\VDMBH-MT-027-V.pdf",
+      "clean_filename": "VDMBH-MT-027-V.pdf",
+      "doc_code": "VDMBH-MT-027-V",
+      "mtime": 1784109481.2915053,
+      "size": 528338,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:11.832314"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-001\\VDMBH-NV-001-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-001\\VDMBH-NV-001-JV.pdf",
+      "clean_filename": "VDMBH-NV-001-JV.pdf",
+      "doc_code": "VDMBH-NV-001-JV",
+      "mtime": 1591683128.8829148,
+      "size": 7063263,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:12.820383"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-003\\VDMBH-NV-003-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-003\\VDMBH-NV-003-V.pdf",
+      "clean_filename": "VDMBH-NV-003-V.pdf",
+      "doc_code": "VDMBH-NV-003-V",
+      "mtime": 1618796497.3089995,
+      "size": 1062687,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:13.030241"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-005\\VDMBH-NV-005-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-005\\VDMBH-NV-005-V.pdf",
+      "clean_filename": "VDMBH-NV-005-V.pdf",
+      "doc_code": "VDMBH-NV-005-V",
+      "mtime": 1748574947.017196,
+      "size": 624133,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:13.180506"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-008\\VDMBH-NV-008-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-008\\VDMBH-NV-008-V.pdf",
+      "clean_filename": "VDMBH-NV-008-V.pdf",
+      "doc_code": "VDMBH-NV-008-V",
+      "mtime": 1748574994.5439694,
+      "size": 595043,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:13.351573"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-009\\VDMBH-NV-009-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-009\\VDMBH-NV-009-V.pdf",
+      "clean_filename": "VDMBH-NV-009-V.pdf",
+      "doc_code": "VDMBH-NV-009-V",
+      "mtime": 1730532775.3653505,
+      "size": 698311,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:13.503476"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-011\\VDMBH-NV-011-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-011\\VDMBH-NV-011-JV.pdf",
+      "clean_filename": "VDMBH-NV-011-JV.pdf",
+      "doc_code": "VDMBH-NV-011-JV",
+      "mtime": 1512359507.2000258,
+      "size": 78243,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:13.542377"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-012 Huy bo\\VDMBH-NV-012-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-012 Huy bo\\VDMBH-NV-012-V.pdf",
+      "clean_filename": "VDMBH-NV-012-V.pdf",
+      "doc_code": "VDMBH-NV-012-V",
+      "mtime": 1784088019.8391569,
+      "size": 468679,
+      "is_canceled": true,
+      "last_updated": "2026-11-20T09:18:13.660213"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-013\\VDMBH-NV-013-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-NV\\VDMBH-NV-013\\VDMBH-NV-013-V.pdf",
+      "clean_filename": "VDMBH-NV-013-V.pdf",
+      "doc_code": "VDMBH-NV-013-V",
+      "mtime": 1757400096.242685,
+      "size": 852258,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:13.830621"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-OF\\VDMBH-OF-001\\VDMBH-OF-001-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-OF\\VDMBH-OF-001\\VDMBH-OF-001-V.pdf",
+      "clean_filename": "VDMBH-OF-001-V.pdf",
+      "doc_code": "VDMBH-OF-001-V",
+      "mtime": 1779075201.357288,
+      "size": 512455,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:13.954708"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-OF\\VDMBH-OF-002\\VDMBH-OF-002-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-OF\\VDMBH-OF-002\\VDMBH-OF-002-V.pdf",
+      "clean_filename": "VDMBH-OF-002-V.pdf",
+      "doc_code": "VDMBH-OF-002-V",
+      "mtime": 1779075101.5947556,
+      "size": 462085,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:14.070227"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-001\\VDMBH-PT-001-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-001\\VDMBH-PT-001-JV.pdf",
+      "clean_filename": "VDMBH-PT-001-JV.pdf",
+      "doc_code": "VDMBH-PT-001-JV",
+      "mtime": 1337151696.8783302,
+      "size": 816348,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:14.223793"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-002\\VDMBH-PT-002-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-002\\VDMBH-PT-002-JV.pdf",
+      "clean_filename": "VDMBH-PT-002-JV.pdf",
+      "doc_code": "VDMBH-PT-002-JV",
+      "mtime": 1290311148.9419782,
+      "size": 537054,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:14.310302"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-003\\VDMBH-PT-003-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-003\\VDMBH-PT-003-JV.pdf",
+      "clean_filename": "VDMBH-PT-003-JV.pdf",
+      "doc_code": "VDMBH-PT-003-JV",
+      "mtime": 1290311335.851817,
+      "size": 653752,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:14.421666"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-007\\VDMBH-PT-007-JV.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-007\\VDMBH-PT-007-JV.pdf",
+      "clean_filename": "VDMBH-PT-007-JV.pdf",
+      "doc_code": "VDMBH-PT-007-JV",
+      "mtime": 1301455141.235268,
+      "size": 347677,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:14.500832"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-009\\VDMBH-PT-009-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU BAO HANH\\PDF ban tieu chuan nghiep vu bao hanh\\VDMBH-PT\\VDMBH-PT-009\\VDMBH-PT-009-V.pdf",
+      "clean_filename": "VDMBH-PT-009-V.pdf",
+      "doc_code": "VDMBH-PT-009-V",
+      "mtime": 1737077807.9784832,
+      "size": 478403,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:18:14.660487"
+    }
+  }
+}

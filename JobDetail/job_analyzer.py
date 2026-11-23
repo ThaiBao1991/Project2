@@ -283,6 +283,78 @@ TECH_CATALOG = {
         "questions": [
             {"question": "Sự kết hợp giữa hệ thống MES và hệ thống ERP trong việc quản lý năng suất nhà máy diễn ra như thế nào?", "type": "Deep Dive", "key_points": "ERP nắm kế hoạch cấp cao (Lệnh sản xuất, BOM, tồn kho); MES điều hành trực tiếp dưới xưởng (thu thập tín hiệu máy từ PLC, ghi nhận thời gian chạy/dừng, số lượng lỗi thời gian thực); MES gửi dữ liệu thực tế ngược về ERP để hạch toán chi phí."}
         ]
+    },
+    "cable_mfg": {
+        "display": "Công Nghệ & Máy Móc Sản Xuất Dây Cáp Điện (Kéo–Ủ–Bện–Đùn–Spark Test)",
+        "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "cable_mfg_machines",
+        "aliases": ["cadivi", "dây cáp", "cáp điện", "kéo sợi", "máy bện", "đùn", "xlpe", "spark tester", "cáp lực"],
+        "docs": {"name": "Tiêu Chuẩn Dây Cáp Điện IEC 60228 / IEC 60502 / TCVN 5935", "url": "https://cadivi.vn/", "desc": "Quy chuẩn ruột dẫn đồng/nhôm, cách điện PVC/XLPE/LSZH và kiểm nghiệm cáp điện"},
+        "books": ["Electric Cables Handbook (BICC / G.F. Moore)", "Wire and Cable Extrusion Technology (Maillefer Technical Guide)"],
+        "keywords": ["wire drawing rod breakdown copper break analysis", "cable extrusion eccentricity laser gauge oee", "xlpe silane vs ccv crosslinking process"],
+        "questions": [
+            {"question": "Chuỗi công nghệ kéo–ủ–bện–đùn–thử nghiệm cáp điện gồm những công đoạn và nhóm máy nào trọng yếu?", "type": "Khái Niệm Cốt Lõi", "key_points": "RBD kéo thô → Kéo trung/tinh → Ủ mềm → Bện Buncher/Strander → Đùn bọc PVC/XLPE + Spark Test → Lưu hóa → Ghép lõi & Giáp băng thép DSTA → Bọc vỏ → Lab QA/QC & Đóng cuộn."}
+        ]
+    },
+    "six_sigma": {
+        "display": "Operational Excellence (OE), Lean Six Sigma (DMAIC), TOC, TPM & PFMEA",
+        "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "oe_six_sigma_dmaic",
+        "aliases": ["oe", "operational excellence", "tối ưu quy trình", "six sigma", "dmaic", "tpm", "pfmea", "toc", "cải tiến liên tục"],
+        "docs": {"name": "ASQ Six Sigma & Operational Excellence Body of Knowledge", "url": "https://asq.org/quality-resources/six-sigma", "desc": "Chuẩn mực quốc tế về DMAIC, kiểm định thống kê Before-After, TPM và PFMEA"},
+        "books": ["The Goal: A Process of Ongoing Improvement (Eliyahu M. Goldratt)", "The Six Sigma Handbook (Thomas Pyzdek & Paul Keller)"],
+        "keywords": ["lean six sigma dmaic manufacturing case study", "theory of constraints drum buffer rope factory", "pfmea aiag vda action priority extrusion"],
+        "questions": [
+            {"question": "Phân biệt OE, Lean, Six Sigma và IE; cách dùng 2-Sample t-test để chứng minh dự án cải tiến Trước–Sau có ý nghĩa thống kê?", "type": "Phân Tích Sâu", "key_points": "IE đo chuẩn, Lean tăng tốc độ dòng chảy/xóa lãng phí, Six Sigma giảm biến thiên/lỗi, OE là hệ quản trị tổng thể; dùng p-value < 0.05 để chứng minh khác biệt thật."}
+        ]
+    },
+    "capacity_cost": {
+        "display": "Hoạch Định Năng Lực (RCCP), Giá Thành & Tối Ưu Hao Phí Cáp Điện",
+        "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "cable_cost_capacity",
+        "aliases": ["năng lực", "chi phí", "hao phí công nghệ", "hao phí lao động", "điều độ", "rccp", "capacity", "cut-length"],
+        "docs": {"name": "Manufacturing Capacity Planning (RCCP) & Cost Accounting Guide", "url": "https://www.apics.org/", "desc": "Hoạch định năng lực theo tấn/km, tối ưu Copper Give-away, Over-thickness và Cut-Length"},
+        "books": ["Factory Physics (Wallace J. Hopp & Mark L. Spearman)", "Cost Accounting: A Managerial Emphasis (Horngren)"],
+        "keywords": ["rough cut capacity planning rccp excel manufacturing", "copper giveaway cable extrusion over thickness savings", "cutting stock problem cable reel length optimization"],
+        "questions": [
+            {"question": "Copper Give-away và Compound Over-thickness là gì? Cách tính RCCP khi nhận đơn hàng cáp lực tăng đột biến?", "type": "Tình Huống Thực Chiến", "key_points": "Quy đổi tấn/km sang giờ máy theo OEE thực tế lịch sử từng công đoạn; thu hẹp sai số SPC để tiết kiệm hàng tỷ đồng đồng/nhựa."}
+        ]
+    },
+    "planning_ehs_cost": {
+        "display": "Kế Hoạch S&OP/MPS/MRP/CRP, Chất Lượng FPY/RTY, An Toàn LOTO/ISO & Giá Thành Định Mức",
+        "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "planning_quality_ehs_cost",
+        "aliases": ["s&op", "mps", "mrp", "crp", "rty", "fpy", "loto", "ehs", "iso 9001", "iso 14001", "iso 45001", "iso 50001", "standard cost", "hoshin kanri", "adkar", "acsr", "mica", "7 qc"],
+        "docs": {"name": "ISO 9001/14001/45001/50001 & APICS S&OP / MRP / Standard Costing Standards", "url": "https://www.iso.org/standards.html", "desc": "Chuẩn hệ thống quản lý chất lượng, môi trường, an toàn LOTO, năng lượng ISO 50001 và hoạch định S&OP–MRP–CRP"},
+        "books": ["Manufacturing Planning and Control for Supply Chain Management (Jacobs et al.)", "Hoshin Kanri for the Lean Enterprise (Thomas L. Jackson)"],
+        "keywords": ["sop mps mrp crp manufacturing planning hierarchy", "rolled throughput yield rty vs first pass yield fpy", "loto lockout tagout 6 steps iso 50001 energy management"],
+        "questions": [
+            {"question": "Phân biệt FPY và RTY trong dây chuyền cáp điện 6 công đoạn, và vai trò của quy trình LOTO 6 bước khi làm SMED?", "type": "Phân Tích Sâu", "key_points": "RTY = tích các FPY từng công đoạn để phơi bày Hidden Factory; LOTO cô lập nguồn năng lượng và thử Zero Energy trước khi can thiệp khuôn/lưới lọc."}
+        ]
+    },
+    "extrusion_forensics": {
+        "display": "Công Nghệ Đùn Cáp Chuyên Sâu (L/D, DDR, Melt Pressure), Đứt Sợi Đồng & Cáp Đặc Chủng (Solar / Braiding)",
+        "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "cable_extrusion_wire_forensics",
+        "aliases": ["l/d", "ddr", "melt pressure", "sharkskin", "die drool", "regrind", "cup-and-cone", "solar", "h1z2z2", "braiding", "qcvn 4", "astm b49"],
+        "docs": {"name": "Cable Extrusion Engineering, Wire Break Forensics & QCVN 4 / EN 50618", "url": "https://cadivi.vn/", "desc": "Thiết kế trục vít L/D, DDR/DRB, khuyết tật bề mặt đùn, phân tích mặt gãy đứt sợi đồng & cáp Solar/chống nhiễu"},
+        "books": ["Extrusion: The Definitive Processing Guide and Handbook (Harold F. Giles)"],
+        "keywords": ["cable extrusion ddr drb tooling calculation", "copper wire break forensics cup and cone inclusion", "en 50618 h1z2z2-k solar cable e-beam"],
+        "questions": [
+            {"question": "Cách phân biệt đứt sợi Cup-and-Cone vs Inclusion khi kéo đồng và ý nghĩa của DDR/Melt Pressure khi đùn bọc cáp?", "type": "Phân Tích Sâu", "key_points": "Cup-and-Cone là lỗi kéo/khuôn/nhũ tương nội bộ; Inclusion là tạp chất đồng Rod ASTM B49; DDR chọn đúng bộ Chày-Cối tránh nứt vỏ/dư nhựa."}
+        ]
+    },
+    "oe_field_test": {
+        "display": "Thực Địa OE (Work Sampling, Loss Tree WCM, LSW/LPA, Bảo Trì PdM) & Đề Thi Thực Hành Vòng 2",
+        "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "oe_field_execution_case_test",
+        "aliases": ["work sampling", "cost deployment", "wcm", "loss tree", "lsw", "lpa", "wrench time", "pm compliance", "cbm", "pdm", "moc", "ecn", "headcount"],
+        "docs": {"name": "WCM Cost Deployment, Leader Standard Work (LSW/LPA) & OE Case Study Playbook", "url": "https://www.lean.org/", "desc": "Đo năng suất bằng Work Sampling, cây tổn thất tiền WCM, duy trì LSW/LPA, bảo trì PdM và bộ đề thi thực hành OE Vòng 2"},
+        "books": ["Creating a Lean Culture (David Mann)", "Work Systems and the Methods, Measurement, and Management of Work (Mikell P. Groover)"],
+        "keywords": ["work sampling tippett formula manufacturing example", "wcm cost deployment loss tree matrix", "leader standard work lsw layered process audit lpa"],
+        "questions": [
+            {"question": "Khi nào dùng Work Sampling thay cho Time Study, và thiết kế LSW/LPA/Escalation Matrix thế nào để duy trì cải tiến OE bền vững?", "type": "Tình Huống Thực Chiến", "key_points": "Work Sampling đo công việc chu kỳ dài (đa máy, xe nâng, bảo trì); LSW + LPA 3 cấp + Escalation SLA 5-15-30p khóa chuẩn không tái diễn."}
+        ]
     }
 }
 
@@ -334,28 +406,69 @@ class JobAnalyzer:
         detected_techs = []
         lower_text = text.lower()
         for key, info in TECH_CATALOG.items():
+            matched = False
             pattern = r'\b' + re.escape(key) + r'\b'
             if re.search(pattern, lower_text):
+                matched = True
+            else:
+                for alias in info.get("aliases", []):
+                    alias_pat = r'(?<!\w)' + re.escape(alias.lower()) + r'(?!\w)'
+                    if re.search(alias_pat, lower_text):
+                        matched = True
+                        break
+            if matched:
                 detected_techs.append(key)
 
         # Nếu không bắt được tech nào cụ thể, fallback tech mặc định dựa trên category
         if not detected_techs:
-            if category == "Frontend":
+            if category == "Sản Xuất (Manufacturing)":
+                detected_techs = ["lean", "oee", "ole", "smed", "bom", "six_sigma"]
+            elif category == "Frontend":
                 detected_techs = ["javascript", "react", "git"]
             elif category == "DevOps":
                 detected_techs = ["docker", "kubernetes", "git"]
             else:
                 detected_techs = ["python", "sql", "git"]
 
+        is_mfg = any(t in ["lean", "oee", "ole", "smed", "bom", "cable_mfg", "six_sigma", "capacity_cost", "planning_ehs_cost", "extrusion_forensics", "oe_field_test"] for t in detected_techs) or any(k in category for k in ["Sản Xuất", "Manufacturing", "Lean"])
+
+        # Bổ sung đầy đủ tri thức OE/Cáp nếu phát hiện JD sản xuất
+        if is_mfg:
+            for mfg_core in ["oee", "ole", "lean", "smed", "bom", "six_sigma", "capacity_cost", "planning_ehs_cost", "oe_field_test"]:
+                if mfg_core not in detected_techs:
+                    detected_techs.append(mfg_core)
+            if any(k in lower_text for k in ["cadivi", "dây cáp", "cáp điện", "kéo sợi", "đùn", "xlpe"]):
+                if "cable_mfg" not in detected_techs:
+                    detected_techs.insert(0, "cable_mfg")
+                if "extrusion_forensics" not in detected_techs:
+                    detected_techs.insert(1, "extrusion_forensics")
+
         # 3. Phân bổ ma trận kỹ năng
         must_have = []
         nice_to_have = []
-        tools = ["Git", "Docker", "VS Code / IDE", "Postman", "Linux Command Line"]
-        soft_skills = ["Giao tiếp & Làm việc nhóm (Teamwork)", "Tư duy giải quyết vấn đề (Problem Solving)", "Quy trình Agile/Scrum", "Đọc hiểu tài liệu tiếng Anh"]
+        if is_mfg:
+            tools = [
+                "Excel nâng cao (Power Query, Pivot Table, VBA Macro)",
+                "Microsoft Power BI (Dashboard OEE/OLE thời gian thực)",
+                "Minitab (Thống kê chất lượng SPC, Cp/Cpk, t-test, ANOVA)",
+                "AutoCAD / MS Visio (Layout xưởng & Sơ đồ Spaghetti)",
+                "Hệ thống ERP (SAP PP) & MES / SCADA sản xuất",
+                "Python (Pandas / OpenPyXL tự động hóa báo cáo sản xuất)"
+            ]
+            soft_skills = [
+                "Kỹ năng bám sát hiện trường (Genba Walk & Floor Communication)",
+                "Quản trị thay đổi & Thuyết phục Quản đốc/Công nhân (Change Management)",
+                "Tư duy phân tích gốc rễ vấn đề (5 Whys, Ishikawa, A3, 8D Report)",
+                "Kỹ năng lập báo cáo định hướng sản xuất, BOM & ROI cho Ban Giám Đốc",
+                "Tiếng Anh đọc hiểu tài liệu kỹ thuật & tiêu chuẩn TCVN / IEC"
+            ]
+        else:
+            tools = ["Git", "Docker", "VS Code / IDE", "Postman", "Linux Command Line"]
+            soft_skills = ["Giao tiếp & Làm việc nhóm (Teamwork)", "Tư duy giải quyết vấn đề (Problem Solving)", "Quy trình Agile/Scrum", "Đọc hiểu tài liệu tiếng Anh"]
 
         for idx, t in enumerate(detected_techs):
             disp = TECH_CATALOG[t]["display"]
-            if idx < 3:
+            if idx < (5 if is_mfg else 3):
                 must_have.append(disp)
             else:
                 nice_to_have.append(disp)
@@ -388,21 +501,21 @@ class JobAnalyzer:
             keywords_list.extend(info.get("keywords", []))
             questions_list.extend(info.get("questions", []))
 
-        # Đảm bảo sách kinh điển chung
-        if "Designing Data-Intensive Applications (Martin Kleppmann)" not in seen_books:
-            books_list.append("Designing Data-Intensive Applications (Martin Kleppmann)")
-        if "Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)" not in seen_books:
-            books_list.append("Clean Code (Robert C. Martin)")
+        # Đảm bảo sách kinh điển chung phù hợp ngành
+        if not is_mfg:
+            if "Designing Data-Intensive Applications (Martin Kleppmann)" not in seen_books:
+                books_list.append("Designing Data-Intensive Applications (Martin Kleppmann)")
+            if "Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)" not in seen_books:
+                books_list.append("Clean Code (Robert C. Martin)")
 
         # Phân bổ hệ sinh thái phần mềm hỗ trợ chuyên dụng
-        is_mfg = any(t in ["lean", "oee", "ole", "smed", "bom"] for t in detected_techs) or any(k in category for k in ["Sản Xuất", "Manufacturing", "Lean"])
         if is_mfg:
             softwares = [
                 {"name": "Microsoft Excel Nâng Cao (Power Query, VBA)", "role": "Xử lý dữ liệu thô nhiều ca, vẽ biểu đồ Pareto 80/20, tự động hóa Macro VBA", "url": "https://support.microsoft.com/excel", "doc_key": "excel_mfg"},
                 {"name": "Microsoft Power BI", "role": "Xây dựng Dashboard OEE/OLE thời gian thực, trực quan hóa xu hướng", "url": "https://powerbi.microsoft.com/", "doc_key": "powerbi_mfg"},
-                {"name": "Minitab", "role": "Kiểm soát quá trình thống kê SPC (Xbar-R), phân tích năng lực quá trình Cpk", "url": "https://www.minitab.com/", "doc_key": "minitab_spc"},
+                {"name": "Minitab", "role": "Kiểm soát quá trình thống kê SPC (Xbar-R), phân tích năng lực quá trình Cpk & t-test", "url": "https://www.minitab.com/", "doc_key": "minitab_spc"},
                 {"name": "AutoCAD / MS Visio", "role": "Thiết kế Layout xưởng, vẽ sơ đồ Spaghetti, sơ đồ chuỗi giá trị VSM", "url": "https://www.autodesk.com/", "doc_key": "autocad_layout"},
-                {"name": "Hệ thống SAP ERP (PP) & MES", "role": "Quản lý định mức vật tư BOM, lệnh sản xuất và thu thập dữ liệu máy", "url": "https://help.sap.com/", "doc_key": "erp_mes"}
+                {"name": "Hệ thống SAP ERP (PP) & MES", "role": "Quản lý định mức vật tư BOM, lệnh sản xuất và thu thập dữ liệu máy PLC/SCADA", "url": "https://help.sap.com/", "doc_key": "erp_mes"}
             ]
         else:
             softwares = [
@@ -445,15 +558,26 @@ class JobAnalyzer:
                 {"question": "Bạn có thể chia sẻ một dự án kỹ thuật tiêu biểu mà bạn đã chủ trì hoặc tham gia?", "type": "Tình Huống Thực Chiến", "key_points": "• Nêu rõ bối cảnh (S), Nhiệm vụ (T), Hành động kỹ thuật (A), và Kết quả đo lường được (R).\n• Nhấn mạnh kỹ năng giải quyết vấn đề và làm việc nhóm."}
             ]
 
+        overview_summary = (
+            f"Vị trí {title} cấp bậc {level} thuộc lĩnh vực {category}, chuyên trách giám sát, phân tích dữ liệu năng lực/năng suất (OEE, OLE), kiểm soát định mức BOM/hao phí và triển khai các dự án cải tiến Lean / Six Sigma / SMED tại nhà máy."
+            if is_mfg else
+            f"Vị trí {title} cấp bậc {level} thuộc lĩnh vực {category}, tập trung vào xây dựng và phát triển hệ thống với các công nghệ chủ đạo: {', '.join([TECH_CATALOG[t]['display'] for t in detected_techs[:3]])}."
+        )
+        overview_mission = (
+            "Tối ưu hóa quy trình sản xuất, nhận diện điểm nghẽn, triệt tiêu lãng phí, giảm hao phí vật tư/lao động và chứng minh hiệu quả cải tiến Trước–Sau bằng số liệu định lượng (ROI)."
+            if is_mfg else
+            "Làm chủ quy trình phát triển, bàn giao tính năng chất lượng cao đúng hạn và tối ưu hóa hệ thống ổn định."
+        )
+
         analysis = {
             "title": title,
             "company": company,
             "level": level,
             "category": category,
             "overview": {
-                "summary": f"Vị trí {title} cấp bậc {level} thuộc lĩnh vực {category}, tập trung vào xây dựng và phát triển hệ thống với các công nghệ chủ đạo: {', '.join([TECH_CATALOG[t]['display'] for t in detected_techs[:3]])}.",
-                "mission": f"Làm chủ quy trình phát triển, bàn giao tính năng chất lượng cao đúng hạn và tối ưu hóa hệ thống ổn định.",
-                "work_mode": self._detect_work_mode(text)
+                "summary": overview_summary,
+                "mission": overview_mission,
+                "work_mode": "On-site 100% tại Nhà máy / Xưởng sản xuất (Bám sát hiện trường Genba)" if is_mfg else self._detect_work_mode(text)
             },
             "skills_matrix": {
                 "must_have": must_have,
@@ -466,8 +590,8 @@ class JobAnalyzer:
                 "offline_guides": offline_guides,
                 "softwares": softwares,
                 "official_docs": docs_list,
-                "books": books_list[:5],
-                "search_keywords": keywords_list[:8]
+                "books": books_list[:8],
+                "search_keywords": keywords_list[:10]
             },
             "interview_prep": final_interview,
             "tags": [level, category] + [TECH_CATALOG[t]["display"] for t in detected_techs[:4]]
@@ -705,7 +829,7 @@ class JobAnalyzer:
         title_lower = title.lower()
 
         # 1. Kiểm tra trực tiếp trong tiêu đề
-        if any(k in title_lower for k in ["sản xuất", "manufacturing", "lean", "cải tiến", "ie", "industrial", "oee", "ole", "nhà máy", "bảo trì"]):
+        if any(k in title_lower for k in ["sản xuất", "manufacturing", "lean", "cải tiến", "tối ưu quy trình", "oe", "ie", "industrial", "oee", "ole", "nhà máy", "bảo trì", "cadivi", "dây cáp"]):
             return "Sản Xuất (Manufacturing)"
         if any(k in title_lower for k in ["backend", "back-end", "python", "java", "golang", "c#", ".net", "php", "django", "fastapi", "spring", "nodejs"]):
             return "Backend"
@@ -725,7 +849,7 @@ class JobAnalyzer:
         # 2. Tính trọng số trong toàn bộ văn bản JD
         lt = text.lower()
         scores = {
-            "Sản Xuất (Manufacturing)": sum(lt.count(k) for k in ["sản xuất", "manufacturing", "lean", "oee", "ole", "nhà máy", "hao phí", "bom", "smed", "kaizen", "năng suất"]),
+            "Sản Xuất (Manufacturing)": sum(lt.count(k) for k in ["sản xuất", "manufacturing", "lean", "oee", "ole", "nhà máy", "hao phí", "bom", "smed", "kaizen", "năng suất", "tối ưu quy trình", "cadivi", "dây cáp", "điều độ", "six sigma"]),
             "Backend": sum(lt.count(k) for k in ["backend", "back-end", "api", "database", "sql", "postgresql", "mysql", "orm", "fastapi", "django", "spring"]),
             "Frontend": sum(lt.count(k) for k in ["frontend", "front-end", "react", "vue", "angular", "css", "html", "javascript", "typescript", "ui/ux"]),
             "DevOps": sum(lt.count(k) for k in ["devops", "sre", "ci/cd", "kubernetes", "k8s", "terraform", "infrastructure", "sysadmin"]),

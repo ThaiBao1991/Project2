@@ -1,0 +1,103 @@
+{
+  "id": "tcmt",
+  "name": "Tiêu Chuẩn Môi Trường (TCMT)",
+  "excel_remote": "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\IT HOA TIEU CHUAN MOI TRUONG.xls",
+  "excel_local_name": "IT HOA TIEU CHUAN MOI TRUONG.xls",
+  "local_subfolder": "01_TIEU_CHUAN_KIEM_TRA/IT HOA TIEU CHUAN MOI TRUONG",
+  "remote_scan_roots": [
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化"
+  ],
+  "rules": {
+    "vietnamese_markers": [
+      "-v.pdf",
+      "_v.pdf",
+      "(v)",
+      "(v it)",
+      "-v ",
+      "ban viet",
+      "ban v"
+    ],
+    "japanese_exclude": [
+      "-j.pdf",
+      "_j.pdf",
+      "(j)",
+      "(j it)",
+      "-j ",
+      "ban nhat",
+      "ban j"
+    ],
+    "canceled_keywords": [
+      "hủy",
+      "huy",
+      "hủy bỏ",
+      "huy bo",
+      "haishi"
+    ]
+  },
+  "last_sync_time": "2026-11-20 09:17:06",
+  "sync_state": {
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\Ban tieu chuan moi truong (J-V-E)\\Bản cũ\\EK-MAB-04-012-01-(V IT).pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN MOI TRUONG\\Ban tieu chuan moi truong (J-V-E)\\Ban cu\\EK-MAB-04-012-01-(V IT).pdf",
+      "clean_filename": "EK-MAB-04-012-01-(V IT).pdf",
+      "doc_code": "EK-MAB-04-012",
+      "mtime": 1604398897.5831199,
+      "size": 565042,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:05.025710"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\EK-MAB-04-012-E.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN MOI TRUONG\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\EK-MAB-04-012-E.pdf",
+      "clean_filename": "EK-MAB-04-012-E.pdf",
+      "doc_code": "EK-MAB-04-012",
+      "mtime": 1754627609.470009,
+      "size": 219342,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:05.109178"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\EK-MAB-04-012-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN MOI TRUONG\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\EK-MAB-04-012-V.pdf",
+      "clean_filename": "EK-MAB-04-012-V.pdf",
+      "doc_code": "EK-MAB-04-012",
+      "mtime": 1756956954.2629416,
+      "size": 325626,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:05.289406"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\Bản cũ\\EK-MAB-04-012-E.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN MOI TRUONG\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\Ban cu\\EK-MAB-04-012-E.pdf",
+      "clean_filename": "EK-MAB-04-012-E.pdf",
+      "doc_code": "EK-MAB-04-012",
+      "mtime": 1697418678.6773722,
+      "size": 373952,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:05.439332"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\Bản cũ\\EK-MAB-04-012-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN MOI TRUONG\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-012\\Ban cu\\EK-MAB-04-012-V.pdf",
+      "clean_filename": "EK-MAB-04-012-V.pdf",
+      "doc_code": "EK-MAB-04-012",
+      "mtime": 1712023231.451736,
+      "size": 545077,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:05.699373"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-013\\EK-MAB-04-013-E.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN MOI TRUONG\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-013\\EK-MAB-04-013-E.pdf",
+      "clean_filename": "EK-MAB-04-013-E.pdf",
+      "doc_code": "EK-MAB-04-013",
+      "mtime": 1697419014.6673727,
+      "size": 1346090,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:06.123295"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN MOI TRUONG ．環境基準IT化\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-013\\EK-MAB-04-013-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN MOI TRUONG\\Ban tieu chuan moi truong (J-V-E)\\EK-MAB-04-013\\EK-MAB-04-013-V.pdf",
+      "clean_filename": "EK-MAB-04-013-V.pdf",
+      "doc_code": "EK-MAB-04-013",
+      "mtime": 1604401131.6057427,
+      "size": 1439739,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:17:06.308192"
+    }
+  }
+}

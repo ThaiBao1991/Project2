@@ -1,0 +1,238 @@
+{
+  "id": "nvkho",
+  "name": "Nghiệp Vụ Kho (NVKHO)",
+  "excel_remote": "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO.xls",
+  "excel_local_name": "IT HOA TIEU CHUAN NGHIEP VU KHO.xls",
+  "local_subfolder": "01_TIEU_CHUAN_KIEM_TRA/IT HOA TIEU CHUAN NGHIEP VU KHO",
+  "remote_scan_roots": [
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化"
+  ],
+  "rules": {
+    "vietnamese_markers": [
+      "-v.pdf",
+      "_v.pdf",
+      "(v)",
+      "(v it)",
+      "-v ",
+      "ban viet",
+      "ban v"
+    ],
+    "japanese_exclude": [
+      "-j.pdf",
+      "_j.pdf",
+      "(j)",
+      "(j it)",
+      "-j ",
+      "ban nhat",
+      "ban j"
+    ],
+    "canceled_keywords": [
+      "hủy",
+      "huy",
+      "hủy bỏ",
+      "huy bo",
+      "haishi"
+    ]
+  },
+  "last_sync_time": "2026-11-20 09:08:33",
+  "sync_state": {
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AA-B-01-V.PDF": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AA-B-01-V.PDF",
+      "clean_filename": "AA-B-01-V.PDF",
+      "doc_code": "AA-B-01-V",
+      "mtime": 1532576024.449942,
+      "size": 389233,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AB-A-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AB-A-01-V.pdf",
+      "clean_filename": "AB-A-01-V.pdf",
+      "doc_code": "AB-A-01-V",
+      "mtime": 1466418463.4495888,
+      "size": 81374,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AB-A-03-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AB-A-03-V.pdf",
+      "clean_filename": "AB-A-03-V.pdf",
+      "doc_code": "AB-A-03-V",
+      "mtime": 1759824667.9927337,
+      "size": 843741,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AB-B-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AB-B-01-V.pdf",
+      "clean_filename": "AB-B-01-V.pdf",
+      "doc_code": "AB-B-01-V",
+      "mtime": 1466418483.2779677,
+      "size": 72197,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AB-B-02-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AB-B-02-V.pdf",
+      "clean_filename": "AB-B-02-V.pdf",
+      "doc_code": "AB-B-02-V",
+      "mtime": 1465876897.0654123,
+      "size": 332928,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AB-B-03-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AB-B-03-V.pdf",
+      "clean_filename": "AB-B-03-V.pdf",
+      "doc_code": "AB-B-03-V",
+      "mtime": 1466418494.324984,
+      "size": 87766,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AB-B-04-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AB-B-04-V.pdf",
+      "clean_filename": "AB-B-04-V.pdf",
+      "doc_code": "AB-B-04-V",
+      "mtime": 1767672917.715433,
+      "size": 140737,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\AB-B-05-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\AB-B-05-V.pdf",
+      "clean_filename": "AB-B-05-V.pdf",
+      "doc_code": "AB-B-05-V",
+      "mtime": 1767674398.2507772,
+      "size": 1024766,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\BA-F-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\BA-F-01-V.pdf",
+      "clean_filename": "BA-F-01-V.pdf",
+      "doc_code": "BA-F-01-V",
+      "mtime": 1767674633.0031326,
+      "size": 556528,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\CA-E-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\CA-E-01-V.pdf",
+      "clean_filename": "CA-E-01-V.pdf",
+      "doc_code": "CA-E-01-V",
+      "mtime": 1760517528.5185013,
+      "size": 1148302,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZA-A-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZA-A-01-V.pdf",
+      "clean_filename": "ZA-A-01-V.pdf",
+      "doc_code": "ZA-A-01-V",
+      "mtime": 1465876083.7617247,
+      "size": 80503,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.664385"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZA-A-02-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZA-A-02-V.pdf",
+      "clean_filename": "ZA-A-02-V.pdf",
+      "doc_code": "ZA-A-02-V",
+      "mtime": 1465876177.903555,
+      "size": 75716,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZA-A-03-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZA-A-03-V.pdf",
+      "clean_filename": "ZA-A-03-V.pdf",
+      "doc_code": "ZA-A-03-V",
+      "mtime": 1465876190.1693368,
+      "size": 50309,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZA-A-04-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZA-A-04-V.pdf",
+      "clean_filename": "ZA-A-04-V.pdf",
+      "doc_code": "ZA-A-04-V",
+      "mtime": 1529734744.674347,
+      "size": 888910,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZA-A-06-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZA-A-06-V.pdf",
+      "clean_filename": "ZA-A-06-V.pdf",
+      "doc_code": "ZA-A-06-V",
+      "mtime": 1759472279.9562092,
+      "size": 439665,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZB-A-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZB-A-01-V.pdf",
+      "clean_filename": "ZB-A-01-V.pdf",
+      "doc_code": "ZB-A-01-V",
+      "mtime": 1472536010.4028761,
+      "size": 577593,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZB-A-02-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZB-A-02-V.pdf",
+      "clean_filename": "ZB-A-02-V.pdf",
+      "doc_code": "ZB-A-02-V",
+      "mtime": 1767674848.0684972,
+      "size": 105851,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZB-A-03-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZB-A-03-V.pdf",
+      "clean_filename": "ZB-A-03-V.pdf",
+      "doc_code": "ZB-A-03-V",
+      "mtime": 1767675048.8252752,
+      "size": 130977,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZB-A-04-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZB-A-04-V.pdf",
+      "clean_filename": "ZB-A-04-V.pdf",
+      "doc_code": "ZB-A-04-V",
+      "mtime": 1767675471.2611394,
+      "size": 646044,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZB-B-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZB-B-01-V.pdf",
+      "clean_filename": "ZB-B-01-V.pdf",
+      "doc_code": "ZB-B-01-V",
+      "mtime": 1767676116.5395343,
+      "size": 107337,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZB-D-01-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZB-D-01-V.pdf",
+      "clean_filename": "ZB-D-01-V.pdf",
+      "doc_code": "ZB-D-01-V",
+      "mtime": 1465876212.2633696,
+      "size": 106546,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    },
+    "\\\\vdm-wts08\\IT HOA TIEU CHUAN KIEM TRA - 品証・検査標準書IT化\\IT HOA TIEU CHUAN NGHIEP VU KHO・倉庫業務基準IT化\\Ban Viet Tieu chuan NV Kho\\ZB-D-02-V.pdf": {
+      "local_path": "01_TIEU_CHUAN_KIEM_TRA\\IT HOA TIEU CHUAN NGHIEP VU KHO\\Ban Viet Tieu chuan NV Kho\\ZB-D-02-V.pdf",
+      "clean_filename": "ZB-D-02-V.pdf",
+      "doc_code": "ZB-D-02-V",
+      "mtime": 1465876224.1385217,
+      "size": 95400,
+      "is_canceled": false,
+      "last_updated": "2026-11-20T09:08:33.670934"
+    }
+  }
+}

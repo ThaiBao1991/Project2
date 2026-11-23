@@ -231,3 +231,54 @@ Tài liệu nhật ký trung tâm theo dõi kiến trúc, kho kỹ năng/quy t�
 - **Kiểm Thử Gate 2 (Định Nghĩa Hoàn Thành)**:
   * `py_compile TaiLieuApp.py` và `py_compile governance_matrix.py` đạt 100% không lỗi cú pháp.
   * Bộ test tự động kiểm tra xác nhận: 0/3.450 tài liệu bị thiếu title hoặc summary; test truy vấn "sản phẩm bất hợp cách" / "san pham bat hop cach" trả về chuẩn xác `Q-MAB-C022-E`; test "vo nho" trả về 24 QCKT; test "dong ho do" trả về 17 máy đo HCDK; test bộ lọc "Đo Lường Hiệu Chỉnh" trả về 954 tài liệu.
+
+---
+
+## 2026-11-23 (Hoàn thành) — Nâng Cấp `AppTaiLieuMBC`: Tách Kho PDF Khỏi App, Di Chuyển Tài Liệu Tự Đổi Link, Cập Nhật Địa Chỉ (Relink) & Xóa An Toàn
+
+### 1. Bối Cảnh & Mục Tiêu
+- Giải quyết nhu cầu tách biệt thư mục App/Data nhẹ (`TaiLieuApp.py`, `configs/*.json`, `tailieu_catalog.json`, `governance_catalog.json`) khỏi kho dữ liệu PDF nặng (~2,16 GB / 3.449 PDF).
+- Cho phép người dùng di chuyển toàn bộ kho PDF, di chuyển theo phân hệ hoặc từng nhóm tài liệu sang ổ đĩa/địa chỉ khác với cơ chế tự động cập nhật toàn bộ đường dẫn liên kết; cho phép cập nhật địa chỉ kho/file không cần di chuyển file (Relink); và cung cấp tính năng xóa tài liệu an toàn nhiều chế độ (mặc định qua Thùng Rác Windows).
+
+### 2. Thành Phẩm Đã Hoàn Thành
+- **`de/AppTaiLieuMBC/storage_manager.py` (Mới)**:
+  * Quản lý cấu hình `app_settings.json` (`storage_root` tách biệt, `keep_excel_in_app`, lịch sử chuyển kho) và ghi JSON nguyên tử (`atomic_write_json`).
+  * Giải mã đường dẫn linh hoạt (`resolve_local_path`, `to_storage_rel_or_abs`, `resolve_master_excel_path`) hỗ trợ đồng thời đường dẫn tương đối trong kho gốc, đường dẫn tuyệt đối ngoài kho, và Windows Long Path (`\\?\`).
+  * **`move_all_documents`**: Di chuyển/sao chép toàn bộ 8 phân hệ hoặc phân hệ chọn lọc; kiểm tra dung lượng trống & chống đường dẫn đích lồng nguồn; thực hiện Copy → Xác minh kích thước → Xóa nguồn an toàn (hoặc `os.replace` tức thì cùng ổ đĩa); tùy chọn gom 8 file Excel tổng về `master_excels/` để dọn sạch 100% thư mục PDF cũ; hỗ trợ hủy an toàn giữa chừng (`cancel_event`); tự động cập nhật `configs/*.json`, `tailieu_catalog.json`, `governance_catalog.json` và giữ nguyên 100% metadata tiếng Việt.
+  * **`relink_storage_root` & `verify_all_links`**: Trỏ lại kho tài liệu không cần di chuyển file, kèm chế độ Dò tìm thông minh (`smart_scan`) tự nối link theo tên file khi cấu trúc thư mục con thay đổi.
+  * **`move_selected_documents` & `update_document_paths`**: Di chuyển 1 hoặc nhiều tài liệu (xử lý chuẩn trường hợp 2 bản ghi chia sẻ chung 1 `local_path` như `22-A22-02-V.pdf`) và sửa địa chỉ cục bộ/ổ mạng cho từng tài liệu.
+  * **`delete_documents`**: 3 chế độ an toàn (`disk_only`, `disk_and_catalog`, `catalog_only`) kèm cơ chế đưa vào Thùng Rác Windows (`pywin32` `SHFileOperation` + fallback `ctypes` & long-path).
+- **`de/AppTaiLieuMBC/sync_engine.py` & `governance_matrix.py`**:
+  * Tích hợp `get_storage_root`, `get_module_storage_root`, `resolve_local_path`, `resolve_master_excel_path` để các lần đồng bộ sau tự lưu PDF vào kho mới và đọc được 8 file Excel tổng ở cả kho mới lẫn `App/master_excels/`.
+  * Bảo toàn metadata tiếng Việt trong `rebuild_consolidated_catalog()`.
+- **`de/AppTaiLieuMBC/TaiLieuApp.py` (V5 Storage Management)**:
+  * Bổ sung **Tab 4: `📦 Quản Lý Kho & Di Chuyển`** (thống kê dung lượng 8 phân hệ, di chuyển toàn bộ/từng phân hệ, cập nhật địa chỉ kho không dời file, dọn nhanh PDF Đã Hủy / theo phân hệ, thanh tiến trình + nhật ký thời gian thực + nút Dừng An Toàn).
+  * Nâng cấp **Header** hiển thị kho PDF hiện tại + nút mở nhanh/đổi kho; nâng cấp **Tab 1** với nút menu `⋯` trên Card View và chọn nhiều dòng (`selectmode="extended"`) + thanh thao tác & menu chuột phải trên Table View.
+  * Bổ sung 3 hộp thoại modal chuyên dụng (`open_edit_links_dialog`, `open_move_docs_dialog`, `open_delete_docs_dialog`) và cơ chế hàng đợi giao diện thread-safe (`queue.Queue` + `_poll_ui_queue`) triệt tiêu lỗi `main thread is not in main loop` cho toàn bộ luồng nền.
+- **`de/AppTaiLieuMBC/README.md`**: Cập nhật hướng dẫn tính năng mới và cấu trúc thư mục.
+
+### 3. Kết Quả Kiểm Thử (Gate 2)
+- `python -m py_compile` đạt 100% không lỗi cú pháp cho cả 4 file (`storage_manager.py`, `sync_engine.py`, `governance_matrix.py`, `TaiLieuApp.py`).
+- **9/9 kiểm thử tự động trong sandbox độc lập** (không ảnh hưởng dữ liệu thật) pass 100%: kiểm tra bảo vệ đường dẫn trùng/lồng nhau, di chuyển toàn bộ PDF giữ Excel ở `master_excels/` + dọn sạch thư mục cũ, di chuyển 1 phân hệ, di chuyển tài liệu trùng `local_path`, cập nhật địa chỉ đơn lẻ, relink + dò tìm thông minh, xóa cả 3 chế độ, đường dẫn dài Windows (313 ký tự), và hủy an toàn giữa chừng.
+- **Kiểm thử giao diện Headless UI** trên dữ liệu thật (chỉ đọc) pass 100%: 4 tab, 3.450 dòng Table View multi-select, 8 dòng thống kê dung lượng tải qua hàng đợi thread-safe `ui_queue` (0 lỗi), mở/đóng 3 hộp thoại modal và tìm kiếm không dấu hoạt động trơn tru.
+
+---
+
+## 2026-11-23 (Sửa lỗi & Hoàn thiện Launcher) — Khắc Phục `Run_TaiLieuApp.bat`, Tự Động Cài Thư Viện & Chuẩn Thoát Sạch 3 Tầng (Tkinter + Python + CMD)
+
+### 1. Nguyên Nhân Đã Xác Định
+- `Run_TaiLieuApp.bat` cũ bị lưu định dạng LF-only (0 CRLF), chứa dấu `)` không escape trong khối `if errorlevel 1 (...)` (`echo ... (pythonw), ...`) gây lỗi cú pháp CMD ngay khi click, và dùng `start "" pythonw` làm ẩn lỗi thiếu thư viện.
+- `TaiLieuApp.py` chưa có cơ chế tự kiểm tra/cài đặt thư viện (`customtkinter`, `pywin32`), và khi đóng nhanh có thể gặp `TclError` từ callback `after` nội bộ của CustomTkinter 6.0 khiến trả về mã lỗi `1` và bị giữ lại ở lệnh `pause` trong `.bat`.
+
+### 2. Thành Phẩm Đã Triển Khai (Theo Skill `python_auto_install`)
+- **`de/AppTaiLieuMBC/Run_TaiLieuApp.bat`**: Viết lại chuẩn thuần ASCII, 0 BOM, 42 dòng CRLF (`\r\n`), `cd /d "%~dp0"`, dò Python an toàn `python` → `py -3` → `py`, không dùng ký tự đặc biệt `&` hay `)` gây lỗi CMD; tự động đóng ngay cửa sổ CMD khi `EXIT_CODE` là `0` (thoát bình thường) hoặc `2` (đóng hộp thoại thiếu thư viện), chỉ `pause` khi gặp lỗi crash thật sự.
+- **`de/AppTaiLieuMBC/TaiLieuApp.py`**:
+  * Bổ sung đầy đủ bootstrap `check_and_install_packages()` ngay đầu file (trước khi import `customtkinter` / `win32com.client`): kiểm tra & tự cài `customtkinter>=5.2.0` và `pywin32>=306`, hỗ trợ auto-heal xung đột chữ hoa/thường NTFS, phân biệt venv vs `--user`, gọi `site.addsitedir()` để nạp ngay file `.pth` (như `pywin32.pth`) ngay lần chạy đầu, và hộp thoại hướng dẫn cài thủ công (lệnh bọc ngoặc kép + nút Copy + thoát mã `2`).
+  * Chuẩn hóa thoát sạch 3 tầng trong `on_app_close()` và `main()`: hủy toàn bộ `after` callback của cả app lẫn CustomTkinter qua `self.tk.call("after", "info")`, gọi `self.quit()` + `self.destroy()`, bắt an toàn `KeyboardInterrupt` và `tk.TclError` lúc đang đóng, kết thúc bằng `sys.exit(0)`.
+- **`de/AppTaiLieuMBC/requirements.txt`** *(mới)* & **`README.md`**: Khai báo thư viện dự phòng và cập nhật hướng dẫn.
+
+### 3. Kết Quả Kiểm Thử Thực Tế (Gate 2)
+- Kiểm tra byte `Run_TaiLieuApp.bat`: `0 BOM`, `42 CRLF`, `0 LF-only`, thuần ASCII.
+- `python -m py_compile TaiLieuApp.py` đạt 100%.
+- Kiểm thử bộ auto-install: bọc ngoặc kép spec (`"customtkinter>=5.2.0"`, `"pywin32>=306"`), kiểm tra import sẵn có, và mô phỏng thiếu thư viện offline trả đúng mã thoát `EXIT_MISSING_LIB_DIALOG = 2`.
+- Kiểm thử thực tế chạy `cmd.exe /c Run_TaiLieuApp.bat` từ thư mục khác (`C:\Windows\Temp`): cửa sổ GUI mở lên thành công; khi gửi tín hiệu đóng `WM_CLOSE`, cả tiến trình Python lẫn `cmd.exe` thoát sạch hoàn toàn trong `1,11s` với `EXIT_CODE=0`, `0` dòng stderr và xác nhận PID Python không còn tồn tại trong `tasklist`.
