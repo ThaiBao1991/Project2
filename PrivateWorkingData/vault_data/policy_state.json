@@ -1,0 +1,10 @@
+{
+  "auto_wipe_on_fail": false,
+  "max_failed_attempts": 5,
+  "failed_attempts": 0,
+  "scheduled_wipe_enabled": false,
+  "scheduled_wipe_at": null,
+  "scheduled_wipe_label": "",
+  "last_wipe_reason": "",
+  "last_wipe_at": ""
+}

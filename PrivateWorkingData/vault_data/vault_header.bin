@@ -1,0 +1,12 @@
+{
+  "magic": "PVLT1",
+  "salt": "14xj2Mkj9b9x7C9fIbHUNsbCmyNCzsInL5d3Dq6HIaE=",
+  "kdf": {
+    "name": "scrypt",
+    "n": 32768,
+    "r": 8,
+    "p": 1
+  },
+  "nonce": "tau06RHEdF7DMhiD",
+  "wrapped_master_key": "N8/9fwIgUFD6CV1NzFxiCivbepup1SJKpx6cGIGuDTnY13L4aiY0/vatOPLtfKLE"
+}
