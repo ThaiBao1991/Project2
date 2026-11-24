@@ -2694,6 +2694,104 @@ Khi phát hiện một bug trên Production nhưng không biết commit nào tro
   4. Tiếp tục: `git rebase --continue` (hoặc `git merge --continue`).
   5. Nếu muốn hủy bỏ an toàn: `git rebase --abort`.
 """
+    },
+    "cadivi_interview_warroom_decoder": {
+        "title": "Cẩm Nang Cận Chiến Phỏng Vấn CADIVI OE, Giải Mã Mã Cáp & Kịch Bản Đàm Phán Offer",
+        "category": "Sản Xuất (Manufacturing)",
+        "summary": "Kịch bản tự giới thiệu 60s/2p chuẩn CV Bảo, Bảng giải mã toàn bộ ký hiệu mã cáp CADIVI + thông số vàng IEC 60228/60502, Lab ISO/IEC 17025 (VILAS), xử lý câu hỏi bẫy & đàm phán tổng thu nhập năm, Bản in 30-60-90 ngày & 2 mẫu Email cảm ơn.",
+        "content": """# 🎯 CẨM NANG CẬN CHIẾN PHỎNG VẤN OE CADIVI, GIẢI MÃ MÃ CÁP & ĐÀM PHÁN OFFER
+*(Tài Liệu 4 Tầng Chốt Hạ Dành Riêng Cho Buổi Phỏng Vấn Vòng 1 & Vòng 2 Tại Nhà Máy CADIVI Miền Trung)*
+
+---
+
+## 1. TẦNG 1: CƠ BẢN (BASIC) — KỊCH BẢN TỰ GIỚI THIỆU CHUẨN CV CÁ NHÂN & QUY TẮC BẢO MẬT SỐ LIỆU
+
+### A. Kịch Bản Nói Tự Nhiên Trong 90 Giây (Dùng Mở Đầu Mọi Cuộc Phỏng Vấn)
+- **Mở đầu gọn (15 giây):** *"Em chào anh/chị. Em là Phan Thanh Thái Bảo, Kỹ sư Cơ khí với hơn 5 năm kinh nghiệm làm việc trực tiếp trong môi trường sản xuất công nghiệp tại Đà Nẵng."*
+- **Mũi nhọn 1 — Hiện trường dây dẫn & Sản xuất (25 giây):** *"Trước đây em có 2 năm làm Quản lý & Cải tiến Sản xuất 1 tại Fujikura Automotive (ngành dây dẫn ô tô), trực tiếp triển khai số hóa quét mã vạch công đoạn RE7 thay sổ tay và phân tích lỗi theo công đoạn/người thao tác."*
+- **Mũi nhọn 2 — Đo kiểm chính xác, Time Study & Tự động hóa dữ liệu (35 giây):** *"Hiện tại em là Nhóm trưởng Phòng Kiểm tra tại Mabuchi Motor Đà Nẵng. Ngoài quản lý nhóm và vận hành thiết bị đo chính xác (OGP, Keyence, Canon INEX), em trực tiếp thực hiện [[Time Study]] rút thời gian đo Canon INEX từ 60 giây xuống 30 giây/hạng mục (-50% thời gian đo), cải tiến đồ gá tăng sức chứa từ 1 lên 16 mẫu/lượt gá, và dùng [[Python]], VBA, [[Excel]]/Access tự động hóa báo cáo khách hàng từ 3–7 ngày xuống 2 giờ/tháng và nhập liệu đo từ 120 phút xuống 15 phút/ngày."*
+- **Chốt cầu nối sang CADIVI Miền Trung (15 giây):** *"Em ứng tuyển vị trí Chuyên viên OE tại Nhà máy CADIVI Miền Trung vì muốn kết hợp cả 3 nền tảng Cơ khí + Chất lượng + Tự động hóa dữ liệu để giải quyết trực tiếp bài toán [[OEE]], [[SMED]] và tối ưu [[BOM]] đồng/nhựa cho các dây chuyền kéo – bện – đùn tại Hòa Cầm."*
+
+### B. 3 Quy Tắc Vàng Về Trung Thực & Bảo Mật Số Liệu CV (TUYỆT ĐỐI KHÔNG NÓI HỚ!)
+1. **Canon INEX (`60s → 30s`):** Nói chính xác **"giảm 50% thời gian đo mỗi hạng mục"** — KHÔNG suy diễn thành "giảm 50% nhân sự".
+2. **Đồ gá (`1 → 16 mẫu/lượt gá`):** Nói chính xác **"tăng sức chứa mỗi lượt gá giúp giảm thao tác gá lặp lại"** — KHÔNG phóng đại thành "tăng năng suất 16 lần".
+3. **Thẩm định đầu tư thiết bị (~1.2 tỷ VNĐ):** Tuyệt đối KHÔNG công bố số tiền tiết kiệm nội bộ công ty cũ khi chưa được phép — chỉ trình bày rõ **PHƯƠNG PHÁP LUẬN** thẩm định [[ROI]] / [[Payback]] (tách Hard Savings vs Soft Savings, đối chiếu Kế toán, chạy 3 kịch bản độ nhạy Thận trọng–Cơ sở–Lạc quan).
+
+---
+
+## 2. TẦNG 2: TRUNG CẤP (INTERMEDIATE) — BẢNG GIẢI MÃ TOÀN BỘ KÝ HIỆU MÃ CÁP CADIVI & THÔNG SỐ VÀNG
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────────┐
+│  QUY ƯỚC ĐỌC NHANH MÃ CÁP CADIVI (ĐỌC TỪ TRÁI SANG PHẢI = TỪ LÕI RA VỎ NGOÀI!)          │
+└──────────────────────────────────────────────────────────────────────────────────────────┘
+  [Ruột dẫn]      C = Đồng (Copper)  │  A = Nhôm (Aluminium)  │  As = Nhôm lõi thép (ACSR)
+  [Cách điện]     V = PVC (70°C)     │  X = XLPE (90°C)       │  E = PE  │  FR = Băng Mica
+  [Vỏ ngoài]      V = PVC            │  E = PE/HDPE           │  LSZH / LSHF = Ít khói 0 Halogen
+  [Giáp bảo vệ]   DSTA = 2 băng THÉP (cáp 3-4 lõi)  │  DATA = 2 băng NHÔM (cáp 1 lõi AC!)
+                  SWA = Sợi thép  │  AWA = Sợi nhôm │  S = Màn chắn đồng (Shield / Braiding)
+  [Dây dân dụng]  VC = Đồng đặc/bện + PVC  │  VCm = Dây mềm Class 5  │  VCmd = Dây đôi mềm dẹt
+                  VCmt = Dây đôi/ba mềm tròn (2 lớp PVC)  │  LV-ABC = Cáp nhôm vặn xoắn treo
+```
+
+### A. Bảng Giải Mã 12 Mã Hàng CADIVI Hay Bị Cầm Mẫu Hỏi Thẳng Trong Phòng Phỏng Vấn
+- **`VC 2.5` (450/750V):** Dây đơn ruột đồng cứng/bện 2.5mm² cách điện [[PVC]] ([[QCVN 4]]) → Kéo `RBD/Multi-wire` → Đùn PVC → Khoanh 100m.
+- **`VCm 1.5` / `VCmd 2×1.5`:** Dây mềm nhiều sợi mảnh Class 5 (bện trên máy [[Buncher]]) → Đùn PVC → Khoanh 100m.
+- **`CV 16` / `CVV 3×16+1×10`:** Cáp ruột đồng, cách điện [[PVC]] (70°C), vỏ ngoài PVC (0.6/1kV) → Kéo → [[Rigid Strander]] → Đùn PVC lõi → [[Drum Twister]] → Đùn vỏ PVC.
+- **`CXV 3×95+1×50` (0.6/1kV):** Cáp điện lực ruột đồng, cách điện [[XLPE]] (90°C, chịu dòng cao hơn PVC 20–25%!), vỏ ngoài PVC → Có thêm công đoạn **Phòng xông hơi Sauna [[Silane]]**!
+- **`CXV/DSTA 3×240+1×120`:** Cáp lực chôn ngầm có **2 lớp băng thép [[DSTA]]** chống cuốc xẻng & chuột bọ (chạy thêm máy bọc giáp ở Trạm 05).
+- **`CXV/DATA 1×300`:** Cáp lực **1 lõi xoay chiều** bắt buộc dùng **2 lớp băng NHÔM (`DATA`)** — CẤM dùng băng thép DSTA vì gây dòng điện xoáy (Eddy Current) nung nóng chảy cáp!
+- **`CXV/FR 4×16` / `CXV/FRT`:** Cáp chống cháy có quấn lớp băng [[Mica FR]] chịu lửa 750–950°C trong 90–180 phút (IEC 60331), thường đi kèm vỏ ít khói [[LSZH]].
+- **`CVV-S 4×1.5`:** Cáp điều khiển có lớp lưới đồng/thiếc chống nhiễu điện từ (chạy qua dàn máy đan lưới [[Braiding]] — nút thắt tốc độ chậm 3–12 m/phút!).
+- **`LV-ABC 4×50`:** Cáp vặn xoắn treo trên không [[ABC Cable]], 4 lõi NHÔM bện nén + [[XLPE]] Đen 2.5% Carbon Black chống UV (phân pha bằng 0–1–2–3 gân nổi).
+- **`As 240/32` ([[ACSR]]):** Dây nhôm trần lõi thép (240mm² nhôm ngoài + 32mm² lõi thép mạ kẽm giữa + mỡ chống ăn mòn).
+- **`CXV/S/DSTA 24kV`:** Cáp trung thế 3 lớp đồng đùn trên dây chuyền ống cong [[CCV]] (khí Nitơ 12 bar), bắt buộc test [[Partial Discharge]] ≤ 5 pC.
+- **`H1Z2Z2-K 1×6.0` ([[Solar Cable]]):** Cáp điện mặt trời DC 1,500V chuẩn EN 50618, ruột đồng mạ thiếc [[Tinned Copper]], cách điện + vỏ XLPO chiếu xạ [[E-beam]] tuổi thọ 25 năm ngoài trời.
+
+### B. Bảng "Thông Số Vàng" Cần Nhớ Để Tính Nhẩm & Phản Biện Nhanh
+- **Tỷ trọng vật liệu chuẩn (g/cm³):** Đồng = `8.89` | Nhôm = `2.70` | Thép = `7.85` | [[PVC]] = `1.38 – 1.52` | [[XLPE]] = `0.92 – 0.94` | [[LSZH]] = `1.45 – 1.60`.
+- **Điện trở DC tối đa tại 20°C của ruột đồng trần theo [[IEC 60228]] (Ω/km — Class 1/2):**
+  * `1.5 mm²`: ≤ `12.1` | `2.5 mm²`: ≤ `7.41` | `4 mm²`: ≤ `4.61` | `6 mm²`: ≤ `3.08` | `10 mm²`: ≤ `1.83`
+  * `16 mm²`: ≤ `1.15` | `25 mm²`: ≤ `0.727` | `50 mm²`: ≤ `0.387` | `95 mm²`: ≤ `0.193` | `120 mm²`: ≤ `0.153` | `240 mm²`: ≤ `0.0754`.
+  * *Hệ số quy đổi nhiệt độ đồng về 20°C:* `R_20 = R_t / [1 + 0.00393 × (t − 20)]`.
+- **Quy định chiều dày điểm mỏng nhất `t_min` theo [[IEC 60502]]:**
+  * Cách điện (Insulation): `t_avg ≥ t_nom` VÀ `t_min ≥ 0.9 × t_nom − 0.1 mm`.
+  * Vỏ ngoài không giáp: `t_min ≥ 0.85 × t_nom − 0.1 mm` (vỏ có giáp thép: `t_min ≥ 0.80 × t_nom − 0.2 mm`).
+- **Ngưỡng đạt chuẩn Lab:** [[Hot Set Test]] (200°C, 20 N/cm², 15 phút): giãn dài ≤ `175%`, giãn dư ≤ `15%` | [[Partial Discharge]]: ≤ `5 pC` | [[Tensile]] PVC/XLPE: ≥ `12.5 MPa`.
+
+---
+
+## 3. TẦNG 3: NÂNG CAO (ADVANCED) — HIỂU SÂU CADIVI/GELEX, LAB ISO/IEC 17025 & ĐÀM PHÁN OFFER
+
+### A. Điểm Sáng Kiến Thức Về Công Ty CADIVI & Lab ISO/IEC 17025 (VILAS)
+- **Lịch sử & Vị thế:** CADIVI (1975) là thương hiệu quốc gia hàng đầu Việt Nam về dây cáp điện, thành viên trụ cột của **GELEX Electric**, dẫn đầu xu hướng cáp xanh không chì RoHS / [[LSZH]] / [[Solar Cable]].
+- **Nhà máy CADIVI Miền Trung (KCN Hòa Cầm, Đà Nẵng):** Phục vụ toàn miền Trung – Tây Nguyên, nổi bật cả mảng dây dân dụng đại lý lẫn cáp dự án EVNCPC (`ABC`, `ACSR`, `CXV`).
+- **Phòng thử nghiệm chuẩn ISO/IEC 17025 (VILAS):** Nêu rõ khi phỏng vấn rằng OE luôn tôn trọng điều kiện thử nghiệm chuẩn VILAS, không cắt xén bước test mà tối ưu *External Time* (gom mẫu theo khung giờ, chạy luân phiên 2 bể [[Water Immersion]]) và số hóa số đo liên tục từ Lab sang [[Minitab]]/[[Power BI]].
+
+### B. Khung So Sánh Tổng Thu Nhập Năm Khi Đàm Phán Offer (Mabuchi vs CADIVI)
+- Không bao giờ so sánh chỉ 1 con số lương cơ bản tháng! Hãy đối chiếu đủ 5 cấu phần (có sẵn Sheet tính tự động trong `BaiTap_ThucHanh_Vong2_OE_CADIVI.xlsx`):
+  1. Lương Gross/Net hàng tháng × 12 tháng.
+  2. Phụ cấp cố định (ăn ca, xăng xe, nhà ở, chuyên cần, trách nhiệm) × 12 tháng.
+  3. Thưởng tháng 13 + Thưởng Tết/Lễ + Thưởng hiệu quả SXKD / KPI cuối năm (điểm mạnh rất đáng tìm hiểu ở doanh nghiệp lớn như CADIVI/GELEX!).
+  4. Mức lương đóng BHXH + Chế độ bảo hiểm sức khỏe / khám định kỳ / công đoàn.
+  5. Chi phí & thời gian di chuyển thực tế (KCN Hòa Cầm rất gần trung tâm Đà Nẵng — tiết kiệm đáng kể thời gian & xăng xe!).
+
+---
+
+## 4. TẦNG 4: CHUYÊN GIA (EXPERT) — MẪU EMAIL CẢM ƠN & THANG CHẤM ĐIỂM PHỎNG VẤN THỬ 30 PHÚT
+
+### A. 2 Mẫu Email Cảm Ơn (Gửi Trong 12–24 Giờ Sau Phỏng Vấn — Cực Ghi Điểm!)
+- **Mẫu 1 (Gửi Phòng Nhân Sự HR):**
+  *Tiêu đề:* `Cảm ơn buổi phỏng vấn vị trí Chuyên viên Tối ưu Quy trình (OE) — Phan Thanh Thái Bảo`
+  *Nội dung:* Cảm ơn anh/chị HR và Hội đồng tuyển dụng Nhà máy CADIVI Miền Trung đã dành thời gian trao đổi cởi mở; bày tỏ ấn tượng với định hướng nâng cao hiệu suất vận hành tại KCN Hòa Cầm; tái khẳng định sự sẵn sàng đóng góp bằng nền tảng Cơ khí – QC – Tự động hóa dữ liệu và mong sớm nhận phản hồi bước tiếp theo.
+- **Mẫu 2 (Nếu có Email Giám đốc Nhà máy / Trưởng phòng OE):**
+  Nhắc ngắn gọn lại **đúng 1 vấn đề thực tế anh/chị vừa chia sẻ trong buổi phỏng vấn** (ví dụ: bài toán đổi màu máy đùn hoặc kiểm soát hao phí BOM đồng/nhựa) kèm 2 gạch đầu dòng hướng tiếp cận cụ thể bạn dự kiến khảo sát trong 30 ngày đầu — cho thấy tư duy chủ động ngay lập tức!
+
+### B. Thang Chấm Điểm Tự Luyện Phỏng Vấn Thử 30 Phút (Dùng Chung Với Nút `🎤 Phỏng Vấn 30p`)
+- **85 – 100 điểm:** Sẵn sàng bước vào phòng phỏng vấn CADIVI & tự tin đàm phán mức đầu khung `17–18 triệu`!
+- **70 – 84 điểm:** Nền tảng vững — chỉ cần luyện nói thành tiếng lại 2–3 câu bị ngập ngừng (nhất là phần Tiếng Anh ngắn & giải mã mã cáp).
+- **< 70 điểm:** Mở lại Tab `🏭 Dòng Chảy CADIVI` & `🎓 Giáo Trình A–Z` ôn đúng những chủ đề bị mất điểm rồi thi thử lượt 2!
+"""
     }
 }
 

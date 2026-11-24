@@ -1905,6 +1905,222 @@ QUESTIONS = [
             "  2. Với dự án thẩm định đầu tư thiết bị: tôn trọng bảo mật tài chính công ty cũ, tập trung trình bày **PHƯƠNG PHÁP LUẬN** thẩm định [[ROI]] / [[Payback]] (tách Hard Savings vs Soft Savings, đối chiếu Kế toán, chạy 3 kịch bản độ nhạy Thận trọng–Cơ sở–Lạc quan).\n"
             "• Về kỳ vọng thu nhập tại CADIVI (16–18 triệu + thưởng năm/phụ cấp): thể hiện rõ sự tìm hiểu về tổng thu nhập năm của hệ thống CADIVI/GELEX, khẳng định sẵn sàng bắt đầu trong khung ngân sách phù hợp năng lực và cam kết tạo ra giá trị tiết kiệm thực (Hard Savings) vượt xa chi phí lương ngay trong 90 ngày đầu!"
         )
+    },
+
+    # =========================================================================
+    # CHỦ ĐỀ 18: PHỎNG VẤN BẪY HR/GĐ, ĐÀM PHÁN LƯƠNG, HIỂU CADIVI/ISO 17025 & TIẾNG ANH OE (18 CÂU)
+    # =========================================================================
+    {
+        "id": "q_war_01",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi bẫy HR: 'Bạn đang làm Nhóm trưởng Phòng Kiểm tra (QC) ổn định ở một công ty Nhật lớn (Mabuchi Motor Đà Nẵng), tại sao lại muốn nghỉ để sang làm Chuyên viên OE ở công ty Việt Nam như CADIVI?'",
+        "key_points": (
+            "• TUYỆT ĐỐI KHÔNG chê công ty cũ, sếp cũ hay than lương thấp! Hãy trả lời theo tư duy **'Hướng tới (Pull)'** chứ không phải 'Chạy trốn (Push)':\n"
+            "  1. Trân trọng nền tảng tại Mabuchi Motor: đã rèn cho em kỷ luật hiện trường chuẩn Nhật ([[5S]], [[Genba]], đo kiểm chính xác OGP/Keyence/Canon INEX) và khả năng dẫn dắt nhóm.\n"
+            "  2. Động lực phát triển nghề nghiệp rõ ràng: ở vai trò QC, em chủ yếu phát hiện lỗi ở khâu cuối và tối ưu trong phạm vi phòng kiểm tra — nhưng niềm đam mê lớn nhất của em là **can thiệp từ gốc vào toàn chuỗi sản xuất** ([[OEE]], [[SMED]], [[BOM]], [[Six Sigma]]) như hồi từng làm Quản lý & Cải tiến SX 1 tại Fujikura.\n"
+            "  3. Lý do chọn đúng CADIVI Miền Trung: CADIVI là thương hiệu dây cáp điện số 1 Việt Nam (thuộc GELEX Electric), có quy mô máy móc công nghiệp nặng bài bản (kéo–bện–đùn) và bài toán tối ưu vật tư đồng/nhựa rất lớn — đúng môi trường để em dồn cả 3 thế mạnh Cơ khí + QC + Tự động hóa [[Python]]/[[Excel]] tạo ra giá trị đo đếm được bằng tiền!"
+        )
+    },
+    {
+        "id": "q_war_02",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi bẫy: 'Điểm yếu lớn nhất của em khi ứng tuyển vị trí Chuyên viên OE CADIVI là gì?'",
+        "key_points": (
+            "• Công thức vàng **Điểm yếu THẬT nhưng KHÔNG CHÍ MẠNG + Đã/Đang có hành động khắc phục cụ thể**:\n"
+            "  - KHÔNG dùng câu sáo rỗng ('em quá cầu toàn / làm việc chăm chỉ quá mức' — HR cực ghét!).\n"
+            "  - Cách trả lời trung thực & ghi điểm mạnh: *'Điểm yếu thực tế nhất của em là em chưa từng trực tiếp vận hành dây chuyền đùn nhựa XLPE/PVC và máy kéo đồng Rod của ngành cáp điện lực (trước đây em làm dây dẫn ô tô tại Fujikura và động cơ tại Mabuchi). Tuy nhiên, em hiểu bản chất cốt lõi của OE là phương pháp luận đo lường & giải quyết vấn đề — và ngay trước buổi phỏng vấn này, em đã chủ động nghiên cứu sâu toàn bộ 7 công đoạn sản xuất cáp, 9 nhóm máy (RBD, Buncher, Extruder, Spark Tester, CCV), tiêu chuẩn [[IEC 60228]]/[[IEC 60502]]/[[QCVN 4]] và 2 bài toán chi phí lớn nhất là [[Copper Give-away]] & [[Over-thickness]]. Nếu nhận việc, em sẽ bám [[Genba]] đủ 3 ca trong 2 tuần đầu để làm chủ hoàn toàn thực tế xưởng!'*"
+        )
+    },
+    {
+        "id": "q_war_03",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi xoáy: 'Em biết lập trình Python, VBA, Access, tự động hóa báo cáo rất giỏi — sao em không chuyển hẳn sang làm IT lương cao ngồi phòng lạnh mà lại chọn bám xưởng dây cáp nóng bụi?'",
+        "key_points": (
+            "• Chuyển hóa nghi ngờ thành **Lợi thế cạnh tranh độc nhất (Unfair Advantage)**:\n"
+            "  1. Xuất thân của em là **Kỹ sư Cơ khí** — em thích nhìn thấy máy móc vận hành, sản phẩm vật lý ra đời và cầm thước xuống hiện trường [[Genba]] hơn là viết phần mềm thuần túy tách rời thực tế.\n"
+            "  2. Với em, [[Python]], VBA, [[Power Query]] hay [[Power BI]] KHÔNG phải mục tiêu cuối cùng mà là **vũ khí tăng tốc cho người làm OE**: thay vì một kỹ sư OE mất 2–3 ngày/tuần ngồi ghép tay file log ca 4 phân xưởng, em dùng code gom sạch trong 15 phút để dành 85% thời gian còn lại đứng dưới xưởng làm [[SMED]], [[Time Study]] và hỗ trợ anh em công nhân!\n"
+            "  3. Thực tế công nghiệp 4.0: dân IT thuần không hiểu cơ khí/quy trình đùn kéo, còn kỹ sư xưởng thuần hay ngại dữ liệu — đứng ở giao điểm của cả hai giúp em tạo ra giá trị khác biệt tại CADIVI."
+        )
+    },
+    {
+        "id": "q_war_04",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "Em biết gì về Công ty CADIVI, Tập đoàn GELEX Electric và Nhà máy CADIVI Miền Trung? Vì sao em muốn gắn bó lâu dài ở đây?",
+        "key_points": (
+            "• Thể hiện sự nghiên cứu bài bản, chính xác (không khen sáo rỗng):\n"
+            "  1. **Thương hiệu CADIVI:** Thành lập từ năm 1975 (gần 50 năm lịch sử), Thương hiệu Quốc gia Việt Nam nhiều năm liền với slogan *'Dẫn điện tốt – Cách điện an toàn – Tiết kiệm điện'*, chiếm thị phần hàng đầu ngành dây cáp điện trong nước và xuất khẩu.\n"
+            "  2. **Hệ sinh thái GELEX Electric:** CADIVI là thành viên nòng cốt của Tập đoàn GELEX (cùng Thibidi, Emic...), đang đẩy mạnh quản trị hiện đại theo chuẩn quốc tế, mở rộng mạnh sang dòng sản phẩm xanh & công nghệ cao (cáp chống cháy [[Mica FR]], cáp ít khói không halogen [[LSZH]]/LSHF, cáp năng lượng mặt trời [[Solar Cable]], vật liệu không chì RoHS).\n"
+            "  3. **Nhà máy CADIVI Miền Trung (KCN Hòa Cầm, Cẩm Lệ, Đà Nẵng):** Cứ điểm sản xuất chiến lược cung ứng cho toàn trục Miền Trung – Tây Nguyên (dây dân dụng VC/VCm, cáp hạ thế CVV/CXV, cáp nhôm [[ABC Cable]]/[[ACSR]] cho EVNCPC...). Em sinh sống và định cư ổn định tại Đà Nẵng nên muốn gắn bó dài hạn để xây dựng sự nghiệp OE ngay tại quê hương."
+        )
+    },
+    {
+        "id": "q_war_05",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Bài test nhanh tại bàn: Giám đốc đặt 4 mẩu cáp trước mặt và hỏi — 'Em đọc giúp anh ký hiệu CXV/DSTA 3×120+1×70 - 0.6/1kV, CXV/DATA 1×300, CXV/FR 4×16 và LV-ABC 4×50 nghĩa là gì? Vì sao cáp 1 lõi 1×300 không dùng DSTA mà phải dùng DATA?'",
+        "key_points": (
+            "• Giải mã sắc lẹm từng ký hiệu chuẩn CADIVI:\n"
+            "  1. **CXV/DSTA 3×120+1×70 - 0.6/1kV:** `C` = Ruột Đồng (Copper) | `X` = Cách điện [[XLPE]] (chịu nhiệt 90°C) | `V` = Vỏ ngoài [[PVC]] | `DSTA` = Giáp 2 lớp băng THÉP ([[DSTA|Double Steel Tape Armoured]]) chống va đập chôn ngầm | 3 lõi pha 120mm² + 1 lõi trung tính 70mm² | Điện áp 0.6/1 kV ([[IEC 60502]]-1).\n"
+            "  2. **CXV/DATA 1×300:** Cáp 1 lõi đồng 300mm², cách điện XLPE, vỏ PVC, giáp 2 lớp băng NHÔM (`DATA` = Double Aluminium Tape Armoured). **Tại sao cấm dùng thép DSTA cho cáp 1 lõi xoay chiều?** Vì dòng xoay chiều 1 lõi tạo từ trường biến thiên không tự triệt tiêu — nếu bọc băng thép sắt từ sẽ sinh dòng điện xoáy (Eddy Current) nung nóng chảy vỏ cáp! Bắt buộc dùng băng NHÔM không từ tính (`DATA`)!\n"
+            "  3. **CXV/FR 4×16:** Cáp đồng 4 lõi 16mm², có lớp băng [[Mica FR]] chống cháy chịu lửa 750–950°C (90–180 phút theo IEC 60331), cách điện XLPE, vỏ chậm cháy/[[LSZH]].\n"
+            "  4. **LV-ABC 4×50:** Cáp vặn xoắn treo trên không hạ thế ([[ABC Cable]]), 4 lõi NHÔM bện ép nén 50mm² bọc [[XLPE]] Đen chứa 2–2.5% muội than chống UV, phân pha bằng gân nổi 0–1–2–3 gân."
+        )
+    },
+    {
+        "id": "q_war_06",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Phân Tích Sâu",
+        "question": "Phòng Thí Nghiệm của CADIVI đạt chuẩn quốc tế ISO/IEC 17025 (VILAS). Chuyên viên OE cần hiểu gì về chuẩn này và phối hợp với Phòng Lab VILAS như thế nào để vừa tối ưu tốc độ vừa đảm bảo tuân thủ?",
+        "key_points": (
+            "• Hiểu đúng về **ISO/IEC 17025 (VILAS tại Việt Nam):**\n"
+            "  - Nếu [[ISO 9001]] là chuẩn hệ thống quản lý chất lượng toàn nhà máy, thì **ISO/IEC 17025** là chuẩn năng lực kỹ thuật cao nhất dành riêng cho Phòng Thử Nghiệm & Hiệu Chuẩn — đảm bảo kết quả đo (điện trở [[Kelvin Bridge]], thử cao áp [[Water Immersion]], [[Hot Set Test]], [[Tensile]], [[Aging Oven]]) có độ chính xác, độ không đảm bảo đo (Measurement Uncertainty) được công nhận quốc tế và truy xuất liên kết chuẩn quốc gia.\n"
+            "• 4 điểm phối hợp cực chuyên nghiệp của OE với Lab ISO/IEC 17025:\n"
+            "  1. **Tôn trọng tuyệt đối điều kiện môi trường Lab:** Không thúc ép Lab đo mẫu nóng vừa cắt từ máy (bắt buộc ổn định nhiệt độ phòng chuẩn 20±2°C/23±2°C) và không yêu cầu bỏ bớt bước quy chuẩn để xuất hàng gấp.\n"
+            "  2. **Cải tiến phần 'Ngoài phép thử' (External Time):** Giảm Lab Lead Time từ 6h → 2h bằng cách chuẩn hóa lịch gom mẫu, chuẩn bị sẵn đầu mẫu & chạy luân phiên 2 bể ngâm [[Water Immersion]] mà KHÔNG đụng vào thời gian ngâm chuẩn.\n"
+            "  3. **Liên thông số liệu đo liên tục:** Đề xuất trích xuất bảng số đo thực tế (không chỉ Pass/Fail) phục vụ phân tích [[SPC]], [[Cpk]] & [[MSA]]/[[Gage R&R]].\n"
+            "  4. **Mọi dự án hạ dung sai ([[Copper Give-away]] / [[Over-thickness]])** đều phải gửi mẫu chạy thử nghiệm chính thức tại Lab VILAS trong hồ sơ [[MOC / ECN]]."
+        )
+    },
+    {
+        "id": "q_war_07",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi đàm phán lương & tổng thu nhập năm: 'Mức lương hiện tại ở Mabuchi của em là bao nhiêu? Khung tuyển dụng của CADIVI Miền Trung là 16–18 triệu/tháng, em mong muốn con số cụ thể nào?'",
+        "key_points": (
+            "• 4 nguyên tắc vàng đàm phán lương thông minh & giữ vị thế cao:\n"
+            "  1. **Luôn tính theo Tổng Thu Nhập Năm (Total Compensation), không chỉ nhìn lương tháng:** Bao gồm Lương cơ bản + Phụ cấp (ăn trưa, xăng xe, chuyên cần, trách nhiệm) + Thưởng tháng 13 + Thưởng KPI/Tết/Lễ + BHXH đóng trên mức nào + Chi phí/thời gian di chuyển tới KCN Hòa Cầm.\n"
+            "  2. **Cách trả lời khi bị hỏi lương cũ:** Nêu trung thực ở mức tổng thu nhập bình quân (không bịa đặt vì dễ bị lộ khi nộp bảng lương/quyết toán thuế), đồng thời chuyển trọng tâm sang giá trị sẽ mang lại cho CADIVI.\n"
+            "  3. **Định vị ở nửa trên khung (17–18 triệu, hoặc đề xuất lộ trình tăng sau thử việc/6 tháng):** *'Với kinh nghiệm thực chiến 5+ năm từ quản lý sản xuất dây dẫn đến trưởng nhóm QC và năng lực tự động hóa Excel/Python/Power BI, em kỳ vọng mức thu nhập trong khoảng 17–18 triệu/tháng (cùng cơ chế thưởng năm của CADIVI). Tuy nhiên em rất coi trọng tổng gói thu nhập năm và lộ trình phát triển — anh/chị có thể chia sẻ rõ hơn cơ cấu phụ cấp và thưởng hàng năm của vị trí này tại nhà máy được không ạ?'*\n"
+            "  4. **Chốt hạ bằng cam kết giá trị:** Nhấn mạnh chỉ 1 dự án [[SMED]] hoặc giảm 0.5% [[Over-thickness]]/[[Copper Give-away]] thành công đã mang lại Hard Savings lớn gấp nhiều lần tổng lương năm của vị trí OE!"
+        )
+    },
+    {
+        "id": "q_war_08",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi thử áp lực: 'Nếu vào làm 2 tháng đầu, Quản đốc giấu số liệu, các phòng ban đùn đẩy trách nhiệm và chưa thấy cải tiến nào rõ rệt — em có bị nản bỏ việc không?'",
+        "key_points": (
+            "• Giữ thái độ bình tĩnh, trưởng thành và thực tế (đúng tâm thế người đã đi làm xưởng lâu năm):\n"
+            "  1. Thừa nhận thẳng thắn: *'Em hiểu đây là thực tế bình thường ở hầu hết nhà máy sản xuất chứ không riêng nơi nào — công việc OE bản chất là Quản trị sự thay đổi ([[ADKAR]]), nên 2 tháng đầu chưa có số liệu sạch ngay là chuyện bình thường.'*\n"
+            "  2. Trình bày cách vượt qua bài bản thay vì ngồi nản hay đi báo cáo đối đầu:\n"
+            "     - Tự đi [[Genba]] đo mẫu trực tiếp bằng mắt & đồng hồ bấm giờ ([[Work Sampling]] / [[Time Study]]) để có dữ liệu khách quan ban đầu.\n"
+            "     - Chọn 1 **Quick-Win giúp nhẹ việc cho chính Quản đốc/Tổ trưởng** trước (vd: tự động hóa file tổng hợp ca giúp họ đỡ mất 30 phút ghi sổ mỗi ngày, hoặc giải quyết 1 nỗi đau vặt tại máy) để xây lòng tin.\n"
+            "     - Chia sẻ sớm tiến độ & vướng mắc theo sự thật với cấp quản lý trực tiếp trong cuộc họp định kỳ để cùng tháo gỡ cơ chế phối hợp."
+        )
+    },
+    {
+        "id": "q_war_09",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi thực tế công việc: 'Công việc OE tại CADIVI đôi khi phải đi khảo sát ca đêm (22h–06h) hoặc cuối tuần lúc xưởng bảo trì PM/lắp máy mới. Em có đáp ứng được không?'",
+        "key_points": (
+            "• Trả lời dứt khoát, chủ động và nêu rõ lý do chuyên môn (cho thấy bạn hiểu sâu nghề OE!):\n"
+            "  - *'Hoàn toàn đáp ứng được ạ! Em sinh sống tại Đà Nẵng, chủ động di chuyển và từng có kinh nghiệm làm việc môi trường sản xuất nhiều ca. Hơn nữa với người làm OE, việc khảo sát ca đêm là cực kỳ cần thiết vì trên thực tế rất nhiều tổn thất ẩn (giảm tốc độ chạy máy, lỗi quên mực in phun, lệch nhiệt độ chỉnh máy giữa Ca 1 và Ca 3 tạo [[Histogram]] 2 đỉnh) chỉ xuất hiện rõ nhất ở ca đêm! Còn khung cuối tuần lúc máy dừng lại là thời điểm vàng để làm [[5S]], kiểm rò khí nén ([[ISO 50001]]) và phối hợp Cơ Điện cải tiến gá [[SMED]].'*"
+        )
+    },
+    {
+        "id": "q_war_10",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "Câu hỏi chốt cuối buổi: 'Giữa 5 ứng viên có kinh nghiệm tương đương, tại sao CADIVI Miền Trung nên chọn em cho vị trí Chuyên viên Tối ưu Quy trình (OE) này?'",
+        "key_points": (
+            "• Tóm gọn đanh thép trong đúng **3 điểm khác biệt khó tìm thấy ở cùng 1 người**:\n"
+            "  1. **Hiểu cả Hiện trường Sản xuất lẫn Đo kiểm Chính xác:** Em có nền tảng Kỹ sư Cơ khí, 2 năm Quản lý & Cải tiến SX dây dẫn tại Fujikura (quét Barcode RE7) và kinh nghiệm Nhóm trưởng QC tại Mabuchi (đo chính xác OGP/Canon INEX, [[Time Study]] rút 60s→30s) — nên vừa nói được ngôn ngữ của công nhân dưới xưởng, vừa đọc vị ngay dữ liệu phòng Lab để tối ưu [[Copper Give-away]] & [[Over-thickness]].\n"
+            "  2. **Năng lực Tự động hóa Dữ liệu thực chiến ([[Python]] + VBA + [[Excel]] + [[Power BI]]):** Em đã trực tiếp rút gọn báo cáo 3–7 ngày xuống 2 giờ và nhập liệu 120p xuống 15p/ngày — vào CADIVI có thể lập tức chuẩn hóa hệ thống báo cáo [[OEE]]/[[OLE]]/[[BOM]] tự động mà không tốn thêm chi phí mua phần mềm ngay lập tức.\n"
+            "  3. **Sự chuẩn bị nghiêm túc & Cam kết gắn bó tại Đà Nẵng:** Em đã nghiên cứu kỹ dòng chảy 7 công đoạn ngành cáp, các bài toán đặc thù của CADIVI Miền Trung và có sẵn kế hoạch hành động 30–60–90 ngày rõ ràng để tạo kết quả đo lường được ngay trong thời gian thử việc!"
+        )
+    },
+
+    # --- 8 CÂU PHỎNG VẤN NGẮN TIẾNG ANH CHUYÊN NGÀNH OE & DÂY CÁP ĐIỆN (q_en_01 → q_en_08) ---
+    {
+        "id": "q_en_01",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "[English Interview] Please introduce yourself in 60 seconds and explain why you are applying for the Operational Excellence (OE) Specialist role at CADIVI.",
+        "key_points": (
+            "• **Gợi ý trả lời tiếng Anh trôi chảy (đọc tự nhiên trong ~55 giây):**\n"
+            "  *'Good morning! My name is Bao. I am a Mechanical Engineer with over 5 years of manufacturing experience in Da Nang. Previously, I worked for 2 years in Production Management and Improvement at Fujikura Automotive on wire harness lines, where I helped roll out barcode tracking to replace paper logs. Currently, I am an Inspection Team Leader at Mabuchi Motor, focusing on measurement quality, Time Study — reducing Canon INEX inspection time from 60 to 30 seconds per item — and automating reports using Python, VBA, and Excel. I am excited to apply for the OE Specialist role at CADIVI Central Factory because I want to combine my shop-floor improvement background and data automation skills to optimize [[OEE]], [[SMED]], and copper/compound [[BOM]] costs across your cable production lines.'*\n"
+            "• **Mẹo phát âm:** Nói chậm rõ từng cụm từ khóa (`Mechanical Engineer`, `Time Study`, `data automation`, `copper and compound BOM`), giữ nụ cười tự tin!"
+        )
+    },
+    {
+        "id": "q_en_02",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "[English Interview] How do you calculate OEE for a continuous cable extrusion line, and what are the Six Big Losses?",
+        "key_points": (
+            "• **Gợi ý trả lời tiếng Anh chuẩn kỹ thuật:**\n"
+            "  *'[[OEE]] equals Availability times Performance times Quality. For a continuous cable extrusion line, we measure output in meters rather than discrete pieces: Availability is Actual Run Time divided by Planned Production Time; Performance is Total Output Meters divided by (Actual Run Time times Ideal Line Speed in meters per minute); and Quality is Good Meters divided by Total Output Meters. The Six Big Losses are: Breakdowns and Changeover/Setup under Availability; Minor Stops and Reduced Speed under Performance; and Startup Rejects and Production Defects under Quality.'*\n"
+            "• **Điểm ăn tiền:** Nhấn mạnh cụm `'meters per minute rather than discrete pieces'` — chứng tỏ hiểu sâu đặc thù ngành cáp!"
+        )
+    },
+    {
+        "id": "q_en_03",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Phân Tích Sâu",
+        "question": "[English Interview] Can you explain what SMED is and how you would apply it to a cable extrusion changeover?",
+        "key_points": (
+            "• **Gợi ý trả lời tiếng Anh:**\n"
+            "  *'[[SMED]] stands for Single-Minute Exchange of Die — a [[Lean]] method to reduce changeover time from last good product of batch A to first good product of batch B at standard speed. On a cable extruder, I apply 4 steps: First, video-record the current changeover; Second, separate Internal activities (done while stopped) from External activities (preparing dried resin, tools, and pre-heating the tip and die in an external oven while running); Third, convert Internal to External; and Fourth, streamline Internal work with self-centering crossheads, one-touch clamps, PLC recipe loading, and light-to-dark [[Color Sequencing]] to cut both downtime and purge scrap.'*"
+        )
+    },
+    {
+        "id": "q_en_04",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Phân Tích Sâu",
+        "question": "[English Interview] What are 'Copper Give-away' and 'Over-thickness' in cable manufacturing, and how does SPC help reduce them?",
+        "key_points": (
+            "• **Gợi ý trả lời tiếng Anh:**\n"
+            "  *'In cable manufacturing, copper and insulation compounds represent over 80% of product cost. [[Copper Give-away]] happens when drawn wire diameter is slightly oversized due to worn [[PCD]] dies — giving away free copper even though [[IEC 60228]] only limits maximum DC resistance at 20 degrees Celsius. Similarly, [[Over-thickness]] occurs when operators extrude thicker [[PVC]] or [[XLPE]] than nominal to avoid failing minimum wall thickness due to high process variation. Using [[SPC]] and [[Cpk]] analysis in [[Minitab]] together with closed-loop [[Laser Gauge]] control, we first reduce variation (sigma) and then safely shift the mean closer to target without risking quality.'*"
+        )
+    },
+    {
+        "id": "q_en_05",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "[English Interview] What is the difference between Cp and Cpk? Which one matters more on the shop floor?",
+        "key_points": (
+            "• **Gợi ý trả lời tiếng Anh:**\n"
+            "  *'[[Cp|Cp]] measures the potential capability of a process — how narrow the spread (6 sigma) is compared to the tolerance width (USL minus LSL), assuming the process is perfectly centered. [[Cpk]] measures actual capability by also considering how close the process mean is to the nearest specification limit. On the shop floor, Cpk matters much more because a process can have a high Cp of 1.8 but still produce defects if the mean drifts off-center. Typically we target Cpk of at least 1.33 for stable production.'*"
+        )
+    },
+    {
+        "id": "q_en_06",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "[English Interview] How do you handle resistance from experienced shop-floor supervisors when proposing a Lean improvement?",
+        "key_points": (
+            "• **Gợi ý trả lời tiếng Anh:**\n"
+            "  *'I always start by going to the [[Genba]] with respect and listening first, not lecturing from an office. Experienced supervisors resist change mainly when they fear being blamed or given extra paperwork. So I focus on a practical Quick-Win that solves their daily pain — such as automating manual shift reports or fixing an ergonomic hassle — to build trust. Then I involve them directly in designing the pilot improvement, validate results objectively with Before–After data, and give them full credit when reporting to management.'*"
+        )
+    },
+    {
+        "id": "q_en_07",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Khái Niệm Cốt Lõi",
+        "question": "[English Interview] Read and explain these technical English terms from a German/Japanese cable machine manual (Niehoff / Troester / Sikora): 'Pay-off Dancer Tension', 'Inline Resistance Annealer', 'Melt Pressure Surging', 'Concentricity', 'Spark Fault Counter'.",
+        "key_points": (
+            "• **Giải nghĩa chuẩn kỹ sư máy cáp đọc tài liệu gốc:**\n"
+            "  1. **Pay-off Dancer Tension:** Lực căng điều chỉnh bởi cần cân bằng (Dancer Arm) ở cụm xả dây [[Pay-off]] để giữ sợi không bị chùng rối hay giãn mỏng.\n"
+            "  2. **Inline Resistance Annealer:** Bộ ủ mềm điện trở liên tục gắn ngay sau máy kéo sợi (phóng dòng DC làm nóng tái kết tinh sợi đồng đang chạy).\n"
+            "  3. **Melt Pressure Surging:** Hiện tượng áp suất nhựa nóng chảy [[Melt Pressure]] dao động lên xuống theo chu kỳ gây biến thiên đường kính vỏ cáp.\n"
+            "  4. **Concentricity:** Độ đồng tâm của lớp cách điện/vỏ bọc quanh ruột đồng (`Concentricity = t_min / t_max × 100%`, chuẩn tốt ≥ 90–92%).\n"
+            "  5. **Spark Fault Counter:** Bộ đếm số lần phóng điện đánh thủng lỗ kim cách điện từ thiết bị [[Spark Tester]] trên dây chuyền."
+        )
+    },
+    {
+        "id": "q_en_08",
+        "category": "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE",
+        "type": "Tình Huống Thực Chiến",
+        "question": "[English Interview] What is your 30-60-90 day plan if you join CADIVI Central Factory?",
+        "key_points": (
+            "• **Gợi ý trả lời tiếng Anh súc tích 45 giây:**\n"
+            "  *'In the first 30 days, I will walk the [[Genba]] across all shifts to understand the 7 cable processes, audit shift-log and [[BOM]] data accuracy, map the current [[VSM]], and build trust with production supervisors. From day 31 to 60, I will standardize and automate [[OEE]], [[OLE]], and scrap reporting using Excel/Python/Power BI, run [[Pareto]] analysis to pinpoint top bottlenecks, and deliver 1–2 quick wins. From day 61 to 90, I will lead a focused pilot project — such as extrusion [[SMED]] or [[Over-thickness]] reduction — verify the improvement statistically with a [[2-Sample t-test]], validate hard savings with Finance, and lock in the gains with [[SOP]], [[LSW]], and [[LPA]].'*"
+        )
     }
 ]
 
@@ -1927,17 +2143,18 @@ CATEGORIES = [
     "Phỏng Vấn Hành Vi (STAR) & Phản Biện CV OE",
     "Câu Hỏi Hỏi Ngược Nhà Tuyển Dụng CADIVI",
     "Kế Hoạch S&OP/MRP, FPY/RTY, LOTO/ISO & Giá Thành",
-    "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2"
+    "Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2",
+    "Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE"
 ]
 
 
 def get_all_questions():
-    """Trả về toàn bộ danh sách câu hỏi phỏng vấn thực chiến (128 câu)."""
+    """Trả về toàn bộ danh sách câu hỏi phỏng vấn thực chiến (146 câu)."""
     return QUESTIONS
 
 
 def get_categories():
-    """Trả về danh sách 17 chủ đề + Tất cả chủ đề."""
+    """Trả về danh sách 18 chủ đề + Tất cả chủ đề."""
     return CATEGORIES
 
 

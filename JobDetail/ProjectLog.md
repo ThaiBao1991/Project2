@@ -393,3 +393,57 @@ Tài liệu nhật ký theo dõi kiến trúc, tiến độ và kiểm thử c�
 - **Kiểm thử chống rung chuột (Click-Tremor vs Drag-Select)**: 3/3 kịch bản thực tế trên cửa sổ Tkinter mapped đều PASS (rung 3px có chọn 1 ký tự vẫn mở đúng `Green Belt`; kéo bôi đen 30px không bật popup nhầm; click thuần 0px mở đúng).
 - **Kiểm thử render toàn bộ 32 bài & tốc độ**: Mở bài `L1.1` = **71.8 ms**, mở Popup `Six Sigma` = **140.7 ms**, nhảy thẳng từ Popup sang bài `L4.2` = **OK**, quét cả 32/32 bài có **0 rò rỉ** `[[`, `]]`, `**`, `$`; 0 câu lệnh `print()` debug thừa và không còn file tạm trong thư mục.
 - **Giới hạn chưa tự verify trực quan**: Hiển thị bố cục 7 tab, màu sắc Breadcrumb/Mục 5 Sai lầm cần tránh và trải nghiệm click trực tiếp trên màn hình thực tế cần người dùng mở `Run_JobDetail.bat` để kiểm tra bằng mắt.
+
+
+---
+
+## 2026-11-23 (Nâng cấp — Giai đoạn 6) — Bản Đồ Lưu Trình Dòng Chảy Nhà Máy CADIVI (10 Trạm End-to-End, 6 Luồng Sản Phẩm & 40 Tình Huống Thực Chiến OE)
+
+### 1. Bối Cảnh & Mục Tiêu
+- Người dùng nhận xét hệ thống đã đủ mạnh về *kiến thức nền tảng* (22 cẩm nang, 202 thuật ngữ) và *lưu trình học* (32 bài Giáo Trình A–Z, lộ trình 90 ngày), nhưng vẫn thiếu **Lưu trình dòng chảy vận hành thực tế bên trong nhà máy CADIVI** và **bản đồ chi tiết những gì Chuyên viên OE làm được từ đầu đến cuối qua nhiều tình huống nhất**.
+
+### 2. Các Thành Phần Đã Triển Khai
+- **Kho Dữ Liệu Dòng Chảy & Tình Huống Thực Chiến (`cadivi_factory_flows.py` — file mới)**:
+  * **Sơ đồ tổng thể (`FACTORY_MASTER_MAP`) + 10 Trạm vận hành khép kín (`S00 → S09`)**: Từ Dòng thông tin/Hoạch định (`S00`) → IQC/Kho NVL (`S01`) → Kéo sợi & Ủ (`S02`) → Bện ruột dẫn (`S03`) → Đùn cách điện & Lưu hóa (`S04`) → Ghép lõi/Chống thấm/Chống nhiễu/Giáp DSTA (`S05`) → Đùn vỏ/In phun/Spark/Capstan (`S06`) → Lab QA/QC (`S07`) → Đánh cuộn/Cut-Length/Giao hàng (`S08`) → Dòng chảy ngược: Thu hồi 3 nhóm phế, Bảo trì Cơ Điện & Quyết toán giá thành (`S09`). Mỗi trạm có đủ 7 phần: Input, Output, Thiết bị/Phòng ban, Điểm nghẽn & Tổn thất ẩn, Checklist việc OE làm từ đầu đến cuối, Bộ KPI CADIVI và liên kết Cẩm nang / Bài học / Từ khóa bấm tra cứu.
+  * **6 Lưu trình dòng chảy đặc thù theo 6 họ sản phẩm chủ lực CADIVI (`F01 → F06`)**: Dây dân dụng VC/VCm (MTS Pull), Cáp lực hạ thế CXV/DSTA (MTO/ATO), Cáp vặn xoắn ABC & dây nhôm ACSR (EVN), Cáp trung thế 24kV/35kV (CCV + PD), Cáp chống cháy Mica FR + LSZH, Cáp Solar H1Z2Z2-K (E-beam) & Cáp điều khiển chống nhiễu Braiding.
+  * **Kho 40 Tình huống thực chiến hiện trường (`SC01 → SC40`, 8 Nhóm × 5 Tình huống)** phân bổ phủ kín cả 10 trạm (`S00`: 3, `S01`: 3, `S02`: 5, `S03`: 4, `S04`: 8, `S05`: 3, `S06`: 5, `S07`: 3, `S08`: 2, `S09`: 4), mỗi tình huống trình bày đủ 6 bước chuẩn OE: Dấu hiệu hiện trường → Tác động dòng chảy/chi phí → Khoanh vùng 24h → RCA nguyên nhân gốc → Giải pháp & số liệu thực tế → Khóa chuẩn chống tái diễn.
+- **Giao Diện Desktop & Lưu Tiến Độ SQLite (`JobDetailApp.py`, `job_storage.py`)**:
+  * Thêm **Tab mới `🏭 Dòng Chảy CADIVI`** với 3 chế độ chuyển đổi tức thì (`🗺️ 10 Trạm End-to-End`, `🔀 6 Luồng Sản Phẩm`, `🚨 40 Tình Huống OE`), tìm kiếm 60fps, lọc theo 8 nhóm & 10 trạm, nút nhảy thẳng `🚨 Tình huống trạm này`, `📖 Cẩm Nang`, `🎓 Bài Học` và đánh dấu `☑ Đã nắm vững` lưu bền vững vào cột `progress_json["factory_flow"]` trong SQLite.
+  * Thu gọn cân đối nhãn thanh 8 tab (`📋 Tổng Quan`, `🏭 Dòng Chảy CADIVI`, `🎓 Giáo Trình A–Z`, `🛠️ Kỹ Năng`, `🧭 Lộ Trình`, `📚 Tài Liệu`, `❓ Phỏng Vấn`, `📝 Ghi Chú & JD`).
+- **Tài Liệu Markdown Độc Lập (`LuuTrinh_DongChay_Va_TinhHuong_OE_CADIVI.md` — file mới)**:
+  * Tổng hợp trọn bộ 10 Trạm + 6 Luồng sản phẩm + 40 Tình huống OE: **1,339 dòng / 230.4 KB**, **56 neo nội bộ**, **96 liên kết nội bộ**, **1,308 liên kết thuật ngữ sang `CamNang_ToanDien_OE_CADIVI_MienTrung.md`** và **56 liên kết bài học sang `GiaoTrinh_OE_CADIVI_Tu_A_Den_Z.md`** (0 liên kết gãy, 0 `[[`, 0 `$`).
+
+### 3. Kết Quả Kiểm Thử Thực Tế (Gate 2 — Definition of Done)
+- **Kiểm tra cú pháp (`py_compile`)**: **12/12 file `.py`** thành công (0 lỗi).
+- **Bộ kiểm thử tự động (`unittest -v`)**: **33/33 unit tests OK trong 10.577s** (`test_job_storage.py` 5/5 gồm lưu/nạp `"factory_flow"`, `test_job_analyzer.py` 5/5, `test_qa_and_viewer.py` 23/23 gồm kiểm tra toàn vẹn 10 trạm / 6 luồng / 40 tình huống, 100% công thức `[[...]]` & liên kết hợp lệ, kiểm thử headless 3 chế độ trên Tab `🏭 Dòng Chảy CADIVI` + nhảy trạm → tình huống + tìm kiếm + lưu tiến độ SQLite).
+- **Quét toàn bộ 57 trang hiển thị Tab Dòng Chảy & đo tốc độ**: Mở Tab `🏭 Dòng Chảy CADIVI` = **137.1 ms**, chuyển 6 Luồng = **37.4 ms**, chuyển 40 Tình huống = **38.1 ms**; quét cả **57/57 trang** có **0 rò rỉ** `[[`, `]]`, `**`, `$` (đã phát hiện và xử lý ngay 1 chuỗi `**` thừa ở dòng hướng dẫn cuối trang Sơ đồ tổng trước khi chốt); 0 `print()` debug thừa và 0 file tạm.
+- **Giới hạn chưa tự verify trực quan**: Độ cân đối trực quan của thanh 8 tab, sơ đồ ASCII trong khung `mathbox` và cảm giác thao tác chuyển 3 chế độ trên màn hình thực tế cần người dùng mở `Run_JobDetail.bat` để kiểm tra bằng mắt.
+
+
+---
+
+## 2026-11-23 (Nâng cấp — Giai đoạn 7: Trọn Gói 1 + 2 + 3 & 3 Mảnh Chốt Hạ Phỏng Vấn) — Bộ Đề 146 Câu (Kèm Bẫy HR/GĐ, ISO/IEC 17025 VILAS & 8 Câu Tiếng Anh OE), File Excel Thực Hành Vòng 2 (6 Sheets / 97 Công Thức Sống), Bộ 5 Công Cụ Tính OE + Giải Mã Mã Cáp, Phỏng Vấn Thử 30p & Cheat Sheet 10 Phút
+
+### 1. Bối Cảnh & Mục Tiêu
+- Rà soát tổng thể toàn bộ hệ thống trước khi bước vào phỏng vấn thật vị trí Chuyên viên OE Nhà máy CADIVI Miền Trung, bổ sung trọn vẹn các mảnh ghép thực chiến còn thiếu: kịch bản xử lý câu hỏi bẫy HR/GĐ, đàm phán tổng thu nhập năm (`Total Compensation`), hiểu biết sâu về CADIVI / GELEX & phòng thí nghiệm đạt chuẩn **ISO/IEC 17025 (VILAS)**, phỏng vấn ngắn tiếng Anh chuyên ngành OE/Cáp điện, bộ **File Excel thực hành Vòng 2 có sẵn công thức sống**, **Bộ công cụ tính nhanh OE & Giải mã mã cáp CADIVI**, **Phỏng vấn thử 30 phút có đồng hồ & chấm điểm `/100`** và **Cheat Sheet 10 phút + Kế hoạch 30–60–90 ngày bản in A4 + 2 mẫu Thank-You Email**.
+
+### 2. Các Thành Phần Đã Triển Khai
+- **Mở Rộng Ngân Hàng Phỏng Vấn (`interview_bank.py` — `128 → 146 Câu Hỏi`, `18 Chủ Đề`)**:
+  * Thêm **Chủ đề 18**: *"Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE"* gồm 18 câu mới (`q_war_01`..`q_war_10` về tự giới thiệu 90s + quy tắc bảo mật số liệu CV, hiểu CADIVI/GELEX, đọc mã cáp tại bàn & bẫy dòng xoáy Eddy Current `CXV/DSTA 1×300` vs `DATA`, phối hợp Lab `ISO/IEC 17025 (VILAS)`, đàm phán tổng thu nhập năm, chịu áp lực đi ca đêm + `q_en_01`..`q_en_08` phỏng vấn tiếng Anh OE & đọc tài liệu máy Niehoff/Troester/Sikora).
+- **Thêm Cẩm Nang Thứ 23 (`offline_knowledge.py`, `job_analyzer.py`)**:
+  * Thêm **`cadivi_interview_warroom_decoder`** (4 tầng Basic → Expert): Kịch bản 90 giây + 3 nguyên tắc bảo mật CV, Bảng giải mã mọi ký hiệu mã cáp CADIVI (`VC/VCm/VCmd/CVV/CXV/DSTA/DATA/SWA/FR/LSZH/LV-ABC/As/H1Z2Z2-K`) & bảng số liệu vàng `IEC 60228`/`IEC 60502`, Hồ sơ CADIVI/GELEX & Lab `ISO/IEC 17025 (VILAS)` + khung so sánh Offer năm, 2 mẫu Thank-You Email và thang tự chấm Mock Interview.
+  * Đăng ký `"cadivi_warroom"` trong `TECH_CATALOG` của `job_analyzer.py` và đồng bộ **Job ID 1** trong `job_detail.db` lên **146 câu hỏi**, **17 cẩm nang offline**, **11 tài liệu chính thống** (bảo toàn 100% `progress_json` và `user_notes`).
+- **Bộ 5 Công Cụ Tính Nhanh OE, Giải Mã Mã Cáp, Phỏng Vấn Thử 30p & Bộ Sinh Excel OOXML (`oe_calculators.py` — file mới, tích hợp vào `JobDetailApp.py`)**:
+  * 6 hàm thuần đã kiểm soát chặt edge-case: `calc_oee_cable`, `calc_copper_giveaway`, `calc_pvc_volume_cost`, `calc_cp_cpk`, `calc_inventory_and_roi`, `decode_cadivi_cable` (tự động bật cảnh báo dòng xoáy Eddy Current khi nhập cáp 1 lõi bọc giáp thép `DSTA`/`SWA`) + `build_mock_interview_set`.
+  * **`OECalculatorDialog`** (5 tab tương tác tính tức thì) và **`MockInterviewDialog`** (đồng hồ đếm ngược 30:00, trộn 10 câu chuẩn cấu trúc phỏng vấn thật, ẩn/hiện gợi ý, tự chấm `0/5/10` điểm tổng `/100`, tổng kết điểm yếu) gắn vào 2 nút gọn trên Header **`🧮 Công Cụ OE`** & **`🎤 Phỏng Vấn 30p`**, nút **`🎤 Phỏng Vấn Thử 30p`** tại Tab Phỏng Vấn và nút cẩm nang thứ 17 **`🎯 Cận Chiến PV & Mã Cáp`** tại Tab Tài Liệu.
+- **File Excel Thực Hành Vòng 2 Chuẩn OOXML Không Phụ Thuộc Thư Viện Ngoài (`BaiTap_ThucHanh_Vong2_OE_CADIVI.xlsx` — file mới)**:
+  * Dung lượng `11.4 KB`, gồm **6 sheet định dạng sẵn với 97 công thức Excel sống** (`SUM`, `AVERAGE`, `IF`, tham chiếu liên sheet): `1_Raw_Log_5_Ca`, `2_Giai_OEE_Pareto` (tính OEE chuẩn `74.17%` & bẫy `AVERAGE`), `3_BOM_Giveaway_PVC` (`Copper Give-away` 1.2 tỷ & bẫy tỷ trọng CaCO3), `4_RCCP_Tai_122%`, `5_ROI_Payback_3KichBan`, `6_SoSanh_Offer_Nam`.
+- **Bộ Tài Liệu Markdown Đồng Hành**:
+  * Tạo mới **`CheatSheet_Truoc_Phong_PV_CADIVI_OE.md`** (101 dòng / `12.2 KB`, 0 `[[`, 0 `$`): Tờ tóm tắt đọc nhanh 10 phút trước phòng phỏng vấn + Kế hoạch 30–60–90 ngày bản in 1 trang A4 + 2 mẫu Email cảm ơn sau phỏng vấn.
+  * Tái xuất **`CamNang_ToanDien_OE_CADIVI_MienTrung.md`**: **7,806 dòng / `1,269.1 KB`** (17 Cẩm nang 4 tầng + 146 Câu hỏi 18 chủ đề + 202 Thuật ngữ làm sâu), **202 neo nội bộ**, **1,579 liên kết nội bộ**, **0 liên kết gãy**, **0 `[[`**, **0 `$`**.
+
+### 3. Kết Quả Kiểm Thử Thực Tế (Gate 2 — Definition of Done)
+- **Kiểm tra cú pháp (`py_compile`)**: **13/13 file `.py`** thành công (0 lỗi).
+- **Bộ kiểm thử tự động (`unittest -v`)**: **39/39 unit tests OK trong 16.178s** (`test_job_storage.py` 5/5, `test_job_analyzer.py` 5/5, `test_qa_and_viewer.py` 29/29 — bao gồm kiểm thử đủ 23 cẩm nang headless 0 rò rỉ `**`/`[[`, 146 câu hỏi không trùng lặp, 100% công thức `[[...]]` hợp lệ, 6 hàm tính OE & giải mã mã cáp + cảnh báo Eddy Current, kiểm thử headless `OECalculatorDialog` & `MockInterviewDialog`, và kiểm tra tính toàn vẹn ZIP/XML + 6 sheet + 97 công thức sống của `BaiTap_ThucHanh_Vong2_OE_CADIVI.xlsx`).
+- **Sửa 2 lỗi phát hiện ngay trong vòng test**: (1) Bổ sung fallback nguồn 146 câu cho `_open_mock_interview()` khi người dùng đang mở 1 JD IT ít hơn 10 câu (hoặc chưa mở Tab Phỏng vấn) để Phỏng vấn thử 30p luôn đủ 10 câu chuẩn cấu trúc; (2) Đồng bộ chú thích làm tròn chính xác `74.17%` (`534,000 / 720,000 m`) khớp 100% với kết quả công thức sống Excel trên Sheet 2.
+- **Giới hạn chưa tự verify trực quan**: Bố cục thực tế của các nút Header trên màn hình máy tính, trải nghiệm bấm tính/thi thử 30p trên `Run_JobDetail.bat` và hiển thị màu sắc/căn lề khi mở `BaiTap_ThucHanh_Vong2_OE_CADIVI.xlsx` bằng Microsoft Excel cần người dùng tự mở kiểm tra trực quan.

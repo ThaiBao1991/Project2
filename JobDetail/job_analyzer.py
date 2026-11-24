@@ -355,6 +355,18 @@ TECH_CATALOG = {
         "questions": [
             {"question": "Khi nào dùng Work Sampling thay cho Time Study, và thiết kế LSW/LPA/Escalation Matrix thế nào để duy trì cải tiến OE bền vững?", "type": "Tình Huống Thực Chiến", "key_points": "Work Sampling đo công việc chu kỳ dài (đa máy, xe nâng, bảo trì); LSW + LPA 3 cấp + Escalation SLA 5-15-30p khóa chuẩn không tái diễn."}
         ]
+    },
+    "cadivi_warroom": {
+        "display": "Cẩm Nang Phỏng Vấn Cận Chiến CADIVI, Giải Mã Mã Cáp, ISO/IEC 17025 & Đàm Phán Offer",
+        "category": "Sản Xuất (Manufacturing)",
+        "doc_key": "cadivi_interview_warroom_decoder",
+        "aliases": ["iso 17025", "vilas", "gelex", "cxv/dsta", "cxv/data", "offer"],
+        "docs": {"name": "CADIVI Cable Code Decoder, ISO/IEC 17025 (VILAS) & OE Interview War-Room Guide", "url": "https://cadivi.vn/", "desc": "Bảng giải mã toàn bộ ký hiệu mã cáp CADIVI, thông số vàng IEC 60228/60502, kịch bản xử lý câu hỏi bẫy & đàm phán tổng thu nhập năm"},
+        "books": ["Electric Cables Handbook (G.F. Moore / BICC)", "Never Split the Difference (Chris Voss — Kỹ năng đàm phán thực tế)"],
+        "keywords": ["cadivi cable coding cxv dsta data fr lszh", "iso iec 17025 vilas cable testing laboratory"],
+        "questions": [
+            {"question": "Giải mã nhanh CXV/DSTA vs CXV/DATA và chiến lược đàm phán tổng thu nhập năm tại CADIVI?", "type": "Tình Huống Thực Chiến", "key_points": "Cáp 1 lõi AC bắt buộc dùng băng nhôm DATA chống dòng xoáy; so sánh tổng thu nhập năm (lương + phụ cấp + thưởng tháng 13/KPI) và cam kết Hard Savings 90 ngày."}
+        ]
     }
 }
 
@@ -430,7 +442,7 @@ class JobAnalyzer:
             else:
                 detected_techs = ["python", "sql", "git"]
 
-        is_mfg = any(t in ["lean", "oee", "ole", "smed", "bom", "cable_mfg", "six_sigma", "capacity_cost", "planning_ehs_cost", "extrusion_forensics", "oe_field_test"] for t in detected_techs) or any(k in category for k in ["Sản Xuất", "Manufacturing", "Lean"])
+        is_mfg = any(t in ["lean", "oee", "ole", "smed", "bom", "cable_mfg", "six_sigma", "capacity_cost", "planning_ehs_cost", "extrusion_forensics", "oe_field_test", "cadivi_warroom"] for t in detected_techs) or any(k in category for k in ["Sản Xuất", "Manufacturing", "Lean"])
 
         # Bổ sung đầy đủ tri thức OE/Cáp nếu phát hiện JD sản xuất
         if is_mfg:
@@ -442,6 +454,8 @@ class JobAnalyzer:
                     detected_techs.insert(0, "cable_mfg")
                 if "extrusion_forensics" not in detected_techs:
                     detected_techs.insert(1, "extrusion_forensics")
+                if "cadivi_warroom" not in detected_techs:
+                    detected_techs.insert(2, "cadivi_warroom")
 
         # 3. Phân bổ ma trận kỹ năng
         must_have = []

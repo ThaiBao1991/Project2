@@ -175,13 +175,13 @@ class JobStorage:
             return cursor.rowcount > 0
 
     def get_progress(self, job_id):
-        """Đọc tiến độ học tập bền vững (checkbox lộ trình & trạng thái ôn câu phỏng vấn)."""
+        """Đọc tiến độ học tập bền vững (checkbox lộ trình, ôn phỏng vấn, giáo trình & dòng chảy nhà máy)."""
         with self.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT progress_json FROM jobs WHERE id = ?", (job_id,))
             row = cursor.fetchone()
             if not row:
-                return {"roadmap": {}, "interview": {}, "curriculum": {}}
+                return {"roadmap": {}, "interview": {}, "curriculum": {}, "factory_flow": {}}
             try:
                 data = json.loads(row[0] or "{}")
                 if not isinstance(data, dict):
@@ -191,6 +191,7 @@ class JobStorage:
             data.setdefault("roadmap", {})
             data.setdefault("interview", {})
             data.setdefault("curriculum", {})
+            data.setdefault("factory_flow", {})
             return data
 
     def save_progress(self, job_id, progress_dict):
@@ -296,6 +297,7 @@ class JobStorage:
         prog.setdefault("roadmap", {})
         prog.setdefault("interview", {})
         prog.setdefault("curriculum", {})
+        prog.setdefault("factory_flow", {})
         d["progress"] = prog
         return d
 

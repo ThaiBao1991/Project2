@@ -7,7 +7,7 @@ Tuân thủ tiêu chuẩn python_desktop_standards.md và customtkinter_perf_ui:
   - Lazy Tab Rendering + Zero Canvas Saturation (60fps Zero-Lag, tải tức thì < 100ms)
   - Click-Anywhere Term Glossary: Bấm vào bất kỳ thuật ngữ nào (MES, Minitab, OEE, SMED, XLPE...)
     ở mọi nơi trong ứng dụng đều mở ngay định nghĩa + khả năng áp dụng & ví dụ thực tế tại CADIVI!
-  - Mô hình 5 Tầng Kiến Thức + 22 Cẩm Nang 100% Offline + 128 Câu Hỏi Phỏng Vấn Thực Chiến + 202 Thuật Ngữ + Giáo Trình A–Z 32 Bài
+  - Mô hình 5 Tầng Kiến Thức + 23 Cẩm Nang 100% Offline + 146 Câu Hỏi Phỏng Vấn + 202 Thuật Ngữ + Giáo Trình A–Z 32 Bài + Lưu Trình Dòng Chảy CADIVI & 40 Tình Huống OE + Công Cụ Tính OE & Phỏng Vấn 30p
 """
 
 import os
@@ -46,6 +46,16 @@ try:
     import oe_curriculum
 except Exception:
     oe_curriculum = None
+
+try:
+    import cadivi_factory_flows
+except Exception:
+    cadivi_factory_flows = None
+
+try:
+    import oe_calculators
+except Exception:
+    oe_calculators = None
 
 # =====================================================================
 # HỆ MÀU CATPPUCCIN MOCHA ĐỒNG NHẤT
@@ -1356,16 +1366,22 @@ class JobDetailApp(ctk.CTk):
         self._dirty_tabs = set()
         self._current_interview_raw = []
         self._filtered_interview_items = []
-        self._current_progress = {"roadmap": {}, "interview": {}, "curriculum": {}}
+        self._current_progress = {"roadmap": {}, "interview": {}, "curriculum": {}, "factory_flow": {}}
         self._roadmap_checked = {}
         self._interview_progress = {}
         self._curriculum_done = {}
         self._curriculum_lessons_view = []
         self._current_lesson_id = None
+        self._factory_flow_done = {}
+        self._flow_mode = "🗺️ 10 Trạm End-to-End"
+        self._flow_items_view = []
+        self._current_flow_item = None
         self._quiz_mode = False
         self._revealed_qids = set()
         self._term_popup = None
         self._glossary_dialog = None
+        self._calc_dialog = None
+        self._mock_dialog = None
         self._interview_search_timer = None
 
         self.title("💼 JobDetail Intelligence Hub — Quản Lý & Tra Cứu Hồ Sơ Công Việc (Zero-Lag + Clickable Glossary)")
@@ -1429,7 +1445,7 @@ class JobDetailApp(ctk.CTk):
 
         lbl_sub = ctk.CTkLabel(
             self.header_bar,
-            text="⚡ Zero-Lag 60fps  •  💡 Bấm vào thuật ngữ xanh (MES, OEE, Minitab...) ở bất kỳ đâu để xem định nghĩa & ví dụ CADIVI",
+            text="⚡ 60fps  •  💡 Bấm thuật ngữ xanh (MES, OEE...) để tra định nghĩa & ví dụ CADIVI",
             font=ctk.CTkFont(size=12),
             text_color=THEME["cyan"]
         )
@@ -1454,7 +1470,7 @@ class JobDetailApp(ctk.CTk):
             hover_color=THEME["surface1"],
             text_color=THEME["text"],
             height=32,
-            width=95,
+            width=92,
             command=self._show_statistics
         )
         btn_stats.pack(side="right", padx=(0, 6))
@@ -1462,15 +1478,42 @@ class JobDetailApp(ctk.CTk):
         term_cnt = len(term_glossary.get_all_terms()) if term_glossary else 0
         btn_glossary = ctk.CTkButton(
             self.header_bar,
-            text=f"📖 Từ Điển ({term_cnt} Từ)",
+            text=f"📖 Từ Điển ({term_cnt})",
             font=ctk.CTkFont(weight="bold"),
             fg_color=THEME["surface0"],
             hover_color=THEME["cyan"],
             text_color=THEME["cyan"],
             height=32,
+            width=118,
             command=self._open_glossary_browser
         )
         btn_glossary.pack(side="right", padx=(0, 6))
+
+        btn_mock = ctk.CTkButton(
+            self.header_bar,
+            text="🎤 Phỏng Vấn 30p",
+            font=ctk.CTkFont(weight="bold"),
+            fg_color=THEME["mauve"],
+            hover_color=THEME["blue"],
+            text_color=THEME["crust"],
+            height=32,
+            width=126,
+            command=self._open_mock_interview
+        )
+        btn_mock.pack(side="right", padx=(0, 6))
+
+        btn_calc = ctk.CTkButton(
+            self.header_bar,
+            text="🧮 Công Cụ OE",
+            font=ctk.CTkFont(weight="bold"),
+            fg_color=THEME["surface0"],
+            hover_color=THEME["green"],
+            text_color=THEME["green"],
+            height=32,
+            width=112,
+            command=self._open_oe_calculators
+        )
+        btn_calc.pack(side="right", padx=(0, 6))
 
         # 2. Main Content Split Pane
         self.main_split = ctk.CTkFrame(self, fg_color=THEME["base"], corner_radius=0)
@@ -1646,7 +1689,7 @@ class JobDetailApp(ctk.CTk):
         )
         self.cb_status.pack(side="left")
 
-        # 2. Tabview 7 Tầng Kiến Thức & Giáo Trình A–Z với Lazy Tab Rendering
+        # 2. Tabview 8 Tầng Kiến Thức, Dòng Chảy Nhà Máy & Giáo Trình A–Z (Lazy Tab Rendering)
         self.tabview = ctk.CTkTabview(
             self.detail_frame,
             fg_color=THEME["surface0"],
@@ -1662,23 +1705,26 @@ class JobDetailApp(ctk.CTk):
 
         self.TAB_MAP = {
             "📋 Tổng Quan": "overview",
+            "🏭 Dòng Chảy CADIVI": "factory_flow",
             "🎓 Giáo Trình A–Z": "curriculum",
-            "🛠️ Ma Trận Kỹ Năng": "skills",
-            "🧭 Lộ Trình Nắm Bắt": "roadmap",
-            "📚 Kho Tài Liệu": "resources",
-            "❓ Phỏng Vấn & Thực Chiến": "interview",
-            "📝 Ghi Chú & JD Gốc": "notes",
+            "🛠️ Kỹ Năng": "skills",
+            "🧭 Lộ Trình": "roadmap",
+            "📚 Tài Liệu": "resources",
+            "❓ Phỏng Vấn": "interview",
+            "📝 Ghi Chú & JD": "notes",
         }
 
         self.tab_overview = self.tabview.add("📋 Tổng Quan")
+        self.tab_factory_flow = self.tabview.add("🏭 Dòng Chảy CADIVI")
         self.tab_curriculum = self.tabview.add("🎓 Giáo Trình A–Z")
-        self.tab_skills = self.tabview.add("🛠️ Ma Trận Kỹ Năng")
-        self.tab_roadmap = self.tabview.add("🧭 Lộ Trình Nắm Bắt")
-        self.tab_resources = self.tabview.add("📚 Kho Tài Liệu")
-        self.tab_interview = self.tabview.add("❓ Phỏng Vấn & Thực Chiến")
-        self.tab_notes = self.tabview.add("📝 Ghi Chú & JD Gốc")
+        self.tab_skills = self.tabview.add("🛠️ Kỹ Năng")
+        self.tab_roadmap = self.tabview.add("🧭 Lộ Trình")
+        self.tab_resources = self.tabview.add("📚 Tài Liệu")
+        self.tab_interview = self.tabview.add("❓ Phỏng Vấn")
+        self.tab_notes = self.tabview.add("📝 Ghi Chú & JD")
 
         self._build_tab_overview()
+        self._build_tab_factory_flow()
         self._build_tab_curriculum()
         self._build_tab_skills()
         self._build_tab_roadmap()
@@ -1707,6 +1753,211 @@ class JobDetailApp(ctk.CTk):
         wrap, self.txt_overview = create_c_engine_text(self.tab_overview, bg=THEME["crust"], font=("Segoe UI", 12))
         wrap.pack(fill="both", expand=True, padx=10, pady=10)
         bind_glossary_links(self.txt_overview, self.open_term_popup)
+
+    def _build_tab_factory_flow(self):
+        """Tab Lưu Trình Dòng Chảy Vận Hành Nhà Máy CADIVI (10 Trạm, 6 Luồng SP, 40 Tình Huống OE)."""
+        top_ctrl = ctk.CTkFrame(self.tab_factory_flow, fg_color=THEME["mantle"], corner_radius=8)
+        top_ctrl.pack(fill="x", padx=8, pady=(8, 6), ipady=4)
+
+        self.seg_flow_mode = ctk.CTkSegmentedButton(
+            top_ctrl,
+            values=["🗺️ 10 Trạm End-to-End", "🔀 6 Luồng Sản Phẩm", "🚨 40 Tình Huống OE"],
+            font=ctk.CTkFont(size=12, weight="bold"),
+            fg_color=THEME["crust"],
+            selected_color=THEME["blue"],
+            selected_hover_color="#74c7ec",
+            unselected_color=THEME["surface0"],
+            unselected_hover_color=THEME["surface1"],
+            text_color=THEME["text"],
+            command=self._on_flow_mode_change
+        )
+        self.seg_flow_mode.set("🗺️ 10 Trạm End-to-End")
+        self.seg_flow_mode.pack(side="left", padx=10, pady=4)
+
+        self.lbl_flow_progress = ctk.CTkLabel(
+            top_ctrl,
+            text="✅ Đã nắm: 0 / 56 mục (0.0%)  •  💾 SQLite",
+            font=ctk.CTkFont(size=11, weight="bold"),
+            text_color=THEME["green"]
+        )
+        self.lbl_flow_progress.pack(side="right", padx=12, pady=4)
+
+        main = ctk.CTkFrame(self.tab_factory_flow, fg_color="transparent")
+        main.pack(fill="both", expand=True, padx=8, pady=(0, 8))
+
+        # Cột trái: Bộ lọc (cho chế độ 40 Tình huống) + C-Engine tk.Listbox
+        left = ctk.CTkFrame(main, fg_color=THEME["mantle"], width=345, corner_radius=8)
+        left.pack(side="left", fill="y", padx=(0, 10))
+        left.pack_propagate(False)
+
+        self.lbl_flow_left_hdr = ctk.CTkLabel(
+            left,
+            text="🏭 DÒNG CHẢY 10 TRẠM CADIVI",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=THEME["cyan"]
+        )
+        self.lbl_flow_left_hdr.pack(anchor="w", padx=10, pady=(10, 4))
+
+        # Khung lọc riêng cho chế độ 40 Tình huống (ẩn gọn ở 2 chế độ kia)
+        self.flow_filter_frame = ctk.CTkFrame(left, fg_color="transparent")
+
+        self.ent_flow_search = ctk.CTkEntry(
+            self.flow_filter_frame,
+            placeholder_text="🔍 Tìm tình huống, máy, lỗi (VD: Sharkskin, Sauna)...",
+            height=30,
+            fg_color=THEME["crust"],
+            border_color=THEME["surface0"],
+            text_color=THEME["text"]
+        )
+        self.ent_flow_search.pack(fill="x", padx=10, pady=(0, 5))
+        self.ent_flow_search.bind("<KeyRelease>", lambda _e: self._refresh_flow_list())
+
+        sc_groups = cadivi_factory_flows.get_scenario_groups() if cadivi_factory_flows else ["Tất cả 8 nhóm tình huống"]
+        self.cb_flow_group = ctk.CTkComboBox(
+            self.flow_filter_frame,
+            values=sc_groups,
+            height=28,
+            fg_color=THEME["crust"],
+            border_color=THEME["surface0"],
+            button_color=THEME["surface1"],
+            text_color=THEME["text"],
+            command=lambda _v: self._refresh_flow_list()
+        )
+        self.cb_flow_group.set("Tất cả 8 nhóm tình huống")
+        self.cb_flow_group.pack(fill="x", padx=10, pady=(0, 5))
+
+        st_opts = ["Tất cả 10 trạm"]
+        self._flow_station_map = {"Tất cả 10 trạm": "ALL"}
+        if cadivi_factory_flows:
+            for st in cadivi_factory_flows.get_stations():
+                lbl = f"{st['id']} ({st['code']}): {st['title'][:26]}"
+                st_opts.append(lbl)
+                self._flow_station_map[lbl] = st["id"]
+        self.cb_flow_station = ctk.CTkComboBox(
+            self.flow_filter_frame,
+            values=st_opts,
+            height=28,
+            fg_color=THEME["crust"],
+            border_color=THEME["surface0"],
+            button_color=THEME["surface1"],
+            text_color=THEME["text"],
+            command=lambda _v: self._refresh_flow_list()
+        )
+        self.cb_flow_station.set("Tất cả 10 trạm")
+        self.cb_flow_station.pack(fill="x", padx=10, pady=(0, 4))
+
+        self.lbl_flow_list_cnt = ctk.CTkLabel(
+            left, text="", font=ctk.CTkFont(size=11), text_color=THEME["subtext"]
+        )
+        self.lbl_flow_list_cnt.pack(anchor="w", padx=10, pady=(0, 4))
+
+        lb_wrap = ctk.CTkFrame(left, fg_color=THEME["crust"], corner_radius=6)
+        lb_wrap.pack(fill="both", expand=True, padx=10, pady=(0, 10))
+
+        sb = ttk.Scrollbar(lb_wrap, orient="vertical")
+        self.lb_flow = tk.Listbox(
+            lb_wrap,
+            bg=THEME["crust"],
+            fg=THEME["text"],
+            selectbackground=THEME["blue"],
+            selectforeground=THEME["crust"],
+            activestyle="none",
+            font=("Segoe UI", 10),
+            highlightthickness=0,
+            borderwidth=0,
+            yscrollcommand=sb.set
+        )
+        sb.configure(command=self.lb_flow.yview)
+        sb.pack(side="right", fill="y")
+        self.lb_flow.pack(side="left", fill="both", expand=True, padx=4, pady=4)
+        self.lb_flow.bind("<<ListboxSelect>>", self._on_flow_select)
+        self.lb_flow.bind("<Return>", self._on_flow_select)
+
+        # Cột phải: Header thông tin + Nút hành động + C-Engine tk.Text
+        right = ctk.CTkFrame(main, fg_color="transparent")
+        right.pack(side="right", fill="both", expand=True)
+
+        hdr = ctk.CTkFrame(right, fg_color=THEME["crust"], corner_radius=8, border_width=1, border_color=THEME["surface1"])
+        hdr.pack(fill="x", pady=(0, 8), ipady=5)
+
+        meta_row = ctk.CTkFrame(hdr, fg_color="transparent")
+        meta_row.pack(fill="x", padx=12, pady=(4, 2))
+
+        self.lbl_flow_badge = ctk.CTkLabel(
+            meta_row, text="🏭 LƯU TRÌNH DÒNG CHẢY NHÀ MÁY CADIVI MIỀN TRUNG",
+            font=ctk.CTkFont(size=11, weight="bold"),
+            text_color=THEME["green"]
+        )
+        self.lbl_flow_badge.pack(side="left")
+
+        self.lbl_flow_extra = ctk.CTkLabel(
+            meta_row, text="",
+            font=ctk.CTkFont(size=11, weight="bold"),
+            text_color=THEME["yellow"]
+        )
+        self.lbl_flow_extra.pack(side="right")
+
+        self.lbl_flow_title = ctk.CTkLabel(
+            hdr, text="Chọn một Trạm, Luồng sản phẩm hoặc Tình huống bên trái",
+            font=ctk.CTkFont(size=14, weight="bold"),
+            text_color=THEME["cyan"],
+            wraplength=700, justify="left", anchor="w"
+        )
+        self.lbl_flow_title.pack(fill="x", padx=12, pady=(0, 6))
+
+        act_row = ctk.CTkFrame(hdr, fg_color="transparent")
+        act_row.pack(fill="x", padx=12, pady=(0, 4))
+
+        self.btn_flow_done = ctk.CTkButton(
+            act_row, text="☐ Đánh dấu đã nắm", width=150, height=28,
+            font=ctk.CTkFont(size=11, weight="bold"),
+            fg_color=THEME["surface0"], hover_color=THEME["green"],
+            text_color=THEME["text"], command=self._toggle_current_flow_done
+        )
+        self.btn_flow_done.pack(side="left", padx=(0, 5))
+
+        self.btn_flow_prev = ctk.CTkButton(
+            act_row, text="⬅ Trước", width=76, height=28,
+            fg_color=THEME["surface0"], hover_color=THEME["blue"],
+            text_color=THEME["text"], command=lambda: self._step_flow_item(-1)
+        )
+        self.btn_flow_prev.pack(side="left", padx=(0, 4))
+
+        self.btn_flow_next = ctk.CTkButton(
+            act_row, text="Tiếp ➡", width=76, height=28,
+            fg_color=THEME["blue"], hover_color="#74c7ec",
+            text_color=THEME["crust"], font=ctk.CTkFont(size=11, weight="bold"),
+            command=lambda: self._step_flow_item(1)
+        )
+        self.btn_flow_next.pack(side="left", padx=(0, 6))
+
+        self.btn_flow_related_sc = ctk.CTkButton(
+            act_row, text="🚨 Tình huống trạm này", width=150, height=28,
+            font=ctk.CTkFont(size=11, weight="bold"),
+            fg_color=THEME["peach"], hover_color=THEME["yellow"],
+            text_color=THEME["crust"], command=self._jump_to_station_scenarios
+        )
+        self.btn_flow_related_sc.pack(side="left", padx=(0, 6))
+
+        self.btn_flow_doc = ctk.CTkButton(
+            act_row, text="📖 Cẩm Nang", width=102, height=28,
+            font=ctk.CTkFont(size=11, weight="bold"),
+            fg_color=THEME["green"], hover_color="#74c7ec",
+            text_color=THEME["crust"], command=self._open_flow_doc
+        )
+        self.btn_flow_doc.pack(side="right")
+
+        self.btn_flow_lesson = ctk.CTkButton(
+            act_row, text="🎓 Bài Học", width=100, height=28,
+            font=ctk.CTkFont(size=11, weight="bold"),
+            fg_color=THEME["mauve"], hover_color=THEME["blue"],
+            text_color=THEME["crust"], command=self._open_flow_lesson
+        )
+        self.btn_flow_lesson.pack(side="right", padx=(0, 5))
+
+        wrap, self.txt_flow = create_c_engine_text(right, bg=THEME["crust"], font=("Segoe UI", 11))
+        wrap.pack(fill="both", expand=True)
+        bind_glossary_links(self.txt_flow, self.open_term_popup)
 
     def _build_tab_curriculum(self):
         """Tab Giáo Trình OE CADIVI Từ A–Z (8 Học Phần / 32 Bài Học Tuần Tự + Lưu Tiến Độ SQLite)."""
@@ -1952,6 +2203,19 @@ class JobDetailApp(ctk.CTk):
         )
         self.btn_reveal_all.pack(side="left", padx=4, pady=4)
 
+        self.btn_mock_interview = ctk.CTkButton(
+            self.ctrl_quiz,
+            text="🎤 Phỏng Vấn Thử 30p",
+            width=150,
+            height=26,
+            font=ctk.CTkFont(size=11, weight="bold"),
+            fg_color=THEME["mauve"],
+            hover_color=THEME["blue"],
+            text_color=THEME["crust"],
+            command=self._open_mock_interview
+        )
+        self.btn_mock_interview.pack(side="left", padx=4, pady=4)
+
         self.lbl_readiness = ctk.CTkLabel(
             self.ctrl_quiz,
             text="🏆 Sẵn sàng: 0 / 0 (0.0%)  •  💾 Tự động lưu SQLite",
@@ -2044,6 +2308,39 @@ class JobDetailApp(ctk.CTk):
             open_lesson_callback=self.open_curriculum_lesson,
         )
         return self._glossary_dialog
+
+    def _open_oe_calculators(self):
+        """Mở cửa sổ 5 công cụ tính nhanh thực chiến OE & Giải mã mã cáp CADIVI."""
+        if not oe_calculators:
+            messagebox.showinfo("Công Cụ OE", "Module oe_calculators chưa sẵn sàng.", parent=self)
+            return None
+        if self._calc_dialog is not None and self._calc_dialog.winfo_exists():
+            self._calc_dialog.lift()
+            return self._calc_dialog
+        self._calc_dialog = oe_calculators.OECalculatorDialog(self, THEME)
+        return self._calc_dialog
+
+    def _open_mock_interview(self):
+        """Mở cửa sổ Phỏng vấn thử 30 phút (10 câu chuẩn cấu trúc + đồng hồ + chấm điểm /100)."""
+        if not oe_calculators:
+            messagebox.showinfo("Phỏng Vấn Thử", "Module oe_calculators chưa sẵn sàng.", parent=self)
+            return None
+        if self._mock_dialog is not None and self._mock_dialog.winfo_exists():
+            self._mock_dialog.lift()
+            return self._mock_dialog
+        job_qs = []
+        if self.current_job:
+            job_qs = self.current_job.get("analysis", {}).get("interview_prep", []) or []
+        if len(job_qs) >= 10:
+            qs = job_qs
+        elif len(getattr(self, "_current_interview_raw", []) or []) >= 10:
+            qs = self._current_interview_raw
+        else:
+            qs = interview_bank.get_all_questions() if interview_bank else job_qs
+        self._mock_dialog = oe_calculators.MockInterviewDialog(
+            self, THEME, qs, on_term_click=self.open_term_popup
+        )
+        return self._mock_dialog
 
     def open_curriculum_lesson(self, lesson_id):
         """Nhảy thẳng từ Popup thuật ngữ hoặc nút bất kỳ sang đúng bài học trong Tab Giáo Trình A–Z."""
@@ -2222,7 +2519,7 @@ class JobDetailApp(ctk.CTk):
         if not les:
             return
         cat = les.get("interview_category", "")
-        self.tabview.set("❓ Phỏng Vấn & Thực Chiến")
+        self.tabview.set("❓ Phỏng Vấn")
         self._dirty_tabs.discard("interview")
         if hasattr(self, "ent_interview_search"):
             self.ent_interview_search.delete(0, "end")
@@ -2230,6 +2527,358 @@ class JobDetailApp(ctk.CTk):
             vals = list(self.cbo_interview_cat.cget("values"))
             self.cbo_interview_cat.set(cat if cat in vals else "Tất cả chủ đề")
         self._update_interview_display()
+
+    # =====================================================================
+    # LOGIC TAB LƯU TRÌNH DÒNG CHẢY NHÀ MÁY CADIVI (10 TRẠM / 6 LUỒNG / 40 TÌNH HUỐNG)
+    # =====================================================================
+    def _render_factory_flow_tab(self):
+        self._on_flow_mode_change(self.seg_flow_mode.get() if hasattr(self, "seg_flow_mode") else "🗺️ 10 Trạm End-to-End")
+
+    def _on_flow_mode_change(self, mode):
+        if not cadivi_factory_flows or not hasattr(self, "lb_flow"):
+            return
+        self._flow_mode = mode
+        if mode == "🚨 40 Tình Huống OE":
+            self.lbl_flow_left_hdr.configure(text="🚨 40 TÌNH HUỐNG THỰC CHIẾN OE")
+            self.flow_filter_frame.pack(fill="x", before=self.lbl_flow_list_cnt)
+        elif mode == "🔀 6 Luồng Sản Phẩm":
+            self.lbl_flow_left_hdr.configure(text="🔀 6 LUỒNG SẢN PHẨM CADIVI")
+            self.flow_filter_frame.pack_forget()
+        else:
+            self.lbl_flow_left_hdr.configure(text="🏭 DÒNG CHẢY 10 TRẠM CADIVI")
+            self.flow_filter_frame.pack_forget()
+        self._refresh_flow_list()
+
+    def _update_flow_progress_label(self):
+        if not hasattr(self, "lbl_flow_progress") or not cadivi_factory_flows:
+            return
+        all_ids = (
+            [s["id"] for s in cadivi_factory_flows.get_stations()]
+            + [f["id"] for f in cadivi_factory_flows.get_product_flows()]
+            + [sc["id"] for sc in cadivi_factory_flows.get_scenarios()]
+        )
+        total = len(all_ids)
+        done = sum(1 for k in all_ids if self._factory_flow_done.get(k, False))
+        pct = (done / total * 100.0) if total else 0.0
+        self.lbl_flow_progress.configure(text=f"✅ Đã nắm: {done} / {total} mục ({pct:.1f}%)  •  💾 SQLite")
+
+    def _refresh_flow_list(self, select_id=None):
+        if not cadivi_factory_flows or not hasattr(self, "lb_flow"):
+            return
+        mode = self.seg_flow_mode.get()
+        items = []
+        if mode == "🗺️ 10 Trạm End-to-End":
+            items.append({"_kind": "master", "id": "MASTER", "label": "  🗺️ SƠ ĐỒ TỔNG THỂ 10 TRẠM CADIVI"})
+            for st in cadivi_factory_flows.get_stations():
+                done = bool(self._factory_flow_done.get(st["id"], False))
+                mark = "☑" if done else "☐"
+                items.append({
+                    "_kind": "station",
+                    "id": st["id"],
+                    "data": st,
+                    "done": done,
+                    "label": f"  {mark} {st['code']}: {st['title'][:30]}",
+                })
+            self.lbl_flow_list_cnt.configure(text="Sơ đồ tổng thể + 10 Trạm (S00 → S09)")
+        elif mode == "🔀 6 Luồng Sản Phẩm":
+            for fl in cadivi_factory_flows.get_product_flows():
+                done = bool(self._factory_flow_done.get(fl["id"], False))
+                mark = "☑" if done else "☐"
+                items.append({
+                    "_kind": "flow",
+                    "id": fl["id"],
+                    "data": fl,
+                    "done": done,
+                    "label": f"  {mark} {fl['code']}: {fl['title'][:30]}",
+                })
+            self.lbl_flow_list_cnt.configure(text="6 Họ sản phẩm cốt lõi CADIVI")
+        else:
+            kw = self.ent_flow_search.get().strip() if hasattr(self, "ent_flow_search") else ""
+            grp = self.cb_flow_group.get() if hasattr(self, "cb_flow_group") else "Tất cả 8 nhóm tình huống"
+            st_lbl = self.cb_flow_station.get() if hasattr(self, "cb_flow_station") else "Tất cả 10 trạm"
+            sid = self._flow_station_map.get(st_lbl, "ALL")
+            matched = cadivi_factory_flows.search_scenarios(kw, grp, sid)
+            for sc in matched:
+                done = bool(self._factory_flow_done.get(sc["id"], False))
+                mark = "☑" if done else "☐"
+                items.append({
+                    "_kind": "scenario",
+                    "id": sc["id"],
+                    "data": sc,
+                    "done": done,
+                    "label": f"  {mark} [{sc['id']}·{sc['station_id']}] {sc['title'][:28]}",
+                })
+            total_sc = len(cadivi_factory_flows.get_scenarios())
+            self.lbl_flow_list_cnt.configure(text=f"Hiển thị: {len(matched)} / {total_sc} tình huống")
+
+        self._flow_items_view = items
+        self.lb_flow.delete(0, "end")
+        target_idx = 0
+        for idx, it in enumerate(items):
+            self.lb_flow.insert("end", it["label"])
+            if it.get("_kind") == "master":
+                self.lb_flow.itemconfig(idx, fg=THEME["yellow"])
+            elif it.get("done"):
+                self.lb_flow.itemconfig(idx, fg=THEME["green"])
+            if select_id and it["id"].upper() == select_id.upper():
+                target_idx = idx
+
+        self._update_flow_progress_label()
+        if items:
+            self.lb_flow.selection_clear(0, "end")
+            self.lb_flow.selection_set(target_idx)
+            self.lb_flow.see(target_idx)
+            self._render_flow_detail(items[target_idx])
+        else:
+            self._current_flow_item = None
+            self.lbl_flow_badge.configure(text="🔍 Không tìm thấy tình huống phù hợp")
+            self.lbl_flow_extra.configure(text="")
+            self.lbl_flow_title.configure(text="Thử xóa bớt bộ lọc hoặc nhập từ khóa khác")
+            self.btn_flow_done.configure(state="disabled")
+            self.btn_flow_doc.configure(state="disabled")
+            self.btn_flow_lesson.configure(state="disabled")
+            self.btn_flow_related_sc.pack_forget()
+            tb = self.txt_flow
+            tb.configure(state="normal")
+            tb.delete("1.0", "end")
+            tb.insert("end", "\n  🔍 Không có tình huống nào khớp với từ khóa/bộ lọc hiện tại.", "subtext")
+            tb.configure(state="disabled")
+
+    def _on_flow_select(self, _event=None):
+        sel = self.lb_flow.curselection()
+        if not sel:
+            return
+        idx = sel[0]
+        if 0 <= idx < len(self._flow_items_view):
+            self._render_flow_detail(self._flow_items_view[idx])
+
+    def _render_flow_detail(self, item):
+        if not item or not cadivi_factory_flows:
+            return
+        self._current_flow_item = item
+        kind = item["_kind"]
+        iid = item["id"]
+        idx = next((i for i, x in enumerate(self._flow_items_view) if x["id"] == iid), 0)
+        self.btn_flow_prev.configure(state="normal" if idx > 0 else "disabled")
+        self.btn_flow_next.configure(state="normal" if idx < len(self._flow_items_view) - 1 else "disabled")
+
+        tb = self.txt_flow
+        tb.configure(state="normal")
+        tb.delete("1.0", "end")
+
+        if kind == "master":
+            self.lbl_flow_badge.configure(text="🗺️ BẢN ĐỒ TỔNG THỂ DÒNG CHẢY NHÀ MÁY CADIVI MIỀN TRUNG")
+            self.lbl_flow_extra.configure(text="10 Trạm · 6 Luồng SP · 40 Tình Huống OE")
+            self.lbl_flow_title.configure(text="Dòng Chảy Vật Tư, Thông Tin, Chất Lượng & Chi Phí Khép Kín Từ Đầu Đến Cuối")
+            self.btn_flow_done.configure(text="📋 Tổng quan dòng chảy", state="disabled", fg_color=THEME["surface0"], text_color=THEME["subtext"])
+            self.btn_flow_doc.configure(state="normal")
+            self.btn_flow_lesson.configure(state="normal")
+            self.btn_flow_related_sc.pack_forget()
+
+            tb.insert("end", "💡 Khác với kiến thức lý thuyết hay giáo trình học, tab này mô phỏng ĐÚNG DÒNG CHẢY THỰC TẾ trong nhà máy CADIVI: chọn từng Trạm bên trái (Trạm 00 → Trạm 09), chuyển sang '🔀 6 Luồng Sản Phẩm' để xem đường đi riêng từng dòng cáp, hoặc mở '🚨 40 Tình Huống OE' để xem kịch bản xử lý thực chiến!\n", "subtext")
+            tb.insert("end", "─" * 88 + "\n", "divider")
+            tb.insert("end", cadivi_factory_flows.get_master_map() + "\n\n", "mathbox")
+
+            tb.insert("end", "🎯 4 DÒNG CHẢY CHUYÊN VIÊN OE PHẢI NHÌN THẤY XUYÊN SUỐT NHÀ MÁY CADIVI\n", "sec_yellow")
+            overview_lines = [
+                "1. **Dòng Thông Tin (Trạm 00):** [[S&OP]] → [[MPS]] → [[MRP]] → [[RCCP]] → [[CRP]] → Lệnh SX [[SAP PP]] / [[MES]]. Đứt gãy ở đây gây quá tải ảo, chen đơn phá màu và tồn kho lệch!",
+                "2. **Dòng Vật Tư & Tạo Giá Trị (Trạm 01 → 08):** Đồng/Nhôm Rod → [[RBD]] / [[Multi-wire]] + [[Annealing]] → [[Buncher]] / [[Rigid Strander]] → Đùn [[PVC]]/[[XLPE]]/[[LSZH]]/[[CCV]] → [[Drum Twister]] / [[DSTA]] / [[Braiding]] → Đùn vỏ & In chữ → Lab → Đóng cuộn / [[Cut-Length]] giao hàng.",
+                "3. **Dòng Chất Lượng & Dữ Liệu (IQC → Trực tuyến → Lab):** [[ASTM B49]] ([[IACS]], tỷ trọng [[CaCO3 Filler]]) → [[Laser Gauge]] + [[Spark Tester]] + [[SPC]] → [[Kelvin Bridge]], [[Water Immersion]], [[Hot Set Test]], [[Partial Discharge]] & [[QCVN 4]].",
+                "4. **Dòng Chảy Ngược (Trạm 09 — Tiền Rơi Ở Đây!):** Thu hồi tách riêng phế đồng trần (~94%) vs đồng dính nhựa vs nhựa purge; bảo trì chủ động [[TPM]] / [[CBM / PdM]] / [[LOTO]]; quyết toán [[Standard Cost]] & [[Cost Deployment]] trình Ban Giám Đốc!",
+            ]
+            for ln in overview_lines:
+                insert_with_glossary(tb, "  " + ln + "\n", "normal")
+            tb.insert("end", "\n👉 Hãy bấm vào Trạm 00 bên trái (hoặc bấm nút Tiếp ➡) để đi lần lượt từng trạm từ đầu đến cuối nhà máy!\n", "sec_green")
+
+        elif kind == "station":
+            st = item["data"]
+            sc_cnt = len(cadivi_factory_flows.search_scenarios(station_id=st["id"]))
+            is_done = bool(self._factory_flow_done.get(iid, False))
+            self.lbl_flow_badge.configure(text=f"🏭 {st['code'].upper()} ({st['id']})  •  {st['zone']}")
+            self.lbl_flow_extra.configure(text=f"🚨 {sc_cnt} tình huống thực chiến tại trạm này")
+            self.lbl_flow_title.configure(text=st["title"])
+            self._set_flow_done_btn_state(is_done)
+            self.btn_flow_doc.configure(state="normal" if st.get("doc_key") else "disabled")
+            self.btn_flow_lesson.configure(state="normal" if st.get("lesson_id") else "disabled")
+            if sc_cnt > 0:
+                self.btn_flow_related_sc.configure(text=f"🚨 {sc_cnt} Tình huống trạm này")
+                self.btn_flow_related_sc.pack(side="left", padx=(0, 6))
+            else:
+                self.btn_flow_related_sc.pack_forget()
+
+            tb.insert("end", "📥 1. ĐẦU VÀO (INPUT — VẬT TƯ & THÔNG TIN)\n", "sec_blue")
+            insert_with_glossary(tb, st["input"] + "\n\n", "card_box")
+
+            tb.insert("end", "📤 2. ĐẦU RA (OUTPUT — BÀN GIAO SANG TRẠM KẾ TIẾP)\n", "sec_green")
+            insert_with_glossary(tb, st["output"] + "\n\n", "card_box")
+
+            tb.insert("end", "⚙️ 3. THIẾT BỊ, MÁY MÓC & PHÒNG BAN THAM GIA\n", "sec_yellow")
+            insert_with_glossary(tb, st["machines_and_teams"] + "\n\n", "normal")
+
+            tb.insert("end", "⚠️ 4. ĐIỂM NGHẼN & TỔN THẤT ẨN THƯỜNG GẶP TẠI TRẠM NÀY\n", "sec_red")
+            for ln in st["hidden_losses"].splitlines():
+                insert_with_glossary(tb, ln + "\n", "bullet" if ln.strip().startswith("•") else "normal")
+            tb.insert("end", "\n", "normal")
+
+            tb.insert("end", "🚀 5. CHUYÊN VIÊN OE LÀM ĐƯỢC GÌ TỪ ĐẦU ĐẾN CUỐI TẠI TRẠM NÀY?\n", "sec_mauve")
+            for ln in st["oe_end_to_end_actions"].splitlines():
+                insert_with_glossary(tb, ln + "\n", "ans_body")
+            tb.insert("end", "\n", "normal")
+
+            tb.insert("end", "📊 6. BỘ KPI MỤC TIÊU OE THEO DÕI TẠI CADIVI\n", "sec_peach")
+            insert_with_glossary(tb, st["kpis"] + "\n\n", "card_box")
+
+            self._insert_flow_key_terms(tb, st.get("key_terms", []))
+
+        elif kind == "flow":
+            fl = item["data"]
+            is_done = bool(self._factory_flow_done.get(iid, False))
+            self.lbl_flow_badge.configure(text=f"🔀 {fl['code'].upper()} ({fl['id']})  •  LƯU TRÌNH CÔNG NGHỆ ĐẶC THÙ")
+            self.lbl_flow_extra.configure(text=f"📖 Cẩm nang: {fl.get('doc_key', '')}  •  🎓 {fl.get('lesson_id', '')}")
+            self.lbl_flow_title.configure(text=fl["title"])
+            self._set_flow_done_btn_state(is_done)
+            self.btn_flow_doc.configure(state="normal" if fl.get("doc_key") else "disabled")
+            self.btn_flow_lesson.configure(state="normal" if fl.get("lesson_id") else "disabled")
+            self.btn_flow_related_sc.pack_forget()
+
+            tb.insert("end", "📦 1. SẢN PHẨM ĐIỂN HÌNH TẠI NHÀ MÁY CADIVI\n", "sec_yellow")
+            insert_with_glossary(tb, fl["product_examples"] + "\n\n", "card_box")
+
+            tb.insert("end", "🗺️ 2. SƠ ĐỒ ĐƯỜNG ĐI CÔNG NGHỆ TỪ ĐẦU ĐẾN CUỐI\n", "sec_blue")
+            for ln in fl["route_diagram"].splitlines():
+                insert_with_glossary(tb, ln + "\n", "codeblock")
+            tb.insert("end", "\n", "normal")
+
+            tb.insert("end", "🔴 3. ĐIỂM NGHẼN CỔ CHAI ĐẶC TRƯNG CỦA DÒNG SẢN PHẨM NÀY\n", "sec_red")
+            insert_with_glossary(tb, fl["bottleneck"] + "\n\n", "card_box")
+
+            tb.insert("end", "💸 4. CÁC TỔN THẤT CHI PHÍ / CHẤT LƯỢNG LỚN NHẤT\n", "sec_peach")
+            insert_with_glossary(tb, fl["biggest_losses"] + "\n\n", "normal")
+
+            tb.insert("end", "🚀 5. CHIẾN LƯỢC HÀNH ĐỘNG TRỌNG ĐIỂM CỦA CHUYÊN VIÊN OE\n", "sec_green")
+            for ln in fl["oe_strategy"].splitlines():
+                insert_with_glossary(tb, ln + "\n", "ans_body")
+            tb.insert("end", "\n", "normal")
+
+            self._insert_flow_key_terms(tb, fl.get("key_terms", []))
+
+        elif kind == "scenario":
+            sc = item["data"]
+            st_obj = cadivi_factory_flows.get_station(sc["station_id"])
+            st_name = f"{st_obj['code']} — {st_obj['title'][:40]}" if st_obj else sc["station_id"]
+            is_done = bool(self._factory_flow_done.get(iid, False))
+            self.lbl_flow_badge.configure(text=f"🚨 {sc['id']}  •  {sc['group']}")
+            self.lbl_flow_extra.configure(text=f"📍 {st_name}")
+            self.lbl_flow_title.configure(text=sc["title"])
+            self._set_flow_done_btn_state(is_done)
+            self.btn_flow_doc.configure(state="normal" if sc.get("doc_key") else "disabled")
+            self.btn_flow_lesson.configure(state="normal" if sc.get("lesson_id") else "disabled")
+            self.btn_flow_related_sc.pack_forget()
+
+            tb.insert("end", "🚨 1. DẤU HIỆU HIỆN TRƯỜNG (TRIGGER / SYMPTOM)\n", "sec_red")
+            insert_with_glossary(tb, sc["symptom"] + "\n\n", "card_box")
+
+            tb.insert("end", "💥 2. TÁC ĐỘNG THỰC TẾ ĐẾN DÒNG CHẢY & CHI PHÍ\n", "sec_peach")
+            insert_with_glossary(tb, sc["impact"] + "\n\n", "normal")
+
+            tb.insert("end", "⏱️ 3. HÀNH ĐỘNG KHOANH VÙNG NGAY TRONG 24 GIỜ (CONTAINMENT & GENBA)\n", "sec_yellow")
+            insert_with_glossary(tb, sc["immediate_24h"] + "\n\n", "card_box")
+
+            tb.insert("end", "🔍 4. TRUY TÌM NGUYÊN NHÂN GỐC (ROOT CAUSE ANALYSIS — RCA)\n", "sec_blue")
+            for ln in sc["rca"].splitlines():
+                insert_with_glossary(tb, ln + "\n", "normal")
+            tb.insert("end", "\n", "normal")
+
+            tb.insert("end", "🛠️ 5. GIẢI PHÁP XỬ LÝ CỦA OE & HIỆU QUẢ SỐ LIỆU THỰC TẾ\n", "sec_green")
+            for ln in sc["oe_solution"].splitlines():
+                insert_with_glossary(tb, ln + "\n", "ans_body")
+            tb.insert("end", "\n", "normal")
+
+            tb.insert("end", "🔒 6. KHÓA CHUẨN CHỐNG TÁI DIỄN (STANDARDIZE & CONTROL)\n", "sec_mauve")
+            insert_with_glossary(tb, sc["lock_in"] + "\n\n", "card_box")
+
+            self._insert_flow_key_terms(tb, sc.get("key_terms", []))
+
+        tb.tag_raise("term_link")
+        tb.tag_raise("term_link_bold")
+        tb.tag_raise("related_pill")
+        tb.tag_raise("sel")
+        tb.see("1.0")
+        tb.configure(state="disabled")
+
+    def _set_flow_done_btn_state(self, is_done):
+        if is_done:
+            self.btn_flow_done.configure(text="☑ Đã nắm vững", state="normal", fg_color=THEME["green"], text_color=THEME["crust"])
+        else:
+            self.btn_flow_done.configure(text="☐ Đánh dấu đã nắm", state="normal", fg_color=THEME["surface0"], text_color=THEME["text"])
+
+    def _insert_flow_key_terms(self, tb, key_terms):
+        if key_terms and term_glossary:
+            tb.insert("end", "─" * 86 + "\n", "divider")
+            tb.insert("end", "🔑 TỪ KHÓA TRỌNG TÂM (Bấm để mở định nghĩa sâu & ví dụ CADIVI):\n", "sec_yellow")
+            for kt in key_terms:
+                info = term_glossary.get_term(kt)
+                if info:
+                    tb.insert("end", f"  {info['term']}  ", ("related_pill", f"term::{info['term']}"))
+                    tb.insert("end", "   ", "normal")
+            tb.insert("end", "\n", "normal")
+
+    def _toggle_current_flow_done(self):
+        if not self._current_flow_item or self._current_flow_item.get("_kind") == "master":
+            return
+        iid = self._current_flow_item["id"]
+        self._factory_flow_done[iid] = not bool(self._factory_flow_done.get(iid, False))
+        self._current_progress["factory_flow"] = dict(self._factory_flow_done)
+        if self.current_job:
+            jid = self.current_job["id"]
+            self.storage.save_progress(jid, self._current_progress)
+            self.current_job["progress"] = dict(self._current_progress)
+        self._refresh_flow_list(select_id=iid)
+
+    def _step_flow_item(self, delta):
+        if not self._flow_items_view or not self._current_flow_item:
+            return
+        cur_id = self._current_flow_item["id"]
+        pos = next((i for i, x in enumerate(self._flow_items_view) if x["id"] == cur_id), 0)
+        new_pos = max(0, min(len(self._flow_items_view) - 1, pos + delta))
+        self.lb_flow.selection_clear(0, "end")
+        self.lb_flow.selection_set(new_pos)
+        self.lb_flow.see(new_pos)
+        self._render_flow_detail(self._flow_items_view[new_pos])
+
+    def _jump_to_station_scenarios(self):
+        if not self._current_flow_item or self._current_flow_item.get("_kind") != "station":
+            return
+        sid = self._current_flow_item["id"]
+        self.seg_flow_mode.set("🚨 40 Tình Huống OE")
+        if hasattr(self, "ent_flow_search"):
+            self.ent_flow_search.delete(0, "end")
+        if hasattr(self, "cb_flow_group"):
+            self.cb_flow_group.set("Tất cả 8 nhóm tình huống")
+        target_lbl = next((lbl for lbl, v in self._flow_station_map.items() if v == sid), "Tất cả 10 trạm")
+        if hasattr(self, "cb_flow_station"):
+            self.cb_flow_station.set(target_lbl)
+        self._on_flow_mode_change("🚨 40 Tình Huống OE")
+
+    def _open_flow_doc(self):
+        if not self._current_flow_item:
+            return
+        if self._current_flow_item.get("_kind") == "master":
+            self._open_offline_doc("cable_mfg_machines")
+            return
+        dk = self._current_flow_item.get("data", {}).get("doc_key")
+        if dk:
+            self._open_offline_doc(dk)
+
+    def _open_flow_lesson(self):
+        if not self._current_flow_item:
+            return
+        if self._current_flow_item.get("_kind") == "master":
+            self.open_curriculum_lesson("L1.1")
+            return
+        lid = self._current_flow_item.get("data", {}).get("lesson_id")
+        if lid:
+            self.open_curriculum_lesson(lid)
 
     # =====================================================================
     # LOGIC NẠP DỮ LIỆU & LAZY TAB RENDERING
@@ -2333,16 +2982,18 @@ Yêu cầu:
         self.badge_salary.configure(text=f"💰 {job.get('salary_range', 'Thỏa thuận')}")
         self.cb_status.set(job.get("status", "New"))
 
-        # Nạp tiến độ học tập bền vững từ SQLite (Roadmap checkboxes + Trạng thái ôn Phỏng vấn + Giáo Trình A–Z)
+        # Nạp tiến độ học tập bền vững từ SQLite (Roadmap + Phỏng vấn + Giáo Trình + Dòng Chảy CADIVI)
         prog = job.get("progress") if isinstance(job.get("progress"), dict) else self.storage.get_progress(job_id)
         self._current_progress = {
             "roadmap": dict(prog.get("roadmap", {})),
             "interview": dict(prog.get("interview", {})),
             "curriculum": dict(prog.get("curriculum", {})),
+            "factory_flow": dict(prog.get("factory_flow", {})),
         }
         self._roadmap_checked = self._current_progress["roadmap"]
         self._interview_progress = self._current_progress["interview"]
         self._curriculum_done = self._current_progress["curriculum"]
+        self._factory_flow_done = self._current_progress["factory_flow"]
         self._revealed_qids = set()
 
         # Chuẩn bị danh sách câu hỏi & combobox (không render UI nếu chưa mở tab Phỏng vấn)
@@ -2362,8 +3013,8 @@ Yêu cầu:
             self.ent_interview_search.delete(0, "end")
         self._update_interview_readiness_label()
 
-        # Đánh dấu tất cả 7 tab cần render, sau đó CHỈ render tab đang hiển thị!
-        self._dirty_tabs = {"overview", "curriculum", "skills", "roadmap", "resources", "interview", "notes"}
+        # Đánh dấu tất cả 8 tab cần render, sau đó CHỈ render tab đang hiển thị!
+        self._dirty_tabs = {"overview", "factory_flow", "curriculum", "skills", "roadmap", "resources", "interview", "notes"}
         self._render_current_tab()
 
     def _on_tab_change(self):
@@ -2381,6 +3032,8 @@ Yêu cầu:
         analysis = self.current_job.get("analysis", {})
         if tab_key == "overview":
             self._render_overview_tab(analysis.get("overview", {}))
+        elif tab_key == "factory_flow":
+            self._render_factory_flow_tab()
         elif tab_key == "curriculum":
             self._render_curriculum_tab()
         elif tab_key == "skills":
@@ -2555,6 +3208,8 @@ Yêu cầu:
         nl = name.lower()
         if hasattr(offline_knowledge, "OFFLINE_DOCS") and nl in offline_knowledge.OFFLINE_DOCS:
             return nl
+        if any(k in nl for k in ["cận chiến", "mã cáp", "decoder", "warroom", "iso 17025", "vilas", "offer", "thư cảm ơn", "gelex", "90 giây", "tự giới thiệu"]):
+            return "cadivi_interview_warroom_decoder"
         if any(k in nl for k in ["work sampling", "cost deployment", "loss tree", "wcm", "lsw", "lpa", "wrench time", "pm compliance", "pdm", "case study", "đề thi", "vòng 2", "moc", "ecn", "headcount"]):
             return "oe_field_execution_case_test"
         if any(k in nl for k in ["extrusion", "l/d", "ddr", "melt pressure", "sharkskin", "die drool", "regrind", "cup-and-cone", "forensics", "solar", "h1z2z2", "braiding", "qcvn 4", "astm b49", "en 50618"]):
@@ -2652,6 +3307,7 @@ Yêu cầu:
             ]
         else:
             quick_guides = [
+                ("🎯 Cận Chiến PV & Mã Cáp", "cadivi_interview_warroom_decoder"),
                 ("🔌 Máy Móc Cáp (CADIVI)", "cable_mfg_machines"),
                 ("🔬 Đùn Sâu & Đứt Sợi", "cable_extrusion_wire_forensics"),
                 ("🎯 Thực Địa & Test Vòng 2", "oe_field_execution_case_test"),
@@ -3120,6 +3776,12 @@ Yêu cầu:
             mods = len(oe_curriculum.get_all_modules())
             less = len(oe_curriculum.get_all_lessons())
             msg.append(f"🎓 Giáo Trình OE A–Z: {mods} Học phần / {less} Bài học tuần tự")
+        if cadivi_factory_flows:
+            msg.append(
+                f"🏭 Dòng Chảy CADIVI: {len(cadivi_factory_flows.get_stations())} Trạm · "
+                f"{len(cadivi_factory_flows.get_product_flows())} Luồng SP · "
+                f"{len(cadivi_factory_flows.get_scenarios())} Tình Huống OE"
+            )
 
         messagebox.showinfo("Thống Kê JobDetail Hub", "\n".join(msg))
 

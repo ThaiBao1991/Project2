@@ -154,13 +154,14 @@ class TestJobStorage(unittest.TestCase):
         )
         # Ban đầu rỗng
         init_prog = self.storage.get_progress(job_id)
-        self.assertEqual(init_prog, {"roadmap": {}, "interview": {}, "curriculum": {}})
+        self.assertEqual(init_prog, {"roadmap": {}, "interview": {}, "curriculum": {}, "factory_flow": {}})
 
         # Lưu tiến độ và mở lại kết nối mới (giả lập tắt/mở App)
         sample_prog = {
             "roadmap": {"1:0": True, "1:2": True},
             "interview": {"q_oee_01": "mastered", "q_adv_01": "review"},
             "curriculum": {"L1.1": True, "L4.2": True},
+            "factory_flow": {"S04": True, "F01": True, "SC16": True},
         }
         self.assertTrue(self.storage.save_progress(job_id, sample_prog))
 

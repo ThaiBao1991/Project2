@@ -9,9 +9,12 @@ test_qa_and_viewer.py — Bộ kiểm thử tự động kiểm tra:
 
 import unittest
 import ast
+import math
 import os
 import re
 import sys
+import zipfile
+import xml.etree.ElementTree as ET
 import tkinter as tk
 
 # Đảm bảo import được module trong thư mục JobDetail
@@ -24,6 +27,8 @@ import offline_knowledge
 import term_glossary
 import glossary_enrichment
 import oe_curriculum
+import cadivi_factory_flows
+import oe_calculators
 from job_storage import JobStorage
 from job_analyzer import JobAnalyzer
 from JobDetailApp import OfflineDocViewer, TermDetailPopup, GlossaryBrowserDialog, TermHoverTooltip, insert_with_glossary, create_c_engine_text, THEME
@@ -35,9 +40,9 @@ class TestInterviewBank(unittest.TestCase):
     def setUp(self):
         self.all_questions = interview_bank.get_all_questions()
 
-    def test_total_count_at_least_125(self):
-        """Đảm bảo số lượng câu hỏi đạt ít nhất 125 câu (thực tế 128 câu không trùng lặp)."""
-        self.assertGreaterEqual(len(self.all_questions), 125, f"Yêu cầu ít nhất 125 câu, hiện có {len(self.all_questions)}")
+    def test_total_count_at_least_146(self):
+        """Đảm bảo số lượng câu hỏi đạt đủ 146 câu không trùng lặp (18 chủ đề)."""
+        self.assertGreaterEqual(len(self.all_questions), 146, f"Yêu cầu ít nhất 146 câu, hiện có {len(self.all_questions)}")
 
     def test_all_questions_unique_ids(self):
         """Đảm bảo 100% ID câu hỏi là duy nhất, không trùng lặp."""
@@ -66,7 +71,7 @@ class TestInterviewBank(unittest.TestCase):
         """Đảm bảo bộ lọc theo từng chủ đề hoạt động chuẩn xác."""
         cats = interview_bank.get_categories()
         self.assertIn("Tất cả chủ đề", cats)
-        self.assertGreaterEqual(len(cats), 18)
+        self.assertGreaterEqual(len(cats), 19)
 
         for cat in cats:
             filtered = interview_bank.get_questions_by_category(cat)
@@ -79,7 +84,11 @@ class TestInterviewBank(unittest.TestCase):
 
     def test_search_questions(self):
         """Đảm bảo tìm kiếm từ khóa hoạt động nhanh và chính xác (cả văn bản thuần và công thức [[Key|Text]])."""
-        for kw in ["OEE", "SMED", "Poka-Yoke", "LOTO", "RTY", "Standard Cost", "cáp ABC", "Work Sampling", "Sharkskin", "Cup-and-Cone"]:
+        for kw in [
+            "OEE", "SMED", "Poka-Yoke", "LOTO", "RTY", "Standard Cost", "cáp ABC",
+            "Work Sampling", "Sharkskin", "Cup-and-Cone", "ISO/IEC 17025", "VILAS",
+            "CXV/DSTA", "Total Compensation", "English Interview"
+        ]:
             res = interview_bank.search_questions(kw)
             self.assertGreater(len(res), 0, f"Tìm kiếm '{kw}' phải có kết quả")
 
@@ -90,13 +99,14 @@ class TestInterviewBank(unittest.TestCase):
 class TestOfflineKnowledgeAndDocViewer(unittest.TestCase):
     """Kiểm tra kho tài liệu offline và trình hiển thị OfflineDocViewer."""
 
-    def test_all_22_docs_exist(self):
-        """Đảm bảo đầy đủ 22 cẩm nang kỹ thuật chuyên sâu (16 Sản xuất/Cáp điện + 6 IT)."""
+    def test_all_23_docs_exist(self):
+        """Đảm bảo đầy đủ 23 cẩm nang kỹ thuật chuyên sâu (17 Sản xuất/Cáp điện + 6 IT)."""
         docs = offline_knowledge.get_all_offline_docs()
-        self.assertEqual(len(docs), 22, f"Yêu cầu đủ 22 cẩm nang, hiện có {len(docs)}")
+        self.assertEqual(len(docs), 23, f"Yêu cầu đủ 23 cẩm nang, hiện có {len(docs)}")
         for required_key in [
             "cable_mfg_machines", "oe_six_sigma_dmaic", "cable_cost_capacity",
-            "planning_quality_ehs_cost", "cable_extrusion_wire_forensics", "oe_field_execution_case_test"
+            "planning_quality_ehs_cost", "cable_extrusion_wire_forensics",
+            "oe_field_execution_case_test", "cadivi_interview_warroom_decoder"
         ]:
             self.assertIn(required_key, offline_knowledge.OFFLINE_DOCS, f"Thiếu cẩm nang mới '{required_key}'")
 
@@ -141,8 +151,8 @@ class TestOfflineKnowledgeAndDocViewer(unittest.TestCase):
             self.assertNotIn(r"\text", kp)
             self.assertNotIn("_{", kp)
 
-    def test_offline_doc_viewer_all_22_headless_no_raw_markdown_plus_toc_and_find(self):
-        """Khởi tạo headless Tkinter và mở toàn bộ 22 cẩm nang: 0 rò rỉ '[[' hoặc '**bold**' thô, kiểm tra TOC & Ctrl+F."""
+    def test_offline_doc_viewer_all_23_headless_no_raw_markdown_plus_toc_and_find(self):
+        """Khởi tạo headless Tkinter và mở toàn bộ 23 cẩm nang: 0 rò rỉ '[[' hoặc '**bold**' thô, kiểm tra TOC & Ctrl+F."""
         root = tk.Tk()
         root.withdraw()
         try:
@@ -245,6 +255,10 @@ class TestOfflineKnowledgeAndDocViewer(unittest.TestCase):
         for tok in ["Work Sampling", "Cost Deployment", "LSW", "LPA", "Escalation Matrix", "Wrench Time", "ĐỀ THI 1", "ĐỀ THI 2", "ĐỀ THI 3", "74.16%"]:
             self.assertIn(tok, field_test, f"Cẩm nang 'oe_field_execution_case_test' thiếu nội dung '{tok}'")
 
+        warroom = offline_knowledge.OFFLINE_DOCS["cadivi_interview_warroom_decoder"]["content"]
+        for tok in ["TẦNG 1", "TẦNG 2", "TẦNG 3", "TẦNG 4", "ISO/IEC 17025", "VILAS", "GELEX", "DSTA", "DATA", "90"]:
+            self.assertIn(tok, warroom, f"Cẩm nang 'cadivi_interview_warroom_decoder' thiếu nội dung '{tok}'")
+
         # Kiểm tra cả oee và smed đã chuẩn hóa đủ 4 tầng
         for dk in ("oee", "smed"):
             c = offline_knowledge.OFFLINE_DOCS[dk]["content"]
@@ -256,7 +270,7 @@ class TestJobStorageAndAnalyzerIntegration(unittest.TestCase):
     """Kiểm tra tích hợp CSDL SQLite và bộ phân tích JobAnalyzer."""
 
     def test_job_id_1_loaded_with_cadivi_oe_full_data(self):
-        """Đảm bảo hồ sơ công việc ID 1 trong CSDL chuẩn CADIVI Miền Trung OE và có đủ 128 câu hỏi + 16 cẩm nang."""
+        """Đảm bảo hồ sơ công việc ID 1 trong CSDL chuẩn CADIVI Miền Trung OE và có đủ 146 câu hỏi + 17 cẩm nang."""
         db_path = os.path.join(current_dir, "job_detail.db")
         if os.path.exists(db_path):
             storage = JobStorage(db_path)
@@ -266,19 +280,19 @@ class TestJobStorageAndAnalyzerIntegration(unittest.TestCase):
             self.assertIn("OE", job.get("title", "").upper())
             analysis = job.get("analysis", {})
             interview = analysis.get("interview_prep", [])
-            self.assertGreaterEqual(len(interview), 125, f"Job ID 1 phải có ít nhất 125 câu hỏi, hiện có {len(interview)}")
+            self.assertGreaterEqual(len(interview), 146, f"Job ID 1 phải có ít nhất 146 câu hỏi, hiện có {len(interview)}")
             guides = analysis.get("resources", {}).get("offline_guides", [])
-            self.assertGreaterEqual(len(guides), 16, f"Job ID 1 phải gắn đủ 16 cẩm nang offline, hiện có {len(guides)}")
+            self.assertGreaterEqual(len(guides), 17, f"Job ID 1 phải gắn đủ 17 cẩm nang offline, hiện có {len(guides)}")
             guide_ids = [g.get("id") for g in guides]
-            for req in ("planning_quality_ehs_cost", "cable_extrusion_wire_forensics", "oe_field_execution_case_test"):
+            for req in ("planning_quality_ehs_cost", "cable_extrusion_wire_forensics", "oe_field_execution_case_test", "cadivi_interview_warroom_decoder"):
                 self.assertIn(req, guide_ids)
 
             exported_md = storage.export_job_markdown(1)
             self.assertNotIn("[[", exported_md, "export_job_markdown bị rò rỉ cú pháp thô '[['!")
             self.assertNotIn("]]", exported_md, "export_job_markdown bị rò rỉ cú pháp thô ']]'!")
 
-    def test_mfg_analyzer_generates_128_questions(self):
-        """Đảm bảo JobAnalyzer tự động nạp 128 câu hỏi và đủ 16 cẩm nang khi phân tích JD OE / Dây Cáp Điện."""
+    def test_mfg_analyzer_generates_146_questions(self):
+        """Đảm bảo JobAnalyzer tự động nạp 146 câu hỏi và đủ 17 cẩm nang khi phân tích JD OE / Dây Cáp Điện."""
         analyzer = JobAnalyzer()
         mfg_jd = """
         Tuyển Chuyên Viên Tối Ưu Quy Trình (OE) — Nhà máy CADIVI Miền Trung
@@ -292,13 +306,13 @@ class TestJobStorageAndAnalyzerIntegration(unittest.TestCase):
         self.assertEqual(result["category"], "Sản Xuất (Manufacturing)")
         analysis = result.get("analysis", {})
         interview = analysis.get("interview_prep", [])
-        self.assertGreaterEqual(len(interview), 125, f"JD sản xuất phải tự động sinh ít nhất 125 câu hỏi, thực tế: {len(interview)}")
+        self.assertGreaterEqual(len(interview), 146, f"JD sản xuất phải tự động sinh ít nhất 146 câu hỏi, thực tế: {len(interview)}")
         guide_ids = [g.get("id") for g in analysis.get("resources", {}).get("offline_guides", [])]
-        for req in ("planning_quality_ehs_cost", "cable_extrusion_wire_forensics", "oe_field_execution_case_test"):
+        for req in ("planning_quality_ehs_cost", "cable_extrusion_wire_forensics", "oe_field_execution_case_test", "cadivi_interview_warroom_decoder"):
             self.assertIn(req, guide_ids)
 
     def test_job_detail_app_interview_ui_filter_and_search(self):
-        """Đảm bảo giao diện C-Engine JobDetailApp render 128 câu hỏi siêu tốc, Chế độ Luyện Phỏng Vấn ẩn đáp án & lưu tiến độ."""
+        """Đảm bảo giao diện C-Engine JobDetailApp render 146 câu hỏi siêu tốc, Chế độ Luyện Phỏng Vấn ẩn đáp án & lưu tiến độ."""
         import time
         from JobDetailApp import JobDetailApp
         app = JobDetailApp()
@@ -310,12 +324,12 @@ class TestJobStorageAndAnalyzerIntegration(unittest.TestCase):
             dt_display = (time.perf_counter() - t0) * 1000
             self.assertLess(dt_display, 400, f"_display_job_detail quá chậm: {dt_display:.1f} ms")
 
-            # Chuyển sang tab Phỏng vấn để kích hoạt Lazy Render C-Engine 128 câu
+            # Chuyển sang tab Phỏng vấn để kích hoạt Lazy Render C-Engine 146 câu
             t1 = time.perf_counter()
-            app.tabview.set("❓ Phỏng Vấn & Thực Chiến")
+            app.tabview.set("❓ Phỏng Vấn")
             app._on_tab_change()
             dt_interview = (time.perf_counter() - t1) * 1000
-            self.assertLess(dt_interview, 650, f"Render 128 câu phỏng vấn quá chậm: {dt_interview:.1f} ms")
+            self.assertLess(dt_interview, 900, f"Render 146 câu phỏng vấn quá chậm: {dt_interview:.1f} ms")
 
             total_q = len(interview_bank.get_all_questions())
             self.assertEqual(len(app._current_interview_raw), total_q)
@@ -345,12 +359,16 @@ class TestJobStorageAndAnalyzerIntegration(unittest.TestCase):
             app._update_interview_display(preserve_scroll=True)
             self.assertIn("Gợi ý trả lời & Điểm mấu chốt", app.txt_interview.get("1.0", "end"))
 
-            # Tắt chế độ ẩn đáp án và kiểm tra lọc Chủ đề 17 (16 câu)
+            # Tắt chế độ ẩn đáp án và kiểm tra lọc Chủ đề 17 (16 câu) & Chủ đề 18 (18 câu)
             app.var_quiz_mode.set(False)
             app._toggle_quiz_mode()
             app.cbo_interview_cat.set("Đùn Cáp Chuyên Sâu, Đứt Sợi, Thực Địa LSW/WCM & Test Thực Hành Vòng 2")
             app._update_interview_display()
             self.assertEqual(len(app._filtered_interview_items), 16)
+
+            app.cbo_interview_cat.set("Phỏng Vấn Bẫy HR/GĐ, Đàm Phán Lương, Hiểu CADIVI/ISO 17025 & Tiếng Anh OE")
+            app._update_interview_display()
+            self.assertEqual(len(app._filtered_interview_items), 18)
 
             # Tìm kiếm từ khóa Spark và cụm có công thức 'cáp ABC'
             app.cbo_interview_cat.set("Tất cả chủ đề")
@@ -364,11 +382,43 @@ class TestJobStorageAndAnalyzerIntegration(unittest.TestCase):
             app._update_interview_display()
             self.assertGreater(len(app._filtered_interview_items), 0)
 
-            # Kiểm tra các tab Lazy còn lại + Tab Giáo Trình A–Z
-            for tab_name in ["🎓 Giáo Trình A–Z", "🛠️ Ma Trận Kỹ Năng", "🧭 Lộ Trình Nắm Bắt", "📚 Kho Tài Liệu", "📝 Ghi Chú & JD Gốc"]:
+            # Kiểm tra các tab Lazy còn lại + Tab Giáo Trình A–Z + Tab Dòng Chảy CADIVI
+            for tab_name in ["🏭 Dòng Chảy CADIVI", "🎓 Giáo Trình A–Z", "🛠️ Kỹ Năng", "🧭 Lộ Trình", "📚 Tài Liệu", "📝 Ghi Chú & JD"]:
                 app.tabview.set(tab_name)
                 app._on_tab_change()
             self.assertIn("term::OEE", app.txt_raw_jd.tag_names())
+
+            # Kiểm tra Tab Dòng Chảy CADIVI đủ 3 chế độ (10 Trạm, 6 Luồng SP, 40 Tình Huống) + tìm kiếm + lưu SQLite
+            app.tabview.set("🏭 Dòng Chảy CADIVI")
+            app._on_tab_change()
+            self.assertEqual(app.lb_flow.size(), 11)  # Sơ đồ tổng thể + 10 Trạm
+            app._refresh_flow_list(select_id="S04")
+            st_txt = app.txt_flow.get("1.0", "end")
+            self.assertIn("SMED", st_txt)
+            self.assertNotIn("[[", st_txt)
+            self.assertNotIn("**", st_txt)
+            # Nhảy thẳng từ Trạm S04 sang danh sách tình huống của Trạm S04
+            app._jump_to_station_scenarios()
+            self.assertEqual(app.seg_flow_mode.get(), "🚨 40 Tình Huống OE")
+            self.assertGreater(app.lb_flow.size(), 0)
+            # Chuyển sang 6 Luồng Sản Phẩm
+            app.seg_flow_mode.set("🔀 6 Luồng Sản Phẩm")
+            app._on_flow_mode_change("🔀 6 Luồng Sản Phẩm")
+            self.assertEqual(app.lb_flow.size(), 6)
+            # Chuyển sang 40 Tình huống, lọc tìm 'Sharkskin' và đánh dấu Đã nắm lưu SQLite
+            app.seg_flow_mode.set("🚨 40 Tình Huống OE")
+            app.cb_flow_station.set("Tất cả 10 trạm")
+            app.cb_flow_group.set("Tất cả 8 nhóm tình huống")
+            app._on_flow_mode_change("🚨 40 Tình Huống OE")
+            self.assertEqual(app.lb_flow.size(), 40)
+            app.ent_flow_search.insert(0, "Sharkskin")
+            app._refresh_flow_list()
+            self.assertGreaterEqual(app.lb_flow.size(), 1)
+            cur_sc_id = app._current_flow_item["id"]
+            was_flow_done = bool(app._factory_flow_done.get(cur_sc_id, False))
+            app._toggle_current_flow_done()
+            reloaded_flow_prog = app.storage.get_progress(1)
+            self.assertEqual(bool(reloaded_flow_prog.get("factory_flow", {}).get(cur_sc_id, False)), not was_flow_done)
 
             # Kiểm tra Tab Giáo Trình A–Z: 32 bài, mở bài L4.2 (Six Sigma), không rò rỉ '[[' / '**', lưu SQLite
             app.open_curriculum_lesson("L4.2")
@@ -415,6 +465,16 @@ class TestJobStorageAndAnalyzerIntegration(unittest.TestCase):
             browser = app._open_glossary_browser()
             self.assertEqual(browser.lb.size(), 202)
             browser.destroy()
+
+            # Kiểm tra mở nhanh 2 cửa sổ Phase 7 từ Header: Công Cụ OE & Phỏng Vấn 30p
+            calc_dlg = app._open_oe_calculators()
+            self.assertIsNotNone(calc_dlg)
+            calc_dlg.destroy()
+
+            mock_dlg = app._open_mock_interview()
+            self.assertIsNotNone(mock_dlg)
+            self.assertEqual(len(mock_dlg.session_qs), 10)
+            mock_dlg._on_close()
         finally:
             app.storage.save_progress(1, orig_progress)
             app.destroy()
@@ -534,6 +594,67 @@ class TestTermGlossaryEngine(unittest.TestCase):
                 for m in pat.finditer(txt):
                     self.assertIsNotNone(term_glossary.get_term(m.group(1).strip()), f"{lid}.{fld} khóa lỗi: {m.group(0)}")
 
+    def test_cadivi_factory_flows_integrity(self):
+        """Đảm bảo Lưu Trình Dòng Chảy CADIVI có đủ 10 Trạm, 6 Luồng SP, 40 Tình Huống OE, 100% công thức & liên kết hợp lệ."""
+        stations = cadivi_factory_flows.get_stations()
+        flows = cadivi_factory_flows.get_product_flows()
+        scenarios = cadivi_factory_flows.get_scenarios()
+        groups = cadivi_factory_flows.get_scenario_groups()
+
+        self.assertEqual(len(stations), 10)
+        self.assertEqual(len(flows), 6)
+        self.assertEqual(len(scenarios), 40)
+        self.assertEqual(len(groups), 9)  # "Tất cả..." + 8 nhóm
+
+        self.assertEqual(len({s["id"] for s in stations}), 10)
+        self.assertEqual(len({f["id"] for f in flows}), 6)
+        self.assertEqual(len({sc["id"] for sc in scenarios}), 40)
+
+        pat = re.compile(r"\[\[([^|\]]+)(?:\|([^\]]+))?\]\]")
+        valid_lids = {l["id"] for l in oe_curriculum.get_all_lessons()}
+        valid_sids = {s["id"] for s in stations}
+        valid_groups = set(groups[1:])
+
+        for st in stations:
+            self.assertIn(st["doc_key"], offline_knowledge.OFFLINE_DOCS)
+            self.assertIn(st["lesson_id"], valid_lids)
+            for kt in st["key_terms"]:
+                self.assertIsNotNone(term_glossary.get_term(kt), f"{st['id']} key_term lỗi: {kt}")
+            for fld in ("title", "input", "output", "machines_and_teams", "hidden_losses", "oe_end_to_end_actions", "kpis"):
+                txt = st.get(fld, "")
+                self.assertNotIn("$", txt)
+                for m in pat.finditer(txt):
+                    self.assertIsNotNone(term_glossary.get_term(m.group(1).strip()), f"{st['id']}.{fld} lỗi: {m.group(0)}")
+
+        for fl in flows:
+            self.assertIn(fl["doc_key"], offline_knowledge.OFFLINE_DOCS)
+            self.assertIn(fl["lesson_id"], valid_lids)
+            for kt in fl["key_terms"]:
+                self.assertIsNotNone(term_glossary.get_term(kt), f"{fl['id']} key_term lỗi: {kt}")
+            for fld in ("title", "product_examples", "route_diagram", "bottleneck", "biggest_losses", "oe_strategy"):
+                txt = fl.get(fld, "")
+                self.assertNotIn("$", txt)
+                for m in pat.finditer(txt):
+                    self.assertIsNotNone(term_glossary.get_term(m.group(1).strip()), f"{fl['id']}.{fld} lỗi: {m.group(0)}")
+
+        for sc in scenarios:
+            self.assertIn(sc["station_id"], valid_sids)
+            self.assertIn(sc["group"], valid_groups)
+            self.assertIn(sc["doc_key"], offline_knowledge.OFFLINE_DOCS)
+            self.assertIn(sc["lesson_id"], valid_lids)
+            for kt in sc["key_terms"]:
+                self.assertIsNotNone(term_glossary.get_term(kt), f"{sc['id']} key_term lỗi: {kt}")
+            for fld in ("title", "symptom", "impact", "immediate_24h", "rca", "oe_solution", "lock_in"):
+                txt = sc.get(fld, "")
+                self.assertNotIn("$", txt)
+                for m in pat.finditer(txt):
+                    self.assertIsNotNone(term_glossary.get_term(m.group(1).strip()), f"{sc['id']}.{fld} lỗi: {m.group(0)}")
+
+        # Kiểm tra tìm kiếm & lọc 60fps
+        self.assertEqual(len(cadivi_factory_flows.search_scenarios(station_id="S04")), 8)
+        self.assertGreaterEqual(len(cadivi_factory_flows.search_scenarios(keyword="Sharkskin")), 1)
+        self.assertGreaterEqual(len(cadivi_factory_flows.search_scenarios(keyword="LOTO")), 2)
+
     def test_explicit_formula_disambiguation_and_markdown_links(self):
         """Kiểm tra công thức [[TermKey|DisplayText]] tách nghĩa chính xác ABC Cable vs Cycle Counting, PD và sinh link Markdown."""
         sample = "So sánh [[ABC Cable|ABC]] với [[Cycle Counting|ABC]] và [[Partial Discharge|PD]] cùng [[MES]]."
@@ -602,6 +723,161 @@ class TestTermGlossaryEngine(unittest.TestCase):
             dlg.destroy()
         finally:
             root.destroy()
+
+
+class TestOECalculatorsAndPracticeWorkbook(unittest.TestCase):
+    """Kiểm tra toàn bộ 5 công cụ tính OE, giải mã mã cáp CADIVI, Phỏng vấn thử 30p & File Excel Vòng 2 (.xlsx)."""
+
+    def test_calc_oee_cable_and_validation(self):
+        r = oe_calculators.calc_oee_cable(2250, 275, 320, 548000, 14000)
+        self.assertAlmostEqual(r["availability"], 87.78, places=2)
+        self.assertAlmostEqual(r["performance"], 86.71, places=2)
+        self.assertAlmostEqual(r["quality"], 97.45, places=2)
+        self.assertAlmostEqual(r["oee"], 74.17, places=2)
+        self.assertEqual(r["run_time_min"], 1975.0)
+        self.assertEqual(r["good_meters"], 534000.0)
+
+        with self.assertRaises(ValueError):
+            oe_calculators.calc_oee_cable(0, 0, 320, 1000, 0)
+        with self.assertRaises(ValueError):
+            oe_calculators.calc_oee_cable(450, 450, 320, 1000, 0)
+        with self.assertRaises(ValueError):
+            oe_calculators.calc_oee_cable(450, 10, 320, 1000, 1500)
+
+    def test_calc_copper_giveaway_and_pvc_volume_trap(self):
+        cu = oe_calculators.calc_copper_giveaway(0.670, 0.678, 200, 250)
+        self.assertAlmostEqual(cu["pct_giveaway"], 2.4023, places=2)
+        self.assertAlmostEqual(cu["annual_loss_m_vnd"], 1201.16, places=1)
+        with self.assertRaises(ValueError):
+            oe_calculators.calc_copper_giveaway(-0.5, 0.67, 200, 250)
+
+        pvc = oe_calculators.calc_pvc_volume_cost(30000, 1.40, 28500, 1.54, 200.0)
+        self.assertAlmostEqual(pvc["cost_vol_a"], 42000.0, places=1)
+        self.assertAlmostEqual(pvc["cost_vol_b"], 43890.0, places=1)
+        self.assertAlmostEqual(pvc["diff_pct"], 4.50, places=2)
+        self.assertIn("ĐẮT HƠN", pvc["verdict"])
+
+    def test_calc_cp_cpk_and_inventory_roi(self):
+        cpk_res = oe_calculators.calc_cp_cpk(3.46, 3.26, 3.40, 0.020)
+        self.assertAlmostEqual(cpk_res["cp"], 1.667, places=2)
+        self.assertAlmostEqual(cpk_res["cpk"], 1.000, places=2)
+        self.assertTrue(cpk_res["shift_note"], "Phải phát hiện lỗi lệch tâm khi Cp >= 1.33 nhưng Cpk < 1.33!")
+        with self.assertRaises(ValueError):
+            oe_calculators.calc_cp_cpk(3.0, 3.5, 3.2, 0.02)
+        with self.assertRaises(ValueError):
+            oe_calculators.calc_cp_cpk(3.5, 3.0, 3.2, 0)
+
+        inv = oe_calculators.calc_inventory_and_roi(4.0, 0.8, 12, 2.0, 1.65, 350, 42)
+        self.assertGreater(inv["safety_stock"], 10.0)
+        self.assertAlmostEqual(inv["rop"], 48.0 + inv["safety_stock"], places=2)
+        self.assertAlmostEqual(inv["payback_months"], 350.0 / 42.0, places=2)
+        self.assertGreater(inv["roi_1yr_pct"], 40.0)
+
+        inv_zero = oe_calculators.calc_inventory_and_roi(4.0, 0.8, 12, 2.0, 1.65, 350, 0)
+        self.assertTrue(math.isinf(inv_zero["payback_months"]))
+
+    def test_decode_cadivi_cable_and_eddy_current_warning(self):
+        # Bẫy kinh điển: 1 lõi xoay chiều bọc giáp thép DSTA -> BẮT BUỘC cảnh báo dòng xoáy Eddy Current!
+        bad_1core = oe_calculators.decode_cadivi_cable("CXV/DSTA 1x300 - 0.6/1kV")
+        self.assertIn("Eddy Current", bad_1core["warning"])
+        self.assertIn("DATA", bad_1core["warning"])
+
+        # Bản chuẩn 1 lõi dùng DATA không cảnh báo
+        ok_1core = oe_calculators.decode_cadivi_cable("CXV/DATA 1x300")
+        self.assertEqual(ok_1core["warning"], "")
+        self.assertIn("NHÔM", ok_1core["armor_shield"])
+
+        # Kiểm tra đa dạng họ cáp CADIVI
+        for code, expected in [
+            ("CXV/DSTA 3x120+1x70", "XLPE"),
+            ("LV-ABC 4x50", "TCVN 6447"),
+            ("As 240/32", "ACSR"),
+            ("H1Z2Z2-K 1x6.0", "EN 50618"),
+            ("VCmd 2x1.5", "Class 5"),
+            ("CXV/FR 4x16 LSZH", "Mica FR"),
+        ]:
+            dec = oe_calculators.decode_cadivi_cable(code)
+            joined = " ".join(dec.values())
+            self.assertIn(expected, joined, f"Giải mã '{code}' thiếu thông tin '{expected}'")
+
+        with self.assertRaises(ValueError):
+            oe_calculators.decode_cadivi_cable("   ")
+
+    def test_mock_interview_builder_and_dialogs_headless(self):
+        qs = interview_bank.get_all_questions()
+        deck = oe_calculators.build_mock_interview_set(qs, seed=42)
+        self.assertEqual(len(deck), 10)
+        self.assertEqual(len({q["id"] for q in deck}), 10, "Bộ 10 câu phỏng vấn thử không được trùng câu!")
+        self.assertTrue(any(str(q["id"]).startswith("q_war_") for q in deck), "Phải có ít nhất 1 câu bẫy HR/GĐ/CADIVI")
+        self.assertTrue(any(str(q["id"]).startswith("q_en_") for q in deck), "Phải có ít nhất 1 câu Tiếng Anh OE")
+
+        root = tk.Tk()
+        root.withdraw()
+        try:
+            calc = oe_calculators.OECalculatorDialog(root, THEME)
+            calc._run_oee()
+            calc._run_material()
+            calc._run_cpk()
+            calc._run_inv_roi()
+            calc._pick_sample_code("CXV/DSTA 1x300")
+            self.assertIn("74.17%", calc.out_oee.get("1.0", "end"))
+            self.assertIn("Eddy Current", calc.out_dec.get("1.0", "end"))
+            calc.destroy()
+
+            mock = oe_calculators.MockInterviewDialog(root, THEME, qs)
+            self.assertEqual(len(mock.session_qs), 10)
+            mock._toggle_reveal()
+            self.assertNotIn("[[", mock.txt_ans.get("1.0", "end"))
+            mock._score(10)
+            mock._step(1)
+            mock._score(5)
+            mock._show_summary()
+            self.assertIn("15 / 100", mock.txt_ans.get("1.0", "end"))
+            mock._on_close()
+        finally:
+            root.destroy()
+
+    def test_practice_excel_workbook_valid_ooxml_and_live_formulas(self):
+        xlsx_path = os.path.join(current_dir, "BaiTap_ThucHanh_Vong2_OE_CADIVI.xlsx")
+        self.assertTrue(os.path.exists(xlsx_path), f"Thiếu file Excel thực hành: {xlsx_path}")
+        self.assertGreater(os.path.getsize(xlsx_path), 5000)
+
+        with zipfile.ZipFile(xlsx_path, "r") as zf:
+            names = zf.namelist()
+            self.assertIn("xl/workbook.xml", names)
+            self.assertIn("xl/styles.xml", names)
+
+            # Kiểm tra 100% các file XML bên trong .xlsx hợp lệ (well-formed)
+            total_formulas = 0
+            formula_texts = []
+            for n in names:
+                if n.endswith(".xml") or n.endswith(".rels"):
+                    root_xml = ET.fromstring(zf.read(n))
+                    if n.startswith("xl/worksheets/sheet"):
+                        for el in root_xml.iter():
+                            if el.tag.endswith("}f") or el.tag == "f":
+                                total_formulas += 1
+                                if el.text:
+                                    formula_texts.append(el.text)
+
+            wb_xml = ET.fromstring(zf.read("xl/workbook.xml"))
+            sheet_names = [
+                el.attrib.get("name")
+                for el in wb_xml.iter()
+                if el.tag.endswith("}sheet") or el.tag == "sheet"
+            ]
+            self.assertEqual(sheet_names, [
+                "1_Raw_Log_5_Ca",
+                "2_Giai_OEE_Pareto",
+                "3_BOM_Giveaway_PVC",
+                "4_RCCP_Tai_122%",
+                "5_ROI_Payback_3KichBan",
+                "6_SoSanh_Offer_Nam",
+            ])
+            self.assertGreaterEqual(total_formulas, 50, f"File Excel cần ít nhất 50 công thức sống, hiện có {total_formulas}")
+            joined_f = " ".join(formula_texts)
+            for fn in ("SUM(", "AVERAGE(", "IF("):
+                self.assertIn(fn, joined_f, f"File Excel phải chứa công thức sống {fn}")
 
 
 if __name__ == "__main__":
